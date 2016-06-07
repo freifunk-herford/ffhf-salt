@@ -1,0 +1,14 @@
+{% set dhcp = salt['grains.filter_by']({
+  "Debian": {"pkg": "isc-dhcp-server", "svc": "isc-dhcp-server"}
+}) %}
+
+dhcp:
+  pkg.installed:
+    - name: {{ dhcp.pkg }}
+  service.running:
+    - name: {{ dhcp.svc }}
+    - enable: True
+  file.managed:
+    - name: /etc/dhcp/dhcpd.conf
+    - source: salt://gateway/etc/dhcp/dhcpd.conf
+
