@@ -1,5 +1,7 @@
 # Freifunk Herford SaltStack Configuration
 
+* Test
+
 ## Minion Installation
 
 Debian
