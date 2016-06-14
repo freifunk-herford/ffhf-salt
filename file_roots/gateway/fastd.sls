@@ -1,6 +1,6 @@
 {% set fastd = salt['grains.filter_by']({
   "Debian": {"pkg": "fastd", "svc": "fastd"}
-}) %}
+}, merge=salt['grains.get']('os_family:lookup')) %}
 
 {% if grains['osfamily'] == 'Debian' %}
 fastd-repo:

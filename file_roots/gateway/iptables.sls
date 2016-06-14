@@ -1,6 +1,6 @@
 {% set iptables = salt['grains.filter_by']({
   "Debian": {"pkg": "iptables-persistent", "svc": "iptables-persistent"}
-}) %}
+}, merge=salt['grains.get']('os_family:lookup')) %}
 
 {% if grains['osrelease'] == '16.04' and grains['os'] == 'Ubuntu' %}
 
