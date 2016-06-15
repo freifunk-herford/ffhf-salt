@@ -1,7 +1,5 @@
 127.0.0.1  localhost
-127.0.1.1  ubuntu-xenial
-127.0.1.1  ubuntu-xenial.digital-nerv.net
-127.0.1.1  m2.dev.digital-nerv.net
+127.0.1.1  debian-ubuntu-hostname
 
 # The following lines are desirable for IPv6 capable hosts
 ::1     localhost ip6-localhost ip6-loopback

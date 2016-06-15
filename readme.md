@@ -1,5 +1,9 @@
 # Freifunk Herford SaltStack Configuration
 
+* https://freifunk-muensterland.de/wiki/doku.php?id=technik:gateway
+* http://wiki.freifunk.net/Hamburg/Gateway
+* https://gluon-gateway-doku.readthedocs.io/de/latest/index.html
+
 ## Minion Installation
 
 Debian

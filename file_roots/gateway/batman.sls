@@ -1,3 +1,5 @@
+# B.A.T.M.A.N. Verwaltungstools (Better Approach To Mobile Adhoc Networking)
+
 {% set batman = salt['grains.filter_by']({
   'Debian': {'pkg': 'batctl'}
 }, default='Debian') %}
@@ -5,3 +7,10 @@
 {{ batman.pkg }}:
   pkg.installed:
     - name: {{ batman.pkg }}
+
+# modinfo batman-adv | batman_adv
+# /etc/modules-load.d/salt_managed.conf
+batman_adv:
+  kmod.present:
+    - name: batman_adv
+    - persist: True
