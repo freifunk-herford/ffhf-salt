@@ -1,9 +1,9 @@
 {% set fastd = salt['grains.filter_by']({
-  "Debian": {"pkg": "fastd", "svc": "fastd"}
-}, merge=salt['grains.get']('os_family:lookup')) %}
+  'Debian': {'pkg': 'fastd', 'srv': 'fastd'}
+}, default='Debian') %}
 
-{% if grains['osfamily'] == 'Debian' %}
-fastd-repo:
+{% if grains['os_family'] == 'Debian' %}
+fastd-repository:
   pkgrepo.managed:
     - name: deb https://repo.universe-factory.net/debian/ sid main
     - gpgcheck: 1
@@ -11,10 +11,13 @@ fastd-repo:
     - require_in:
       - pkg: {{ fastd.pkg }}
 
-fastd:
+{{ fastd.pkg }}:
   pkg.installed:
     - name: {{ fastd.pkg }}
   service.running:
-    - name: {{ fastd.svc }}
+    - name: {{ fastd.srv }}
     - enable: True
 {% endif %}
+
+# /etc/fastd/
+# /etc/default/fastd

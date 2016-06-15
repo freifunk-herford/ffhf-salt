@@ -1,10 +1,12 @@
 {% set openvpn = salt['grains.filter_by']({
-  "Debian": {"pkg": "openvn", "svc": "openvpn"}
-}, merge=salt['grains.get']('os_family:lookup')) %}
+  'Debian': {'pkg': 'openvpn', 'srv': 'openvpn'}
+}, default='Debian') %}
 
-openvpn:
+{{ openvpn.pkg }}:
   pkg.installed:
     - name: {{ openvpn.pkg }}
   service.running:
-    - name: {{ openvpn.svc }}
+    - name: {{ openvpn.srv }}
     - enable: True
+
+# /etc/openvpn/

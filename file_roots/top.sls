@@ -1,10 +1,19 @@
 base:
-  '^gw*.herford.freifunk.net$':
-    - match: pcre
-    - ffhf.openssh
+  # '^gw*.herford.freifunk.net$':
+  #   - match: pcre
+  #   - ffhf.openssh
+  #
+  # gw1.herford.freifunk.net:
+  #   - gateway.batman
+  #   - gateway.fastd
+  #   - gateway.iptables
+  #   - gateway.dhcp-server
 
-  gw1.herford.freifunk.net:
+  'gw*':
+    - match: pcre
+    - gateway.dhcp-server
+    - gateway.iptables
+    - gateway.vnstat
     - gateway.batman
     - gateway.fastd
-    - gateway.iptables
-    - gateway.dhcp-server
+    - gateway.openvpn

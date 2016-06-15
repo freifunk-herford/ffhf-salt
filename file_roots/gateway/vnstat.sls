@@ -1,10 +1,12 @@
 {% set vnstat = salt['grains.filter_by']({
-  "Debian": {"pkg": "vnstat", "svc": "vnstat"}
-}, merge=salt['grains.get']('os_family:lookup')) %}
+  'Debian': {'pkg': 'vnstat', 'srv': 'vnstat'}
+}, default='Debian') %}
 
-vnstat:
+{{ vnstat.pkg }}:
   pkg.installed:
     - name: {{ vnstat.pkg }}
   service.running:
-    - name: {{ vnstat.svc }}
+    - name: {{ vnstat.srv }}
     - enable: True
+
+# /etc/vnstat.conf
