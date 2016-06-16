@@ -48,8 +48,8 @@
         routers: {{ pillar['dhcp']['ipv4']['routers'] }}
         domain_name_servers: {{ pillar['dhcp']['ipv4']['domain_name_servers'] }}
         interface_mtu: {{ pillar['dhcp']['interface_mtu'] }}
-        default_lease_time: {{ pillar['dhcp']['default_lease_time'] }};
-        max_lease_time: {{ pillar['dhcp']['max_lease_time'] }};
+        default_lease_time: {{ pillar['dhcp']['default_lease_time'] }}
+        max_lease_time: {{ pillar['dhcp']['max_lease_time'] }}
     - require:
        - pkg: {{ dhcp.pkg }}
 
@@ -73,13 +73,13 @@ deploy-isc-dhcp6-server-init:
 {% endif %}
 
 {% if grains['os_family'] == 'Debian' and grains['systemd'] %}
-/lib/systemd/system/isc-dhcp-server.service:
+/lib/systemd/system/isc-dhcp6-server.service:
   file.managed:
     - name: /lib/systemd/system/isc-dhcp6-server.service
     - source: salt://gateway/lib/systemd/system/isc-dhcp6-server.service
     - user: root
     - group: root
-    - mode: 755
+    - mode: 644
 {% endif %}
 
 {{ dhcp.srv6 }}:
@@ -95,7 +95,7 @@ deploy-isc-dhcp6-server-init:
        - pkg: {{ dhcp.pkg }}
        {% if grains['os_family'] == 'Debian' %}
        - file: deploy-isc-dhcp6-server-init
-       - file: /lib/systemd/system/isc-dhcp-server.service
+       - file: /lib/systemd/system/isc-dhcp6-server.service
        {% endif %}
 
 {% if grains['os_family'] == 'Debian' %}

@@ -1,3 +1,5 @@
+# OpenVPN (Virtual Private Network)
+
 {% set openvpn = salt['grains.filter_by']({
   'Debian': {'pkg': 'openvpn', 'srv': 'openvpn'}
 }, default='Debian') %}

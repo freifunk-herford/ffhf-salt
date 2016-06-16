@@ -1,17 +1,17 @@
 {% set ssh = salt['grains.filter_by']({
-  "Debian": {"pkg": "openssh-server", "svc": "ssh"}
-}) %}
+  'Debian': {'pkg': 'openssh-server', 'srv': 'ssh'}
+}, default='Debian') %}
 
 ssh:
   pkg.installed:
     - name: {{ ssh.pkg }}
   service.running:
-    - name: {{ ssh.svc }}
+    - name: {{ ssh.srv }}
     - enable: True
   file.managed:
     - name: /root/.ssh/authorized_keys
-    - source: salt://ffhf/root/.ssh/authorized_keys
-    - source_hash: md5=
+    - source: salt://gateway/root/.ssh/authorized_keys
+    - source_hash: md5=???
     - user: root
     - group: root
     - mode: 600

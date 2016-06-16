@@ -15,3 +15,8 @@ dhcp:
   interface_mtu: 1280
   default_lease_time: 240
   max_lease_time: 1200
+  interfaces: br0
+
+network:
+  bridge:
+    interface: br0

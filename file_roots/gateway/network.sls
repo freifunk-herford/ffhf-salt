@@ -1,17 +1,35 @@
-# Network Interface DHCP
+# Network
 
 {% if grains['os_family'] == 'Debian' %}
-# /etc/network/interfaces
-{{ pillar['network']['interface'] }}:
-  network.managed:
-   - name: {{ pillar['network']['interface'] }}
-   - enabled: True
-   - type: eth
-   - proto: none
-   - ipaddr: {{ pillar['network']['ipaddr'] }}
-{% endif %}
+/etc/network/interfaces.d/br0:
+  file.managed:
+    - name: /etc/network/interfaces.d/br0
+    - source: salt://gateway/etc/network/interfaces.d/br0
+    - template: jinja
+    - defaults:
+        address: {{ pillar['network']['bridge']['ipv4']['address'] }}
+        netmask: {{ pillar['network']['bridge']['ipv4']['netmask'] }}
+        address6: {{ pillar['network']['bridge']['ipv6']['address'] }}
+        netmask6: {{ pillar['network']['bridge']['ipv6']['netmask'] }}
+    - user: root
+    - group: root
+    - mode: 644
 
-# Network Bridge
+/etc/network/interfaces.d/bat0:
+  file.managed:
+    - name: /etc/network/interfaces.d/bat0
+    - source: salt://gateway/etc/network/interfaces.d/bat0
+    - user: root
+    - group: root
+    - mode: 644
+
+networking:
+  service.running:
+    - enable: True
+    - watch:
+      - file: /etc/network/interfaces.d/br0
+      - file: /etc/network/interfaces.d/bat0
+{% endif %}
 
 # Forwarding
 # IPv4

@@ -152,6 +152,7 @@ nat-POSTROUTING-ACCEPT-SNAT:
     - chain: POSTROUTING
     - jump: SNAT
     - out-interface: tun-+
-    - to-source: {{ pillar['network']['ipaddr'] }} # Public IPv4 Address GW
+    - to-source: {{ pillar['network']['bridge']['ipv4']['address'] }}
+    # Public IPv4 Address GW
 
 # /etc/iptables/rules.v6

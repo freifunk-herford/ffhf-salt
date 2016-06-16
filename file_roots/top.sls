@@ -11,12 +11,16 @@ base:
 
   'gw*':
     - match: pcre
+    - gateway.network
+    - gateway.ntp
     - gateway.bird
+    - gateway.apache
     - gateway.dns-server
     - gateway.dhcp-server
     - gateway.iptables
     - gateway.vnstat
     - gateway.batman
+    - gateway.alfred
     - gateway.fastd
     - gateway.openvpn
     - gateway.radvd

@@ -9,5 +9,3 @@
     - name: {{ syslog.pkg }}
   service.running:
     - name: {{ syslog.srv }}
-
-# https://gluon-gateway-doku.readthedocs.org/de/latest/configuration/cleanup.html#logging

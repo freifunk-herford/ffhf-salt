@@ -1,4 +1,4 @@
-# VPN für Verbindung zu den Knoten (Virtual Private Network)
+# Fastd VPN (Virtual Private Network)
 
 {% set fastd = salt['grains.filter_by']({
   'Debian': {'pkg': 'fastd', 'srv': 'fastd'}
