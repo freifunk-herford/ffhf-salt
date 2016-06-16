@@ -10,10 +10,10 @@ ConditionPathExists=|/etc/dhcp/dhcpd6.conf
 
 [Service]
 EnvironmentFile=/etc/default/isc-dhcp6-server
-RuntimeDirectory=dhcp6-server
+RuntimeDirectory=dhcp-server
 # The leases files need to be root:dhcpd even when dropping privileges
 ExecStart=/bin/sh -ec '\
-    CONFIG_FILE=/etc/dhcp/dhcpd.conf; \
+    CONFIG_FILE=/etc/dhcp/dhcpd6.conf; \
     if [ -f /etc/ltsp/dhcpd6.conf ]; then CONFIG_FILE=/etc/ltsp/dhcpd6.conf; fi; \
     [ -e /var/lib/dhcp/dhcpd6.leases ] || touch /var/lib/dhcp/dhcpd6.leases; \
     chown root:dhcpd /var/lib/dhcp /var/lib/dhcp/dhcpd6.leases; \

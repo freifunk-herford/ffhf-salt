@@ -20,3 +20,7 @@ dhcp:
 network:
   bridge:
     interface: br0
+  alfred:
+    interface: br0
+  batman:
+    interface: bat0

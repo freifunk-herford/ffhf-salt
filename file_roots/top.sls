@@ -24,3 +24,4 @@ base:
     - gateway.fastd
     - gateway.openvpn
     - gateway.radvd
+    - gateway.tinc

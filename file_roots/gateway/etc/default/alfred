@@ -1,0 +1,11 @@
+# Defaults for alfred initscript
+# sourced by /etc/init.d/alfred
+# installed at /etc/default/alfred by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+INTERFACE="{{ interface }}"
+
+BATMAN_INTERFACE="{{ batman_interface }}"

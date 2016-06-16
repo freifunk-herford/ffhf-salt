@@ -4,6 +4,49 @@
 * http://wiki.freifunk.net/Hamburg/Gateway
 * https://gluon-gateway-doku.readthedocs.io/de/latest/index.html
 
+## A.L.F.R.E.D.
+
+    Usage: alfred [options]
+    client mode options:
+      -s, --set-data [data type]          sets new data to distribute from stdin
+                                          for the supplied data type (0-255)
+      -r, --request [data type]           collect data from the network and prints
+                                          it on the network
+      -d, --verbose                       Show extra information in the data output
+      -V, --req-version                   specify the data version set for -s
+      -M, --modeswitch master             switch daemon to mode master
+                       slave              switch daemon to mode slave
+      -I, --change-interface [interface]  change to the specified interface(s)
+
+    server mode options:
+      -i, --interface                     specify the interface (or comma separated list of interfaces) to listen on
+      -b                                  specify the batman-adv interface
+                                          configured on the system (default: bat0)
+                                          use 'none' to disable the batman-adv
+                                          based best server selection
+      -m, --master                        start up the daemon in master mode, which
+                                          accepts data from slaves and syncs it with
+                                          other masters
+
+      -u, --unix-path [path]              path to unix socket used for client-server
+                                          communication (default: "/var/run/alfred.sock")
+      -c, --update-command                command to call on data change
+      -v, --version                       print the version
+      -h, --help                          this help
+
+## B.A.T.M.A.N.
+
+    modinfo batman_adv
+    lsmod | grep batman_adv
+
+    Usage: batadv-vis [options]
+      -i, --interface             specify the batman-adv interface configured on the system (default: bat0)
+      -s, --server                start up in server mode, which regularly updates vis data from batman-adv
+      -f, --format <format>       specify the output format for client mode (either "json", "jsondoc" or "dot")
+      -u, --unix-path <path>      path to unix socket used for alfred server communication (default: "/var/run/alfred.sock")
+      -v, --version               print the version
+      -h, --help                  this help
+
 ## Minion Installation
 
 Debian

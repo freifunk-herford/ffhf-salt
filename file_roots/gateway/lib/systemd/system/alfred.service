@@ -1,0 +1,15 @@
+[Unit]
+Description=A.L.F.R.E.D. Almighty Lightweight Fact Remote Exchange Daemon
+Documentation=man:alfred(8)
+Wants=network-online.target
+After=network-online.target
+ConditionPathExists=/etc/default/alfred
+# BindsTo=sys-subsystem-net-devices-mesh\x2d%i.device
+# After=sys-subsystem-net-devices-mesh\x2d%i.device
+
+[Service]
+EnvironmentFile=/etc/default/alfred
+ExecStart=/usr/sbin/alfred -i $INTERFACE -b $BATMAN_INTERFACE
+
+[Install]
+WantedBy=multi-user.target

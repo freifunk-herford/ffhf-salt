@@ -1,0 +1,14 @@
+[Unit]
+Description=batadv-vis Visualization Server
+Documentation=man:batadv-vis(8)
+Wants=network-online.target
+After=network-online.target
+After=alfred.service
+ConditionPathExists=/etc/default/batadv-vis
+
+[Service]
+EnvironmentFile=/etc/default/batadv-vis
+ExecStart=/usr/sbin/batadv-vis -s -i $INTERFACE
+
+[Install]
+WantedBy=multi-user.target

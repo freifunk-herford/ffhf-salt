@@ -1,0 +1,9 @@
+# Defaults for batadv-vis initscript
+# sourced by /etc/init.d/batadv-vis
+# installed at /etc/default/batadv-vis by the maintainer scripts
+
+#
+# This is a POSIX shell fragment
+#
+
+INTERFACE="{{ interface }}"
