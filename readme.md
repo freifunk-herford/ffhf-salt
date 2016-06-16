@@ -3,6 +3,7 @@
 * https://freifunk-muensterland.de/wiki/doku.php?id=technik:gateway
 * http://wiki.freifunk.net/Hamburg/Gateway
 * https://gluon-gateway-doku.readthedocs.io/de/latest/index.html
+* https://wiki.freifunk-franken.de/w/Freifunk-Gateway_aufsetzen
 
 ## A.L.F.R.E.D.
 
@@ -35,6 +36,8 @@
       -h, --help                          this help
 
 ## B.A.T.M.A.N.
+
+    batctl -m bat0 if add br0
 
     modinfo batman_adv
     lsmod | grep batman_adv

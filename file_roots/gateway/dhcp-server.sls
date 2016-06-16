@@ -20,6 +20,8 @@
       {% if grains['os_family'] == 'Debian' %}
       - file: /etc/default/isc-dhcp-server
       {% endif %}
+    - require:
+      - sls: gateway.network
 
 {% if grains['os_family'] == 'Debian' %}
 /etc/default/isc-dhcp-server:
