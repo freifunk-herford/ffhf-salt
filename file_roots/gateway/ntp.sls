@@ -21,3 +21,6 @@
     - mode: 644
     - require:
       - pkg: {{ ntp.pkg }}
+
+# Show Status: ntpq -p
+

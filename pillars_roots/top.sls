@@ -26,3 +26,6 @@ base:
 
   'gw3':
     - gateways.gw3
+
+  'gw4':
+    - gateways.gw4

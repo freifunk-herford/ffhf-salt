@@ -4,6 +4,13 @@
   'Debian': {'pkg': 'bird', 'srv': 'bird'},
 }, default='Debian') %}
 
+# bird-repository:
+#   pkgrepo.managed:
+#     - ppa: cz.nic-labs/bird
+#     - keyid_ppa: True
+#     - require_in:
+#       - pkg: {{ bird.pkg }}
+
 {{ bird.pkg }}:
   pkg.installed:
     - name: {{ bird.pkg }}

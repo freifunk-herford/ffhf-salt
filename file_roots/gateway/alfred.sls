@@ -1,45 +1,28 @@
 # A.L.F.R.E.D. (Almighty Lightweight Fact Remote Exchange Daemon)
 
 {% set alfred = salt['grains.filter_by']({
-  'Debian': {'pkg': 'alfred'}
+  'Debian': {'pkgs': ['alfred', 'alfred-json', 'batadv-vis']}
 }, default='Debian') %}
 
-{{ alfred.pkg }}:
+{% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %}
+alfred:
   pkg.installed:
-    - name: {{ alfred.pkg }}
-
-alfred.service:
-  # {% if grains['os_family'] == 'Debian' and grains['systemd'] %}
-  # module.wait:
-  #     - name: service.systemctl_reload
-  #     - watch:
-  #       - file: /lib/systemd/system/alfred.service
-  # {% endif %}
-  service.running:
-    - name: alfred
-    - enable: True
-    - watch:
-      {% if grains['os_family'] == 'Debian' and grains['systemd'] %}
-      - file: /lib/systemd/system/alfred.service
-      {% endif %}
-      - file: /etc/default/alfred
-      - file: /etc/init.d/alfred
+    - pkgs:
+        {% for pkg in alfred.pkgs %}
+        - {{ pkg }}
+        {% endfor %}
     - require:
-      {% if grains['os_family'] == 'Debian' and grains['systemd'] %}
-      - file: /lib/systemd/system/alfred.service
-      {% endif %}
-      - file: /etc/default/alfred
-      - file: /etc/init.d/alfred
-      - pkg: {{ alfred.pkg }}
       - sls: gateway.batman
+{% endif %}
 
-/etc/init.d/alfred:
-  file.managed:
-    - name: /etc/init.d/alfred
-    - source: salt://gateway/etc/init.d/alfred
-    - user: root
-    - group: root
-    - mode: 755
+{% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '16.04' %}
+alfred:
+  pkg.installed:
+    - sources:
+      - alfred: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/alfred_2016.0-0ffmwu0~trusty_amd64.deb
+      - alfred-json: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred-json/alfred-json_0.3.1-0ffmwu1~trusty_amd64.deb
+      - batadv-vis: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/batadv-vis_2016.0-0ffmwu0~trusty_amd64.deb
+{% endif %}
 
 /etc/default/alfred:
   file.managed:
@@ -50,71 +33,44 @@ alfred.service:
     - mode: 644
     - template: jinja
     - defaults:
-        interface: {{ pillar['network']['alfred']['interface'] }}
-        batman_interface: {{ pillar['network']['batman']['interface'] }}
+        interface: {{ pillar['network']['bridge']['interface'] }}
+        batmanif: {{ pillar['network']['batman']['interface'] }}
 
-{% if grains['os_family'] == 'Debian' and grains['systemd'] %}
-/lib/systemd/system/alfred.service:
-  file.managed:
-    - name: /lib/systemd/system/alfred.service
-    - source: salt://gateway/lib/systemd/system/alfred.service
-    - user: root
-    - group: root
-    - mode: 644
-{% endif %}
-
-batadv-vis.service:
-  # {% if grains['os_family'] == 'Debian' and grains['systemd'] %}
-  # module.wait:
-  #     - name: service.systemctl_reload
-  #     - watch:
-  #       - file: /lib/systemd/system/batadv-vis.service
-  # {% endif %}
-  service.running:
-    - name: batadv-vis
-    - enable: True
-    - watch:
-      {% if grains['os_family'] == 'Debian' and grains['systemd'] %}
-      - file: /lib/systemd/system/batadv-vis.service
-      {% endif %}
-      - file: /etc/default/batadv-vis
-      - file: /etc/init.d/batadv-vis
+alfred-announce:
+  pkg.installed:
+    - pkgs:
+        python3
+        python-virtualenv
+  cmd.run:
+    - cwd: /root/scripts/announce
+    - name: |
+        virtualenv -p python3
+        source venv/bin/activate; pip install --upgrade pip -r requirments.txt
     - require:
-      {% if grains['os_family'] == 'Debian' and grains['systemd'] %}
-      - file: /lib/systemd/system/batadv-vis.service
-      {% endif %}
-      - file: /etc/default/batadv-vis
-      - file: /etc/init.d/batadv-vis
-      - pkg: {{ alfred.pkg }}
-      - sls: gateway.batman
+      - pkg: alfred-announce
+      - file: /root/scripts/announce/requirements.txt
+      - git: ffnord-alfred-announce
 
-/etc/init.d/batadv-vis:
+/root/scripts/announce/requirements.txt:
   file.managed:
-    - name: /etc/init.d/batadv-vis
-    - source: salt://gateway/etc/init.d/batadv-vis
-    - user: root
-    - group: root
-    - mode: 755
+    - name: /root/scripts/announce/requirements.txt
+    - content: |
+        netinterfaces
+        py-cpuinfo
+    - makedirs: True
 
-/etc/default/batadv-vis:
-  file.managed:
-    - name: /etc/default/batadv-vis
-    - source: salt://gateway/etc/default/batadv-vis
-    - user: root
-    - group: root
-    - mode: 644
-    - template: jinja
-    - defaults:
-        interface: {{ pillar['network']['batman']['interface'] }}
+ffnord-alfred-announce:
+  git.latest:
+    - cwd: /root/scripts/announce
+    - name: https://github.com/freifunk-mwu/ffnord-alfred-announce.git
+    - target: /root/scripts/announce/ffnord-alfred-announce
+    - unless: test -d /root/scripts/announce/ffnord-alfred-announce
+    - require:
+      - file: /root/scripts/announce/requirements.txt
 
-{% if grains['os_family'] == 'Debian' and grains['systemd'] %}
-/lib/systemd/system/batadv-vis.service:
-  file.managed:
-    - name: /lib/systemd/system/batadv-vis.service
-    - source: salt://gateway/lib/systemd/system/batadv-vis.service
-    - user: root
-    - group: root
-    - mode: 644
-{% endif %}
-
-# alfred-json ?
+# announce.sh \
+# -i {{ pillar['network']['bridge']['interface'] }} \
+# -b {{ pillar['network']['batman']['interface'] }} \
+# -f {{ pillar['network']['vpn']['interface'] }} \
+# -u /var/run/alfred.sock \
+# -s ffhf

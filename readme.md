@@ -4,6 +4,26 @@
 * http://wiki.freifunk.net/Hamburg/Gateway
 * https://gluon-gateway-doku.readthedocs.io/de/latest/index.html
 * https://wiki.freifunk-franken.de/w/Freifunk-Gateway_aufsetzen
+* https://www.open-mesh.org/projects/batman-adv/wiki/Troubleshooting
+
+gw1.ffhf
+exitVPN -> Mullvad (openvpn)
+hfBAT (batman)
+hfVPN (fastd)
+gw1.ffhf
+exitVPN -> ?
+hfBAT (batman)
+hfVPN (fastd)
+gw1.ffhf
+exitVPN -> ?
+hfBAT (batman)
+hfVPN (fastd)
+ffhf
+firmware
+ns1.ffhf
+
+AXFR
+--
 
 ## A.L.F.R.E.D.
 

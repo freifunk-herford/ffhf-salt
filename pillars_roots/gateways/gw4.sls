@@ -19,7 +19,7 @@ network:
       address: fe80::a00:27ff:feee:ec3f
       netmask: 48
   primary:
-    interface: enp0s3
+    interface: eth0
 
 fastd:
   secret: ''

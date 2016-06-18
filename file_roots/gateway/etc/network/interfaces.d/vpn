@@ -1,0 +1,6 @@
+allow-hotplug {{ vpn }}
+iface {{ vpn }} inet6 manual
+    hwaddress {{ hwaddress }}
+    pre-up modprobe batman-adv
+    post-up batctl -m {{ batman }} if add $IFACE
+    post-up ip link set dev {{ batman }} up

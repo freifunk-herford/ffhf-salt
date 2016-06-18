@@ -1,0 +1,8 @@
+auto {{ bridge }}
+iface {{ bridge }} inet static
+    hwaddress {{ hwaddress }}
+    address {{ address }}
+    netmask {{ netmask }}
+    pre-up brctl addbr $IFACE
+    up ip address add {{ address6mask }} dev $IFACE
+    post-down brctl delbr $IFACE

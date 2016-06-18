@@ -74,7 +74,7 @@ deploy-isc-dhcp6-server-init:
     - mode: 755
 {% endif %}
 
-{% if grains['os_family'] == 'Debian' and grains['systemd'] %}
+{% if grains['os_family'] == 'Debian' and salt['grains.get']('systemd', None) %}
 /lib/systemd/system/isc-dhcp6-server.service:
   file.managed:
     - name: /lib/systemd/system/isc-dhcp6-server.service
@@ -97,6 +97,8 @@ deploy-isc-dhcp6-server-init:
        - pkg: {{ dhcp.pkg }}
        {% if grains['os_family'] == 'Debian' %}
        - file: deploy-isc-dhcp6-server-init
+       {% endif %}
+       {% if grains['os_family'] == 'Debian' and salt['grains.get']('systemd', None) %}
        - file: /lib/systemd/system/isc-dhcp6-server.service
        {% endif %}
 

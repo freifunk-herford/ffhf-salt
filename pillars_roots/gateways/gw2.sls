@@ -18,3 +18,7 @@ network:
     ipv6:
       address: fe80::a00:27ff:feee:ec3f
       netmask: 48
+
+fastd:
+  secret: ''
+  public: ''
