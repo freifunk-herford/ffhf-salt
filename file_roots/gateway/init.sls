@@ -8,10 +8,10 @@ include:
   - gateway.iproute
   - gateway.iptables
   - gateway.fastd
-  - gateway.batman
-  - gateway.alfred
   - gateway.bird
   - gateway.radvd
+  - gateway.batman
+  - gateway.alfred
   - gateway.dhcp-server
   - gateway.name-server
   - gateway.openvpn

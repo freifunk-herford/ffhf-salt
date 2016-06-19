@@ -51,7 +51,7 @@ batadv-vis.service:
   service.running:
     - name: batadv-vis
     - enable: True
-    - init_delay: 10
+    - init_delay: 30
     - watch:
       {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
       - file: /lib/systemd/system/batadv-vis.service

@@ -30,6 +30,11 @@ fastd:
       - file: /etc/fastd/{{ grains['id'] }}/fastd.conf
       - file: /etc/fastd/{{ grains['id'] }}/secret.conf
       - file: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}
+
+fastd-first-run:
+  cmd.run:
+    - name: sleep 20; service fastd restart
+    - unless: test -n "$(ifconfig | grep hfBAT)"
 {% endif %}
 
 /etc/fastd/{{ grains['id'] }}/fastd.conf:
