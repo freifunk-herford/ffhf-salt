@@ -70,6 +70,10 @@ ip -6 route add unreachable default table ffinetexit
 #  /usr/sbin/service alfred-hf restart
 #)&
 
+if [ "$(service alfred status | grep stop)" ]; then
+    service alfred start
+fi
+
 ## <<
 
 exit 0

@@ -18,7 +18,7 @@ PATH=/sbin:/bin:/usr/sbin:/usr/bin
 
 test -f /usr/sbin/batadv-vis || exit 0
 
-BATADV_VIS_DEFAULT="${BATADV_VIS_DEFAULT:-/etc/default/batadv-vis}"
+BATADV_VIS_DEFAULT="${BATADV_VIS_DEFAULT:-/etc/default/alfred}"
 
 # It is not safe to start if we don't have a default configuration...
 if [ ! -f "$BATADV_VIS_DEFAULT" ]; then
@@ -63,7 +63,7 @@ case "$1" in
                 fi
                 log_daemon_msg "Starting $DESC" "$NAME"
                 start-stop-daemon --start --quiet --pidfile "$BATADV_VIS_PID" \
-                        --exec /usr/bin/batadv-vis -s -i $INTERFACE
+                        --exec /usr/bin/batadv-vis -i ${BATMANIF} -u ${UNIX_SOCKET} -s
                 sleep 2
 
                 if check_status -q; then

@@ -4,12 +4,11 @@ Documentation=man:alfred(8)
 Wants=network-online.target
 After=network-online.target
 ConditionPathExists=/etc/default/alfred
-# BindsTo=sys-subsystem-net-devices-mesh\x2d%i.device
-# After=sys-subsystem-net-devices-mesh\x2d%i.device
 
 [Service]
 EnvironmentFile=/etc/default/alfred
-ExecStart=/usr/sbin/alfred -i $INTERFACE -b $BATMANIF
+ExecStart=/bin/sh -ec '/usr/sbin/alfred -i $INTERFACE -b $BATMANIF -u $UNIX_SOCKET $DAEMON_ARGS'
+Type=simple
 
 [Install]
 WantedBy=multi-user.target

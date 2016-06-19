@@ -4,11 +4,12 @@ Documentation=man:batadv-vis(8)
 Wants=network-online.target
 After=network-online.target
 After=alfred.service
-ConditionPathExists=/etc/default/batadv-vis
+ConditionPathExists=/etc/default/alfred
 
 [Service]
-EnvironmentFile=/etc/default/batadv-vis
-ExecStart=/usr/sbin/batadv-vis -s -i $INTERFACE
+EnvironmentFile=/etc/default/alfred
+ExecStart=/bin/sh -ec '/usr/sbin/batadv-vis -i $BATMANIF -u $UNIX_SOCKET -s'
+Type=simple
 
 [Install]
 WantedBy=multi-user.target

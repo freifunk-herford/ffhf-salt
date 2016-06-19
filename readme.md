@@ -10,6 +10,10 @@ Node                                  Gateway
 
 dhcpclient <-> fastd <-- internet --> fastd <-> dhcpd
 
+## fastd peers
+
+Put peers in git? rsync
+
 gw1.ffhf
 exitVPN (openvpn)
 hfBAT (batman)

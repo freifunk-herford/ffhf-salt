@@ -6,14 +6,14 @@ include:
   - gateway.ntp
   - gateway.network
   - gateway.iproute
-  - gateway.dhcp-server
-  - gateway.name-server
   - gateway.iptables
+  - gateway.fastd
   - gateway.batman
   - gateway.alfred
   - gateway.bird
   - gateway.radvd
-  - gateway.fastd
+  - gateway.dhcp-server
+  - gateway.name-server
   - gateway.openvpn
   - gateway.tinc
   - gateway.apache

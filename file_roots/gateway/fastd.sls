@@ -14,7 +14,7 @@ fastd-repository:
     - require_in:
       - pkg: {{ fastd.pkg }}
 
-{{ fastd.pkg }}:
+fastd:
   pkg.latest:
     - name: {{ fastd.pkg }}
     - refresh: True
@@ -23,31 +23,36 @@ fastd-repository:
     - name: {{ fastd.srv }}
     - enable: True
     - watch:
-      - file: /etc/fastd/fastd.conf
+      - file: /etc/fastd/{{ grains['id'] }}/fastd.conf
+      - file: /etc/fastd/{{ grains['id'] }}/secret.conf
+      - file: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}
+    - require:
+      - file: /etc/fastd/{{ grains['id'] }}/fastd.conf
+      - file: /etc/fastd/{{ grains['id'] }}/secret.conf
+      - file: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}
 {% endif %}
 
-# /etc/fastd/
-# /etc/default/fastd
-
-# /etc/fastd/peers (put in git?)
-
-/etc/fastd/fastd.conf:
+/etc/fastd/{{ grains['id'] }}/fastd.conf:
   file.managed:
-    - name: /etc/fastd/fastd.conf
-    - source: salt://gateway/etc/fastd/fastd.conf
+    - name: /etc/fastd/{{ grains['id'] }}/fastd.conf
+    - source: salt://gateway/etc/fastd/gw/fastd.conf
     - template: jinja
     - defaults:
         interface: {{ pillar['network']['vpn']['interface'] }}
         address: {{ pillar['network']['primary']['address'] }}
         address6: {{ pillar['network']['primary']['address6'] }}
+    - makedirs: True
 
-/etc/fastd/secret.conf:
+/etc/fastd/{{ grains['id'] }}/secret.conf:
   file.managed:
-    - name: /etc/fastd/secret.conf
+    - name: /etc/fastd/{{ grains['id'] }}/secret.conf
     - contents: secret "{{ pillar['fastd']['secret'] }}";
+    - makedirs: True
 
-/etc/fastd/peers/{{ grains['id'] }}:
+/etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}:
   file.managed:
-    - name: /etc/fastd/peers/{{ grains['id'] }}
-    - contents: key "{{ pillar['fastd']['public'] }}";
+    - name: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}
+    - contents: |
+        remote ipv4 "{{ grains['id'] }}" port 1244;
+        key "{{ pillar['fastd']['public'] }}";
     - makedirs: True
