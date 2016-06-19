@@ -36,7 +36,7 @@ fi
 
 NAME=alfred
 DESC="A.L.F.R.E.D. Almighty Lightweight Fact Remote Exchange Daemon"
-ALFRED_PID="${ALFRED_PID:-/var/run/dhcpd6.pid}"
+ALFRED_PID="${ALFRED_PID:-/var/run/alfred.pid}"
 
 # single arg is -v for messages, -q for none
 check_status()
@@ -63,7 +63,7 @@ case "$1" in
                 fi
                 log_daemon_msg "Starting $DESC" "$NAME"
                 start-stop-daemon --start --quiet --pidfile "$ALFRED_PID" \
-                        --exec /usr/bin/alfred -i $INTERFACE -b $BATMAN_INTERFACE
+                        --exec /usr/bin/alfred -i $INTERFACE -b $BATMANIF
                 sleep 2
 
                 if check_status -q; then

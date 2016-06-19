@@ -152,7 +152,7 @@ nat-POSTROUTING-ACCEPT:
 #     - chain: POSTROUTING
 #     - jump: SNAT
 #     - out-interface: tun-+
-#     - to-source: {{ pillar['network']['bridge']['ipv4']['address'] }}
+#     - to-source: pillar['network']['bridge']['ipv4']['address'] }}
     # Public IPv4 Address GW
 
 # Sven
@@ -161,6 +161,8 @@ nat-POSTROUTING-ACCEPT-MASQUERADE:
     - table: nat
     - save: True
     - family: ipv4
+    - chain: POSTROUTING
+    - jump: MASQUERADE
     - source: 10.34.0.0/16 # Todo: add Variable from Pillar
     - out-interface: {{ pillar['network']['exit']['interface'] }}
 

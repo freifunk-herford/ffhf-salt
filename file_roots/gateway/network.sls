@@ -22,10 +22,10 @@
 #     - source: salt://gateway/etc/network/interfaces.d/br0
 #     - template: jinja
 #     - defaults:
-#         address: {{ pillar['network']['bridge']['ipv4']['address'] }}
-#         netmask: {{ pillar['network']['bridge']['ipv4']['netmask'] }}
-#         address6: {{ pillar['network']['bridge']['ipv6']['address'] }}
-#         netmask6: {{ pillar['network']['bridge']['ipv6']['netmask'] }}
+#         address: pillar['network']['bridge']['ipv4']['address'] }}
+#         netmask: pillar['network']['bridge']['ipv4']['netmask'] }}
+#         address6: pillar['network']['bridge']['ipv6']['address'] }}
+#         netmask6: pillar['network']['bridge']['ipv6']['netmask'] }}
 #     - user: root
 #     - group: root
 #     - mode: 644
@@ -60,6 +60,9 @@
         address: {{ pillar['network']['bridge']['address'] }}
         netmask: {{ pillar['network']['bridge']['netmask'] }}
         address6mask: {{ pillar['network']['bridge']['address6mask'] }}
+  cmd.run:
+    - name: ifup {{ pillar['network']['bridge']['interface'] }}
+    - unless: test -n "$(ifconfig | grep {{ pillar['network']['bridge']['interface'] }})"
 
 /etc/network/interfaces.d/batman:
   file.managed:

@@ -36,7 +36,7 @@ fi
 
 NAME=batadv-vis
 DESC="batadv-vis Visualization Server"
-BATADV_VIS_PID="${BATADV_VIS_PID:-/var/run/dhcpd6.pid}"
+BATADV_VIS_PID="${BATADV_VIS_PID:-/var/run/batadv-vis.pid}"
 
 # single arg is -v for messages, -q for none
 check_status()

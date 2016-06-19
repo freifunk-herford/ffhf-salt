@@ -28,7 +28,8 @@
   file.replace:
     - name: /etc/default/isc-dhcp-server
     - pattern: '^INTERFACES="(.*)"$'
-    - repl: 'INTERFACES="{{ pillar['dhcp']['interfaces'] }}"'
+    - repl: 'INTERFACES="{{ pillar['network']['bridge']['interface'] }}"'
+    - not_found_content: 'INTERFACES="{{ pillar['network']['bridge']['interface'] }}"'
     - append_if_not_found: True
     - require:
        - pkg: {{ dhcp.pkg }}
@@ -74,7 +75,7 @@ deploy-isc-dhcp6-server-init:
     - mode: 755
 {% endif %}
 
-{% if grains['os_family'] == 'Debian' and salt['grains.get']('systemd', None) %}
+{% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
 /lib/systemd/system/isc-dhcp6-server.service:
   file.managed:
     - name: /lib/systemd/system/isc-dhcp6-server.service
@@ -98,7 +99,7 @@ deploy-isc-dhcp6-server-init:
        {% if grains['os_family'] == 'Debian' %}
        - file: deploy-isc-dhcp6-server-init
        {% endif %}
-       {% if grains['os_family'] == 'Debian' and salt['grains.get']('systemd', None) %}
+       {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
        - file: /lib/systemd/system/isc-dhcp6-server.service
        {% endif %}
 
@@ -107,7 +108,8 @@ deploy-isc-dhcp6-server-init:
   file.replace:
     - name: /etc/default/isc-dhcp-server
     - pattern: '^INTERFACES="(.*)"$'
-    - repl: 'INTERFACES="{{ pillar['dhcp']['interfaces'] }}"'
+    - repl: 'INTERFACES="{{ pillar['network']['bridge']['interface'] }}"'
+    - not_found_content: 'INTERFACES="{{ pillar['network']['bridge']['interface'] }}"'
     - append_if_not_found: True
     - require:
        - pkg: {{ dhcp.pkg }}

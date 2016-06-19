@@ -8,6 +8,7 @@
 fastd-repository:
   pkgrepo.managed:
     - name: deb https://repo.universe-factory.net/debian/ sid main
+    - file: /etc/apt/sources.list.d/repo.universe-factory.net.list
     - keyid: 16EF3F64CB201D9C
     - keyserver: keyserver.ubuntu.com
     - require_in:
@@ -37,9 +38,16 @@ fastd-repository:
     - template: jinja
     - defaults:
         interface: {{ pillar['network']['vpn']['interface'] }}
-        bind: 'ipv4_address:1244'
+        address: {{ pillar['network']['primary']['address'] }}
+        address6: {{ pillar['network']['primary']['address6'] }}
 
 /etc/fastd/secret.conf:
-  file.append:
+  file.managed:
     - name: /etc/fastd/secret.conf
-    - text: secret {{ pillar['fastd']['secret'] }};
+    - contents: secret "{{ pillar['fastd']['secret'] }}";
+
+/etc/fastd/peers/{{ grains['id'] }}:
+  file.managed:
+    - name: /etc/fastd/peers/{{ grains['id'] }}
+    - contents: key "{{ pillar['fastd']['public'] }}";
+    - makedirs: True

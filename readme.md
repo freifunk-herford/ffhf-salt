@@ -6,24 +6,52 @@
 * https://wiki.freifunk-franken.de/w/Freifunk-Gateway_aufsetzen
 * https://www.open-mesh.org/projects/batman-adv/wiki/Troubleshooting
 
+Node                                  Gateway
+
+dhcpclient <-> fastd <-- internet --> fastd <-> dhcpd
+
 gw1.ffhf
-exitVPN -> Mullvad (openvpn)
+exitVPN (openvpn)
 hfBAT (batman)
 hfVPN (fastd)
-gw1.ffhf
-exitVPN -> ?
+
+gw2.ffhf
+exitVPN (openvpn)
 hfBAT (batman)
 hfVPN (fastd)
-gw1.ffhf
-exitVPN -> ?
+
+gw3.ffhf
+exitVPN (openvpn)
 hfBAT (batman)
 hfVPN (fastd)
+
+map.ffhf
 ffhf
-firmware
+firmware.ffhf
 ns1.ffhf
 
-AXFR
---
+## fastd.conf - wiki ff
+
+ log level debug;
+ interface "mesh-vpn";
+ method "salsa2012+gmac";
+ bind 0.0.0.0:10000;
+ include "secret.conf";
+ mtu 1280;
+
+ include peers from "peers";
+
+ on up "
+   ip link set up dev $INTERFACE
+   batctl if add $INTERFACE
+ ";
+
+## haveged
+
+"neoraider":
+
+1. haveged wird nur fuer den ersten Boot bzw. im Configmode fuer die Generierung der Keys fuer fastd und ssh benoetigt.
+2. haveged braucht im Betrieb ca. 800kB RAM und es ist im Moment kein RAM-Mangel bekannt, auch beim Meshen nicht.
 
 ## A.L.F.R.E.D.
 
@@ -69,6 +97,14 @@ AXFR
       -u, --unix-path <path>      path to unix socket used for alfred server communication (default: "/var/run/alfred.sock")
       -v, --version               print the version
       -h, --help                  this help
+
+http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/alfred_2016.0-0ffmwu0~trusty_amd64.deb
+http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/batadv-vis_2016.0-0ffmwu0~trusty_amd64.deb
+http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred-json/alfred-json_0.3.1-0ffmwu1~trusty_amd64.deb
+http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batctl/batctl_2016.0-0ffmwu0~trusty_amd64.deb
+http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batman-adv-kernelland/batman-adv-dkms_2016.0-0ffmwu0~trusty_all.deb
+http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/t/tinc/tinc_1.0.26-0ffmwu0~trusty_amd64.deb
+
 
 ## Minion Installation
 
@@ -178,7 +214,9 @@ Delete a Minion key by given ID:
 
 ## External Authentification
 
-	wget https://raw.githubusercontent.com/saltstack/salt/develop/salt/auth/mysql.py --output-document=/usr/lib64/python2.7/site-packages/salt/auth
+	wget \
+	https://raw.githubusercontent.com/saltstack/salt/develop/salt/auth/mysql.py \
+	--output-document=/usr/lib64/python2.7/site-packages/salt/auth
 
 ## Run Salt
 
@@ -195,7 +233,9 @@ Examples:
 
 ## Syncing Grains
 
-Syncing grains can be done a number of ways, they are automatically synced when state.highstate is called, or (as noted above) the grains can be manually synced and reloaded by calling the saltutil.sync_grains or saltutil.sync_all functions.
+Syncing grains can be done a number of ways, they are automatically synced when state.highstate is called,
+or (as noted above) the grains can be manually synced and reloaded by calling the saltutil.sync_grains or
+saltutil.sync_all functions.
 
 ## Clear Salt Logs
 

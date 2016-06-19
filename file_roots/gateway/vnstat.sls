@@ -103,6 +103,7 @@ change-documentroot:
     - name: /etc/apache2/sites-available/000-default.conf
     - pattern: 'DocumentRoot\ (.*)$'
     - repl: 'DocumentRoot /var/www/vnstat'
+    - not_found_content: 'DocumentRoot /var/www/vnstat'
     - append_if_not_found: True
 
 change-documentroot-ssl:
@@ -110,4 +111,5 @@ change-documentroot-ssl:
     - name: /etc/apache2/sites-available/default-ssl.conf
     - pattern: 'DocumentRoot\ (.*)$'
     - repl: 'DocumentRoot /var/www/vnstat'
+    - not_found_content: 'DocumentRoot /var/www/vnstat'
     - append_if_not_found: True

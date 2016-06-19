@@ -24,4 +24,6 @@
     - mode: 644
     - template: jinja
     - defaults:
-      interface: {{ pillar['network']['bridge']['interface'] }}
+        interface: {{ pillar['network']['bridge']['interface'] }}
+        address: {{ pillar['network']['bridge']['address6'] }}
+        prefix: {{ pillar['network']['bridge']['prefix'] }}

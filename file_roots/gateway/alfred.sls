@@ -11,6 +11,10 @@ alfred:
         {% for pkg in alfred.pkgs %}
         - {{ pkg }}
         {% endfor %}
+    - refresh: True
+    - install_recommends: False
+    # - refresh: True
+    # - fromrepo: freifunk-mwu-repository
     - require:
       - sls: gateway.batman
 {% endif %}
@@ -19,9 +23,26 @@ alfred:
 alfred:
   pkg.installed:
     - sources:
-      - alfred: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/alfred_2016.0-0ffmwu0~trusty_amd64.deb
-      - alfred-json: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred-json/alfred-json_0.3.1-0ffmwu1~trusty_amd64.deb
-      - batadv-vis: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/batadv-vis_2016.0-0ffmwu0~trusty_amd64.deb
+        - alfred: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/alfred_2016.0-0ffmwu0~trusty_amd64.deb
+        - alfred-json: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred-json/alfred-json_0.3.1-0ffmwu1~trusty_amd64.deb
+        - batadv-vis: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/batadv-vis_2016.0-0ffmwu0~trusty_amd64.deb
+# alfred:
+#   pkg.installed:
+#     - source: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/alfred_2016.0-0ffmwu0~trusty_amd64.deb
+#     - source_hash: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/alfred_2016.0-0ffmwu0~trusty.dsc
+#     - version: 2016.0-0ffmwu0~trusty
+#
+# alfred-json:
+#   pkg.installed:
+#     - source: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred-json/alfred-json_0.3.1-0ffmwu1~trusty_amd64.deb
+#     - source_hash: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred-json/alfred-json_0.3.1-0ffmwu1~trusty.dsc
+#     - version: 0.3.1-0ffmwu1~trusty
+#
+# batadv-vis:
+#   pkg.installed:
+#     - source: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/batadv-vis_2016.0-0ffmwu0~trusty_amd64.deb
+#     - source_hash: md5=cc5890f6ab718fb3a806a8eea59babba
+#     - version: 2016.0-0ffmwu0~trusty
 {% endif %}
 
 /etc/default/alfred:
@@ -39,35 +60,60 @@ alfred:
 alfred-announce:
   pkg.installed:
     - pkgs:
-        python3
-        python-virtualenv
-  cmd.run:
-    - cwd: /root/scripts/announce
-    - name: |
-        virtualenv -p python3
-        source venv/bin/activate; pip install --upgrade pip -r requirments.txt
-    - require:
-      - pkg: alfred-announce
-      - file: /root/scripts/announce/requirements.txt
-      - git: ffnord-alfred-announce
-
-/root/scripts/announce/requirements.txt:
+        {% if grains['os_family'] == 'Debian' %}
+        - python3
+        - python3-dev
+        - python-virtualenv
+        {% endif %}
   file.managed:
     - name: /root/scripts/announce/requirements.txt
-    - content: |
-        netinterfaces
-        py-cpuinfo
+    - source: salt://gateway/root/scripts/announce/requirements.txt
     - makedirs: True
+  virtualenv.managed:
+    - python: python3
+    - cwd: /root/scripts/announce
+    - name: /root/scripts/announce/venv
+    - requirements: /root/scripts/announce/requirements.txt
+    - pip_upgrade: True
+    # - watch:
+    #   - git: ffnord-alfred-announce
+    - require:
+      - pkg: alfred-announce
+      - file: alfred-announce
+      # - git: ffnord-alfred-announce
+      # - file: /root/scripts/announce/requirements.txt
+  # cmd.run:
+  #   - cwd: /root/scripts/announce
+  #   - name: |
+  #       virtualenv venv -p python3
+  #       source venv/bin/activate; pip install --upgrade pip -r requirments.txt
+  #   - require:
+  #     - pkg: alfred-announce
+  #     - file: /root/scripts/announce/requirements.txt
+  #     - git: ffnord-alfred-announce
+  #   - unless: test -d /root/scripts/announce/venv
+  #   - watch:
+  #     - git: ffnord-alfred-announce
+  #     - pkg: alfred-announce
+
+# /root/scripts/announce/requirements.txt:
+#   file.managed:
+#     - name: /root/scripts/announce/requirements.txt
+#     - content: |
+#         netinterfaces
+#         py-cpuinfo
+#     - makedirs: True
 
 ffnord-alfred-announce:
   git.latest:
-    - cwd: /root/scripts/announce
     - name: https://github.com/freifunk-mwu/ffnord-alfred-announce.git
     - target: /root/scripts/announce/ffnord-alfred-announce
     - unless: test -d /root/scripts/announce/ffnord-alfred-announce
     - require:
-      - file: /root/scripts/announce/requirements.txt
+      - file: alfred-announce
+    #   - file: /root/scripts/announce/requirements.txt
 
+# source /root/scripts/announce/venv/bin/activate; \
 # announce.sh \
 # -i {{ pillar['network']['bridge']['interface'] }} \
 # -b {{ pillar['network']['batman']['interface'] }} \

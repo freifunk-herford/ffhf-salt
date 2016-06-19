@@ -9,7 +9,7 @@ ConditionPathExists=/etc/default/alfred
 
 [Service]
 EnvironmentFile=/etc/default/alfred
-ExecStart=/usr/sbin/alfred -i $INTERFACE -b $BATMAN_INTERFACE
+ExecStart=/usr/sbin/alfred -i $INTERFACE -b $BATMANIF
 
 [Install]
 WantedBy=multi-user.target

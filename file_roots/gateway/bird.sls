@@ -4,16 +4,26 @@
   'Debian': {'pkg': 'bird', 'srv': 'bird'},
 }, default='Debian') %}
 
-# bird-repository:
-#   pkgrepo.managed:
-#     - ppa: cz.nic-labs/bird
-#     - keyid_ppa: True
-#     - require_in:
-#       - pkg: {{ bird.pkg }}
-
 {{ bird.pkg }}:
+  {% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %}
+  pkgrepo.managed:
+    - ppa: cz.nic-labs/bird
+    - keyid_ppa: True
+    - require_in:
+      - pkg: {{ bird.pkg }}
+  {% endif %}
   pkg.installed:
     - name: {{ bird.pkg }}
+    {% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %}
+    - fromrepo: trusty
+    - skip_verify: True
+    - skip_suggestions: True
+    - install_recommends: False
+    - refresh: True
+    {% endif %}
+    - unless: test -f /usr/sbin/bird
+    # - watch:
+    #   - repo: bird-repository
   service.running:
     - name: {{ bird.srv }}
     - enable: True

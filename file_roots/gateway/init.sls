@@ -1,11 +1,13 @@
 include:
   - gateway.git
   - gateway.etckeeper
+  - gateway.tmp
+  - gateway.mosh
   - gateway.ntp
   - gateway.network
   - gateway.iproute
   - gateway.dhcp-server
-  - gateway.dns-server
+  - gateway.name-server
   - gateway.iptables
   - gateway.batman
   - gateway.alfred

@@ -14,7 +14,7 @@ alfred:
       - sls: gateway.batman
 
 alfred.service:
-  # % if grains['os_family'] == 'Debian' and grains['systemd'] %}
+  # % if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
   # module.wait:
   #     - name: service.systemctl_reload
   #     - watch:
@@ -24,13 +24,13 @@ alfred.service:
     - name: alfred
     - enable: True
     - watch:
-      {% if grains['os_family'] == 'Debian' and salt['grains.get']('systemd', None) %}
+      {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
       - file: /lib/systemd/system/alfred.service
       {% endif %}
       - file: /etc/default/alfred
       - file: /etc/init.d/alfred
     - require:
-      {% if grains['os_family'] == 'Debian' and salt['grains.get']('systemd', None) %}
+      {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
       - file: /lib/systemd/system/alfred.service
       {% endif %}
       - file: /etc/default/alfred
@@ -58,7 +58,7 @@ alfred.service:
         interface: {{ pillar['network']['alfred']['interface'] }}
         batman_interface: {{ pillar['network']['batman']['interface'] }}
 
-{% if grains['os_family'] == 'Debian' and salt['grains.get']('systemd', None) %}
+{% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
 /lib/systemd/system/alfred.service:
   file.managed:
     - name: /lib/systemd/system/alfred.service
@@ -79,13 +79,13 @@ batadv-vis.service:
     - name: batadv-vis
     - enable: True
     - watch:
-      {% if grains['os_family'] == 'Debian' and salt['grains.get']('systemd', None) %}
+      {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
       - file: /lib/systemd/system/batadv-vis.service
       {% endif %}
       - file: /etc/default/batadv-vis
       - file: /etc/init.d/batadv-vis
     - require:
-      {% if grains['os_family'] == 'Debian' and salt['grains.get']('systemd', None) %}
+      {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
       - file: /lib/systemd/system/batadv-vis.service
       {% endif %}
       - file: /etc/default/batadv-vis
@@ -112,7 +112,7 @@ batadv-vis.service:
     - defaults:
         interface: {{ pillar['network']['batman']['interface'] }}
 
-{% if grains['os_family'] == 'Debian' and salt['grains.get']('systemd', None) %}
+{% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
 /lib/systemd/system/batadv-vis.service:
   file.managed:
     - name: /lib/systemd/system/batadv-vis.service

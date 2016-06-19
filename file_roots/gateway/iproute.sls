@@ -8,6 +8,9 @@
   pkg.installed:
     - name: {{ iproute.pkg }}
 
+# ip route consults /etc/iproute2/rt_tables for a table identifier.
+# If it finds no identifier, it complains that it cannot find a reference to such a table.
+# If a table identifier is found, then the corresponding routing table is displayed.
 /etc/iproute2/rt_tables:
   file.append:
     - name: /etc/iproute2/rt_tables
@@ -22,6 +25,11 @@
         # internet exit table
         61  ffinetexit
 
+# should be put in interfaces
+# pre-up
+# up
+# post-down
+# down
 /etc/rc.local:
   file.managed:
     - name: /etc/rc.local

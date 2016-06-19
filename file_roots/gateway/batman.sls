@@ -5,19 +5,18 @@
 }, default='Debian') %}
 
 {% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %}
-freifunk-mwu-repository:
+batman:
   pkgrepo.managed:
     - ppa: freifunk-mwu/freifunk-ppa
     - keyid_ppa: True
     - require_in:
       - pkg: batman
-
-batman:
-  pkg.latest:
+  pkg.installed:
     - pkgs:
       {% for pkg in batman.pkgs %}
       - {{ pkg }}
       {% endfor %}
+    # - fromrepo: ppa:freifunk-mwu/freifunk-ppa
     - refresh: True
     - unless: test -f /usr/sbin/batctl
 {% endif %}
@@ -28,6 +27,18 @@ batman:
     - sources:
       - batctl: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batctl/batctl_2016.0-0ffmwu0~trusty_amd64.deb
       - batman-adv-dkms: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batman-adv-kernelland/batman-adv-dkms_2016.0-0ffmwu0~trusty_all.deb
+
+# batctl:
+#   pkg.installed:
+#     - source: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batctl/batctl_2016.0-0ffmwu0~trusty_amd64.deb
+#     - source_hash: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batctl/batctl_2016.0-0ffmwu0~trusty.dsc
+#     - version: 2016.0-0ffmwu0~trusty
+
+# batman-adv-dkms:
+#   pkg.installed:
+#     - source: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batman-adv-kernelland/batman-adv-dkms_2016.0-0ffmwu0~trusty_all.deb
+#     - source_hash: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batman-adv-kernelland/batman-adv-kernelland_2016.0-0ffmwu0~trusty.dsc
+#     - version: 2016.0-0ffmwu0~trusty
 {% endif %}
 
 # /etc/modules-load.d/salt_managed.conf
@@ -36,8 +47,10 @@ batman_adv:
     - name: batman_adv
     - persist: True
 
+# sysfsutils: System Utilities Based on Sysfs
+
 {% set sysfsutils = salt['grains.filter_by']({
-  'Debian': {'pkg':'sysfsutils'},
+  'Debian': {'pkg': 'sysfsutils'},
 }, default='Debian') %}
 
 {{ sysfsutils.pkg }}:
@@ -50,10 +63,3 @@ batman_adv:
     - contents: class/net/hfBAT/mesh/hop_penalty = 60
     - require:
       - pkg: {{ sysfsutils.pkg }}
-
-# http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/alfred_2016.0-0ffmwu0~trusty_amd64.deb
-# http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/batadv-vis_2016.0-0ffmwu0~trusty_amd64.deb
-# http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred-json/alfred-json_0.3.1-0ffmwu1~trusty_amd64.deb
-# http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batctl/batctl_2016.0-0ffmwu0~trusty_amd64.deb
-# http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batman-adv-kernelland/batman-adv-dkms_2016.0-0ffmwu0~trusty_all.deb
-# http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/t/tinc/tinc_1.0.26-0ffmwu0~trusty_amd64.deb
