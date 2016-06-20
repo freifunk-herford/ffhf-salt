@@ -6,4 +6,4 @@ Mosh (Mobile shell)
 mosh.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/mosh.sls
-   :language: yaml
+   :language: yaml+jinja

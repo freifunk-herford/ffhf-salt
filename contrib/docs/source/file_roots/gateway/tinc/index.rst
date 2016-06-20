@@ -6,4 +6,4 @@ tinc VPN (Virtual Private Network)
 tinc.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/tinc.sls
-   :language: yaml
+   :language: yaml+jinja

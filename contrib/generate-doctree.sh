@@ -31,7 +31,7 @@ for state in ${states[@]}; do
 ${state}.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/${state}.sls
-   :language: yaml
+   :language: yaml+jinja
 EOT
 done
 

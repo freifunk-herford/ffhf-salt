@@ -6,4 +6,4 @@ Brige Utilities
 network.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/network.sls
-   :language: yaml
+   :language: yaml+jinja

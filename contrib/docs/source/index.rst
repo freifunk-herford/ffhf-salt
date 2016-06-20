@@ -15,6 +15,7 @@ Inhalt:
 
    file_roots/index
    pillar_roots/gateways/index
+   links
 
 Index und Suche:
 

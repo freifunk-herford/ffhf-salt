@@ -6,4 +6,4 @@ Apache Web Server
 apache.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/apache.sls
-   :language: yaml
+   :language: yaml+jinja

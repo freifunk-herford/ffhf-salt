@@ -6,4 +6,4 @@ DNS Server (Domain Name System)
 name-server.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/name-server.sls
-   :language: yaml
+   :language: yaml+jinja

@@ -6,4 +6,4 @@ Paketfilter Userland
 iptables.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/iptables.sls
-   :language: yaml
+   :language: yaml+jinja

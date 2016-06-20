@@ -6,4 +6,4 @@ Fail2ban
 fail2ban.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/fail2ban.sls
-   :language: yaml
+   :language: yaml+jinja

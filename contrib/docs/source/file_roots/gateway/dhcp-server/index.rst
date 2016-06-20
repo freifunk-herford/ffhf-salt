@@ -6,4 +6,4 @@ DHCP Server (Dynamic Host Configuration Protocol)
 dhcp-server.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/dhcp-server.sls
-   :language: yaml
+   :language: yaml+jinja

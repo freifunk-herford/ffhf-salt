@@ -6,4 +6,4 @@ IPv6 Router Advertisements
 radvd.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/radvd.sls
-   :language: yaml
+   :language: yaml+jinja

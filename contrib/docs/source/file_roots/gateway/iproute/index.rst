@@ -6,4 +6,4 @@ IP Route
 iproute.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/iproute.sls
-   :language: yaml
+   :language: yaml+jinja

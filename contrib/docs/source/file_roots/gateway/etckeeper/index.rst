@@ -6,4 +6,4 @@ etc Keeper
 etckeeper.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/etckeeper.sls
-   :language: yaml
+   :language: yaml+jinja

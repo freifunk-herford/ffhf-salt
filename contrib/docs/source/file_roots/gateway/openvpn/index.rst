@@ -6,4 +6,4 @@ OpenVPN (Virtual Private Network)
 openvpn.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/openvpn.sls
-   :language: yaml
+   :language: yaml+jinja

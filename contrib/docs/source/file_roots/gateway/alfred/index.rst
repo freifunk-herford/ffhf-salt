@@ -6,4 +6,4 @@ A.L.F.R.E.D. (Almighty Lightweight Fact Remote Exchange Daemon)
 alfred.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/alfred.sls
-   :language: yaml
+   :language: yaml+jinja

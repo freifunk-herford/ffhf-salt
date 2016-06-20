@@ -6,4 +6,4 @@ git Version Control System
 git.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/git.sls
-   :language: yaml
+   :language: yaml+jinja

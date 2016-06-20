@@ -6,4 +6,4 @@ Logging
 syslog.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/syslog.sls
-   :language: yaml
+   :language: yaml+jinja

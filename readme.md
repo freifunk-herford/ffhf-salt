@@ -1,13 +1,5 @@
 # Freifunk Herford SaltStack Configuration
 
-## Links
-
-* https://freifunk-muensterland.de/wiki/doku.php?id=technik:gateway
-* http://wiki.freifunk.net/Hamburg/Gateway
-* https://gluon-gateway-doku.readthedocs.io/de/latest/index.html
-* https://wiki.freifunk-franken.de/w/Freifunk-Gateway_aufsetzen
-* https://www.open-mesh.org/projects/batman-adv/wiki/Troubleshooting
-
 ## Generate Documentation
 
 	cd contrib

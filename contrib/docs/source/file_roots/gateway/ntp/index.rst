@@ -6,4 +6,4 @@ NTP (Network Time Protocol)
 ntp.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/ntp.sls
-   :language: yaml
+   :language: yaml+jinja

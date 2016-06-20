@@ -6,4 +6,4 @@ B.A.T.M.A.N. (Better Approach To Mobile Adhoc Networking)
 batman.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/batman.sls
-   :language: yaml
+   :language: yaml+jinja

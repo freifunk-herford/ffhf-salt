@@ -6,4 +6,4 @@ Fastd VPN (Virtual Private Network)
 fastd.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/fastd.sls
-   :language: yaml
+   :language: yaml+jinja

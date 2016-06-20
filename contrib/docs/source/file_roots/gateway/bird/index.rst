@@ -6,4 +6,4 @@ BGP Routing (Border Gateway Protocol)
 bird.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/bird.sls
-   :language: yaml
+   :language: yaml+jinja
