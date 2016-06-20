@@ -1,54 +1,21 @@
 # Freifunk Herford SaltStack Configuration
 
+## Links
+
 * https://freifunk-muensterland.de/wiki/doku.php?id=technik:gateway
 * http://wiki.freifunk.net/Hamburg/Gateway
 * https://gluon-gateway-doku.readthedocs.io/de/latest/index.html
 * https://wiki.freifunk-franken.de/w/Freifunk-Gateway_aufsetzen
 * https://www.open-mesh.org/projects/batman-adv/wiki/Troubleshooting
 
-Node                                  Gateway
+## Generate Documentation
 
-dhcpclient <-> fastd <-- internet --> fastd <-> dhcpd
-
-## fastd peers
-
-Put peers in git? rsync
-
-gw1.ffhf
-exitVPN (openvpn)
-hfBAT (batman)
-hfVPN (fastd)
-
-gw2.ffhf
-exitVPN (openvpn)
-hfBAT (batman)
-hfVPN (fastd)
-
-gw3.ffhf
-exitVPN (openvpn)
-hfBAT (batman)
-hfVPN (fastd)
-
-map.ffhf
-ffhf
-firmware.ffhf
-ns1.ffhf
-
-## fastd.conf - wiki ff
-
- log level debug;
- interface "mesh-vpn";
- method "salsa2012+gmac";
- bind 0.0.0.0:10000;
- include "secret.conf";
- mtu 1280;
-
- include peers from "peers";
-
- on up "
-   ip link set up dev $INTERFACE
-   batctl if add $INTERFACE
- ";
+	cd contrib
+	virtualenv venv
+	source venv/bin/activate
+	pip install --upgrade pip -r requirements
+	cd docs
+	make html
 
 ## haveged
 
@@ -56,58 +23,6 @@ ns1.ffhf
 
 1. haveged wird nur fuer den ersten Boot bzw. im Configmode fuer die Generierung der Keys fuer fastd und ssh benoetigt.
 2. haveged braucht im Betrieb ca. 800kB RAM und es ist im Moment kein RAM-Mangel bekannt, auch beim Meshen nicht.
-
-## A.L.F.R.E.D.
-
-    Usage: alfred [options]
-    client mode options:
-      -s, --set-data [data type]          sets new data to distribute from stdin
-                                          for the supplied data type (0-255)
-      -r, --request [data type]           collect data from the network and prints
-                                          it on the network
-      -d, --verbose                       Show extra information in the data output
-      -V, --req-version                   specify the data version set for -s
-      -M, --modeswitch master             switch daemon to mode master
-                       slave              switch daemon to mode slave
-      -I, --change-interface [interface]  change to the specified interface(s)
-
-    server mode options:
-      -i, --interface                     specify the interface (or comma separated list of interfaces) to listen on
-      -b                                  specify the batman-adv interface
-                                          configured on the system (default: bat0)
-                                          use 'none' to disable the batman-adv
-                                          based best server selection
-      -m, --master                        start up the daemon in master mode, which
-                                          accepts data from slaves and syncs it with
-                                          other masters
-
-      -u, --unix-path [path]              path to unix socket used for client-server
-                                          communication (default: "/var/run/alfred.sock")
-      -c, --update-command                command to call on data change
-      -v, --version                       print the version
-      -h, --help                          this help
-
-## B.A.T.M.A.N.
-
-    batctl -m bat0 if add br0
-
-    modinfo batman_adv
-    lsmod | grep batman_adv
-
-    Usage: batadv-vis [options]
-      -i, --interface             specify the batman-adv interface configured on the system (default: bat0)
-      -s, --server                start up in server mode, which regularly updates vis data from batman-adv
-      -f, --format <format>       specify the output format for client mode (either "json", "jsondoc" or "dot")
-      -u, --unix-path <path>      path to unix socket used for alfred server communication (default: "/var/run/alfred.sock")
-      -v, --version               print the version
-      -h, --help                  this help
-
-http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/alfred_2016.0-0ffmwu0~trusty_amd64.deb
-http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/batadv-vis_2016.0-0ffmwu0~trusty_amd64.deb
-http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred-json/alfred-json_0.3.1-0ffmwu1~trusty_amd64.deb
-http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batctl/batctl_2016.0-0ffmwu0~trusty_amd64.deb
-http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batman-adv-kernelland/batman-adv-dkms_2016.0-0ffmwu0~trusty_all.deb
-http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/t/tinc/tinc_1.0.26-0ffmwu0~trusty_amd64.deb
 
 
 ## Minion Installation

@@ -20,17 +20,6 @@
    - require:
       - pkg: {{ etckeeper.pkg }}
 
-# etckeeper-init:
-#   cmd.run:
-#     - cwd: /etc
-#     - name: |
-#         etckeeper init
-#         git config user.email  pillar['git']['user']['email'] }}
-#         git config user.name  pillar['git']['user']['name'] }}
-#     - unless: test -d /etc/.git
-#     - require:
-#       - file: /etc/etckeeper/etckeeper.conf
-
 etckeeper-init:
   cmd.run:
     - cwd: /etc

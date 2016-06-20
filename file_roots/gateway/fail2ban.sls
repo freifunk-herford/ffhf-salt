@@ -1,4 +1,4 @@
-# Apache Web Server
+# Fail2ban
 
 {% set fail2ban = salt['grains.filter_by']({
   'Debian': {'pkg': 'fail2ban', 'srv': 'fail2ban'},

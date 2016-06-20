@@ -1,3 +1,5 @@
+# /tmp
+
 /tmp:
   file.directory:
     - name: /tmp
