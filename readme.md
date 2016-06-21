@@ -33,6 +33,26 @@ Anleitung unter https://le.basicartstudios.de/docs/ffhf-salt lesen.
 
 		salt-key -A
 
+## Aktueller Stand
+
+salt highstate muss 2 mal durchlaufen, beim 3ten mal sollte alles passen.
+
+im zweiten durchlauf werden von vnstat noch die datenbanken angelegt
+fastd neugestartet damit alfred läuft
+
+dns server noch nicht eingerichtet
+dhcp server noch nicht eingerichtet
+
+netzwerk infrastruktur muss noch angepasst werden
+
+alle daten sind bisher fake daten und sensible daten müssen dann noch mit gpg verschlüsselt werden
+
+die mullvad zertifikate sind nicht verschlüsselt (fake daten) da muss noch eine lösung kommen wie die gelagert werden
+
+tinc war nicht konfiguriert bisher
+
+bird war nicht konfiguriert bisher
+
 ## Missing Steps
 
 	# hier die Config fuer einen slave von ns1 = map

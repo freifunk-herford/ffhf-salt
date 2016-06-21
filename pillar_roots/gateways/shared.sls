@@ -21,14 +21,18 @@ dhcp:
 
 bind:
   ipv6:
-    master: fdf3:2049:5152::a22:20
     listen: fdf3:2049:5152::a22:3
     intern: fdf3:2049:5152::/48
+    master: fdf3:2049:5152::a22:20
   ipv4:
     listen: 10.34.0.3
     intern: 10.34.0.0/16
     reverse: 34.10.in-addr.arpa
   zone: ffhf
+
+iptables:
+  ipv4:
+    masquerade: 10.34.0.0/16
 
 network:
   bridge:

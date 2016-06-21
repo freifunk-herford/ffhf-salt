@@ -10,6 +10,52 @@
   service.running:
     - name: {{ openvpn.srv }}
     - enable: True
+    - watch:
+        - file: /etc/default/openvpn
+        - file: /etc/openvpn/openvpn-updown
+        - file: mullvad-certificate
+        - file: /etc/openvpn/mullvad_linux.conf
+
+{% if pillar['openvpn']['provider'] == 'mullvad_linux' %}
+/etc/default/openvpn:
+  file.replace:
+    - name: /etc/default/openvpn
+    - pattern: '^AUTOSTART="(.*)"$'
+    - repl: 'AUTOSTART="mullvad_linux"'
+    - not_found_content: 'AUTOSTART="mullvad_linux"'
+    - append_if_not_found: True
+    - require:
+       - pkg: {{ openvpn.pkg }}
+
+/etc/openvpn/openvpn-updown:
+ file.managed:
+   - name: /etc/openvpn/openvpn-updown
+   - source: salt://gateway/etc/openvpn/openvpn-updown
+   - mode: 755
+   - require:
+      - pkg: {{ openvpn.pkg }}
+
+# mullvadconfig.zip:
+#   archive.extracted:
+#     - name: /etc/openvpn/
+#     - source: salt://gateway/_source/{{ pillar['openvpn']['mullvad_linux']['account'] }}.zip
+#     - source_hash: md5={{ pillar['openvpn']['mullvad_linux']['md5'] }}
+#     - archive_format: zip
+#     - unless: test -f /etc/openvpn/mullvad.key
+
+mullvad-certificate:
+  file.recurse:
+    - name: /etc/openvpn/
+    - source: salt://gateway/_source/{{ pillar['openvpn']['mullvad_linux']['account'] }}
+
+/etc/openvpn/mullvad_linux.conf:
+  file.managed:
+    - name: /etc/openvpn/mullvad_linux.conf
+    - source: salt://gateway/etc/openvpn/mullvad_linux.conf
+    - template: jinja
+    - defaults:
+        exit: {{ pillar['network']['exit']['interface'] }}
+{% endif %}
 
 # Add VPN Provider (all)
 # /etc/openvpn/<provider>.conf
@@ -21,42 +67,31 @@
 {#% endfor %#}
 {#{ providers|join(' ') }#}
 {% set providers = 'mullvad_linux' %}
-
-/etc/default/openvpn:
-  file.replace:
-    - name: /etc/default/openvpn
-    - pattern: '^AUTOSTART="(.*)"$'
-    - repl: 'AUTOSTART="{{ providers }}"'
-    - not_found_content: 'AUTOSTART="all"'
-    - append_if_not_found: True
-    - require:
-       - pkg: {{ openvpn.pkg }}
-
 {#% for provider in pillar['openvpn']['provider'] %#}
 {#% if provider.get('key', None) %#}
-# /etc/openvpn/{{ provider }}.conf:
+# /etc/openvpn/{#{ provider }#}.conf:
 #   file.managed:
-#     - name: /etc/openvpn/{{ provider }}.conf
+#     - name: /etc/openvpn/{#{ provider }#}.conf
 #     - template: jinja
 #     - defaults:
-#         exit: {{ pillar['network']['exit']['interface'] }}
+#         exit: {#{ pillar['network']['exit']['interface'] }#}
 #
-# {{ provider }}-key:
+# {#{ provider }#}-key:
 #   file.managed:
-#     - name: /etc/openvpn/{{ provider }}/{{ provider }}.key
-#     - content: {{ pillar['openvpn']['provider'][provider]['key'] }}
+#     - name: /etc/openvpn/{#{ provider }#}/{#{ provider }#}.key
+#     - content: {#{ pillar['openvpn']['provider'][provider]['key'] }#}
 #     - makedirs: True
 #
-# {{ provider }}-crt:
+# {#{ provider }#}-crt:
 #   file.managed:
-#     - name: /etc/openvpn/{{ provider }}/{{ provider }}.crt
-#     - content: {{ pillar['openvpn']['provider'][provider]['crt'] }}
+#     - name: /etc/openvpn/{#{ provider }#}/{#{ provider }#}.crt
+#     - content: {#{ pillar['openvpn']['provider'][provider]['crt'] }#}
 #     - makedirs: True
 #
-# {{ provider }}-recurse:
+# {#{ provider }#}-recurse:
 #   file.recurse:
-#     - name: /etc/openvpn/{{ provider }}
-#     - source: salt://gateway/etc/openvpn/{{ provider }}
+#     - name: /etc/openvpn/{#{ provider }#}
+#     - source: salt://gateway/etc/openvpn/{#{ provider }#}
 {#% endif %#}
 {#% endfor %#}
 

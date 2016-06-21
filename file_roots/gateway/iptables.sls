@@ -18,132 +18,132 @@
     - enable: True
 
 # /etc/iptables/rules.v4
-filter-INPUT-ACCEPT:
-  iptables.append:
-    - table: filter
-    - save: True
-    - family: ipv4
-    - chain: INPUT
-    - jump: ACCEPT
-filter-FORWARD-ACCEPT:
-  iptables.append:
-    - table: filter
-    - save: True
-    - family: ipv4
-    - chain: FORWARD
-    - jump: ACCEPT
-filter-OUTPUT-ACCEPT:
-  iptables.append:
-    - table: filter
-    - save: True
-    - family: ipv4
-    - chain: OUTPUT
-    - jump: ACCEPT
-mangle-PREROUTING-ACCEPT:
-  iptables.append:
-    - table: mangle
-    - save: True
-    - family: ipv4
-    - chain: PREROUTING
-    - jump: ACCEPT
-mangle-INPUT-ACCEPT:
-  iptables.append:
-    - table: mangle
-    - save: True
-    - family: ipv4
-    - chain: INPUT
-    - jump: ACCEPT
-mangle-FORWARD-ACCEPT:
-  iptables.append:
-    - table: mangle
-    - save: True
-    - family: ipv4
-    - chain: FORWARD
-    - jump: ACCEPT
-mangle-OUTPUT-ACCEPT:
-  iptables.append:
-    - table: mangle
-    - save: True
-    - family: ipv4
-    - chain: OUTPUT
-    - jump: ACCEPT
-mangle-POSTROUTING-ACCEPT:
-  iptables.append:
-    - table: mangle
-    - save: True
-    - family: ipv4
-    - chain: POSTROUTING
-    - jump: ACCEPT
-mangle-POSTROUTING-TCPMSS:
-  iptables.append:
-    - table: mangle
-    - save: True
-    - family: ipv4
-    - chain: POSTROUTING
-    - jump: TCPMSS
-    - protocol: tcp
-    - tcp-flags: SYN,RST SYN
-    - out-interface: tun-+
-    - set-mss: 1280
-mangle-PREROUTING-MARK:
-  iptables.append:
-    - table: mangle
-    - save: True
-    - family: ipv4
-    - chain: PREROUTING
-    - jump: MARK
-    - in-interface: br0
-    - set-xmark: 0x1/0xffffffff
-mangle-OUTPUT-MARK-udp:
-  iptables.append:
-    - table: mangle
-    - save: True
-    - family: ipv4
-    - chain: OUTPUT
-    - jump: MARK
-    - out-interface: eth0
-    - protocol: udp
-    - destination-port: 53
-    - set-xmark: 0x1/0xffffffff
-mangle-OUTPUT-MARK-tcp:
-  iptables.append:
-    - table: mangle
-    - save: True
-    - family: ipv4
-    - chain: OUTPUT
-    - jump: MARK
-    - out-interface: eth0
-    - protocol: tcp
-    - destination-port: 53
-    - set-xmark: 0x1/0xffffffff
-nat-PREROUTING-ACCEPT:
-  iptables.append:
-    - table: nat
-    - save: True
-    - family: ipv4
-    - chain: PREROUTING
-    - jump: ACCEPT
-nat-INPUT-ACCEPT:
-  iptables.append:
-    - table: nat
-    - save: True
-    - family: ipv4
-    - chain: INPUT
-    - jump: ACCEPT
-nat-OUTPUT-ACCEPT:
-  iptables.append:
-    - table: nat
-    - save: True
-    - family: ipv4
-    - chain: OUTPUT
-    - jump: ACCEPT
-nat-POSTROUTING-ACCEPT:
-  iptables.append:
-    - table: nat
-    - save: True
-    - family: ipv4
-    - chain: POSTROUTING
-    - jump: ACCEPT
+# filter-INPUT-ACCEPT:
+#   iptables.append:
+#     - table: filter
+#     - save: True
+#     - family: ipv4
+#     - chain: INPUT
+#     - jump: ACCEPT
+# filter-FORWARD-ACCEPT:
+#   iptables.append:
+#     - table: filter
+#     - save: True
+#     - family: ipv4
+#     - chain: FORWARD
+#     - jump: ACCEPT
+# filter-OUTPUT-ACCEPT:
+#   iptables.append:
+#     - table: filter
+#     - save: True
+#     - family: ipv4
+#     - chain: OUTPUT
+#     - jump: ACCEPT
+# mangle-PREROUTING-ACCEPT:
+#   iptables.append:
+#     - table: mangle
+#     - save: True
+#     - family: ipv4
+#     - chain: PREROUTING
+#     - jump: ACCEPT
+# mangle-INPUT-ACCEPT:
+#   iptables.append:
+#     - table: mangle
+#     - save: True
+#     - family: ipv4
+#     - chain: INPUT
+#     - jump: ACCEPT
+# mangle-FORWARD-ACCEPT:
+#   iptables.append:
+#     - table: mangle
+#     - save: True
+#     - family: ipv4
+#     - chain: FORWARD
+#     - jump: ACCEPT
+# mangle-OUTPUT-ACCEPT:
+#   iptables.append:
+#     - table: mangle
+#     - save: True
+#     - family: ipv4
+#     - chain: OUTPUT
+#     - jump: ACCEPT
+# mangle-POSTROUTING-ACCEPT:
+#   iptables.append:
+#     - table: mangle
+#     - save: True
+#     - family: ipv4
+#     - chain: POSTROUTING
+#     - jump: ACCEPT
+# mangle-POSTROUTING-TCPMSS:
+#   iptables.append:
+#     - table: mangle
+#     - save: True
+#     - family: ipv4
+#     - chain: POSTROUTING
+#     - jump: TCPMSS
+#     - protocol: tcp
+#     - tcp-flags: SYN,RST SYN
+#     - out-interface: tun-+
+#     - set-mss: 1280
+# mangle-PREROUTING-MARK:
+#   iptables.append:
+#     - table: mangle
+#     - save: True
+#     - family: ipv4
+#     - chain: PREROUTING
+#     - jump: MARK
+#     - in-interface: br0
+#     - set-xmark: 0x1/0xffffffff
+# mangle-OUTPUT-MARK-udp:
+#   iptables.append:
+#     - table: mangle
+#     - save: True
+#     - family: ipv4
+#     - chain: OUTPUT
+#     - jump: MARK
+#     - out-interface: eth0
+#     - protocol: udp
+#     - destination-port: 53
+#     - set-xmark: 0x1/0xffffffff
+# mangle-OUTPUT-MARK-tcp:
+#   iptables.append:
+#     - table: mangle
+#     - save: True
+#     - family: ipv4
+#     - chain: OUTPUT
+#     - jump: MARK
+#     - out-interface: eth0
+#     - protocol: tcp
+#     - destination-port: 53
+#     - set-xmark: 0x1/0xffffffff
+# nat-PREROUTING-ACCEPT:
+#   iptables.append:
+#     - table: nat
+#     - save: True
+#     - family: ipv4
+#     - chain: PREROUTING
+#     - jump: ACCEPT
+# nat-INPUT-ACCEPT:
+#   iptables.append:
+#     - table: nat
+#     - save: True
+#     - family: ipv4
+#     - chain: INPUT
+#     - jump: ACCEPT
+# nat-OUTPUT-ACCEPT:
+#   iptables.append:
+#     - table: nat
+#     - save: True
+#     - family: ipv4
+#     - chain: OUTPUT
+#     - jump: ACCEPT
+# nat-POSTROUTING-ACCEPT:
+#   iptables.append:
+#     - table: nat
+#     - save: True
+#     - family: ipv4
+#     - chain: POSTROUTING
+#     - jump: ACCEPT
 # nat-POSTROUTING-ACCEPT-SNAT:
 #   iptables.append:
 #     - table: nat
@@ -163,7 +163,7 @@ nat-POSTROUTING-ACCEPT-MASQUERADE:
     - family: ipv4
     - chain: POSTROUTING
     - jump: MASQUERADE
-    - source: 10.34.0.0/16 # Todo: add Variable from Pillar
+    - source: {{ pillar['iptables']['ipv4']['masquerade'] }}
     - out-interface: {{ pillar['network']['exit']['interface'] }}
 
 # iptables -t nat -A POSTROUTING -s 10.34.0.0/16 -o exitVPN -j MASQUERADE

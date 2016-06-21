@@ -61,3 +61,7 @@ fastd-first-run:
         remote ipv4 "{{ grains['id'] }}" port 1244;
         key "{{ pillar['fastd']['public'] }}";
     - makedirs: True
+
+# /etc/fastd/{{ grains['id'] }}/peers:
+#   cmd.run:
+#     - name: rsync

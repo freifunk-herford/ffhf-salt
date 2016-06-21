@@ -22,10 +22,10 @@ network:
     address6: fe80::a00:27ff:fe79:5277
 
 openvpn:
-  provider:
-    mullvad:
-      key: xxx
-      crt: xxx
+  provider: mullvad_linux
+  mullvad_linux:
+    account: 197993544660
+    md5: 5f7a020f2c8e0b8c9faffde6df320b59
 
 fastd:
   secret: 80021d2232b0ad4bb03372cc20758b6e1672b82e932ccd5ccb144f8b400d3c43
