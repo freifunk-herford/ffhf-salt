@@ -1,3 +1,5 @@
+# This file is managed by Salt, do not edit.
+
 allow-hotplug {{ batman }}
 iface {{ batman }} inet6 manual
     pre-up modprobe batman-adv

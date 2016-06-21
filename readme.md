@@ -35,16 +35,12 @@ Anleitung unter https://le.basicartstudios.de/docs/ffhf-salt lesen.
 
 ## Missing Steps
 
-	hostname setzten
-	/etc/hosts füllen
-	resolv.conf prüfen
-
 	# hier die Config fuer einen slave von ns1 = map
 	# master ist /var/lib/bind
 	# slave  ist /var/cache/bind
 
-	vim /etc/bind/named.conf.options
-	----------------------------------- begin -----------------------------------
+## /etc/bind/named.conf.options
+
 	options {
 	        directory "/var/cache/bind";
 
@@ -81,6 +77,9 @@ Anleitung unter https://le.basicartstudios.de/docs/ffhf-salt lesen.
 	  category default { my_syslog; };
 	};
 
+
+## Zonen
+
 	// Jedes Gate ist ein Slave für DNS (DNS Master läuft auf dem ns1 = map ).
 
 	masters "ns-master-hf" {
@@ -114,7 +113,7 @@ Anleitung unter https://le.basicartstudios.de/docs/ffhf-salt lesen.
 	//    masters { ns-master-hf; };
 	//};
 
-	vim /etc/rsyslog.d/50-default.conf anpassen
+## DHCP
 
 	ddns-update-style none;
 
@@ -149,13 +148,14 @@ Anleitung unter https://le.basicartstudios.de/docs/ffhf-salt lesen.
 * ffnord-alfred-announce braucht ethtool??
 * erstes ethernet inteface mit jinja finden und addressen lesen.
 * openssh authorized keys (docs) in init.sls einbinden.
-* ntp.conf
+* ntp.conf deutsche server?
 * ip rule in interfaces??
-* iptables (docs) Regeln Prüfen
+* iptables (docs) Regeln Prüfen abgleichen
 * fastd Schlüssel GPG (docs) rsync peers
 * bird.conf (docs)
 * /etc/radvd.conf
 	fuer jedes Gatewys anders ist RDNSS
+	infrastruktur lesen
 * fastd first run alfred
 * fastd peers
 	rsync -a gw1.herford.freifunk.net:/etc/fastd/hfVPN/peers/ /etc/fastd/hfVPN/peers/
@@ -171,11 +171,12 @@ Anleitung unter https://le.basicartstudios.de/docs/ffhf-salt lesen.
 * dns master/slave config files (docs) pillar flag
 * openvpn mullvad pillar flag config certs (docs)
 	chmod +x /etc/openvpn/openvpn-updown
-	mullvad
+	mullvad extern rsync oder zip mit gpg?
 * tinc config (docs)
 * apache le-cert (docs) config webmaster
 * fail2ban config (docs)
 * logging (docs) config
+	/etc/rsyslog.d/50-default.conf
 * autoupdates off?? dpkg-reconfigure -plow unattended-upgrades
 
 ## Ubuntu/Salt bootstrap Anleitung

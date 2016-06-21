@@ -21,6 +21,12 @@ network:
     address: 192.168.0.157
     address6: fe80::a00:27ff:fe79:5277
 
+openvpn:
+  provider:
+    mullvad:
+      key: xxx
+      crt: xxx
+
 fastd:
   secret: 80021d2232b0ad4bb03372cc20758b6e1672b82e932ccd5ccb144f8b400d3c43
   public: 076616d8b4e879f9f11f7d287e06b153347ff710fd31ac5586c028f84cbfd17d

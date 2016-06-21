@@ -1,3 +1,5 @@
+# This file is managed by Salt, do not edit.
+
 # Defaults for isc-dhcp6-server initscript
 # sourced by /etc/init.d/isc-dhcp6-server
 # installed at /etc/default/isc-dhcp6-server by the maintainer scripts

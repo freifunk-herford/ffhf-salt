@@ -3,4 +3,4 @@ Installation
 
 .. code:: bash
 
-    apt-get mosh
+    apt-get install mosh
