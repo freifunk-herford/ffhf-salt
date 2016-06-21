@@ -5,7 +5,7 @@ Installation von etc Keeper mit git.
 
 .. code:: bash
 
-	sudo apt-get install git etckeeper
+	apt-get install git etckeeper
 
 konfiguration
 -------------

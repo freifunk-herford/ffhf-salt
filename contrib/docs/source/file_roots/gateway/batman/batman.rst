@@ -5,15 +5,15 @@ Paketquelle für B.A.T.M.A.N. einbinden.
 
 .. code:: bash
 
-    sudo add-apt-repository ppa:freifunk-mwu/freifunk-ppa
+    add-apt-repository ppa:freifunk-mwu/freifunk-ppa
 
 Paketquellen aktualsieren und B.A.T.M.A.N. Kontrollkommando und Kernelmodul installieren.
 
 .. code:: bash
 
-    sudo apt-get update
-    sudo apt-get dist-upgrade
-    sudo apt-get install batctl batman-adv-dkms
+    apt-get update
+    apt-get dist-upgrade
+    apt-get install batctl batman-adv-dkms
 
 Kernelmodul
 -----------
@@ -35,7 +35,7 @@ Hop Penality
 
 .. code:: bash
 
-    sudo apt-get install sysfsutils
+    apt-get install sysfsutils
 
 Die Datei ``/etc/sysfs.d/99-batman-hop-penalty.conf`` mit folgendem Inhalt anlegen.
 

@@ -1,4 +1,4 @@
-# vnStat and vnStati
+# vnStat & vnStati
 
 {% set vnstat = salt['grains.filter_by']({
   'Debian': {'pkg': 'vnstat', 'srv': 'vnstat'}

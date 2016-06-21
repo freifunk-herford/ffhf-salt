@@ -5,14 +5,14 @@ Paketquelle für bird einbinden.
 
 .. code:: bash
 
-    sudo add-apt-repository ppa:cz.nic-labs/bird
+    add-apt-repository ppa:cz.nic-labs/bird
 
 Paketquellen aktualsieren und bird installieren.
 
 .. code:: bash
 
-    sudo apt-get update
-    sudo apt-get install bird
+    apt-get update
+    apt-get install bird
 
 Konfiguation
 ------------

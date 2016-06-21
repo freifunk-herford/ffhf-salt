@@ -3,7 +3,7 @@
 # requirements:
 # apt-get install python-virtualenv
 # emerge virtualenv
-# sudo apt-get install build-essential libssl-dev libffi-dev python-dev
+# apt-get install build-essential libssl-dev libffi-dev python-dev
 
 le-cert:
   git.latest:

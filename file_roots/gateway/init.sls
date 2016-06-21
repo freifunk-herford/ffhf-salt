@@ -7,6 +7,7 @@ include:
   - gateway.network
   - gateway.iproute
   - gateway.iptables
+  - gateway.fail2ban
   - gateway.fastd
   - gateway.bird
   - gateway.radvd
@@ -14,9 +15,8 @@ include:
   - gateway.alfred
   - gateway.dhcp-server
   - gateway.name-server
-  - gateway.openvpn
   - gateway.tinc
-  - gateway.apache
-  - gateway.fail2ban
+  - gateway.openvpn
   - gateway.vnstat
+  - gateway.apache
   - gateway.syslog

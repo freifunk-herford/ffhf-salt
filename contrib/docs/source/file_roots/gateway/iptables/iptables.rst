@@ -26,4 +26,4 @@ Die Regeln speichern damit Sie beim System Neustart wieder hergestellt werden.
 
 .. code:: bash
 
-    Todo: sudo iptables-persistent save? Nachprüfen wie das nochmal ging.
+    Todo: iptables-persistent save? Nachprüfen wie das nochmal ging.

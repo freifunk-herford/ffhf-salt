@@ -11,10 +11,10 @@ Nun aktualisieren wir unsere Paketquellen und installieren fastd.
 
 .. code:: bash
 
-    sudo apt-key adv --keyserver keyserver.ubuntu.com --recv 16EF3F64CB201D9C
-    sudo apt-get update
-    sudo apt-get dist-upgrade
-    sudo apt-get install fastd
+    apt-key adv --keyserver keyserver.ubuntu.com --recv 16EF3F64CB201D9C
+    apt-get update
+    apt-get dist-upgrade
+    apt-get install fastd
 
 Schlüssel generieren
 --------------------
@@ -23,7 +23,7 @@ Schlüssel generieren
 
 .. code:: bash
 
-    sudo apt-get install haveged
+    apt-get install haveged
 
 Den Schlüssel generieren.
 

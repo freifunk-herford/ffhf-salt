@@ -1,5 +1,5 @@
-Network Interfaces und Brige Utilities
-======================================
+Network Interfaces & Brige Utilities
+====================================
 
 .. include:: network.rst
 

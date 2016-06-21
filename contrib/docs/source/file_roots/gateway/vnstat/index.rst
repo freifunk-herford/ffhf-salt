@@ -1,5 +1,5 @@
-vnStat and vnStati
-==================
+vnStat & vnStati
+================
 
 .. include:: vnstat.rst
 

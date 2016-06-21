@@ -139,6 +139,7 @@ alfred-announce-cron:
 /root/scripts/announce/alfred-announce.sh:
   file.managed:
     - name: /root/scripts/alfred-announce.sh
+    - source: salt://gateway/root/scripts/alfred-announce.sh
     - user: root
     - group: root
     - mode: 755

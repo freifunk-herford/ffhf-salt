@@ -1,4 +1,4 @@
-# Network Interfaces und Brige Utilities
+# Network Interfaces & Brige Utilities
 
 {% set bridgeutils = salt['grains.filter_by']({
   'Debian': {'pkg': 'bridge-utils'},

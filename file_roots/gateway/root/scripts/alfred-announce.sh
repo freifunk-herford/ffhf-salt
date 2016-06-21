@@ -1,13 +1,15 @@
 #!/usr/bin/env bash
+# Copyright 2016 - 2016 Tobias Benzin tbenzin@digital-nerv.net
+#                       Rally Vincent rvincent@digital-nerv.net
 
-source /root/scripts/announce/ffnord-alfred-announce/venv/bin/activate; \
-python announce.py \
+base="/root/scripts/announce"
+
+${base}/venv/bin/python ${base}/ffnord-alfred-announce/announce.py \
 -d /root/scripts/announce/ffnord-alfred-announce/nodeinfo.d/ \
-{{ bridge }} {{ batman }} { vpn }} {{ sitecode }} | gzip | \
-alfred {{ socket }} {{ bridge }} -s 159
+-i {{ bridge }} -b {{ batman }} -f {{ vpn }} -s {{ sitecode }} | gzip | \
+alfred -u {{ socket }} -i {{ bridge }} -b {{ batman }} -s 159
 
-source /root/scripts/announce/ffnord-alfred-announce/venv/bin/activate; \
-python announce.py \
--d /root/scripts/announce/ffnord-alfred-announce/statistics.d/ \
-{{ bridge }} {{ batman }} { vpn }} {{ sitecode }} | gzip | \
-alfred {{ socket }} {{ bridge }} -s 159
+${base}/venv/bin/python ${base}/ffnord-alfred-announce/announce.py \
+-d /root/scripts/announce/ffnord-alfred-announce/nodeinfo.d/ \
+-i {{ bridge }} -b {{ batman }} -f {{ vpn }} -s {{ sitecode }} | gzip | \
+alfred -u {{ socket }} -i {{ bridge }} -b {{ batman }} -s 159
