@@ -6,8 +6,6 @@
 SaltStack Freifunk Herford
 ==========================
 
-.. include:: ../../../readme.md
-
 Inhalt:
 
 .. toctree::
@@ -16,8 +14,5 @@ Inhalt:
    file_roots/index
    pillar_roots/gateways/index
    links
+   readme
 
-Index und Suche:
-
-* :ref:`genindex`
-* :ref:`search`

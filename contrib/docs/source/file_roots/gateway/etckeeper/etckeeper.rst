@@ -1,8 +1,14 @@
+Installation
+------------
+
 Installation von etc Keeper mit git.
 
 .. code:: bash
 
 	sudo apt-get install git etckeeper
+
+konfiguration
+-------------
 
 In der Konfigurationsdatei von etc Keeper ``/etc/etckeeper/etckeeper.conf`` folgendes einfügen oder anpassen. Hiermit stellen wir sicher, dass wir git für die Versionskontrolle verwenden.
 
@@ -37,4 +43,3 @@ Nun speichern wir alle vorhandenen Daten aus ``/etc`` zum ersten mal ab, damit w
 .. code:: bash
 
     etckeeper commit
-

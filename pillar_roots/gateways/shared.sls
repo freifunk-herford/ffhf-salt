@@ -48,6 +48,11 @@ network:
   intercity:
     interface: icVPN # tun0/tap0
 
+alfred:
+  socket: /var/run/alfred.sock
+  sock: /var/run/alfred.sock
+  sitecode: ffhf
+
 apache:
   serveradmin: webmaster@herford.freifunk.net
   sslcertificatefile: /etc/ssl/{{ grains['nodename'] }}/public/cert.pem

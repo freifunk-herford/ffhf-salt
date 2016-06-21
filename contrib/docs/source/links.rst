@@ -8,14 +8,9 @@ Gateway Anleitungen
 * `Freifunk Freifunk-Mainz und Freifunk-Wiesbaden`_
 * `Freifunk Franken`_
 
-B.A.T.M.A.N. 
+B.A.T.M.A.N.
 
 * `Troubleshootung`_
-
-Referenzen
-----------
-
-.. target-notes::
 
 .. _`Freifunk Münsterland`: https://freifunk-muensterland.de/wiki/doku.php?id=technik:gateway 
 .. _`Freifunk Hamburg`: http://wiki.freifunk.net/Hamburg/Gateway

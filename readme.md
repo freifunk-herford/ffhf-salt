@@ -1,5 +1,165 @@
 # Freifunk Herford SaltStack Configuration
 
+Anleitung unter https://le.basicartstudios.de/docs/ffhf-salt lesen.
+
+## Missing Steps
+
+	hostname setzten
+	/etc/hosts füllen
+	resolv.conf prüfen
+
+	# hier die Config fuer einen slave von ns1 = map
+	# master ist /var/lib/bind
+	# slave  ist /var/cache/bind
+
+	vim /etc/bind/named.conf.options
+	----------------------------------- begin -----------------------------------
+	options {
+	        directory "/var/cache/bind";
+
+	        // forwarders {
+	        //      0.0.0.0;
+	        // };
+
+	        //========================================================================
+	        // If BIND logs error messages about the root key being expired,
+	        // you will need to update your keys.  See https://www.isc.org/bind-keys
+	        //========================================================================
+	        dnssec-validation auto;
+	        auth-nxdomain no;    # conform to RFC1035
+
+	        // : listen-on und  listen-on-v6 ausschließlich auf die lokalen Interfaces und die IC-VPN Interfaces zeigen lassen.
+	        //
+	        //          localhost  Freifunk-VPN
+	        listen-on { 127.0.0.1; 10.34.0.3; };
+	        //                  Freifunk IPv6
+	        listen-on-v6 { ::1; fdf3:2049:5152::a22:3;  };   // FIXME  Wo muessen wir noch lauschen ? IC-VPN !!!
+
+	        allow-transfer { any; };
+	        allow-query { any; };
+	        allow-recursion { 127.0.0.1; ::1; intern-hf; };
+	};
+
+	// logging nach local5 - die ipv6-errors nerver in daemon.log
+	logging {
+	  channel my_syslog {
+	    syslog local5;
+	    // critical error warning notice info debug [level] dynamic
+	    severity info;
+	  };
+	  category default { my_syslog; };
+	};
+
+	// Jedes Gate ist ein Slave für DNS (DNS Master läuft auf dem ns1 = map ).
+
+	masters "ns-master-hf" {
+	    fdf3:2049:5152::0a22:0020;
+	    // 10.34.0.32;
+	};
+
+	acl "intern-hf" {
+	    10.34.0.0/16;
+	    fdf3:2049:5152::/48;
+	};
+
+	// Intern Zones for Freifunk
+	zone "ffhf." {
+	    type slave;
+	    file "ffhf.db";
+	    masters { ns-master-hf; };
+	};
+
+	// Reverse Zones for Freifunk
+	zone "34.10.in-addr.arpa" {
+	    type slave;
+	    file "34.10.in-addr.arpa.db";
+	    masters { ns-master-hf; };
+	};
+
+	// ### FIXME### ###TODO### bind ipv6 reverse
+	// zone "e.1.b.4.c.d.4.b.6.5.d.f.ip6.arpa" { ###FIXME###
+	//    type slave;
+	//    file "fd56:b4dc:4b1e_48.ip6.arpa.db"; ###FIXME###
+	//    masters { ns-master-hf; };
+	//};
+
+	vim /etc/rsyslog.d/50-default.conf anpassen
+
+	ddns-update-style none;
+
+	# Die Direktive server-name ist auf den Hostnamen des jeweiligen
+	# Gateways anzupassen. Wir wählen hier eine kurze Lease Time,
+	# damit die Clients maximal 5 Minuten offline sind.
+	default-lease-time 300;
+	min-lease-time 300;
+	max-lease-time 300;
+
+	authoritative;
+
+	# Use this to send dhcp log messages to a different log file (you also
+	# have to hack syslog.conf to complete the redirection).
+	# log-facility local7; # FIXME local6 nach dev0
+
+	subnet 10.34.0.0 netmask 255.255.0.0 {
+	    range 10.34.96.0 10.34.111.254;
+
+	    option routers 10.34.0.3;
+	    option domain-name-servers 10.34.0.3;
+	    option domain-search "ffhf";
+	    # option domain-search "ffhf", "user.ffhf"; FIXME NOT - user brauchen wir nicht - oder ?
+	    option ntp-servers 10.34.0.3;
+
+	    # 1492 - fastd-header
+	    option interface-mtu 1350;
+	}
+
+	# Bugfix for https://bugs.launchpad.net/ubuntu/+source/isc-dhcp/+bug/1186662
+	# nach https://gluon-gateway-doku.readthedocs.org/de/latest/configuration/daemons/ddi.html
+	apt-get install acl
+	service isc-dhcp-server stop ; setfacl -dm u:dhcpd:rwx /var/lib/dhcp ; setfacl -m u:dhcpd:rwx /var/lib/dhcp ; service isc-dhcp-server start
+
+	vim /etc/radvd.conf
+	# fuer jedes Gatewys anders ist RDNSS
+
+	rsync -a gw1.herford.freifunk.net:/etc/fastd/hfVPN/peers/ /etc/fastd/hfVPN/peers/
+
+	mullvad
+
+	chmod +x /etc/openvpn/openvpn-updown
+
+	# auto updates off
+	dpkg-reconfigure -plow unattended-upgrades
+
+	ffnord-alfred-announce
+	# Abhaengigkeiten
+	ethtool
+
+## Todo
+
+* erstes ethernet inteface mit jinja finden und addressen lesen.
+* openssh authorized keys (docs) in init.sls einbinden.
+* ntp.conf
+* ip rule in interfaces??
+* iptables (docs) Regeln Prüfen
+* fastd Schlüssel GPG (docs) rsync peers
+* bird.conf (docs)
+* fastd first run alfred
+* /etc/radvd.conf Prefix (docs)
+* batman announce script wann/wo starten? (docs)
+* /etc/init/isc-dhcp6-server.conf?
+* /etc/dhcp/dhcpd.conf
+* /etc/dhcp/dhcpd6.conf
+* dns master/slave config files (docs) pillar flag
+* openvpn mullvad pillar flag config certs (docs)
+* tinc config (docs)
+* apache le-cert (docs) config webmaster
+* fail2ban config (docs)
+* logging (docs) config
+
+## Ubuntu/Salt bootstrap Anleitung
+
+## Simple Salt Bedienung
+
 ## Generate Documentation
 
 	cd contrib
@@ -8,14 +168,6 @@
 	pip install --upgrade pip -r requirements
 	cd docs
 	make html
-
-## haveged
-
-"neoraider":
-
-1. haveged wird nur fuer den ersten Boot bzw. im Configmode fuer die Generierung der Keys fuer fastd und ssh benoetigt.
-2. haveged braucht im Betrieb ca. 800kB RAM und es ist im Moment kein RAM-Mangel bekannt, auch beim Meshen nicht.
-
 
 ## Minion Installation
 
@@ -155,3 +307,7 @@ saltutil.sync_all functions.
 ## List Active jobs
 
     salt-run jobs.active
+
+## Show highstate
+
+	salt 'gw1' state.show_highstate test=True --state-output=changes

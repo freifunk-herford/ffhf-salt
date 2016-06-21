@@ -28,6 +28,9 @@ for state in ${states[@]}; do
 
 .. include:: ${state}.rst
 
+Salt State File
+---------------
+
 ${state}.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/${state}.sls

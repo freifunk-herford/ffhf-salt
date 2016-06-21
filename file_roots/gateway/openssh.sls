@@ -1,3 +1,5 @@
+# OpenSSH
+
 {% set ssh = salt['grains.filter_by']({
   'Debian': {'pkg': 'openssh-server', 'srv': 'ssh'}
 }, default='Debian') %}

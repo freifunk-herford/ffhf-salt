@@ -60,6 +60,6 @@ batman_adv:
 /etc/sysfs.d/99-batman-hop-penalty.conf:
   file.managed:
     - name: /etc/sysfs.d/99-batman-hop-penalty.conf
-    - contents: class/net/hfBAT/mesh/hop_penalty = 60
+    - contents: class/net/{{ pillar['network']['batman']['interface'] }}/mesh/hop_penalty = 60
     - require:
       - pkg: {{ sysfsutils.pkg }}

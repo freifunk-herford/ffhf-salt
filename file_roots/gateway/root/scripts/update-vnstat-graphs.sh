@@ -1,4 +1,6 @@
 #!/usr/bin/env bash
+# Copyright 2016 - 2016 Tobias Benzin tbenzin@digital-nerv.net
+#                       Rally Vincent rvincent@digital-nerv.net
 
 interfaces=$(ls /var/lib/vnstat/)
 
