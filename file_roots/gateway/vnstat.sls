@@ -105,6 +105,8 @@ change-documentroot:
     - repl: 'DocumentRoot /var/www/vnstat'
     - not_found_content: 'DocumentRoot /var/www/vnstat'
     - append_if_not_found: True
+    - require:
+      - file: /var/www/vnstat
 
 change-documentroot-ssl:
   file.replace:
@@ -113,3 +115,5 @@ change-documentroot-ssl:
     - repl: 'DocumentRoot /var/www/vnstat'
     - not_found_content: 'DocumentRoot /var/www/vnstat'
     - append_if_not_found: True
+    - require:
+      - file: /var/www/vnstat

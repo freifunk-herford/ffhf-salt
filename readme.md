@@ -2,6 +2,37 @@
 
 Anleitung unter https://le.basicartstudios.de/docs/ffhf-salt lesen.
 
+## Initialisierung des Gatways
+
+	Hostnamen setzten:
+
+		/etc/hostname
+
+	Hostdatei bearbeiten:
+
+		/etc/hosts
+
+	resolv.conf prüfen:
+
+		/etc/resolv.conf
+
+	Salt Minion Installation mit GPG:
+
+		sudo add-apt-repository ppa:saltstack/salt
+		sudo apt-get update
+		sudo apt-get install salt-minion python-gnupg
+
+		/etc/salt/minion
+
+		id: ändern
+		master: ändern
+
+		service salt-minion restart
+
+	Minion auf dem Master anehmen:
+
+		salt-key -A
+
 ## Missing Steps
 
 	hostname setzten
@@ -113,29 +144,9 @@ Anleitung unter https://le.basicartstudios.de/docs/ffhf-salt lesen.
 	    option interface-mtu 1350;
 	}
 
-	# Bugfix for https://bugs.launchpad.net/ubuntu/+source/isc-dhcp/+bug/1186662
-	# nach https://gluon-gateway-doku.readthedocs.org/de/latest/configuration/daemons/ddi.html
-	apt-get install acl
-	service isc-dhcp-server stop ; setfacl -dm u:dhcpd:rwx /var/lib/dhcp ; setfacl -m u:dhcpd:rwx /var/lib/dhcp ; service isc-dhcp-server start
-
-	vim /etc/radvd.conf
-	# fuer jedes Gatewys anders ist RDNSS
-
-	rsync -a gw1.herford.freifunk.net:/etc/fastd/hfVPN/peers/ /etc/fastd/hfVPN/peers/
-
-	mullvad
-
-	chmod +x /etc/openvpn/openvpn-updown
-
-	# auto updates off
-	dpkg-reconfigure -plow unattended-upgrades
-
-	ffnord-alfred-announce
-	# Abhaengigkeiten
-	ethtool
-
 ## Todo
 
+* ffnord-alfred-announce braucht ethtool??
 * erstes ethernet inteface mit jinja finden und addressen lesen.
 * openssh authorized keys (docs) in init.sls einbinden.
 * ntp.conf
@@ -143,18 +154,29 @@ Anleitung unter https://le.basicartstudios.de/docs/ffhf-salt lesen.
 * iptables (docs) Regeln Prüfen
 * fastd Schlüssel GPG (docs) rsync peers
 * bird.conf (docs)
+* /etc/radvd.conf
+	fuer jedes Gatewys anders ist RDNSS
 * fastd first run alfred
+* fastd peers
+	rsync -a gw1.herford.freifunk.net:/etc/fastd/hfVPN/peers/ /etc/fastd/hfVPN/peers/
 * /etc/radvd.conf Prefix (docs)
-* batman announce script wann/wo starten? (docs)
 * /etc/init/isc-dhcp6-server.conf?
 * /etc/dhcp/dhcpd.conf
 * /etc/dhcp/dhcpd6.conf
+* dhcp bugfix?
+	# Bugfix for https://bugs.launchpad.net/ubuntu/+source/isc-dhcp/+bug/1186662
+	# nach https://gluon-gateway-doku.readthedocs.org/de/latest/configuration/daemons/ddi.html
+	apt-get install acl
+	service isc-dhcp-server stop ; setfacl -dm u:dhcpd:rwx /var/lib/dhcp ; setfacl -m u:dhcpd:rwx /var/lib/dhcp ; service isc-dhcp-server start
 * dns master/slave config files (docs) pillar flag
 * openvpn mullvad pillar flag config certs (docs)
+	chmod +x /etc/openvpn/openvpn-updown
+	mullvad
 * tinc config (docs)
 * apache le-cert (docs) config webmaster
 * fail2ban config (docs)
 * logging (docs) config
+* autoupdates off?? dpkg-reconfigure -plow unattended-upgrades
 
 ## Ubuntu/Salt bootstrap Anleitung
 

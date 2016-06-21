@@ -6,6 +6,7 @@ Inhalt:
 .. toctree::
    :maxdepth: 4
 
+   bash/index
    git/index
    etckeeper/index
    tmp/index
@@ -14,6 +15,7 @@ Inhalt:
    network/index
    iproute/index
    iptables/index
+   fail2ban/index
    fastd/index
    bird/index
    radvd/index
@@ -21,9 +23,8 @@ Inhalt:
    alfred/index
    dhcp-server/index
    name-server/index
-   openvpn/index
    tinc/index
+   openvpn/index
    apache/index
-   fail2ban/index
    vnstat/index
    syslog/index

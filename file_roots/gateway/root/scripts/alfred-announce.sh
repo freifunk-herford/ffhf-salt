@@ -2,6 +2,9 @@
 # Copyright 2016 - 2016 Tobias Benzin tbenzin@digital-nerv.net
 #                       Rally Vincent rvincent@digital-nerv.net
 
+PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+SHELL=/bin/bash
+
 base="/root/scripts/announce"
 
 ${base}/venv/bin/python ${base}/ffnord-alfred-announce/announce.py \

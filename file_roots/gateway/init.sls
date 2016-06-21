@@ -1,4 +1,5 @@
 include:
+  - gateway.bash
   - gateway.git
   - gateway.etckeeper
   - gateway.tmp
@@ -17,6 +18,6 @@ include:
   - gateway.name-server
   - gateway.tinc
   - gateway.openvpn
-  - gateway.vnstat
   - gateway.apache
+  - gateway.vnstat
   - gateway.syslog
