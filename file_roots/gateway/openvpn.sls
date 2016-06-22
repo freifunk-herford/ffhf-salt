@@ -13,8 +13,13 @@
     - watch:
         - file: /etc/default/openvpn
         - file: /etc/openvpn/openvpn-updown
-        - file: mullvad-certificate
+        {% if pillar['openvpn']['provider'] == 'mullvad_linux' %}
+        - file: /etc/openvpn/ca.crt
+        - file: /etc/openvpn/crl.pem
+        - file: /etc/openvpn/mullvad.crt
+        - file: /etc/openvpn/mullvad.key
         - file: /etc/openvpn/mullvad_linux.conf
+        {% endif %}
 
 {% if pillar['openvpn']['provider'] == 'mullvad_linux' %}
 /etc/default/openvpn:
@@ -43,10 +48,30 @@
 #     - archive_format: zip
 #     - unless: test -f /etc/openvpn/mullvad.key
 
-mullvad-certificate:
-  file.recurse:
-    - name: /etc/openvpn/
-    - source: salt://gateway/_source/{{ pillar['openvpn']['mullvad_linux']['account'] }}
+#mullvad-certificate:
+#  file.recurse:
+#    - name: /etc/openvpn/
+#    - source: salt://gateway/_source/{{ pillar['openvpn']['mullvad_linux']['account'] }}
+
+/etc/openvpn/ca.crt:
+  file.managed:
+    - name: /etc/openvpn/ca.crt
+    - content: {{ pillar['openvpn']['mullvad_linux']['ca_crt'] }}
+
+/etc/openvpn/crl.pem:
+  file.managed:
+    - name: /etc/openvpn/crl.pem
+    - content: {{ pillar['openvpn']['mullvad_linux']['crl_pem'] }}
+
+/etc/openvpn/mullvad.crt:
+  file.managed:
+    - name: /etc/openvpn/mullvad.crt
+    - content: {{ pillar['openvpn']['mullvad_linux']['mullvad_crt'] }}
+
+/etc/openvpn/mullvad.key:
+  file.managed:
+    - name: /etc/openvpn/mullvad.key
+    - content: {{ pillar['openvpn']['mullvad_linux']['mullvad_key'] }}
 
 /etc/openvpn/mullvad_linux.conf:
   file.managed:

@@ -45,9 +45,9 @@ dhcp server noch nicht eingerichtet
 
 netzwerk infrastruktur muss noch angepasst werden
 
-alle daten sind bisher fake daten und sensible daten müssen dann noch mit gpg verschlüsselt werden
+--alle daten sind bisher fake daten und sensible daten müssen dann noch mit gpg verschlüsselt werden--
 
-die mullvad zertifikate sind nicht verschlüsselt (fake daten) da muss noch eine lösung kommen wie die gelagert werden
+--die mullvad zertifikate sind nicht verschlüsselt (fake daten) da muss noch eine lösung kommen wie die gelagert werden--
 
 tinc war nicht konfiguriert bisher
 
@@ -166,12 +166,12 @@ bird war nicht konfiguriert bisher
 ## Todo
 
 * ffnord-alfred-announce braucht ethtool??
-* erstes ethernet inteface mit jinja finden und addressen lesen.
+--* erstes ethernet inteface mit jinja finden und addressen lesen.--
 * openssh authorized keys (docs) in init.sls einbinden.
 * ntp.conf deutsche server?
 * ip rule in interfaces??
 * iptables (docs) Regeln Prüfen abgleichen
-* fastd Schlüssel GPG (docs) rsync peers
+* fastd --Schlüssel GPG-- (docs) rsync peers
 * bird.conf (docs)
 * /etc/radvd.conf
 	fuer jedes Gatewys anders ist RDNSS
@@ -195,8 +195,8 @@ bird war nicht konfiguriert bisher
 * tinc config (docs)
 * apache le-cert (docs) config webmaster
 * fail2ban config (docs)
-* logging (docs) config
-	/etc/rsyslog.d/50-default.conf
+--* logging (docs) config--
+--	/etc/rsyslog.d/50-default.conf--
 * autoupdates off?? dpkg-reconfigure -plow unattended-upgrades
 
 ## Ubuntu/Salt bootstrap Anleitung
