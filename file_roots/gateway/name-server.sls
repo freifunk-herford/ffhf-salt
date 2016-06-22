@@ -34,6 +34,11 @@
   file.managed:
     - name: /etc/bind/named.conf.options
     - source: salt://gateway/etc/bind/named.conf.options
+    - template: jinja
+    - defaults:
+        listen_on: 'Todo: 127.0.0.1; ...;'
+        listen_on_v6: 'Todo: ::1; ...;'
+        allow_recursion: 'Todo: 127.0.0.1; ::1; ...;'
     - user: root
     - group: root
     - mode: 644
@@ -54,6 +59,11 @@
   file.managed:
     - name: /etc/bind/named.conf.options
     - source: salt://gateway/etc/bind/named.conf.options
+    - template: jinja
+    - defaults:
+        listen_on: 'Todo: 127.0.0.1; ...;'
+        listen_on_v6: 'Todo: ::1; ...;'
+        allow_recursion: 'Todo: 127.0.0.1; ::1; ...;'
     - user: root
     - group: root
     - mode: 644

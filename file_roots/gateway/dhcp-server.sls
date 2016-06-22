@@ -53,6 +53,10 @@
         interface_mtu: {{ pillar['dhcp']['interface_mtu'] }}
         default_lease_time: {{ pillar['dhcp']['default_lease_time'] }}
         max_lease_time: {{ pillar['dhcp']['max_lease_time'] }}
+        min_lease_time: {{ pillar['dhcp']['min_lease_time'] }}
+        log_facility: {{ pillar['dhcp']['log_facility'] }}
+        server_name: {{ grains['id'] }}
+        ntp_servers: {{ pillar['dhcp']['ipv4']['ntp_servers'] }}
     - require:
        - pkg: {{ dhcp.pkg }}
 

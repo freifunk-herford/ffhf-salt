@@ -43,6 +43,8 @@ fastd-first-run:
     - source: salt://gateway/etc/fastd/gw/fastd.conf
     - template: jinja
     - defaults:
+        port: {{ pillar['fastd']['port'] }}
+        socket: {{ pillar['fastd']['socket'] }}
         interface: {{ pillar['network']['vpn']['interface'] }}
         address: {{ pillar['network']['primary']['address'] }}
         address6: {{ pillar['network']['primary']['address6'] }}

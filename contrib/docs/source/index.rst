@@ -6,6 +6,8 @@
 SaltStack Freifunk Herford
 ==========================
 
+Salt Konfiguration für Ubuntu Linux Server 14.04 LTS (Trusty Thar) und Ubuntu Linux Server 16.04 LTS (Xenial Xerus).
+
 Inhalt:
 
 .. toctree::

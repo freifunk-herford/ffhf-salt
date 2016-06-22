@@ -5,6 +5,7 @@ dhcp:
   ipv4:
     routers: 10.34.0.4
     domain_name_servers: 10.34.0.4
+    ntp_servers: 10.34.0.4
   ipv6:
     subnet: 'fe80::/64'
     name_servers: fe80::a00:27ff:feee:ec3f
@@ -14,10 +15,13 @@ dhcp:
 # salt 'gw*' grains.get ip_interfaces:enp0s3
 network:
   bridge:
+    hwaddress: 02:42:0a:22:00:04
     address: 10.34.0.4
     netmask: 255.255.0.0
     address6: fe80::a00:27ff:feee:ec3f
     netmask6: 48
+  vpn:
+    hwaddress: 02:42:0a:22:00:04
   primary:
     interface: eth0
     address: 192.168.0.192

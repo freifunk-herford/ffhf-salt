@@ -18,8 +18,10 @@ dhcp:
     range_end: 10.34.0.149
     {% endif %}
   interface_mtu: 1280
-  default_lease_time: 240
-  max_lease_time: 1200
+  default_lease_time: 300
+  max_lease_time: 300
+  min_lease_time: 300
+  log_facility: local6
 
 bind:
   ipv6:
@@ -39,7 +41,6 @@ iptables:
 network:
   bridge:
     interface: hfBR # br0
-    hwaddress: 02:42:0a:22:00:03
     netmask: 255.255.0.0
     prefix: fdf3:2049:5152::/64
     address6: fdf3:2049:5152::0a22:3
@@ -49,7 +50,6 @@ network:
   vpn:
     # vpn in mesh umbenennen?
     interface: hfVPN # tun0/tap0
-    hwaddress: 02:00:0a:22:00:03
   exit:
     interface: exitVPN # tun0/tap0
   intercity:
@@ -57,6 +57,7 @@ network:
 
 fastd:
   port: 1244
+  socket: /var/run/fastd.sock
 
 alfred:
   socket: /var/run/alfred.sock
