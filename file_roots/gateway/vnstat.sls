@@ -15,7 +15,7 @@
       - cmd: init-vnstat-{{ pillar['network']['primary']['interface'] }}
       - cmd: init-vnstat-{{ pillar['network']['bridge']['interface'] }}
       - cmd: init-vnstat-{{ pillar['network']['batman']['interface'] }}
-      - cmd: init-vnstat-{{ pillar['network']['vpn']['interface'] }}
+      - cmd: init-vnstat-{{ pillar['network']['mesh']['interface'] }}
       - cmd: init-vnstat-{{ pillar['network']['exit']['interface'] }}
 
 /etc/vnstat.conf:
@@ -28,45 +28,37 @@
     - template: jinja
     - defaults:
         primary: {{ pillar['network']['primary']['interface'] }}
-        # interfaces:
-        #   - {{ pillar['network']['primary']['interface'] }}
-        #   - {{ pillar['network']['primary']['interface'] }}
-        #   - {{ pillar['network']['bridge']['interface'] }}
-        #   - {{ pillar['network']['batman']['interface'] }}
-        #   - {{ pillar['network']['vpn']['interface'] }}
-        #   - {{ pillar['network']['exit']['interface'] }}
-        # {#{ interfaces|join(' ') }#}
     - require:
       - pkg: {{ vnstat.pkg }}
 
 init-vnstat-{{ pillar['network']['primary']['interface'] }}:
   cmd.run:
     - name: |
-        if [ -n "$(ip addr show | grep {{ pillar['network']['primary']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['primary']['interface'] }}; fi
+        if [ -n "$(ip a | grep {{ pillar['network']['primary']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['primary']['interface'] }}; fi
     - unless: test -f /var/lib/vnstat/{{ pillar['network']['primary']['interface'] }}
 
 init-vnstat-{{ pillar['network']['bridge']['interface'] }}:
   cmd.run:
     - name: |
-        if [ -n "$(ip addr show | grep {{ pillar['network']['bridge']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['bridge']['interface'] }}; fi
+        if [ -n "$(ip a | grep {{ pillar['network']['bridge']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['bridge']['interface'] }}; fi
     - unless: test -f /var/lib/vnstat/{{ pillar['network']['bridge']['interface'] }}
 
 init-vnstat-{{ pillar['network']['batman']['interface'] }}:
   cmd.run:
     - name: |
-        if [ -n "$(ip addr show | grep {{ pillar['network']['batman']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['batman']['interface'] }}; fi
+        if [ -n "$(ip a | grep {{ pillar['network']['batman']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['batman']['interface'] }}; fi
     - unless: test -f /var/lib/vnstat/{{ pillar['network']['batman']['interface'] }}
 
-init-vnstat-{{ pillar['network']['vpn']['interface'] }}:
+init-vnstat-{{ pillar['network']['mesh']['interface'] }}:
   cmd.run:
     - name: |
-        if [ -n "$(ip addr show | grep {{ pillar['network']['vpn']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['vpn']['interface'] }}; fi
-    - unless: test -f /var/lib/vnstat/{{ pillar['network']['vpn']['interface'] }}
+        if [ -n "$(ip a | grep {{ pillar['network']['mesh']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['mesh']['interface'] }}; fi
+    - unless: test -f /var/lib/vnstat/{{ pillar['network']['mesh']['interface'] }}
 
 init-vnstat-{{ pillar['network']['exit']['interface'] }}:
   cmd.run:
     - name: |
-        if [ -n "$(ip addr show | grep {{ pillar['network']['exit']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['exit']['interface'] }}; fi
+        if [ -n "$(ip a | grep {{ pillar['network']['exit']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['exit']['interface'] }}; fi
     - unless: test -f /var/lib/vnstat/{{ pillar['network']['exit']['interface'] }}
 
 /var/lib/vnstat:

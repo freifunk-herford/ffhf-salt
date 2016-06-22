@@ -57,6 +57,7 @@
         log_facility: {{ pillar['dhcp']['log_facility'] }}
         server_name: {{ grains['id'] }}
         ntp_servers: {{ pillar['dhcp']['ipv4']['ntp_servers'] }}
+        domain_search: {{ pillar['dhcp']['domain_search'] }}
     - require:
        - pkg: {{ dhcp.pkg }}
 

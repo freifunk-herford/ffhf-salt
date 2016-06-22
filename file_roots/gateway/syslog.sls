@@ -21,6 +21,6 @@
 /etc/rsyslog.d/99-blackhole.conf:
   file.managed:
     - name: /etc/rsyslog.d/99-blackhole.conf
-    - content: |
+    - contents: |
         # This file is managed by Salt, do not edit.
         local6.*	/dev/null

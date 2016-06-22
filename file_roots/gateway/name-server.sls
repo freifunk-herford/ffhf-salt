@@ -24,6 +24,9 @@
   file.managed:
     - name: /etc/bind/named.conf.local
     - source: salt://gateway/etc/bind/named.conf.local
+    - defaults:
+        acl_internal: {{ pillar['bind']['ipv4']['acl_internal'] }}
+        acl_internal_v6: {{ pillar['bind']['ipv6']['acl_internal'] }}
     - user: root
     - group: root
     - mode: 644
@@ -36,9 +39,9 @@
     - source: salt://gateway/etc/bind/named.conf.options
     - template: jinja
     - defaults:
-        listen_on: 'Todo: 127.0.0.1; ...;'
-        listen_on_v6: 'Todo: ::1; ...;'
-        allow_recursion: 'Todo: 127.0.0.1; ::1; ...;'
+        listen_on: '127.0.0.1; {{ pillar['network']['bridge']['address'] }};'
+        listen_on_v6: '::1; {{ pillar['network']['bridge']['address6'] }};'
+        allow_recursion: '127.0.0.1; ::1; internal;'
     - user: root
     - group: root
     - mode: 644
@@ -49,6 +52,10 @@
   file.managed:
     - name: /etc/bind/named.conf.local
     - source: salt://gateway/etc/bind/named.conf.local
+    - template: jinja
+    - defaults:
+        acl_internal: {{ pillar['bind']['ipv4']['acl_internal'] }}
+        acl_internal_v6: {{ pillar['bind']['ipv6']['acl_internal'] }}
     - user: root
     - group: root
     - mode: 644
@@ -61,9 +68,9 @@
     - source: salt://gateway/etc/bind/named.conf.options
     - template: jinja
     - defaults:
-        listen_on: 'Todo: 127.0.0.1; ...;'
-        listen_on_v6: 'Todo: ::1; ...;'
-        allow_recursion: 'Todo: 127.0.0.1; ::1; ...;'
+        listen_on: '127.0.0.1; {{ pillar['network']['bridge']['address'] }};'
+        listen_on_v6: '::1; {{ pillar['network']['bridge']['address6'] }};'
+        allow_recursion: '127.0.0.1; ::1; internal;'
     - user: root
     - group: root
     - mode: 644

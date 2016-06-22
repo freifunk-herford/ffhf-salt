@@ -8,7 +8,7 @@
   pkg.installed:
     - name: {{ bridgeutils.pkg }}
 
-# Network
+# Interfaces
 
 {% if grains['os_family'] == 'Debian' %}
 # /etc/network/interfaces:
@@ -77,10 +77,10 @@
         bridge: {{ pillar['network']['bridge']['interface'] }}
         batman: {{ pillar['network']['batman']['interface'] }}
 
-/etc/network/interfaces.d/vpn:
+/etc/network/interfaces.d/mesh:
   file.managed:
-    - name: /etc/network/interfaces.d/vpn
-    - source: salt://gateway/etc/network/interfaces.d/vpn
+    - name: /etc/network/interfaces.d/mesh
+    - source: salt://gateway/etc/network/interfaces.d/mesh
     - user: root
     - group: root
     - mode: 644
@@ -88,18 +88,8 @@
     - defaults:
         primary: {{ pillar['network']['primary']['interface'] }}
         batman: {{ pillar['network']['batman']['interface'] }}
-        vpn: {{ pillar['network']['vpn']['interface'] }}
+        mesh: {{ pillar['network']['mesh']['interface'] }}
         hwaddress: {{ pillar['network']['bridge']['hwaddress'] }}
-
-# ifdown && ifup
-
-# networking:
-#   service.running:
-#     - enable: True
-#     - watch:
-#       - file: /etc/network/interfaces
-#       - file: /etc/network/interfaces.d/br0
-#       - file: /etc/network/interfaces.d/bat0
 {% endif %}
 
 # Forwarding

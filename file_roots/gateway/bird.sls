@@ -22,8 +22,6 @@
     - refresh: True
     {% endif %}
     - unless: test -f /usr/sbin/bird
-    # - watch:
-    #   - repo: bird-repository
   service.running:
     - name: {{ bird.srv }}
     - enable: True

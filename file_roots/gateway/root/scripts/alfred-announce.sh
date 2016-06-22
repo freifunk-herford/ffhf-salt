@@ -11,10 +11,10 @@ base="/root/scripts/announce"
 
 ${base}/venv/bin/python ${base}/ffnord-alfred-announce/announce.py \
 -d /root/scripts/announce/ffnord-alfred-announce/nodeinfo.d/ \
--i {{ bridge }} -b {{ batman }} -f {{ vpn }} -s {{ sitecode }} | gzip | \
+-i {{ bridge }} -b {{ batman }} -f {{ mesh }} -s {{ sitecode }} | gzip | \
 alfred -u {{ socket }} -i {{ bridge }} -b {{ batman }} -s 159
 
 ${base}/venv/bin/python ${base}/ffnord-alfred-announce/announce.py \
 -d /root/scripts/announce/ffnord-alfred-announce/nodeinfo.d/ \
--i {{ bridge }} -b {{ batman }} -f {{ vpn }} -s {{ sitecode }} | gzip | \
+-i {{ bridge }} -b {{ batman }} -f {{ mesh }} -s {{ sitecode }} | gzip | \
 alfred -u {{ socket }} -i {{ bridge }} -b {{ batman }} -s 159

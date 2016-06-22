@@ -5,32 +5,33 @@ dhcp:
     subnet: 10.34.0.0
     netmask: 255.255.0.0
     {% if grains['id'] == 'gw1' %}
-    range_start: 10.34.0.100
-    range_end: 10.34.0.119
+    range_start: 10.34.64.0
+    range_end: 10.34.79.254
     {% elif grains['id'] == 'gw2' %}
-    range_start: 10.34.0.120
-    range_end: 10.34.0.129
+    range_start: 10.34.80.0
+    range_end: 10.34.95.254
     {% elif grains['id'] == 'gw3' %}
-    range_start: 10.34.0.130
-    range_end: 10.34.0.139
+    range_start: 10.34.96.0
+    range_end: 10.34.111.254
     {% elif grains['id'] == 'gw4' %}
-    range_start: 10.34.0.140
-    range_end: 10.34.0.149
+    range_start: 10.34.112.0
+    range_end: 10.34.127.254
     {% endif %}
   interface_mtu: 1280
   default_lease_time: 300
   max_lease_time: 300
   min_lease_time: 300
   log_facility: local6
+  domain_search: ffhf
 
 bind:
   ipv6:
     listen: fdf3:2049:5152::a22:3
-    intern: fdf3:2049:5152::/48
+    acl_internal: fdf3:2049:5152::/48
     master: fdf3:2049:5152::a22:20
   ipv4:
     listen: 10.34.0.3
-    intern: 10.34.0.0/16
+    acl_internal: 10.34.0.0/16
     reverse: 34.10.in-addr.arpa
   zone: ffhf
 
@@ -47,7 +48,7 @@ network:
     address6mask: fdf3:2049:5152::a22:3/64
   batman:
     interface: hfBAT # bat0
-  vpn:
+  mesh:
     # vpn in mesh umbenennen?
     interface: hfVPN # tun0/tap0
   exit:

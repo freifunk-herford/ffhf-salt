@@ -147,7 +147,7 @@ alfred-announce-cron:
     - defaults:
         bridge: {{ pillar['network']['bridge']['interface'] }}
         batman: {{ pillar['network']['batman']['interface'] }}
-        vpn: {{ pillar['network']['vpn']['interface'] }}
+        mesh: {{ pillar['network']['mesh']['interface'] }}
         socket: {{ pillar['alfred']['socket'] }}
         sitecode: {{ pillar['alfred']['sitecode'] }}
     - require:

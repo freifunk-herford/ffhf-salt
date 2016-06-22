@@ -26,7 +26,7 @@ Schnittstellen
 
 .. caution:: In der Datei ``/etc/network/interfaces`` sollte der Eintrag ``source /etc/network/interfaces.d/*`` stehen!
 
-Netzerk Brücke ``/etc/network/interfaces.d/bridge``.
+Netzwerk Brücke ``/etc/network/interfaces.d/bridge``.
 
 .. literalinclude:: ../../../../../../file_roots/gateway/etc/network/interfaces.d/bridge
    :language: bash
@@ -36,9 +36,9 @@ B.A.T.M.A.N. Schnittstelle ``/etc/network/interfaces.d/batman``.
 .. literalinclude:: ../../../../../../file_roots/gateway/etc/network/interfaces.d/batman
    :language: bash
 
-Virtual Private Network ``/etc/network/interfaces.d/vpn``.
+Mesh Schnittstelle (fastd) ``/etc/network/interfaces.d/mesh``.
 
-.. literalinclude:: ../../../../../../file_roots/gateway/etc/network/interfaces.d/vpn
+.. literalinclude:: ../../../../../../file_roots/gateway/etc/network/interfaces.d/mesh
    :language: bash
 
 Netzwerk Brücke

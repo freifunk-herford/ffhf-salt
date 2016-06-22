@@ -27,18 +27,6 @@ batman:
     - sources:
       - batctl: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batctl/batctl_2016.0-0ffmwu0~trusty_amd64.deb
       - batman-adv-dkms: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batman-adv-kernelland/batman-adv-dkms_2016.0-0ffmwu0~trusty_all.deb
-
-# batctl:
-#   pkg.installed:
-#     - source: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batctl/batctl_2016.0-0ffmwu0~trusty_amd64.deb
-#     - source_hash: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batctl/batctl_2016.0-0ffmwu0~trusty.dsc
-#     - version: 2016.0-0ffmwu0~trusty
-
-# batman-adv-dkms:
-#   pkg.installed:
-#     - source: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batman-adv-kernelland/batman-adv-dkms_2016.0-0ffmwu0~trusty_all.deb
-#     - source_hash: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batman-adv-kernelland/batman-adv-kernelland_2016.0-0ffmwu0~trusty.dsc
-#     - version: 2016.0-0ffmwu0~trusty
 {% endif %}
 
 # /etc/modules-load.d/salt_managed.conf

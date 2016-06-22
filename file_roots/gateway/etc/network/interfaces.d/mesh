@@ -1,7 +1,7 @@
 # This file is managed by Salt, do not edit.
 
-allow-hotplug {{ vpn }}
-iface {{ vpn }} inet6 manual
+allow-hotplug {{ mesh }}
+iface {{ mesh }} inet6 manual
     hwaddress {{ hwaddress }}
     pre-up modprobe batman-adv
     post-up batctl -m {{ batman }} if add $IFACE

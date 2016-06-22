@@ -45,7 +45,7 @@ fastd-first-run:
     - defaults:
         port: {{ pillar['fastd']['port'] }}
         socket: {{ pillar['fastd']['socket'] }}
-        interface: {{ pillar['network']['vpn']['interface'] }}
+        interface: {{ pillar['network']['mesh']['interface'] }}
         address: {{ pillar['network']['primary']['address'] }}
         address6: {{ pillar['network']['primary']['address6'] }}
     - makedirs: True
