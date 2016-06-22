@@ -9,4 +9,4 @@ Salt State File
 radvd.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/radvd.sls
-   :language: yaml+jinja
+   :language: salt

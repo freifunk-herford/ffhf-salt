@@ -9,4 +9,4 @@ Salt State File
 vnstat.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/vnstat.sls
-   :language: yaml+jinja
+   :language: salt

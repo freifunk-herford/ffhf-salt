@@ -9,4 +9,4 @@ Salt State File
 etckeeper.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/etckeeper.sls
-   :language: yaml+jinja
+   :language: salt

@@ -9,4 +9,4 @@ Salt State File
 alfred.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/alfred.sls
-   :language: yaml+jinja
+   :language: salt

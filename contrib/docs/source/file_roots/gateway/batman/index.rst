@@ -9,4 +9,4 @@ Salt State File
 batman.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/batman.sls
-   :language: yaml+jinja
+   :language: salt

@@ -12,7 +12,8 @@ Inhalt:
    :maxdepth: 4
 
    file_roots/index
-   pillar_roots/gateways/index
+   pillar_roots/index
    links
+   network
    readme
 

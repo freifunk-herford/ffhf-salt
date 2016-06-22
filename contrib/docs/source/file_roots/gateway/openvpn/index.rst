@@ -9,4 +9,4 @@ Salt State File
 openvpn.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/openvpn.sls
-   :language: yaml+jinja
+   :language: salt

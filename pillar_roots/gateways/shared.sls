@@ -1,3 +1,5 @@
+# Gemeinsame Daten
+
 dhcp:
   ipv4:
     subnet: 10.34.0.0
@@ -45,12 +47,16 @@ network:
   batman:
     interface: hfBAT # bat0
   vpn:
+    # vpn in mesh umbenennen?
     interface: hfVPN # tun0/tap0
     hwaddress: 02:00:0a:22:00:03
   exit:
     interface: exitVPN # tun0/tap0
   intercity:
     interface: icVPN # tun0/tap0
+
+fastd:
+  port: 1244
 
 alfred:
   socket: /var/run/alfred.sock
@@ -59,6 +65,6 @@ alfred:
 
 apache:
   serveradmin: webmaster@herford.freifunk.net
-  sslcertificatefile: /etc/ssl/{{ grains['nodename'] }}/public/cert.pem
-  sslcertificatekeyfile: /etc/ssl/{{ grains['nodename'] }}/private/privkey.pem
-  sslcertificatechainfile: /etc/ssl/{{ grains['nodename'] }}/intermediate.pem
+  sslcertificatefile: /etc/ssl/{{ grains['id'] }}/public/cert.pem
+  sslcertificatekeyfile: /etc/ssl/{{ grains['id'] }}/private/privkey.pem
+  sslcertificatechainfile: /etc/ssl/{{ grains['id'] }}/intermediate.pem

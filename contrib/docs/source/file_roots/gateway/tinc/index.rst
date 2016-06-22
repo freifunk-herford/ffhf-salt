@@ -9,4 +9,4 @@ Salt State File
 tinc.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/tinc.sls
-   :language: yaml+jinja
+   :language: salt

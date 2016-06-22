@@ -9,4 +9,4 @@ Salt State File
 fail2ban.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/fail2ban.sls
-   :language: yaml+jinja
+   :language: salt

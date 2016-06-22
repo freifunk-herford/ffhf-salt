@@ -9,4 +9,4 @@ Salt State File
 name-server.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/name-server.sls
-   :language: yaml+jinja
+   :language: salt

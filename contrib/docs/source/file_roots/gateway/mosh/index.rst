@@ -9,4 +9,4 @@ Salt State File
 mosh.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/mosh.sls
-   :language: yaml+jinja
+   :language: salt

@@ -1,4 +1,6 @@
 Readme
 ======
 
-.. include:: ../../../readme.md
+.. literalinclude:: ../../../readme.md
+   :language: text
+

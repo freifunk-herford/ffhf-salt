@@ -9,4 +9,4 @@ Salt State File
 ntp.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/ntp.sls
-   :language: yaml+jinja
+   :language: salt

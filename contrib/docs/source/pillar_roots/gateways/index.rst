@@ -1,10 +1,13 @@
-Pillars
-=======
+Gateways
+========
 
 Inhalt:
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
 
-
-
+   gw1/index
+   gw2/index
+   gw3/index
+   gw4/index
+   shared/index

@@ -9,4 +9,4 @@ Salt State File
 iptables.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/iptables.sls
-   :language: yaml+jinja
+   :language: salt

@@ -9,4 +9,4 @@ Salt State File
 bird.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/bird.sls
-   :language: yaml+jinja
+   :language: salt

@@ -9,4 +9,4 @@ Salt State File
 dhcp-server.sls
 
 .. literalinclude:: ../../../../../../file_roots/gateway/dhcp-server.sls
-   :language: yaml+jinja
+   :language: salt
