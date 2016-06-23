@@ -10,17 +10,17 @@ Für den IPv4 Betrieb des DHCP Servers in der Datei ``/etc/default/isc-dhcp-serv
 Für den IPv6 Betrieb des DHCP Servers bei der Verwendung vom Init System ``upstart`` die Datei ``/etc/init.d/isc-dhcp6-server`` mit folgendem Inhalt anlegen.
 
 .. literalinclude:: ../../../../../../file_roots/gateway/etc/init.d/isc-dhcp6-server
-  :language: jinja
+  :language: bash
 
 Bei der Verwendung vom Init System ``systemd`` die Datei ``/lib/systemd/system/isc-dhcp6-server.service`` mit folgendem Inhalt anlegen.
 
 .. literalinclude:: ../../../../../../file_roots/gateway/lib/systemd/system/isc-dhcp6-server.service
-  :language: jinja
+  :language: text
 
 Die Datei ``/etc/default/isc-dhcp6-server`` mit folgendem Inhalt anlegen.
 
 .. literalinclude:: ../../../../../../file_roots/gateway/etc/default/isc-dhcp6-server
-  :language: jinja
+  :language: text
 
 Den Eintrag ``INTERFACES=""`` mit dem Interface der Brückenschnittstelle füllen.
 

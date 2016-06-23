@@ -56,14 +56,31 @@ fastd-first-run:
     - contents: secret "{{ pillar['fastd']['secret'] }}";
     - makedirs: True
 
-/etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}:
-  file.managed:
-    - name: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}
-    - contents: |
-        remote ipv4 "{{ grains['id'] }}" port 1244;
-        key "{{ pillar['fastd']['public'] }}";
-    - makedirs: True
+# /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}:
+#   file.managed:
+#     - name: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}
+#     - contents: |
+#         remote {{ pillar['fastd']['protocol'] }} "{{ pillar['fastd']['fqdn'] }}" port {{ pillar['fastd']['port'] }};
+#         key "{{ pillar['fastd']['public'] }}";
+#     - makedirs: True
 
 # /etc/fastd/{{ grains['id'] }}/peers:
 #   cmd.run:
 #     - name: rsync
+
+# Test Daten
+{% for peer, data in pillar['peers'].items() %}
+{% if peer != grains['id'] %}
+/etc/fastd/{{ grains['id'] }}/peers/{{ peer }}-test-data:
+  file.managed:
+    - name: /etc/fastd/{{ grains['id'] }}/peers/{{ peer }}
+    - contents: |
+        remote {{ pillar['fastd']['protocol'] }} "{{ data.fqdn }}" port {{ pillar['fastd']['port'] }};
+        key "{{ data.key }}";
+    - makedirs: True
+{% endif %}
+{% endfor %}
+
+/etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}-absent:
+  file.absent:
+    - name: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}

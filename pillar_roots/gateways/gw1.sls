@@ -1,6 +1,5 @@
 # Gateway 1
 
-# salt 'gw*' grains.item ip_interfaces
 dhcp:
   ipv4:
     routers: 10.34.0.1
@@ -12,17 +11,25 @@ dhcp:
     routers: fe80::a00:27ff:fe79:5277
     domain_name_servers: fe80::a00:27ff:fe79:5277
 
-# salt 'gw*' grains.get ip_interfaces:enp0s3
+bind:
+  master: False
+  ipv6:
+    listen_on: ::1; fdf3:2049:5152::a22:1;
+  ipv4:
+    listen_on: 127.0.0.1; 10.34.0.1;
+
 network:
   bridge:
     hwaddress: 02:42:0a:22:00:01
     address: 10.34.0.1
     netmask: 255.255.0.0
-    address6: fe80::a00:27ff:feee:ec3f
+    address6: fdf3:2049:5152::a22:1
+    address6mask: fdf3:2049:5152::a22:1/64
     netmask6: 48
   mesh:
     hwaddress: 02:42:0a:22:00:03
   primary:
+    # Test Daten
     interface: enp0s3
     address: 192.168.0.157
     address6: fe80::a00:27ff:fe79:5277
@@ -30,6 +37,7 @@ network:
 openvpn:
   provider: mullvad_linux
   mullvad_linux:
+    # Test Daten
     mullvad.crt: |
       -----BEGIN PGP MESSAGE-----
       Version: GnuPG v2
@@ -158,3 +166,4 @@ fastd:
     =45Re
     -----END PGP MESSAGE-----
   public: 076616d8b4e879f9f11f7d287e06b153347ff710fd31ac5586c028f84cbfd17d
+  fqdn: gw1.digital-nerv.net

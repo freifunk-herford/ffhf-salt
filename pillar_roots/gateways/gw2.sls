@@ -1,6 +1,5 @@
 # Gateway 2
 
-# salt 'gw*' grains.item ip_interfaces
 dhcp:
   ipv4:
     routers: 10.34.0.2
@@ -12,17 +11,26 @@ dhcp:
     routers: fe80::a00:27ff:fe4c:84e7
     domain_name_servers: fe80::a00:27ff:fe4c:84e7
 
-# salt 'gw*' grains.get ip_interfaces:enp0s3
+bind:
+  # Test Daten Dummy DNS Master
+  master: True
+  ipv6:
+    listen_on: ::1; fdf3:2049:5152::a22:2;
+  ipv4:
+    listen_on: 127.0.0.1; 10.34.0.2;
+
 network:
   bridge:
     hwaddress: 02:42:0a:22:00:02
     address: 10.34.0.2
     netmask: 255.255.0.0
-    address6: fe80::a00:27ff:feee:ec3f
+    address6: fdf3:2049:5152::a22:2
+    address6mask: fdf3:2049:5152::a22:2/64
     netmask6: 48
   mesh:
     hwaddress: 02:42:0a:22:00:02
   primary:
+    # Test Daten
     interface: enp0s3
     address: 192.168.0.198
     address6: fe80::a00:27ff:fe4c:84e7
@@ -30,6 +38,7 @@ network:
 openvpn:
   provider: mullvad_linux
   mullvad_linux:
+    # Test Daten
     mullvad.crt: |
       -----BEGIN PGP MESSAGE-----
       Version: GnuPG v2
@@ -140,20 +149,23 @@ openvpn:
       RSDv4LxHPuD8i42aQN93a1g+qiK5m8NS0h/bng==
       =EAzn
       -----END PGP MESSAGE-----
+
 fastd:
+  # Test Daten
   secret: |
     -----BEGIN PGP MESSAGE-----
     Version: GnuPG v2
 
-    hQEMAzfCuITl4pqUAQgAnknmsFFy55NYpszV35EouuxTjBRbobb10bk+Z+4YS8t8
-    zuE57gkAsuN77JbjMlXdHI5MpqtOD+0Qedl1pdXMNATDp/lyAabG2dEcBj/gBvYk
-    iBpG7kzs27nOYILkrqK8jxzlIMbTBWdBybZwP9+2VqeXKHJp+t+RGN1KGobRrgiz
-    OKyswBSQ5AE1CcEm07420paeOL0opZmqeOMJQMGwPaqMKIWxyIonOM0CTEQf4DFc
-    86aWXM+DK2QJmVK9+I1NKYctW5evyLmqyyVT/x+2x1M+epVkaWgVS8yiytnDp+4W
-    zKhgJKGeqsxcD7zF32FeuPTQjKD2njgD4JVs8QAD29JyAbMhB1fzRk15gRioBtBq
-    UMNoh+hpBYmLIIAwsHf7MMMZG5v1mQIq+FFIDggYeMM92dt7WoELnZ7rhsQizJV6
-    s2ipSsHgely9cyDdgkfssgcjpZ7P7sKPh+cmmLyFJsacoVvYP3ORZ14+eTIosM/1
-    e6y1
-    =45Re
+    hQEMAzfCuITl4pqUAQgAooqUHzwTucZIWBXZxL6gBflMZc6Utv7ersCioDjstH1g
+    qI1k8RmFSuvjoFclbeqOSBdpEPQeKZsaptctX4/T+EUA4vMfATDHP8Q+2mUlI3AW
+    y2dqukYm9PkL3Ap7WBiyj4Q/7VrbNyAwacv206N0zHffGsH6vyjGXN/25hq4hpXS
+    MbbOuLvfmDeQtDMTFAx8WHSoP2qiCmSvh9K+bS/+ScjwnxwMEPWkczzQ5Bv+GnYw
+    nZoVcRfjVnW4/IT3oD0IOw1SF9oSSXojGgk9iPWeNHZ3iV2JoqhzrH54yd1m2rrK
+    5HDRRLvTjoexag24P2YWBDgu6ICPrZiR9rfxLdIJK9JzARf3hiYnYN/8ERh9ycfI
+    2cUYdiL18I5Xkpoq6G2ZLXwa92/aiSfV0kHGNvvIQe+KG3HgpKF7DZvw1mQhxZ7x
+    7am9zf3C4/E/oyvbE5LLRLWHiWnCGN0gew/g6UugX0LFMdiGv8yBvS/s1hiOY0Ck
+    5TUZrQ==
+    =1JcK
     -----END PGP MESSAGE-----
-  public: 076616d8b4e879f9f11f7d287e06b153347ff710fd31ac5586c028f84cbfd17d
+  public: f9165006d55f1eeb2b09b8ae6193700fcd4c297183d373c7d1fa2dfea86e6ffc
+  fqdn: gw2.digital-nerv.net

@@ -8,7 +8,49 @@
 // organization
 //include "/etc/bind/zones.rfc1918";
 
-acl "internal" {
-    {{ acl_internal }};
-    {{ acl_internal_v6 }};
+acl "trusted" {
+    {{ trusted }}
+    {% if trusted_v6 %}
+    {{ trusted_v6 }}
+    {% endif %}
+    localhost;
+    localnets;
 };
+
+zone {{ zone }} {
+    {% if master %}
+    type master;
+    file "/etc/bind/db.{{ zone }}";
+    notify no;
+    {% else %}
+    type slave;
+    masters { {{ masters }} };
+    file "db.{{ zone }}";
+    {% endif %}
+};
+
+zone {{ zone_reverse }} {
+    {% if master %}
+    type master;
+    file "/etc/bind/db.{{ zone_reverse }}";
+    notify no;
+    {% else %}
+    type slave;
+    masters { {{ masters }} };
+    file "db.{{ zone_reverse }}";
+    {% endif %}
+};
+
+{% if zone_reverse_v6 %}
+zone {{ zone_reverse_v6 }} {
+    {% if master %}
+    type master;
+    file "/etc/bind/db.{{ zone_reverse_v6 }}";
+    notify no;
+    {% else %}
+    type slave;
+    masters { {{ masters }} };
+    file "db.{{ zone_reverse_v6 }}";
+    {% endif %}
+};
+{% endif %}

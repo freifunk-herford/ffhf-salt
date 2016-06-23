@@ -61,7 +61,8 @@
     - require:
        - pkg: {{ dhcp.pkg }}
 
-# IPv6
+ # IPv6
+{% if pillar['dhcp']['ipv6']['enable'] == True %}
 {% if grains['os_family'] == 'Debian' %}
 deploy-isc-dhcp6-server-default:
   file.managed:
@@ -131,6 +132,10 @@ deploy-isc-dhcp6-server-init:
     - template: jinja
     - defaults:
         subnet: {{ pillar['dhcp']['ipv6']['subnet'] }}
+        server_name: {{ grains['id'] }}
+        ntp_servers: {{ pillar['dhcp']['ipv4']['ntp_servers'] }}
         name_servers: {{ pillar['dhcp']['ipv6']['domain_name_servers'] }}
+        domain_search: {{ pillar['dhcp']['domain_search'] }}
     - require:
        - pkg: {{ dhcp.pkg }}
+{% endif%}

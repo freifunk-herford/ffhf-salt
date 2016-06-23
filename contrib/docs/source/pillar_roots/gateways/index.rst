@@ -10,4 +10,5 @@ Inhalt:
    gw2/index
    gw3/index
    gw4/index
+   peers/index
    shared/index

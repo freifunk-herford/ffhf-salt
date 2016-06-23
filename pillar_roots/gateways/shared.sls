@@ -16,8 +16,25 @@ dhcp:
     {% elif grains['id'] == 'gw4' %}
     range_start: 10.34.112.0
     range_end: 10.34.127.254
+    {% elif grains['id'] == 'gw5' %}
+    range_start: 10.34.128.0
+    range_end: 10.34.143.254
+    {% elif grains['id'] == 'gw6' %}
+    range_start: 10.34.144.0
+    range_end: 10.34.159.254
+    {% elif grains['id'] == 'gw7' %}
+    range_start: 10.34.160.0
+    range_end: 10.34.175.254
+    {% elif grains['id'] == 'gw8' %}
+    range_start: 10.34.176.0
+    range_end: 10.34.191.254
+    {% elif grains['id'] == 'gw9' %}
+    range_start: 10.34.192.0
+    range_end: 10.34.207.254
     {% endif %}
-  interface_mtu: 1280
+  ipv6:
+    enable: False
+  interface_mtu: 1350
   default_lease_time: 300
   max_lease_time: 300
   min_lease_time: 300
@@ -26,13 +43,14 @@ dhcp:
 
 bind:
   ipv6:
-    listen: fdf3:2049:5152::a22:3
-    acl_internal: fdf3:2049:5152::/48
-    master: fdf3:2049:5152::a22:20
+    zone_reverse: 2.5.1.5.9.4.0.2.3.f.d.f.ip6.arpa
+    trusted: fdf3:2049:5152::/48;
   ipv4:
-    listen: 10.34.0.3
-    acl_internal: 10.34.0.0/16
-    reverse: 34.10.in-addr.arpa
+    zone_reverse: 34.10.in-addr.arpa
+    trusted: 10.34.0.0/16;
+  # masters: 10.34.0.32; fdf3:2049:5152::a22:20;
+  # Test Daten Dummy DNS Master
+  masters: 10.34.0.2; fdf3:2049:5152::a22:2;
   zone: ffhf
 
 iptables:
@@ -44,8 +62,6 @@ network:
     interface: hfBR # br0
     netmask: 255.255.0.0
     prefix: fdf3:2049:5152::/64
-    address6: fdf3:2049:5152::0a22:3
-    address6mask: fdf3:2049:5152::a22:3/64
   batman:
     interface: hfBAT # bat0
   mesh:
@@ -57,6 +73,7 @@ network:
     interface: icVPN # tun0/tap0
 
 fastd:
+  protocol: ipv4
   port: 1244
   socket: /var/run/fastd.sock
 

@@ -1,6 +1,5 @@
 # Gateway 4
 
-# salt 'gw*' grains.item ip_interfaces
 dhcp:
   ipv4:
     routers: 10.34.0.4
@@ -12,17 +11,25 @@ dhcp:
     routers: fe80::a00:27ff:feee:ec3f
     domain_name_servers: fe80::a00:27ff:feee:ec3f
 
-# salt 'gw*' grains.get ip_interfaces:enp0s3
+bind:
+  master: False
+  ipv6:
+    listen_on: ::1; fdf3:2049:5152::a22:4;
+  ipv4:
+    listen_on: 127.0.0.1; 10.34.0.4;
+
 network:
   bridge:
     hwaddress: 02:42:0a:22:00:04
     address: 10.34.0.4
     netmask: 255.255.0.0
-    address6: fe80::a00:27ff:feee:ec3f
+    address6: fdf3:2049:5152::a22:4
+    address6mask: fdf3:2049:5152::a22:4/64
     netmask6: 48
   mesh:
     hwaddress: 02:42:0a:22:00:04
   primary:
+    # Test Daten
     interface: eth0
     address: 192.168.0.192
     address6: fe80::a00:27ff:fe27:f3bc
@@ -30,6 +37,7 @@ network:
 openvpn:
   provider: mullvad_linux
   mullvad_linux:
+    # Test Daten
     mullvad.crt: |
       -----BEGIN PGP MESSAGE-----
       Version: GnuPG v2
@@ -142,19 +150,21 @@ openvpn:
       -----END PGP MESSAGE-----
 
 fastd:
+  # Test Daten
   secret: |
     -----BEGIN PGP MESSAGE-----
     Version: GnuPG v2
 
-    hQEMAzfCuITl4pqUAQgAnknmsFFy55NYpszV35EouuxTjBRbobb10bk+Z+4YS8t8
-    zuE57gkAsuN77JbjMlXdHI5MpqtOD+0Qedl1pdXMNATDp/lyAabG2dEcBj/gBvYk
-    iBpG7kzs27nOYILkrqK8jxzlIMbTBWdBybZwP9+2VqeXKHJp+t+RGN1KGobRrgiz
-    OKyswBSQ5AE1CcEm07420paeOL0opZmqeOMJQMGwPaqMKIWxyIonOM0CTEQf4DFc
-    86aWXM+DK2QJmVK9+I1NKYctW5evyLmqyyVT/x+2x1M+epVkaWgVS8yiytnDp+4W
-    zKhgJKGeqsxcD7zF32FeuPTQjKD2njgD4JVs8QAD29JyAbMhB1fzRk15gRioBtBq
-    UMNoh+hpBYmLIIAwsHf7MMMZG5v1mQIq+FFIDggYeMM92dt7WoELnZ7rhsQizJV6
-    s2ipSsHgely9cyDdgkfssgcjpZ7P7sKPh+cmmLyFJsacoVvYP3ORZ14+eTIosM/1
-    e6y1
-    =45Re
+    hQEMAzfCuITl4pqUAQgAp/I+VHUZZSy3zMqf4bUWz5AylTL3Gcm5PJ+DdvYqJRpP
+    SSOvqwJE+rZ/T94if0Hqkmmk/IagkeDpj6wJADvBI5N40AZznp1clmWNbH2JkN8/
+    EltQrxG2dcBDQVfGqKsr09flgPfObtXBXggPefbjpTGUFqxH5z6KqswWZ9xKWMdF
+    It/LavtBiQ/clBQm1T459TAfUucfZfBwBo+472DE/GR7FEpUiiggOsXZgMBy7r5X
+    qEJd+AoOCJqfCqaczoOnR7UTf0qGsUvK46R+dv9t5GlPv/2pEgUKj7bHfPCZ1SAV
+    rW13SXs47lW0rnoPAWdo1Dg3SJT+lM33HfgyExW/+tJ0AVaBNNneALC8M3WPClnQ
+    p0o0iTRcblmX8lPk8apqgZ+TdWIWW+HYgJeySV9Jd+uwUOyqA+lSTUj4xCLuwhha
+    ysLnbbREpB/Brjg0dyliG0cF71MJwXOXrdlooMIz11/UnQ5htmJy1iUr16Rks4Ef
+    4a5gaEw=
+    =w/3W
     -----END PGP MESSAGE-----
-  public: 076616d8b4e879f9f11f7d287e06b153347ff710fd31ac5586c028f84cbfd17d
+  public: 871bde12620761fd7480a27874b572bde730a6a541e1057f7b2caf8bb8277c9a
+  fqdn: gw4.digital-nerv.net
