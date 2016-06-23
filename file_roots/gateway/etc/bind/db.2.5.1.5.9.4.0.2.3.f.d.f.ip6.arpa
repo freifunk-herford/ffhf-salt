@@ -1,0 +1,14 @@
+; This file is managed by Salt, do not edit.
+
+$ORIGIN .
+$TTL 10800 ; 3 hours
+2.5.1.5.9.4.0.2.3.f.d.f.ip6.arpa  IN SOA  ns1.ffhf. hostmaster.ffhf. (
+                        2015092701 ; serial
+                        10800      ; refresh (3 hours)
+                        3600       ; retry (1 hour)
+                        604800     ; expire (1 week)
+                        3600       ; minimum (1 hour)
+                    )
+                    NS      ns1.ffhf.
+$ORIGIN 2.5.1.5.9.4.0.2.3.f.d.f.ip6.arpa.
+2                   PTR     ns1.ffhf.

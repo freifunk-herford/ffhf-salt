@@ -1,0 +1,33 @@
+; This file is managed by Salt, do not edit.
+
+$ORIGIN .
+$TTL 10800 ; 3 hours
+ffhf                IN SOA  gw2.ffhf. hostmaster.ffhf. (
+                        2016051101 ; serial
+                        10800      ; refresh (3 hours)
+                        3600       ; retry (1 hour)
+                        604800     ; expire (1 week)
+                        3600       ; minimum (1 hour)
+                    )
+                    NS      gw2.ffhf.
+                    A       10.34.0.2
+                    AAAA    fdf3:2049:5152::a22:32
+$ORIGIN ffhf.
+nextnode            A       10.34.1.1
+                    AAAA    fdf3:2049:5152::1:1
+gw1                 A       10.34.0.1
+                    AAAA    fdf3:2049:5152::a22:1
+gw2                 A       10.34.0.2
+                    AAAA    fdf3:2049:5152::a22:2
+gw3                 A       10.34.0.3
+                    AAAA    fdf3:2049:5152::a22:3
+gw4                 A       10.34.0.4
+                    AAAA    fdf3:2049:5152::a22:4
+gw5                 A       10.34.0.5
+                    AAAA    fdf3:2049:5152::a22:5
+gw6                 A       10.34.0.6
+                    AAAA    fdf3:2049:5152::a22:6
+firmware            CNAME   gw2
+webserver1          CNAME   gw2
+map                 CNAME   gw2
+ns1                 CNAME   gw2
