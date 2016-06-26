@@ -28,6 +28,6 @@ zone {{ zone }} {
     masters { {{ masters }} };
     file "db.{{ zone }}";
     {% endif -%}
-}
+};
 {% endfor -%}
 {% endif -%}
