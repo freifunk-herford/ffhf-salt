@@ -1,5 +1,5 @@
-Test Data Peers
-===============
+Peers
+=====
 
 .. include:: peers.rst
 

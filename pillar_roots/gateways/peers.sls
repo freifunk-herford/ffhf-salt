@@ -1,15 +1,21 @@
-# Test Data Peers
+# Peers
 
 peers:
   gw1:
-    fqdn: gw1.digital-nerv.net
-    key: 076616d8b4e879f9f11f7d287e06b153347ff710fd31ac5586c028f84cbfd17d
+    fqdn: gw1.herford.freifunk.net
+    key: 4033298711b9a5a9862405486e603db0984812e4abb2d85d74b89ab06626ce99
   gw2:
-    fqdn: gw2.digital-nerv.net
-    key: f9165006d55f1eeb2b09b8ae6193700fcd4c297183d373c7d1fa2dfea86e6ffc
+    fqdn: gw2.herford.freifunk.net
+    key: a2f590bcd6936b55c0a3e3493c4ee9a1c08fa6e2e505b168c5713218416145cd
   gw3:
-    fqdn: gw3.digital-nerv.net
-    key: 0796825163e27fdeeb4d2e66cdb8bb7dc81ad8ad5dd5e400a6ee0cc6204884e9
+    fqdn: gw3.herford.freifunk.net
+    key: 6b9c2bbe6b90fef3c8046c8551a0681a8b3bf24c8fd9e87d12dd1bdcf2f38d1c
   gw4:
-    fqdn: gw4.digital-nerv.net
-    key: 871bde12620761fd7480a27874b572bde730a6a541e1057f7b2caf8bb8277c9a
+    fqdn: gw4.herford.freifunk.net
+    key: 3f4bc64be2c5ade4297bac8846a499dee9e01da062161edda562a582a59bbb1f
+  gw5:
+    fqdn: gw5.herford.freifunk.net
+    key: 081fdcf3e03976dcc340372ac1692b2fcd2de89f2d00db738078ea6ff2e13213
+  gw6:
+    fqdn: gw6.herford.freifunk.net
+    key: 294e0a87b9700e4a3cde011a24c2839be243406b8b18818729b591e73e70fc1a

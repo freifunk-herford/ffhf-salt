@@ -11,7 +11,6 @@ $TTL 10800 ; 3 hours
                     )
                     NS      gw2.ffhf.
 $ORIGIN 34.10.in-addr.arpa.
-0                   PTR     mynode.ffhf.
 1                   PTR     gw1.ffhf.
 2                   PTR     gw2.ffhf.
 3                   PTR     gw3.ffhf.

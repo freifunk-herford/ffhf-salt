@@ -2,7 +2,6 @@ base:
   '^gw(.*)$':
     - match: pcre
     - gateways.shared
-    # Test Daten
     - gateways.peers
 
   'gw1':

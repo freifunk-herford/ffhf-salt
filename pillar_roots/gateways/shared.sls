@@ -42,16 +42,18 @@ dhcp:
   domain_search: ffhf
 
 bind:
-  ipv6:
-    zone_reverse: 2.5.1.5.9.4.0.2.3.f.d.f.ip6.arpa
-    trusted: fdf3:2049:5152::/48;
-  ipv4:
-    zone_reverse: 34.10.in-addr.arpa
-    trusted: 10.34.0.0/16;
+  zones:
+    - ffhf
+    - 34.10.in-addr.arpa
+    - 2.5.1.5.9.4.0.2.3.f.d.f.ip6.arpa
+  trusted:
+    - 127.0.0.1
+    - 10.34.0.0/16
+    - ::1
+    - fdf3:2049:5152::/48
   # masters: 10.34.0.32; fdf3:2049:5152::a22:20;
   # Test Daten Dummy DNS Master
   masters: 10.34.0.2; fdf3:2049:5152::a22:2;
-  zone: ffhf
 
 iptables:
   ipv4:

@@ -14,9 +14,9 @@
       - file: /etc/bind/named.conf.local
       - file: /etc/bind/named.conf.options
       {% if pillar['bind'].get('master', None) %}
-      - file: /etc/bind/db.{{ pillar['bind']['zone'] }}
-      - file: /etc/bind/db.{{ pillar['bind']['ipv4']['zone_reverse'] }}
-      - file: /etc/bind/db.{{ pillar['bind']['ipv6']['zone_reverse'] }}
+      {% for zone in pillar['bind']['zones'] %}
+      - file: /etc/bind/db.{{ zone }}
+      {% endfor %}
       {% endif %}
 
 /etc/bind/named.conf.local:
@@ -27,11 +27,8 @@
     - defaults:
         master: {{ pillar['bind'].get('master', None) }}
         masters: {{ pillar['bind']['masters'] }}
-        zone: {{ pillar['bind']['zone'] }}
-        zone_reverse: {{ pillar['bind']['ipv4']['zone_reverse'] }}
-        zone_reverse_v6: {{ pillar['bind']['ipv6']['zone_reverse'] }}
-        trusted_v6: {{ pillar['bind']['ipv6']['trusted'] }}
-        trusted: {{ pillar['bind']['ipv4']['trusted'] }}
+        trusted: {{ pillar['bind']['trusted'] }}
+        zones: {{ pillar['bind']['zones'] }}
     - user: root
     - group: root
     - mode: 644
@@ -53,23 +50,13 @@
        - pkg: {{ bind.pkg }}
 
 {% if pillar['bind'].get('master', None) %}
-/etc/bind/db.{{ pillar['bind']['zone'] }}:
+{% for zone in pillar['bind']['zones'] %}
+/etc/bind/db.{{ zone }}:
   file.managed:
-    - name: /etc/bind/db.{{ pillar['bind']['zone'] }}
-    - source: salt://gateway/etc/bind/db.{{ pillar['bind']['zone'] }}
-    # - unless: test -f /etc/bind/db.{{ pillar['bind']['zone'] }}
-
-/etc/bind/db.{{ pillar['bind']['ipv4']['zone_reverse'] }}:
-  file.managed:
-    - name: /etc/bind/db.{{ pillar['bind']['ipv4']['zone_reverse'] }}
-    - source: salt://gateway/etc/bind/db.{{ pillar['bind']['ipv4']['zone_reverse'] }}
-    # - unless: test -f /etc/bind/db.{{ pillar['bind']['ipv4']['zone_reverse'] }}
-
-/etc/bind/db.{{ pillar['bind']['ipv6']['zone_reverse'] }}:
-  file.managed:
-    - name: /etc/bind/db.{{ pillar['bind']['ipv6']['zone_reverse'] }}
-    - source: salt://gateway/etc/bind/db.{{ pillar['bind']['ipv6']['zone_reverse'] }}
-    # - unless: test -f /etc/bind/db.{{ pillar['bind']['ipv6']['zone_reverse'] }}
+    - name: /etc/bind/db.{{ zone }}
+    - source: salt://gateway/etc/bind/db.{{ zone }}
+    # - unless: test -f /etc/bind/db.{{ zone }}
+{% endfor %}
 {% else %}
 
 {% endif %}

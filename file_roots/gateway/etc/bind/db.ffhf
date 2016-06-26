@@ -13,8 +13,6 @@ ffhf                IN SOA  gw2.ffhf. hostmaster.ffhf. (
                     A       10.34.0.2
                     AAAA    fdf3:2049:5152::a22:32
 $ORIGIN ffhf.
-nextnode            A       10.34.1.1
-                    AAAA    fdf3:2049:5152::1:1
 gw1                 A       10.34.0.1
                     AAAA    fdf3:2049:5152::a22:1
 gw2                 A       10.34.0.2
@@ -31,3 +29,5 @@ firmware            CNAME   gw2
 webserver1          CNAME   gw2
 map                 CNAME   gw2
 ns1                 CNAME   gw2
+nextnode            A       10.34.1.1
+                    AAAA    fdf3:2049:5152::1:1

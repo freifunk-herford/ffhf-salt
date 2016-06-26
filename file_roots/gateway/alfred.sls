@@ -96,7 +96,7 @@ alfred.service:
         batmanif: {{ pillar['network']['batman']['interface'] }}
         socket: {{ pillar['alfred']['socket'] }}
 
-alfred-announce:
+alfred-announce-prepare:
   pkg.installed:
     - pkgs:
         {% if grains['os_family'] == 'Debian' %}
@@ -108,6 +108,8 @@ alfred-announce:
     - name: /root/scripts/announce/requirements.txt
     - source: salt://gateway/root/scripts/announce/requirements.txt
     - makedirs: True
+
+alfred-announce-venv:
   virtualenv.managed:
     - python: python3
     - cwd: /root/scripts/announce
@@ -115,8 +117,8 @@ alfred-announce:
     - requirements: /root/scripts/announce/requirements.txt
     - pip_upgrade: True
     - require:
-      - pkg: alfred-announce
-      - file: alfred-announce
+      - pkg: alfred-announce-prepare
+      - file: alfred-announce-prepare
 
 ffnord-alfred-announce:
   git.latest:
@@ -124,7 +126,7 @@ ffnord-alfred-announce:
     - target: /root/scripts/announce/ffnord-alfred-announce
     - unless: test -d /root/scripts/announce/ffnord-alfred-announce
     - require:
-      - file: alfred-announce
+      - file: alfred-announce-prepare
 
 alfred-announce-cron:
   cron.present:
@@ -150,5 +152,3 @@ alfred-announce-cron:
         mesh: {{ pillar['network']['mesh']['interface'] }}
         socket: {{ pillar['alfred']['socket'] }}
         sitecode: {{ pillar['alfred']['sitecode'] }}
-    - require:
-      - file: alfred-announce
