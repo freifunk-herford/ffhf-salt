@@ -6,7 +6,10 @@ MAINTAINER Svenja Dovnic <sdovnic@web.de>
 # time make GLUON_TARGET=ar71xx-generic V=s
 # time make GLUON_TARGET=x86-generic V=s
 
-ENV GLUON_TARGET ar71xx-generic
+#ENV GIT_SITE https://github.com/freifunk-herford/site-ffhf.git
+ENV GIT_SITE https://le.basicartstudios.de/git/site-ffhf-dnn.git
+#ENV GLUON_TARGET ar71xx-generic
+ENV GLUON_TARGET x86-generic
 ENV GLUON_BRANCH v2016.1.5
 ENV GLUON_USER gluon
 
@@ -18,8 +21,13 @@ USER ${GLUON_USER}
 
 WORKDIR /home/${GLUON_USER}
 
-RUN git clone -b ${GLUON_BRANCH} https://github.com/freifunk-gluon/gluon.git /home/${GLUON_USER}
-RUN git clone https://github.com/freifunk-herford/site-ffhf.git /home/${GLUON_USER}/site
+RUN git clone -b ${GLUON_BRANCH} https://github.com/freifunk-gluon/gluon.git /home/${GLUON_USER}/gluon
+RUN git clone ${GIT_SITE} /home/${GLUON_USER}/gluon/site
+
+WORKDIR /home/${GLUON_USER}/gluon
+
+RUN mkdir output
+
 RUN make update
 
 CMD /bin/bash
