@@ -2,6 +2,10 @@
 # Copyright 2016 - 2016 Tobias Benzin tbenzin@digital-nerv.net
 #                       Rally Vincent rvincent@digital-nerv.net
 
+base="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+current=$(pwd)
+cd $base
+
 states=$(cat ../file_roots/gateway/init.sls | awk -F '.' '{/  -/;print $2}')
 
 for state in ${states[@]}; do
@@ -109,3 +113,5 @@ for pillar in ${pillars[@]}; do
 done
 
 venv/bin/sphinx-build -b html -a docs/source docs/build/html -d docs/build/doctrees -c docs/source
+
+cd ${current}

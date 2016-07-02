@@ -22,13 +22,21 @@
     - refresh: True
     {% endif %}
     - unless: test -f /usr/sbin/bird
-  service.running:
-    - name: {{ bird.srv }}
-    - enable: True
-    - watch:
-      - file: /etc/bird.conf
+  # service.running:
+  #   - name: {{ bird.srv }}
+  #   - enable: True
+  #   - watch:
+  #     - file: /etc/bird.conf
 
 /etc/bird/bird.conf:
+  file.managed:
+    - name: /etc/bird.conf
+    - source: salt://gateway/etc/bird/bird.conf
+    - user: root
+    - group: root
+    - mode: 644
+
+/etc/bird/bird6.conf:
   file.managed:
     - name: /etc/bird.conf
     - source: salt://gateway/etc/bird/bird.conf

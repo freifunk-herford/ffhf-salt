@@ -40,3 +40,8 @@
         bridge: {{ pillar['network']['bridge']['interface'] }}
         exit: {{ pillar['network']['exit']['interface'] }}
         intercity: {{ pillar['network']['intercity']['interface'] }}
+  cmd.run:
+    - name: sh /etc/rc.local
+    - unless: test -n "$(ip rule show | grep 61)"
+    - require:
+      - file: /etc/rc.local
