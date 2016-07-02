@@ -1,4 +1,4 @@
-# OpenSSH
+# OpenSSH - OpenBSD Secure Shell server
 
 {% set ssh = salt['grains.filter_by']({
   'Debian': {'pkg': 'openssh-server', 'srv': 'ssh'}

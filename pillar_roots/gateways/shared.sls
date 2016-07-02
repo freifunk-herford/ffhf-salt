@@ -67,7 +67,6 @@ network:
   batman:
     interface: hfBAT # bat0
   mesh:
-    # vpn in mesh umbenennen?
     interface: hfVPN # tun0/tap0
   exit:
     interface: exitVPN # tun0/tap0

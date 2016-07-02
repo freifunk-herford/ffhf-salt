@@ -1,4 +1,4 @@
-# BGP Routing (Border Gateway Protocol)
+# BIRD - Internet Routing Daemon
 
 {% set bird = salt['grains.filter_by']({
   'Debian': {'pkg': 'bird', 'srv': 'bird'},

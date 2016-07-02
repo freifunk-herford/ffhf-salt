@@ -1,4 +1,4 @@
-A.L.F.R.E.D. (Almighty Lightweight Fact Remote Exchange Daemon)
+A.L.F.R.E.D. - Almighty Lightweight Fact Remote Exchange Daemon
 ===============================================================
 
 .. include:: alfred.rst

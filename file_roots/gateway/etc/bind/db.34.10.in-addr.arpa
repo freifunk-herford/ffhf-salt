@@ -11,10 +11,10 @@ $TTL 10800 ; 3 hours
                     )
                     NS      gw2.ffhf.
 $ORIGIN 34.10.in-addr.arpa.
-1                   PTR     gw1.ffhf.
-2                   PTR     gw2.ffhf.
-3                   PTR     gw3.ffhf.
-4                   PTR     gw4.ffhf.
-5                   PTR     gw5.ffhf.
-6                   PTR     gw6.ffhf.
-7                   PTR     gw7.ffhf.
+1.0                 PTR     gw1.ffhf.
+2.0                 PTR     gw2.ffhf.
+3.0                 PTR     gw3.ffhf.
+4.0                 PTR     gw4.ffhf.
+5.0                 PTR     gw5.ffhf.
+6.0                 PTR     gw6.ffhf.
+7.0                 PTR     gw7.ffhf.

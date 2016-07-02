@@ -56,8 +56,14 @@ ip -6 route add fdf3:2049:5152::/48 proto static dev {{ bridge }} table ffhf # T
 ip -4 route add unreachable default table ffinetexit
 ip -6 route add unreachable default table ffinetexit
 
-if [ "$(service alfred status | grep stop)" ]; then
-    service alfred start
+if [ -f /bin/systemctl ]; then
+	if [ "$(systemctl status alfred | grep -E 'Active: inactive|Active: failed')" ]; then
+		systemctl restart alfred
+	fi
+else
+	if [ "$(service alfred status | grep stop)" ]; then
+		service alfred start
+	fi
 fi
 
 exit 0

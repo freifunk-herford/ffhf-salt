@@ -1,5 +1,5 @@
-IPv6 Router Advertisements
-===========================
+RAdvD - Router Advertising Daemon
+=================================
 
 .. include:: radvd.rst
 

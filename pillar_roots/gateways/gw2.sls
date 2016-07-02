@@ -5,15 +5,14 @@ dhcp:
     routers: 10.34.0.2
     domain_name_servers: 10.34.0.2
     ntp_servers: 10.34.0.2
-  ipv6:
+  ipv6: # Not used yet
     subnet: 'fe80::/64'
     name_servers: fe80::a00:27ff:fe4c:84e7
     routers: fe80::a00:27ff:fe4c:84e7
     domain_name_servers: fe80::a00:27ff:fe4c:84e7
 
 bind:
-  # Test Daten Dummy DNS Master
-  master: True
+  master: True # Test Daten Dummy DNS Master
   ipv6:
     listen_on: ::1; fdf3:2049:5152::a22:2;
   ipv4:
@@ -29,17 +28,14 @@ network:
     netmask6: 48
   mesh:
     hwaddress: 02:42:0a:22:00:02
-  primary:
-    # Test Daten
+  primary: # Test Daten
     interface: enp0s3
-    address: 192.168.0.198
-    address6: fe80::a00:27ff:fe4c:84e7
+    address: 192.168.0.190
+    address6: fe80::a00:27ff:fe4d:cbf6/64
 
 openvpn:
-  provider: dnn_linux
-  # provider: mullvad_linux
-  mullvad_linux:
-    # Test Daten
+  provider: dnn_linux # mullvad_linux
+  mullvad_linux: # Test Daten
     mullvad.crt: |
       -----BEGIN PGP MESSAGE-----
       Version: GnuPG v2
@@ -268,8 +264,7 @@ openvpn:
       =qhp0
       -----END PGP MESSAGE-----
 
-fastd:
-  # Test Daten
+fastd: # Test Daten
   secret: |
     -----BEGIN PGP MESSAGE-----
     Version: GnuPG v2

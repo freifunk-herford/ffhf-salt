@@ -1,4 +1,4 @@
-OpenVPN (Virtual Private Network)
+OpenVPN - Virtual Private Network
 =================================
 
 .. include:: openvpn.rst

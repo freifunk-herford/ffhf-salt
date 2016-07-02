@@ -1,5 +1,5 @@
-Fail2ban
-=========
+Fail2Ban Service
+================
 
 .. include:: fail2ban.rst
 

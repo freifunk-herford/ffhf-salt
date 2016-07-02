@@ -1,4 +1,4 @@
-B.A.T.M.A.N. (Better Approach To Mobile Adhoc Networking)
+B.A.T.M.A.N. - Better Approach To Mobile Adhoc Networking
 =========================================================
 
 .. include:: batman.rst

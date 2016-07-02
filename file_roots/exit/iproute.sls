@@ -11,3 +11,7 @@
   file.append:
     - name: /etc/iproute2/rt_tables
     - text: ''
+
+#allow-hotplug enp0s8
+#iface enp0s8 inet dhcp
+#   post-up ip route change default via 10.34.0.3

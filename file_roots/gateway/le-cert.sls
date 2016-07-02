@@ -1,11 +1,9 @@
 # Let´s Encrypt
 
-# requirements:
-# apt-get install python-virtualenv
-# emerge virtualenv
-# apt-get install build-essential libssl-dev libffi-dev python-dev
-
 le-cert:
+  file.directory:
+    - name: /root/scripts
+    - makedirs: True
   git.latest:
     - name: https://git.digital-nerv.net/le-cert.git
     - target: /root/scripts/le-cert
@@ -17,9 +15,8 @@ le-cert:
     - force_fetch: True
     - force_reset: True
     - force_checkout: True
-  file.directory:
-    - name: /root/scripts
-    - makedirs: True
+    - require:
+      - file: le-cert
   pkg.installed:
     - pkgs:
         {% if grains['os_family'] == 'Debian' %}
@@ -29,12 +26,40 @@ le-cert:
         - python-dev
         - python-virtualenv
         {% endif %}
+        {% if grains['os_family'] == 'Gentoo' %}
+        - dev-lang/python
+        - dev-python/virtualenv
+        {% endif %}
   virtualenv.managed:
-    - cwd: /root/scripts/le-cert
     - name: /root/scripts/le-cert/venv
+    - cwd: /root/scripts/le-cert
     - requirements: /root/scripts/le-cert/requirements.txt
     - pip_upgrade: True
     - require:
-      - git: le-cert
-      - pkg: le-cert
-      - file: le-cert
+        - git: le-cert
+        - file: le-cert
+        - pkg: le-cert
+
+/root/scripts/le-cert/le-cert-calendar.sh:
+  file.managed:
+    - name: /root/scripts/le-cert/le-cert-calendar.sh
+    - mode: 755
+    - require:
+        - git: le-cert
+        - file: le-cert
+
+/root/scripts/le-cert/le-cert-renew.sh:
+  file.managed:
+    - name: /root/scripts/le-cert/le-cert-renew.sh
+    - mode: 755
+    - require:
+        - git: le-cert
+        - file: le-cert
+
+/root/scripts/le-cert/le-cert-tool.sh:
+  file.managed:
+    - name: /root/scripts/le-cert/le-cert-tool.sh
+    - mode: 755
+    - require:
+        - git: le-cert
+        - file: le-cert

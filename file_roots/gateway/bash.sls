@@ -1,4 +1,4 @@
-# Bash (Bourne Again Shell)
+# Bash - Bourne Again Shell
 
 {% set bash = salt['grains.filter_by']({
   'Debian': {'pkg': 'bash'},

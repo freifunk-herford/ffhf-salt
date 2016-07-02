@@ -1,4 +1,4 @@
-# A.L.F.R.E.D. (Almighty Lightweight Fact Remote Exchange Daemon)
+# A.L.F.R.E.D. - Almighty Lightweight Fact Remote Exchange Daemon
 
 {% set alfred = salt['grains.filter_by']({
   'Debian': {'pkgs': ['alfred', 'alfred-json', 'batadv-vis']}
@@ -13,9 +13,9 @@ alfred:
         {% endfor %}
     - refresh: True
     - install_recommends: False
-    - require:
-      - sls: gateway.batman
-      - sls: gateway.fastd
+    # - require:
+    #   - sls: gateway.batman
+    #   - sls: gateway.fastd
 {% endif %}
 
 {% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '16.04' %}
@@ -54,14 +54,14 @@ alfred.service:
       - file: /lib/systemd/system/alfred.service
       {% endif %}
       - file: /etc/default/alfred
-      - sls: gateway.fastd
+      # - sls: gateway.fastd
     - require:
       {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
       - file: /lib/systemd/system/alfred.service
       {% endif %}
       - file: /etc/default/alfred
       - pkg: alfred
-      - sls: gateway.fastd
+      # - sls: gateway.fastd
 
 {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
 /lib/systemd/system/batadv-vis.service:
@@ -71,6 +71,10 @@ alfred.service:
     - user: root
     - group: root
     - mode: 644
+  cmd.run:
+    - name: systemctl daemon-reload
+    - onchanges:
+      - file: /lib/systemd/system/batadv-vis.service
 {% endif %}
 
 {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
@@ -81,6 +85,10 @@ alfred.service:
     - user: root
     - group: root
     - mode: 644
+  cmd.run:
+    - name: systemctl daemon-reload
+    - onchanges:
+      - file: /lib/systemd/system/alfred.service
 {% endif %}
 
 /etc/default/alfred:
@@ -95,6 +103,25 @@ alfred.service:
         interface: {{ pillar['network']['bridge']['interface'] }}
         batmanif: {{ pillar['network']['batman']['interface'] }}
         socket: {{ pillar['alfred']['socket'] }}
+
+/root/scripts/check-alfred.sh:
+  file.managed:
+    - name: /root/scripts/check-alfred.sh
+    - source: salt://gateway/root/scripts/check-alfred.sh
+    - makedirs: True
+    - user: root
+    - group: root
+    - mode: 755
+
+check-alfred-cron:
+  cron.present:
+    - name: /root/scripts/check-alfred.sh
+    - identifier: check-alfred
+    - user: root
+    - minute: '*/5'
+    - comment: 'Check if A.L.F.R.E.D. is running every 5 Minutes'
+    - require:
+      - file: /root/scripts/check-alfred.sh
 
 alfred-announce-prepare:
   pkg.installed:
@@ -142,6 +169,7 @@ alfred-announce-cron:
   file.managed:
     - name: /root/scripts/alfred-announce.sh
     - source: salt://gateway/root/scripts/alfred-announce.sh
+    - makedirs: True
     - user: root
     - group: root
     - mode: 755

@@ -23,5 +23,7 @@ nat-POSTROUTING-ACCEPT-MASQUERADE:
     - family: ipv4
     - chain: POSTROUTING
     - jump: MASQUERADE
-    - source: 10.8.0.0/8
+    - source: 10.8.0.0/16
     - out-interface: {{ pillar['network']['secondary']['interface'] }}
+
+# Todo: Not Saving iptables

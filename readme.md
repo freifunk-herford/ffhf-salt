@@ -90,6 +90,8 @@ bird war nicht konfiguriert bisher
 
 ## Missing Steps
 
+	??? hfBR: received packet on hfBAT with own address as source address
+
 	# hier die Config fuer einen slave von ns1 = map
 	# master ist /var/lib/bind
 	# slave  ist /var/cache/bind

@@ -1,5 +1,5 @@
-Fastd VPN (Virtual Private Network)
-===================================
+Fastd - Fast and Secure Tunneling Daemon
+========================================
 
 .. include:: fastd.rst
 

@@ -7,14 +7,12 @@
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 SHELL=/bin/bash
 
-if [ -z "$(ifconfig | grep {{ exit }})" ]; then
-	service openvpn restart
-	exit
-fi
-
-testping=$(ping -q -I {{ exit }} 8.8.8.8 -c 4 -i 1 -W 5 | grep 100)
-
-if [ -n "${testping}" ]; then
-	service openvpn restart
-	exit
+if [ -f /bin/systemctl ]; then
+	if [ "$(systemctl status alfred | grep -E 'Active: inactive|Active: failed')" ]; then
+		systemctl restart alfred
+	fi
+else
+	if [ "$(service alfred status | grep stop)" ]; then
+		service alfred restart
+	fi
 fi

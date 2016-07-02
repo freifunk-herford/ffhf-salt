@@ -1,5 +1,5 @@
-BGP Routing (Border Gateway Protocol)
-=====================================
+BIRD - Internet Routing Daemon
+==============================
 
 .. include:: bird.rst
 

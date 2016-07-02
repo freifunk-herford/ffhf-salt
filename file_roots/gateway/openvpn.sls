@@ -1,4 +1,4 @@
-# OpenVPN (Virtual Private Network)
+# OpenVPN - Virtual Private Network
 
 {% set openvpn = salt['grains.filter_by']({
   'Debian': {'pkg': 'openvpn', 'srv': 'openvpn'}
@@ -10,16 +10,34 @@
   service.running:
     - name: {{ openvpn.srv }}
     - enable: True
-    - watch:
+    - require:
         - file: /etc/default/openvpn
         {% if pillar['openvpn']['provider'] == 'mullvad_linux' %}
         - file: /etc/openvpn/openvpn-updown
+        - file: /etc/openvpn/ca.crt
         - file: /etc/openvpn/mullvad.crt
         - file: /etc/openvpn/mullvad.key
         - file: /etc/openvpn/mullvad_linux.conf
         {% endif %}
         {% if pillar['openvpn']['provider'] == 'dnn_linux' %}
         - file: /etc/openvpn/openvpn-updown
+        - file: /etc/openvpn/ca.crt
+        - file: /etc/openvpn/dnn.crt
+        - file: /etc/openvpn/dnn.key
+        - file: /etc/openvpn/dnn_linux.conf
+        {% endif %}
+    - watch:
+        - file: /etc/default/openvpn
+        {% if pillar['openvpn']['provider'] == 'mullvad_linux' %}
+        - file: /etc/openvpn/openvpn-updown
+        - file: /etc/openvpn/ca.crt
+        - file: /etc/openvpn/mullvad.crt
+        - file: /etc/openvpn/mullvad.key
+        - file: /etc/openvpn/mullvad_linux.conf
+        {% endif %}
+        {% if pillar['openvpn']['provider'] == 'dnn_linux' %}
+        - file: /etc/openvpn/openvpn-updown
+        - file: /etc/openvpn/ca.crt
         - file: /etc/openvpn/dnn.crt
         - file: /etc/openvpn/dnn.key
         - file: /etc/openvpn/dnn_linux.conf

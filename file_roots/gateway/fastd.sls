@@ -1,4 +1,4 @@
-# Fastd VPN (Virtual Private Network)
+# Fastd - Fast and Secure Tunneling Daemon
 
 {% set fastd = salt['grains.filter_by']({
   'Debian': {'pkg': 'fastd', 'srv': 'fastd'}
@@ -21,6 +21,7 @@ fastd:
     - unless: test -f /usr/sbin/fastd
   service.running:
     - name: {{ fastd.srv }}
+    - init_delay: 120
     - enable: True
     - watch:
       - file: /etc/fastd/{{ grains['id'] }}/fastd.conf
@@ -31,10 +32,10 @@ fastd:
       - file: /etc/fastd/{{ grains['id'] }}/secret.conf
       - file: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}
 
-fastd-first-run:
-  cmd.run:
-    - name: sleep 20; service fastd restart
-    - unless: test -n "$(ifconfig | grep hfBAT)"
+# fastd-first-run:
+#   cmd.run:
+#     - name: sleep 20; service fastd restart
+#     - unless: test -n "$(ifconfig | grep hfBAT)"
 {% endif %}
 
 /etc/fastd/{{ grains['id'] }}/fastd.conf:
@@ -68,10 +69,9 @@ fastd-first-run:
 #   cmd.run:
 #     - name: rsync
 
-# Test Daten
 {% for peer, data in pillar['peers'].items() %}
 {% if peer != grains['id'] %}
-/etc/fastd/{{ grains['id'] }}/peers/{{ peer }}-test-data:
+/etc/fastd/{{ grains['id'] }}/peers/{{ peer }}:
   file.managed:
     - name: /etc/fastd/{{ grains['id'] }}/peers/{{ peer }}
     - contents: |

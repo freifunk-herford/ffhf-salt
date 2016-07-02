@@ -1,5 +1,5 @@
-Bash (Bourne Again Shell)
-==========================
+Bash - Bourne Again Shell
+=========================
 
 .. include:: bash.rst
 

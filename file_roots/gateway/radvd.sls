@@ -1,4 +1,4 @@
-# IPv6 Router Advertisements
+# RAdvD - Router Advertising Daemon
 
 {% set radvd = salt['grains.filter_by']({
   'Debian': {'pkg': 'radvd', 'srv': 'radvd'}

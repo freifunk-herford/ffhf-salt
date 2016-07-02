@@ -20,7 +20,7 @@ gluon-build:
     - name: gluon
     - image: gluon
     - user: root
-    - working_dir: /home/gluon/gluon
-    - binds: /root/gluon/output:/home/gluon/gluon/output:rw
-    - command: time make GLUON_TARGET=x86-generic V=s
+    - working_dir: /gluon
+    - binds: /root/gluon/output:/gluon/output:rw
+    - command: make GLUON_TARGET=x86-generic FORCE_UNSAFE_CONFIGURE=1 V=s
     - unless: test -f /root/gluon/output/images/factory/gluon-ffhf-0.0.4-dnn-x86-generic.img.gz
