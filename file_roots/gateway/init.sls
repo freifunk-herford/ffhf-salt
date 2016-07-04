@@ -9,10 +9,10 @@ include:
   - gateway.iproute
   - gateway.iptables
   - gateway.fail2ban
+  - gateway.batman
   - gateway.fastd
   - gateway.bird
   - gateway.radvd
-  - gateway.batman
   - gateway.alfred
   - gateway.dhcp-server
   - gateway.name-server

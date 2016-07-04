@@ -16,10 +16,10 @@ Inhalt:
    iproute/index
    iptables/index
    fail2ban/index
+   batman/index
    fastd/index
    bird/index
    radvd/index
-   batman/index
    alfred/index
    dhcp-server/index
    name-server/index

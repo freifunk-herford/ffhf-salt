@@ -7,8 +7,8 @@
 {{ etckeeper.pkg }}:
   pkg.installed:
     - name: {{ etckeeper.pkg }}
-    - require:
-      - sls: gateway.git
+    # - require:
+    #   - sls: gateway.git
 
 /etc/etckeeper/etckeeper.conf:
    file.replace:

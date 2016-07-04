@@ -6,19 +6,26 @@
 
 {% if grains['os_family'] == 'Debian' %}
 fastd-repository:
+  cmd.run:
+    - name: |
+        gpg --keyserver pgpkeys.mit.edu --recv-key 16EF3F64CB201D9C
+        gpg -a --export 16EF3F64CB201D9C | sudo apt-key add -
+    - unless: test -n "$(apt-key list | grep universe-factory.net)"
   pkgrepo.managed:
     - name: deb https://repo.universe-factory.net/debian/ sid main
     - file: /etc/apt/sources.list.d/repo.universe-factory.net.list
-    - keyid: 16EF3F64CB201D9C
-    - keyserver: keyserver.ubuntu.com
+    # - keyid: 16EF3F64CB201D9C
+    # - keyserver: pgpkeys.mit.edu
     - require_in:
       - pkg: {{ fastd.pkg }}
+    - require:
+      - cmd: fastd-repository
 
 fastd:
-  pkg.latest:
+  pkg.installed:
     - name: {{ fastd.pkg }}
     - refresh: True
-    - unless: test -f /usr/sbin/fastd
+    # - unless: test -f /usr/sbin/fastd
   service.running:
     - name: {{ fastd.srv }}
     - init_delay: 120
@@ -31,6 +38,8 @@ fastd:
       - file: /etc/fastd/{{ grains['id'] }}/fastd.conf
       - file: /etc/fastd/{{ grains['id'] }}/secret.conf
       - file: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}
+    - require:
+      - pkg: {{ fastd.pkg }}
 
 # fastd-first-run:
 #   cmd.run:

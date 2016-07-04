@@ -71,6 +71,8 @@ init-vnstat-{{ pillar['network']['exit']['interface'] }}:
         - mode
         - user
         - group
+    - require:
+      - pkg: {{ vnstat.pkg }}
 
 {% set vnstati = salt['grains.filter_by']({
   'Debian': {'pkg': 'vnstati'}
