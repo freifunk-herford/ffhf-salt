@@ -46,8 +46,8 @@
     - defaults:
         subnet: {{ pillar['dhcp']['ipv4']['subnet'] }}
         netmask: {{ pillar['dhcp']['ipv4']['netmask'] }}
-        range_start: {{ pillar['dhcp']['ipv4']['range_start'] }}
-        range_end: {{ pillar['dhcp']['ipv4']['range_end'] }}
+        range_start: {{ salt['pillar.get']('dhcp:ipv4:' + salt['grains.get']('id', "") + ':range_start', "") }}
+        range_end: {{ pillar['dhcp']['ipv4'][grains.id]['range_end'] }}
         routers: {{ pillar['dhcp']['ipv4']['routers'] }}
         domain_name_servers: {{ pillar['dhcp']['ipv4']['domain_name_servers'] }}
         interface_mtu: {{ pillar['dhcp']['interface_mtu'] }}
