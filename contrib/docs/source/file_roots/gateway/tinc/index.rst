@@ -1,5 +1,5 @@
 tinc VPN (Virtual Private Network)
-===================================
+==================================
 
 .. include:: tinc.rst
 

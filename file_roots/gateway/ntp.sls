@@ -23,4 +23,3 @@
       - pkg: {{ ntp.pkg }}
 
 # Show Status: ntpq -p
-

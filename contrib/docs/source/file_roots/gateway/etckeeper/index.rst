@@ -1,5 +1,5 @@
 etc Keeper
-===========
+==========
 
 .. include:: etckeeper.rst
 

@@ -1,5 +1,5 @@
 NTP (Network Time Protocol)
-============================
+===========================
 
 .. include:: ntp.rst
 

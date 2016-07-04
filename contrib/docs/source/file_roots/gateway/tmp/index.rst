@@ -1,5 +1,5 @@
 /tmp
-=====
+====
 
 .. include:: tmp.rst
 
