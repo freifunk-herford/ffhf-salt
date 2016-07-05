@@ -18,3 +18,4 @@ $ORIGIN 34.10.in-addr.arpa.
 5.0                 PTR     gw5.ffhf.
 6.0                 PTR     gw6.ffhf.
 7.0                 PTR     gw7.ffhf.
+22.0                PTR     map.ffhf.

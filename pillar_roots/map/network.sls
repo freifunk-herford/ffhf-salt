@@ -4,14 +4,17 @@ network:
     address: 192.168.0.174
     address6: fe80::a00:27ff:fe2b:2015/64
   bridge:
-    hwaddress: 02:42:0a:22:00:22
-    address: 10.34.0.1
+    hwaddress: 02:42:0a:22:00:20
+    address: 10.34.0.32
     netmask: 255.255.0.0
-    address6: fdf3:2049:5152::a22:22
-    address6mask: fdf3:2049:5152::a22:22/64
+    address6: fdf3:2049:5152::a22:20
+    address6mask: fdf3:2049:5152::a22:20/64
     netmask6: 48
   mesh:
-    hwaddress: 02:42:0a:22:00:22
+    hwaddress: 02:42:0a:22:00:20
+
+alfred:
+  master: True
 
 fastd:
   fqdn: map.digital-nerv.net

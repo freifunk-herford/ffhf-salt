@@ -103,6 +103,11 @@ alfred.service:
         interface: {{ pillar['network']['bridge']['interface'] }}
         batmanif: {{ pillar['network']['batman']['interface'] }}
         socket: {{ pillar['alfred']['socket'] }}
+        args: ''
+    {% if pillar['alfred'].get('master') %}
+    - context:
+        args: '-m'
+    {% endif %}
 
 /root/scripts/check-alfred.sh:
   file.managed:

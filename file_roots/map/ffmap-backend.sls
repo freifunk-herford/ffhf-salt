@@ -30,6 +30,34 @@ ffmap-backend-repository:
     - require:
       - file: ffmap-backend-prepare
 
+/root/scripts/update-ffmap.sh:
+  file.managed:
+    - name: /root/scripts/update-ffmap.sh
+    - source: salt://map/root/scripts/update-ffmap.sh
+    - template: jinja
+    - defaults:
+        batman: {{ pillar['network']['batman']['interface'] }}
+        data: {{ pillar['meshviewer']['data'] }}
+    - mode: 755
+    - user: root
+    - group: root
+    - makedirs: True
+
+{{ pillar['meshviewer']['data'] }}:
+  file.directory:
+    - name: {{ pillar['meshviewer']['data'] }}
+    - makedirs: True
+
+update-ffmap-cron:
+  cron.present:
+    - name: /root/scripts/update-ffmap.sh
+    - identifier: update-ffmap
+    - user: root
+    - minute: '*/1'
+    - comment: 'Update Map Data every Minute'
+    - require:
+      - file: /root/scripts/update-ffmap.sh
+
 # Todo: file.managed /root/script/update-ffmap.sh
 # Todo: cron.present /root/script/update-ffmap.sh */1
 

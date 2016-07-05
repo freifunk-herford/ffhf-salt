@@ -27,7 +27,8 @@ gw6                 A       10.34.0.6
                     AAAA    fdf3:2049:5152::a22:6
 firmware            CNAME   gw2
 webserver1          CNAME   gw2
-map                 CNAME   gw2
+map                 A       10.34.0.22
+                    AAAA    fdf3:2049:5152::a22:22
 ns1                 CNAME   gw2
 nextnode            A       10.34.1.1
                     AAAA    fdf3:2049:5152::1:1

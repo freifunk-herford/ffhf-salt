@@ -9,5 +9,6 @@ SHELL=/bin/bash
 
 base="/root/scripts/map"
 data="${base}/data"
+data="{{ data }}"
 
-${base}/venv/bin/python ${base}/ffmap-backend/backend.py -m {{ mesh }} -d ${data}
+${base}/venv/bin/python ${base}/ffmap-backend/backend.py -m {{ batman }} -d ${data}

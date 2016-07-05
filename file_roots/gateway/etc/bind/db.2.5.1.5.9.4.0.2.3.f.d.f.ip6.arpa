@@ -18,3 +18,4 @@ $ORIGIN 2.5.1.5.9.4.0.2.3.f.d.f.ip6.arpa.
 5                   PTR     gw5.ffhf.
 6                   PTR     gw6.ffhf.
 7                   PTR     gw7.ffhf.
+22                  PTR     map.ffhf.

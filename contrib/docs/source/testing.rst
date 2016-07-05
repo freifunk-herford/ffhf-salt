@@ -16,3 +16,15 @@ Beispielausgabe von ``batctl o`` auf einem gluon Node.
     02:42:0a:22:00:01    8.590s   (250) 02:42:0a:22:00:01 [  mesh-vpn]: 02:42:0a:22:00:03 (216) 02:42:0a:22:00:01 (250)
     02:42:0a:22:00:04    2.120s   (150) 02:42:0a:22:00:03 [  mesh-vpn]: 02:42:0a:22:00:01 (147) 02:42:0a:22:00:03 (150)
     02:42:0a:22:00:02    2.120s   (183) 02:42:0a:22:00:03 [  mesh-vpn]: 02:42:0a:22:00:03 (183) 02:42:0a:22:00:01 (181)
+
+Meshviewer auf dem Map Server in der Testumgebung.
+
+.. figure:: meshviewer-diagramm.png
+   :alt: Meshviewer Diagramm
+
+   Meshviewer Diagramm
+
+.. figure:: meshviewer-openstreetmap.png
+   :alt: Meshviewer OpenStreetMap
+
+   Meshviewer OpenStreetMap

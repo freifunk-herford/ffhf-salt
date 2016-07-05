@@ -15,3 +15,9 @@ base:
 
   'gw4':
     - gateways.gw4
+
+  'map':
+    - gateways.shared
+    - gateways.peers
+    - map.network
+    - map.meshviewer
