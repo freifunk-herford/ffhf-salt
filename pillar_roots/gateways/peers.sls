@@ -19,3 +19,11 @@ peers:
   gw6:
     fqdn: gw6.herford.freifunk.net
     key: 294e0a87b9700e4a3cde011a24c2839be243406b8b18818729b591e73e70fc1a
+  # gw7:
+  #   fqdn: gw7.herford.freifunk.net
+  # gw8:
+  #   fqdn: gw8.herford.freifunk.net
+  # gw9:
+  #   fqdn: gw9.herford.freifunk.net
+  # gw10:
+  #   fqdn: gw10.herford.freifunk.net

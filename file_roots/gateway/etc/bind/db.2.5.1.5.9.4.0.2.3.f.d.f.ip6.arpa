@@ -3,7 +3,7 @@
 $ORIGIN .
 $TTL 10800 ; 3 hours
 2.5.1.5.9.4.0.2.3.f.d.f.ip6.arpa  IN SOA  gw2.ffhf. hostmaster.ffhf. (
-                        2015092701 ; serial
+                        2016070702 ; serial
                         10800      ; refresh (3 hours)
                         3600       ; retry (1 hour)
                         604800     ; expire (1 week)
@@ -18,4 +18,4 @@ $ORIGIN 2.5.1.5.9.4.0.2.3.f.d.f.ip6.arpa.
 5                   PTR     gw5.ffhf.
 6                   PTR     gw6.ffhf.
 7                   PTR     gw7.ffhf.
-22                  PTR     map.ffhf.
+20                  PTR     map.ffhf.

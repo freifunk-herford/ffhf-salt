@@ -1,4 +1,4 @@
-{% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '16.04' %}
+{% if grains['os'] == 'Ubuntu' %}
 docker-repository:
   pkg.installed:
     - pkgs:
@@ -9,7 +9,11 @@ docker-repository:
     - unless: test -n "$(apt-key list | grep releasedocker)"
   pkgrepo.managed:
     - humanname: Docker Release Tool
+    {% if grains['osrelease'] == '16.04' %}
     - name: deb https://apt.dockerproject.org/repo ubuntu-xenial main
+    {% elif grains['osrelease'] == '14.04' %}
+    - name: deb https://apt.dockerproject.org/repo ubuntu-trusty main
+    {% endif %}
     - file: /etc/apt/sources.list.d/docker.list
 
 docker-engine:

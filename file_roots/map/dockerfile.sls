@@ -4,11 +4,11 @@
     - source: salt://map/root/meshviewer/Dockerfile
     - makedirs: True
 
-/root/meshviewer/build/config.json:
-  file.managed:
-    - name: /root/meshviewer/build/config.json
-    - source: salt://map/root/meshviewer/build/config.json
-    - makedirs: True
+# /root/meshviewer/build/config.json:
+#   file.managed:
+#     - name: /root/meshviewer/build/config.json
+#     - source: salt://map/root/meshviewer/build/config.json
+#     - makedirs: True
 
 /root/meshviewer/build:
   file.directory:

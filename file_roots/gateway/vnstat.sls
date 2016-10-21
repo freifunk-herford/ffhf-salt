@@ -110,22 +110,77 @@ vnstat-cron:
       - file: /var/www/vnstat
       - file: /root/scripts/update-vnstat-graphs.sh
 
+# change-documentroot:
+#   file.replace:
+#     - name: /etc/apache2/sites-available/000-default.conf
+#     - pattern: 'DocumentRoot\ (.*)$'
+#     - repl: 'DocumentRoot /var/www/vnstat'
+#     - not_found_content: 'DocumentRoot /var/www/vnstat'
+#     - append_if_not_found: True
+#     - require:
+#       - file: /var/www/vnstat
+#
+# change-documentroot-ssl:
+#   file.replace:
+#     - name: /etc/apache2/sites-available/default-ssl.conf
+#     - pattern: 'DocumentRoot\ (.*)$'
+#     - repl: 'DocumentRoot /var/www/vnstat'
+#     - not_found_content: 'DocumentRoot /var/www/vnstat'
+#     - append_if_not_found: True
+#     - require:
+#       - file: /var/www/vnstat
+
 change-documentroot:
   file.replace:
     - name: /etc/apache2/sites-available/000-default.conf
     - pattern: 'DocumentRoot\ (.*)$'
-    - repl: 'DocumentRoot /var/www/vnstat'
-    - not_found_content: 'DocumentRoot /var/www/vnstat'
-    - append_if_not_found: True
-    - require:
-      - file: /var/www/vnstat
+    - repl: 'DocumentRoot /var/www/html'
+    - not_found_content: 'DocumentRoot /var/www/html'
 
 change-documentroot-ssl:
   file.replace:
     - name: /etc/apache2/sites-available/default-ssl.conf
     - pattern: 'DocumentRoot\ (.*)$'
-    - repl: 'DocumentRoot /var/www/vnstat'
-    - not_found_content: 'DocumentRoot /var/www/vnstat'
-    - append_if_not_found: True
-    - require:
-      - file: /var/www/vnstat
+    - repl: 'DocumentRoot /var/www/html'
+    - not_found_content: 'DocumentRoot /var/www/html'
+
+{% set apache = salt['grains.filter_by']({
+  'Debian': {'pkg': 'apache2', 'srv': 'apache2'},
+}, default='Debian') %}
+
+{% if grains['os_family'] == 'Debian' %}
+/etc/apache2/sites-available/{{ grains['id'] }}.ffhf.conf:
+  file.managed:
+    - name: /etc/apache2/sites-available/{{ grains['id'] }}.ffhf.conf
+    - source: salt://gateway/etc/apache2/sites-available/gw.ffhf.conf
+    - template: jinja
+
+/etc/apache2/sites-enabled/{{ grains['id'] }}.ffhf.conf:
+  file.symlink:
+    - name: /etc/apache2/sites-enabled/{{ grains['id'] }}.ffhf.conf
+    - target: /etc/apache2/sites-available/{{ grains['id'] }}.ffhf.conf
+  service.running:
+    - name: {{ apache.srv }}
+    - enable: True
+    - watch:
+        - file: /etc/apache2/sites-enabled/{{ grains['id'] }}.ffhf.conf
+{% endif %}
+
+{% if grains['os_family'] == 'Debian' %}
+# /etc/apache2/sites-available/{{ grains['id'] }}.ffhf.conf:
+#   apache.configfile:
+#     - name: /etc/apache2/sites-available/{{ grains['id'] }}.ffhf.conf
+#     - config:
+#       - VirtualHost:
+#         this: '*:80'
+#         ServerName:
+#           - {{ grains['id'] }}.ffhf
+#         ServerAlias:
+#           - {{ grains['id'] }}.*
+#         DocumentRoot: /var/www/vnstat
+#         Directory:
+#           this: /var/www/vnstat
+#           Order: Deny,Allow
+#           Allow from: all
+#           AllowOverride: All
+{% endif %}

@@ -30,7 +30,7 @@ network:
     hwaddress: 02:42:0a:22:00:02
   primary: # Test Daten
     interface: enp0s3
-    address: 192.168.0.190
+    address: 192.168.0.32
     address6: fe80::a00:27ff:fe4d:cbf6/64
 
 openvpn:

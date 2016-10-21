@@ -3,7 +3,7 @@
 $ORIGIN .
 $TTL 10800 ; 3 hours
 34.10.in-addr.arpa  IN SOA  gw2.ffhf. hostmaster.ffhf. (
-                        2015092701 ; serial
+                        2016070702 ; serial
                         10800      ; refresh (3 hours)
                         3600       ; retry (1 hour)
                         604800     ; expire (1 week)
@@ -18,4 +18,4 @@ $ORIGIN 34.10.in-addr.arpa.
 5.0                 PTR     gw5.ffhf.
 6.0                 PTR     gw6.ffhf.
 7.0                 PTR     gw7.ffhf.
-22.0                PTR     map.ffhf.
+32.0                PTR     map.ffhf.

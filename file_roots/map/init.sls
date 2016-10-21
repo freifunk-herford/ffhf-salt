@@ -12,6 +12,6 @@ include:
   - gateway.name-server
   - gateway.fail2ban
   - gateway.apache
+  - gateway.syslog
   - map.ffmap-backend
   - map.meshviewer
-  - gateway.syslog

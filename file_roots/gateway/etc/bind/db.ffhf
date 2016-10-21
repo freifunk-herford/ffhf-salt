@@ -3,7 +3,7 @@
 $ORIGIN .
 $TTL 10800 ; 3 hours
 ffhf                IN SOA  gw2.ffhf. hostmaster.ffhf. (
-                        2016051101 ; serial
+                        2016070702 ; serial
                         10800      ; refresh (3 hours)
                         3600       ; retry (1 hour)
                         604800     ; expire (1 week)
@@ -11,7 +11,7 @@ ffhf                IN SOA  gw2.ffhf. hostmaster.ffhf. (
                     )
                     NS      gw2.ffhf.
                     A       10.34.0.2
-                    AAAA    fdf3:2049:5152::a22:32
+                    AAAA    fdf3:2049:5152::a22:2
 $ORIGIN ffhf.
 gw1                 A       10.34.0.1
                     AAAA    fdf3:2049:5152::a22:1
@@ -27,8 +27,8 @@ gw6                 A       10.34.0.6
                     AAAA    fdf3:2049:5152::a22:6
 firmware            CNAME   gw2
 webserver1          CNAME   gw2
-map                 A       10.34.0.22
-                    AAAA    fdf3:2049:5152::a22:22
+map                 A       10.34.0.32
+                    AAAA    fdf3:2049:5152::a22:20
 ns1                 CNAME   gw2
 nextnode            A       10.34.1.1
                     AAAA    fdf3:2049:5152::1:1

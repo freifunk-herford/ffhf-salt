@@ -8,6 +8,15 @@
   "maxAge": 14,
   "blinkingHours": 8,
   "mapLayers": [
+    { "name": "OpenStreetMap",
+      "url": "http://tiles.freifunk-bielefeld.de/{z}/{x}/{y}.png",
+      "config": {
+        "subdomains": "1234",
+        "type": "osm",
+        "attribution": "Tiles &copy; Openstreetmap |&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>",
+        "maxZoom": 18
+      }
+    },
     { "name": "MapQuest",
       "url": "https://otile{s}-s.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpg",
       "config": {
@@ -22,6 +31,7 @@
     }
   ],
   "siteNames": [
+	{ "site": "ffhf", "name": "Herford" },
     { "site": "ffgl-bcd", "name": "Burscheid" },
     { "site": "ffgl-bgl", "name": "Bergisch Gladbach" },
     { "site": "ffgl-lln", "name": "Leichlingen" },
