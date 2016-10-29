@@ -32,3 +32,12 @@ options {
     allow-query { trusted; };
     allow-recursion { trusted; };
 };
+
+logging {
+    channel my_syslog {
+        syslog local5;
+        // Critical error warning notice info debug [level] dynamic
+        severity info;
+    };
+    category default { my_syslog; };
+};
