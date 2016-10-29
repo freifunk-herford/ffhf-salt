@@ -132,6 +132,7 @@ alfred-announce-prepare:
   pkg.installed:
     - pkgs:
         {% if grains['os_family'] == 'Debian' %}
+        - ethtool
         - virtualenv
         - python3
         - python3-dev
