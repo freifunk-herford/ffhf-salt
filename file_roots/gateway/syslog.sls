@@ -24,3 +24,4 @@
     - contents: |
         # This file is managed by Salt, do not edit.
         local6.*	/dev/null
+        local5.*	/dev/null
