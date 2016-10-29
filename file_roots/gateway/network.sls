@@ -36,7 +36,12 @@
 #     - source: salt://gateway/etc/network/interfaces.d/bat0
 #     - user: root
 #     - group: root
-#     - mode: 644
+#     - mode: 64
+
+/etc/resolvconf/resolv.conf.d/head:
+  file.managed:
+    - name: /etc/resolvconf/resolv.conf.d/head
+    - source: salt://gateway/etc/resolvconf/resolv.conf.d/head
 
 /etc/network/interfaces:
   file.append:

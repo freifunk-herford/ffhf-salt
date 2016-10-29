@@ -50,9 +50,9 @@ bind:
     - 10.34.0.0/16
     - ::1
     - fdf3:2049:5152::/48
-  # masters: 10.34.0.32; fdf3:2049:5152::a22:20;
+  masters: 10.34.0.32; fdf3:2049:5152::a22:20; # das ist der MAP-Server als eizige DNS-Master ausserhalb der Gateways !
   # Test Daten Dummy DNS Master
-  masters: 10.34.0.2; fdf3:2049:5152::a22:2;
+  #masters: 10.34.0.2; fdf3:2049:5152::a22:2;
 
 iptables:
   ipv4:

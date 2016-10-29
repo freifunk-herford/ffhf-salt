@@ -2,4 +2,5 @@ contrib/temp/
 contrib/venv/
 contrib/docs/build/
 *.save
+*.bak
 
