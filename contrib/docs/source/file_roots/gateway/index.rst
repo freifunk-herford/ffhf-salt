@@ -11,6 +11,7 @@ Inhalt:
    etckeeper/index
    tmp/index
    mosh/index
+   molly-guard/index
    ntp/index
    network/index
    iproute/index
