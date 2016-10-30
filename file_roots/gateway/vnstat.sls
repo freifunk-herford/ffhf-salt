@@ -134,7 +134,8 @@ change-documentroot:
   file.replace:
     - name: /etc/apache2/sites-available/000-default.conf
     - pattern: 'DocumentRoot\ (.*)$'
-    - repl: 'DocumentRoot /var/www/html'
+    #- repl: 'DocumentRoot /var/www/html'
+    - repl: 'DocumentRoot /var/www/vnstat'
     - not_found_content: 'DocumentRoot /var/www/html'
 
 change-documentroot-ssl:
