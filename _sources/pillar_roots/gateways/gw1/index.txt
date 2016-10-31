@@ -1,4 +1,4 @@
-Gateway 1
+Gateway 2
 =========
 
 .. include:: gw1.rst

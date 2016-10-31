@@ -1,6 +1,16 @@
 Readme
 ======
 
+Master installieren und konfigurieren.
+--------------------------------------
+
+Todo: Anleitung schreiben
+
+GPG Encryption einrichten.
+--------------------------
+
+Todo: Anleitung aus Readme übernehmen.
+
 Minion installieren und konfigurieren.
 --------------------------------------
 

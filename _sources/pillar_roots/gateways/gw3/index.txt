@@ -1,4 +1,4 @@
-Gateway 3
+Gateway 2
 =========
 
 .. include:: gw3.rst
