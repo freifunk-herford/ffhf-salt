@@ -20,18 +20,18 @@ bind:
 
 network:
   bridge: # 02 local 42 ist "Wayne" der Rest 10.34.0.2 in hex!
-    hwaddress: 02:42:0a:22:00:02 # Die HW-Adresse ist Freifunk-spezifisch 
+    hwaddress: 02:42:0a:22:00:02 # Die HW-Adresse ist Freifunk-spezifisch
     address: 10.34.0.2 # User Freifunk-Netzwerk IPv4
-    netmask: 255.255.0.0         
+    netmask: 255.255.0.0
     address6: fdf3:2049:5152::a22:2 # User Freifunk-Netzwerk IPv6
-    address6mask: fdf3:2049:5152::a22:2/64 
+    address6mask: fdf3:2049:5152::a22:2/64
     netmask6: 48
-  mesh: # 02 local 00 ist "Wayne" der Rest:10.34.0.2 in hex! 
+  mesh: # 02 local 00 ist "Wayne" der Rest:10.34.0.2 in hex!
     hwaddress: 02:00:0a:22:00:02
-  primary: 
+  primary:
     interface: eno1 # inet addr:89.163.225.133  Bcast:255.255.255.255  Mask:255.255.255.255
     address: 89.163.225.133
-    # address6: # Der Server hat keine IPv6 Adresse 
+    # address6: # Der Server hat keine IPv6 Adresse
 
 openvpn:
   provider: mullvad_linux # Verschiedene Provider sind moeglich
@@ -39,7 +39,7 @@ openvpn:
     mullvad.crt: |
       -----BEGIN PGP MESSAGE-----
       Version: GnuPG v1
-      
+
       hQEMA9c3Y0Thoe2fAQgAmtmV1Q7fpHGorz6nnBrXj2b+l/1P/z+Bx+il7Wt2Zt73
       JCDit0cjuMxEsbFRmBE+XEuzfCV5OzTWT20NdFx8lC/A8KfkBFBsbtz/aG6o3oV7
       uFmJRy2aqrHvcPhc4yy9qHX3Nsxu2Tt0p8lgoTYSNCFrYbqxDN7kvCWUh/0xN6oA
@@ -111,7 +111,7 @@ openvpn:
     mullvad.key: |
       -----BEGIN PGP MESSAGE-----
       Version: GnuPG v1
-      
+
       hQEMA9c3Y0Thoe2fAQf5AZEh5htsuhZF5xPjNMC/nksprxaVxXWMPt5gyV6wag7v
       QcIpB4QvCOtAXUaPcaPG495ASQE+qwvDj7XyOX0Py733i9gIWRqQHmGlFalssS9y
       YxdM0MVwFHJRXuFR90DermqJNrlNLjNkxc9liW4W0KOhKufbMQr+dyHGZuTDO04R
@@ -154,7 +154,7 @@ fastd: # Secret key von gw2 - nur den string!!!
   secret: |
     -----BEGIN PGP MESSAGE-----
     Version: GnuPG v1
-    
+
     hQEMA9c3Y0Thoe2fAQf8C4Yej9/A2nY+CKiG7vKsqANe8sKVDrxOxEoDxqDBChgz
     pbXx4MM6aKjMAJWmGpxEBJEcoC0MfR/RG88vjKGz52Os1/wye0MMElRK5BZbY4zO
     N9QOWCIT/3SSYfgzuBO2I9aVZMewTXntcl4/kqb7czhL+wstS+EbLpdwa7ABtqS+
@@ -168,4 +168,3 @@ fastd: # Secret key von gw2 - nur den string!!!
     -----END PGP MESSAGE-----
   public: 4033298711b9a5a9862405486e603db0984812e4abb2d85d74b89ab06626ce99
   fqdn: gw2.herford.freifunk.net
-

@@ -7,7 +7,7 @@ Installation von etc Keeper mit git.
 
 	apt-get install git etckeeper
 
-konfiguration
+Konfiguration
 -------------
 
 In der Konfigurationsdatei von etc Keeper ``/etc/etckeeper/etckeeper.conf`` folgendes einfügen oder anpassen. Hiermit stellen wir sicher, dass wir git für die Versionskontrolle verwenden.
