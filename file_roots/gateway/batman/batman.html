@@ -1,0 +1,232 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Stichwortverzeichnis"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Suche" href="../../../search.html"/>
+    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SaltStack Freifunk Herford
+          
+
+          
+            
+            <img src="../../../_static/freifunk.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">States</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network.html">Netzwerk Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testumgebung</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Installation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Paketquelle für B.A.T.M.A.N. einbinden.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">freifunk</span><span class="o">-</span><span class="n">mwu</span><span class="o">/</span><span class="n">freifunk</span><span class="o">-</span><span class="n">ppa</span>
+</pre></div>
+</div>
+<p>Paketquellen aktualsieren und B.A.T.M.A.N. Kontrollkommando und Kernelmodul installieren.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">dist</span><span class="o">-</span><span class="n">upgrade</span>
+<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">batctl</span> <span class="n">batman</span><span class="o">-</span><span class="n">adv</span><span class="o">-</span><span class="n">dkms</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="kernelmodul">
+<h1>Kernelmodul<a class="headerlink" href="#kernelmodul" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Das Kernelmodul laden.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">modprobe</span> <span class="o">-</span><span class="n">v</span> <span class="n">batman_adv</span>
+</pre></div>
+</div>
+<p>Um das Kernelmodul beim nächsten Systemstart automatisch laden, legen wir die Datei <code class="docutils literal"><span class="pre">/etc/modules-load.d/batman_adv.conf</span></code> mit folgendem Inhalt an.</p>
+<div class="code text highlight-default"><div class="highlight"><pre><span></span><span class="n">batman_adv</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="hop-penality">
+<h1>Hop Penality<a class="headerlink" href="#hop-penality" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">sysfsutils</span>
+</pre></div>
+</div>
+<p>Die Datei <code class="docutils literal"><span class="pre">/etc/sysfs.d/99-batman-hop-penalty.conf</span></code> mit folgendem Inhalt anlegen.</p>
+<div class="code jinja highlight-default"><div class="highlight"><pre><span></span><span class="n">class</span><span class="o">/</span><span class="n">net</span><span class="o">/</span><span class="p">{{</span> <span class="n">pillar</span><span class="p">[</span><span class="s1">&#39;network&#39;</span><span class="p">][</span><span class="s1">&#39;batman&#39;</span><span class="p">][</span><span class="s1">&#39;interface&#39;</span><span class="p">]</span> <span class="p">}}</span><span class="o">/</span><span class="n">mesh</span><span class="o">/</span><span class="n">hop_penalty</span> <span class="o">=</span> <span class="mi">60</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

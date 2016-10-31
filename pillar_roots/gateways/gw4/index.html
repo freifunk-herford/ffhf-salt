@@ -1,0 +1,520 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Gateway 4 &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Stichwortverzeichnis"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Suche" href="../../../search.html"/>
+    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/>
+        <link rel="up" title="Gateways" href="../index.html"/>
+        <link rel="next" title="Peers" href="../peers/index.html"/>
+        <link rel="prev" title="Gateway 3" href="../gw3/index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SaltStack Freifunk Herford
+          
+
+          
+            
+            <img src="../../../_static/freifunk.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../file_roots/index.html">States</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Pillars</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Gateways</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../gw1/index.html">Gateway 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw2/index.html">Gateway 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw3/index.html">Gateway 3</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Gateway 4</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../peers/index.html">Peers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../shared/index.html">Gemeinsame Daten</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network.html">Netzwerk Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testumgebung</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Pillars</a> &raquo;</li>
+      
+          <li><a href="../index.html">Gateways</a> &raquo;</li>
+      
+    <li>Gateway 4</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gateway-4">
+<h1>Gateway 4<a class="headerlink" href="#gateway-4" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="section" id="salt-state-file">
+<h2>Salt State File<a class="headerlink" href="#salt-state-file" title="Link zu dieser Überschrift">¶</a></h2>
+<p>gw4.sls</p>
+<div class="highlight-salt"><div class="highlight"><pre><span></span><span class="c1"># Gateway 4</span>
+
+<span class="l l-Scalar l-Scalar-Plain">dhcp</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">routers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.0.4</span>
+    <span class="l l-Scalar l-Scalar-Plain">domain_name_servers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.0.4</span>
+    <span class="l l-Scalar l-Scalar-Plain">ntp_servers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.0.4</span>
+  <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="c1"># Not used yet</span>
+    <span class="l l-Scalar l-Scalar-Plain">subnet</span><span class="p p-Indicator">:</span> <span class="s">&#39;fe80::/64&#39;</span>
+    <span class="l l-Scalar l-Scalar-Plain">name_servers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fe80::a00:27ff:feee:ec3f</span>
+    <span class="l l-Scalar l-Scalar-Plain">routers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fe80::a00:27ff:feee:ec3f</span>
+    <span class="l l-Scalar l-Scalar-Plain">domain_name_servers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fe80::a00:27ff:feee:ec3f</span>
+
+<span class="l l-Scalar l-Scalar-Plain">bind</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">master</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+  <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">listen_on</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">::1; fdf3:2049:5152::a22:4;</span>
+  <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">listen_on</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">127.0.0.1; 10.34.0.4;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">network</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">bridge</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">hwaddress</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">02:42:0a:22:00:04</span>
+    <span class="l l-Scalar l-Scalar-Plain">address</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.0.4</span>
+    <span class="l l-Scalar l-Scalar-Plain">netmask</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">255.255.0.0</span>
+    <span class="l l-Scalar l-Scalar-Plain">address6</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fdf3:2049:5152::a22:4</span>
+    <span class="l l-Scalar l-Scalar-Plain">address6mask</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fdf3:2049:5152::a22:4/64</span>
+    <span class="l l-Scalar l-Scalar-Plain">netmask6</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">48</span>
+  <span class="l l-Scalar l-Scalar-Plain">mesh</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">hwaddress</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">02:00:0a:22:00:04</span>
+  <span class="l l-Scalar l-Scalar-Plain">primary</span><span class="p p-Indicator">:</span> <span class="c1"># Test Daten</span>
+    <span class="l l-Scalar l-Scalar-Plain">interface</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">enp0s3</span>
+    <span class="l l-Scalar l-Scalar-Plain">address</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">192.168.0.34</span>
+    <span class="l l-Scalar l-Scalar-Plain">address6</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fe80::a00:27ff:feee:3b00/64</span>
+
+<span class="l l-Scalar l-Scalar-Plain">openvpn</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">provider</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">dnn_linux</span> <span class="c1"># mullvad_linux</span>
+  <span class="l l-Scalar l-Scalar-Plain">mullvad_linux</span><span class="p p-Indicator">:</span> <span class="c1"># Test Daten</span>
+    <span class="l l-Scalar l-Scalar-Plain">mullvad.crt</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">-----BEGIN PGP MESSAGE-----</span>
+      <span class="no">Version: GnuPG v2</span>
+
+      <span class="no">hQEMAzfCuITl4pqUAQgApiRwmsJKr+wDcrq7Kp0QV2fDKc40FRLeVe9YkrYWIyLx</span>
+      <span class="no">96vIsIwnvRLlticRGmnrrKtQWoqysHbsqafp5NYlc+5YeeKpy25gRIEADvx8D7lV</span>
+      <span class="no">HoF/kIRbLgTsLXxTXkcdm8VsZbeDfnKU/z0UXJwBfVrtcMHs8hkPiD+Bb6ixlTJf</span>
+      <span class="no">McMoKw+DZgTOzgNvqatx06CJsgQkRXBRcX/7WhyH9k3uxLHX05mjIy7Q0LT0i46Q</span>
+      <span class="no">3Di6pgnD33YdWhm6zPgg7n55NDoiHdSgD4az71vdyWCCCwR3gtorMXWzrKxfjYgA</span>
+      <span class="no">1PA1gTnmWblJFis4pO3OfbtJIzyUkBwodXysEZccFNLrAZTD5RqnBeHD9zIRlzxj</span>
+      <span class="no">/X24+Bwn5VbidTF7NE9fBwPn4l8rwJssMuAZ1YBdvCqHmuiJWBlDytqWR+aOhghG</span>
+      <span class="no">/VhdsohhBywkKza772al5lRo/lbB0GqD96Cv6mKeMC9kem7kH+drAyXUxDRhtklB</span>
+      <span class="no">gM3OGxax/bjj+Kem2loVJ0tE4MQ5l7KMEOttLj++FVcf4LQtJl+6C+FCECgmu6Ps</span>
+      <span class="no">jFvr83ufPH0Y9ZSel+iOpS0CWoQlzBODAfb/58z9+vjarWeIXQBHTyh7MWU+xqWu</span>
+      <span class="no">r6iUf2Vd4O7jdynqtKAPYp42z5zen2WycJvrLWXmXNEDZ3fRDyanaEXndjE2kwQ1</span>
+      <span class="no">3b3fKHVfSEaw8l+SPf7cUEWJ3KxG0NjpCTmiTjH3DdNT6okNDHglN3TD1xfJE3dr</span>
+      <span class="no">DBTXMmMdEbslJj2bQiofG1jvrBG54TK97uFindlH/Eg//BgRpDyvQotCqKkHjKvw</span>
+      <span class="no">1zAnhUK2fPLtXuH1FiVKl8fRHxkkl/Pb0Hg/jt/LRFl8f0qY5g2XNsmnfiyM4/h5</span>
+      <span class="no">cj0Fkbz3D2XqufaekooYvIfgn0x4MYjwzBdaZJO6CyGTmT9Rmr6X+kK6rcGWmicX</span>
+      <span class="no">qp/BMghKv50YPPHiyF3Zq0S5Y+13r+9F9oqLBhVjJbaf624/cUTvnA382fRHgDfm</span>
+      <span class="no">nrZ47lDoImVHGi6RUwQxDQEIJoXDvzpAcGiVSa/xMfxNHkJPx6ylhwme2cEQY5KY</span>
+      <span class="no">ql8H5bhFNClNwAgDyUt009r+x22dL0na1TP8Vbs15LJKjE2ln2GeYyca63P/G3i2</span>
+      <span class="no">w1iyljT66mdGnc79IFwiXKQuWxhLsD8FvcKsdobC+Gela7C2ln1ysreH2/2eaKz7</span>
+      <span class="no">cLSpsDjk+rJll9aOCenEEL40qN9PAfQwpg1njpty3LNKQ9uUvtlLJ77QvWXwwTqy</span>
+      <span class="no">ynh6W1jwY/pjbcmwxyFvJHJ4f0RaXBg3zF+W1a297+GiS7UyJeNlKJPvuFbwACsK</span>
+      <span class="no">Uw/wQMZpmIPdVBLvhhO2VLjJAm0E5TtjNgvSu91/6wOj8dS+1IXfwI0JyhibYS9e</span>
+      <span class="no">YZPP5TH7e5Fl9qCB0FX4K33RJdjUBI5H1amu5C+m/yrr1jL7ecqtJcKgDquDEkzb</span>
+      <span class="no">TCfd7dhvQYZ0KRlJiWdRbKQ8mnPu7zMETJZMhh60TSCYMUNFMslKm2XVP+GJbshj</span>
+      <span class="no">Tp8wPmLl2hsrLvoWgBfGe+db+n1B6a36ZzSz0WHMfFX/OwlJS/pdZA4invmoCqA8</span>
+      <span class="no">vtIJplN7zdN+GWNMlO7lrmP2g1yN1qw3ldHBhqJwRIJg4sPkmWUNH+H7EZRSj2Y8</span>
+      <span class="no">iPkJSmtw5yzhjDEl91aKq6sLDT22wiQK3aY8ub1QTLPTt8z70WwTev/vxxT7Z+S8</span>
+      <span class="no">3F3EYCpE1fnR2KkMSrwv1qSFR5//SJt6v0rA6h1H1OIDaO9C2iMf9WTGPanx6Zyi</span>
+      <span class="no">fQpmlgcN3gyx6WYM+dp2fGsgjuZSjOpp9m6pKlyIOkqS1JzpJJQ4svTd9XS/ZYku</span>
+      <span class="no">9ewH9FiJ+UpXv/Y9JHLTYnpiFl9vTyCh4KCZrANwSuv7X+7s+DlWDf4D7cdDA9mQ</span>
+      <span class="no">bUeQci6ZyuNNBHW4FmcAgEe6VNaevAsvdlvYQLZ788IAvwxD+KSZ4O129ZXZzsu3</span>
+      <span class="no">EJ1dWO+nklIBy80wQzxOrTzYnsEz/919h22CEv67+dAzKhzdMI6AwNlPGfZ7MGED</span>
+      <span class="no">zXJifUby8Tx5v3qazHtbUGYQebGhCFNaZR/6yjAl6iNi1CTrFijvP2HKgJNE/Gj7</span>
+      <span class="no">1NiRAU/a0Ng3x3zCNdcJhc2SJ9jR13pIDrORai8zVHvaZNoc9AXHcUiijjnNhtrr</span>
+      <span class="no">kKY4b4H/+c7UQ1YOad4fLvWIOGLkxKaNOVppP/8D17ScyYUSd93/N3OMRvI1m+Os</span>
+      <span class="no">slJp5ZaQzRa9UzCmFpBADjUakddXtzPfFAr2edHXGVGMfYAIv6Z9dc9WIcNeF0MV</span>
+      <span class="no">92AyjIyAVMbN+I2nFxlX+IBAoT5bE3oOG9YL5AP3z60x88Gl6FNa2F48+R54p8xb</span>
+      <span class="no">Wiy/TQI0neSQJtTfJzpveUjlmbidf15nEBM0ztqhgXC2Q+KzmQPhM/V3Xy4M+za0</span>
+      <span class="no">fKWM91FeP+GdynbdV7/qxpt9pTlL4v/9sl9IRszo3CWu33ta+A6ADl/jy0q3abX0</span>
+      <span class="no">nOa0ddWt8jBRaX8vMO5Hwf5zK8ax2UNlvsvhazj1O8OVM9l7oJ1Y8GL9dWnnBeO2</span>
+      <span class="no">XLTpvgqFkY7nAWn7EIGQ6XYo+uO+9qCWGSeXIuHXApquyrTX+Nr2z4xkLdA9vYBR</span>
+      <span class="no">GFumEqQq1W+UkTo9XRCVSEEDBtCUZTobtI2KBl9OSNJmkURtyPgj8Ek1BfUB8FaO</span>
+      <span class="no">VpxmSTGVzvVJk5u0Ami9dSQuo1B9l55G8hohZv9fBnERuSzo1oLSMy2yaVMXc5rC</span>
+      <span class="no">+uja7LQC6L63X6rSB8WOCT+ABBy6buOStd+Gj9GxFXmg5mwJF07EO8yiNCBBzyt9</span>
+      <span class="no">4/74eFrDRbAAbh8szzqm/G/XSQiHBb7wUZEkSBufs0NvWDEUAzQ7yBXdXdzspXqi</span>
+      <span class="no">j9slESZAGNcJEUXwQNeMtZMRVDzbpr5FAYjinBr6+4Gc7eZUbpBpIOs8dC1+/Nsr</span>
+      <span class="no">XhF13eLxJNmE1yXAwqqX4cgVMuQ7T9gwQAoZ/e5dx14euaRDwHL3N6MaRsjdZSaB</span>
+      <span class="no">fpkV5JcAsTqGaNgJie+BM4wvS6ZclIQ72UCF+wuEL8wMgEraJuWpqDgaB7EbqFc0</span>
+      <span class="no">RjApD8jISe0MrB380wngpGnp6F1Au+Z6J1T9nGlQ63pT/6WXcaMEKnUgO4giiHSX</span>
+      <span class="no">JA9Y5/6SK47Trb27V3u+ZxK4JdMPCtLuDXU55ogjSvexugxBW/X73wH8KZ5VOtXD</span>
+      <span class="no">OKZ37xjv9MjlGjgY+0iduhv2ruJYuq6SVqmc1f0MEbzHQPrzJbfqTXtXDUqvuPeX</span>
+      <span class="no">5GcK/Tmwwi3E2xOQsCmjtulyhnvTkTAHWRFVhdka1DU3g/zvmulcSsatH4CGYEu8</span>
+      <span class="no">JEf5lxa31ifaG34+PaxosVjwI5Qf4UecFZFJW4jpcERND45/EkqgK5D+19JEj1IC</span>
+      <span class="no">aQ2AJBapfFSEHLYPC/qsDxUUxo3jaVPCLZZjm1UmXC7hj2pA55kxaMOboqmImhMh</span>
+      <span class="no">8xpgAk25S/Zj0rBVOmAb9a8FmgaOYZm7N5wa5gkX7mtmOb33+g7WEvrwx+q72YHw</span>
+      <span class="no">AS6NyNQJPwrhAkfh5FYq3WhFdkaL2zcqfXTrwmixMBDMgIP+zhHJr1jxcAIvPH19</span>
+      <span class="no">sl3BGPVe2AuYnCsh7TpgEjtUuLcQsgrp5V4aE39uRifvocq04u4qTfObS1catdi4</span>
+      <span class="no">NtEivZuu7GjmbcIvCILmuNizhP62rsK7DpFRZpS5M8BQYkTaWvNa4DIcshjhi/HQ</span>
+      <span class="no">Q6OpNj6ClD9xzJWo52kM85waFNf2RjtbM+znkDnsnuu15Mv0xoj6u6Cj1loJtjIe</span>
+      <span class="no">uN29EDnlO518eG8ScfTmzCXzrOzPMe5f7cKf0XtHpj79hFYVZ0NDwjV5ljmtb4wq</span>
+      <span class="no">DanYxgHVG28fH58GZIZjWHBOeN0tSHSjQ49UtcLW4NCIzuo4ksecsVTAK/5zway4</span>
+      <span class="no">TBkDWXZKzsrdQ496vBb16yqL528PvwtS4D51a1u5Q9ucsPxKe57EsT49E9oPURvP</span>
+      <span class="no">pHXSsq/SFfVaW5vQMMuuN6kYFuzaiNjTVxnjpcjFgUj1/XxHcAZL/1D4ZmdbMw9L</span>
+      <span class="no">=SyNE</span>
+      <span class="no">-----END PGP MESSAGE-----</span>
+    <span class="l l-Scalar l-Scalar-Plain">mullvad.key</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">-----BEGIN PGP MESSAGE-----</span>
+      <span class="no">Version: GnuPG v2</span>
+
+      <span class="no">hQEMAzfCuITl4pqUAQf+K3/JFAaLDaHONfP+dfkPWfrSDQ4ENXOJ04f1Nv1PMvAL</span>
+      <span class="no">yyyikj62qsJRK9aeSyYiOIG5PtaOdgrcfPSn4Pueu/sH7Q1gXLrsv8SOjLtpQwyk</span>
+      <span class="no">+5gddyyyHscsazGGniOL9Cbk4xMLOTcS6g3l92Hcfd0L45GJobiNeNStJb8S8iNg</span>
+      <span class="no">pFZlGU3ASwLqUULBb/MQsWK68JkaLcw56z8zXK/6LbzmJXhgIxl2/w95FOhI9jqh</span>
+      <span class="no">HA+T29pTFjmrv5hL4WaP9sU791+68zI+2dLEWcgHRoVPpkCovVT3roVFFf8O79aY</span>
+      <span class="no">7CYSbDJUjoFcnDMJryTlMPXOMIyKZ/ElpXunKOGiiNLqAWxKVvQuhhhJ3u8hf6j6</span>
+      <span class="no">Y6iBB1Iko2PL4gLqJhz3bYmoRlyMRaAnOYiYVcvC1shXOZEtircUE7pWGc47OoVc</span>
+      <span class="no">eK9pG17B+ZE+Rso9P6EbO95SYSm6UmrVY3mgxjXpsjbob+oF5xU3cDVl0pnQijcs</span>
+      <span class="no">3HSUdTyTg8q+0fe8ZO+pvr8CIqRfY/ulTcHBwWCO4uTXEbBW+wkOSB0FK8jbZ2Pi</span>
+      <span class="no">tuRkjW5+g+0/pGzC65nxIMOPeX43pEBs1MZYd26RdI9RxpNOlh3CxkT3V3K6Xk+C</span>
+      <span class="no">iFQrkKu327NhbMLpm3C7ajn1jrq9OLHLrTCuUVYYXfWCfqgWcf0Rqz3YXxTDHulv</span>
+      <span class="no">8+07+84qsEoc0LD7REgpNStc+OQNwZlWFvayPh6sfAUnt3jvGkkvTaWy5VutuHl0</span>
+      <span class="no">/MIyAMJ14esk73hMC0RuJRPfhDkQOjOpQUuLF+RKkwabk1qr3cTTrfapl/vhYyEK</span>
+      <span class="no">CLHyQJv62E3ZJlc0ShNCrMAuUUa+5RM1HEjqT9RwoK5ug+Ii+gX4Bo8TWEqizg4/</span>
+      <span class="no">Akr50evprgZbhJtPePYxiHAUHpKQZQePpCYggQSy+ko4X/Mvw9Wlr7wa5ePnSASp</span>
+      <span class="no">2g3EkZhRWI0NqTFRMYhy7twpl0MCCoyauGq+7e/INwV9IgRQXRsP00yppH4dEeYV</span>
+      <span class="no">AxJKmcc2wovi6cMGjSBOmRZpP+3GL4ZqLreOGEK3cPjE8KSuVY9ze4uvZrysPlfk</span>
+      <span class="no">Ct2YScLc89rGdV1yNZ5ehsFd1kHF1t1v0wP7OLpH0U5XOBlKfS1OrEYkZrENxhDQ</span>
+      <span class="no">vNttdvqYuPTrjAsOytmEa6QwyOrCIfbEu2+0D6vakywgcwXOygn2MPj4yor6joNG</span>
+      <span class="no">HFkesA+bELjX+YWhVzcw3VPhKUCWeCw3wMp6S+r1z0OVkRGJDlZX0Umgt8ILc6Wv</span>
+      <span class="no">hBBmTN9AaCaU6UIhVexXLWxGCl89BeOWtSebRc7lLpHcW3mZJJsQ/QvyB0KuqU+B</span>
+      <span class="no">ghqjNp7wXsBc2lUaRJkq6YG9vOtLVtq4u1nVGgzRB0+etmSt+DmAtyTZXKXYPZsM</span>
+      <span class="no">/3DD1yKobN8RXXHm4m6lAAKg8a0hA/mQSHAmYRIT/Zl3+15IqkIumQkki0/yupNB</span>
+      <span class="no">m9dFIrPhxzZgYXAqOdtuQWYuRHIw3FqLXNeZ75a8vdFfxqxQj2fssjG0GmPFVitD</span>
+      <span class="no">f6C6ZWsa4WXh11C47EvYME+P9EvvCq4Wa3zgmUf3Lklx6VqjK8zQtDJXxaekYBMm</span>
+      <span class="no">yWpCbEa14a4Kpo8hFy/cjC6tk+WOC432FiIjkD0v2LtQfzgNY/XVyeOjvbtEB2yb</span>
+      <span class="no">zXH4sAGLq461IuJdJAphoDLQSit4gP8Mr+BnzRJl1schcuIek0MWkNuD+VuPP6++</span>
+      <span class="no">q8Cpz++eFzIZy3khq5wUyIC0DfOC43C/9wtFPW251r9XG+uGxjTXYi8xuOw+4D0/</span>
+      <span class="no">FFf7EeW9XM5A/gvCvoakxkxmieFP9ABYJWuWH5YEeMeCt2veCjWPJEL/ZzK3W2Lj</span>
+      <span class="no">QQP2WBo5vNEWRzBlP3RbPzpPFNSz/GUCCf2ZwagSBhk8vByDgDe7curJBiU9uEHf</span>
+      <span class="no">rvMCBTGuIEz74f9HpnIYCXtYiny5rKF0DcUjfIxg6nOR/JKf0IQv+83xA4leWei8</span>
+      <span class="no">aAlZtz1HAEEzR+k5CnhlZ45tZf/SvJuPKAL1H0fqA6m3o1gFxD4ctOiJXck8LtT7</span>
+      <span class="no">j9QNvvd9JK3e+2vCRvqvtmMr5kLe58ToM6f3LfKTmZ6gbpJKSnWzC+FwuUuX0RAY</span>
+      <span class="no">WuLJksa2yLLqoONmv1jDqo16hf8quwUvVfNoyCr+4cf9cP4K5ufaSRXDKliQruWN</span>
+      <span class="no">RSDv4LxHPuD8i42aQN93a1g+qiK5m8NS0h/bng==</span>
+      <span class="no">=EAzn</span>
+      <span class="no">-----END PGP MESSAGE-----</span>
+  <span class="l l-Scalar l-Scalar-Plain">dnn_linux</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">dnn.crt</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">-----BEGIN PGP MESSAGE-----</span>
+      <span class="no">Version: GnuPG v2</span>
+
+      <span class="no">hQEMAzfCuITl4pqUAQf+KYJ3tC47AAFKGFUPEnwgQsOrcA79SGxtl65Ka4FVOTTp</span>
+      <span class="no">HHpFORonMQLpS46WUOGGk4mkVPvbKhTyc64ILb0ngPZuvgkETn8aWlaf+OkvwYE9</span>
+      <span class="no">yQPeAWvNnOwYpj44M0wzwhux4qrBecsE+qnjaofuPdsdWeMYs1ZdBCEKAl6hyiIY</span>
+      <span class="no">rAMQzX0WWrsN0RIoz517JEmd4OaP6qSRqssiNbBlL87t/UMngQKG9SM3P/mCv8CM</span>
+      <span class="no">z5T1FVw9O4F+NOdnKNK4NZ1lnM8nu2mHL4/szBimO362zhoMjaOltQOHjM8au82W</span>
+      <span class="no">2frq0TaiXPwMntxVWS/o5nMnb+pRvBJxU/uGtBjpdtLrAQO5QGfCXVgVVPN3t4f+</span>
+      <span class="no">dG3itY/LkHbtSH0hTHjvXvOWaKMNwr8BuRXjVhS8vHSsTh+wRqJIAFBssM+9oOhi</span>
+      <span class="no">p7zS3wbozp2NkgAYZD3zYtxfzJWH2odg6rpPIBxo0u3fiGGUNhMK8FRpIv7vCSQ8</span>
+      <span class="no">/Jp/+s4f5I/NW8o1noIiiAZtGZV2hr9tVS9pq+ziL0z53QotxIZadmOYuP/tjMm2</span>
+      <span class="no">lC7HvtXzqBcoQREYq4NiF81WcYBazRZ2gxzQOnLT0Mq9SBTlVnfHK6qnRE3rw1SK</span>
+      <span class="no">sKuSB3trsRXsA2DtOF1oPLbQJMBxHZbyomFPdt7KNujP3TjqVMnslEBi2b4NHZxN</span>
+      <span class="no">b1NNt52E+dWLhSclIYnmrrkjibjTlsXldwE1WJhNUhlqlfr0gcGwM6UShR9dgDeE</span>
+      <span class="no">D1QusEBx4jK0lXBcRU2fGVIM9FHY5tY7S5unlzBkjzLaOdr/y1E5wyyWSi73VCJT</span>
+      <span class="no">CemEfnihSXqLJoyLCseP0H/wFuDPazPp7HWAzG4PY/L3QwtWjcrBQSC4rEy6LjqX</span>
+      <span class="no">qEZ/nkJq8OkEAILWlJkCURpO/vZwoF67rSJ0sqqPY6rODqzpnFJxoleByS6WF8pU</span>
+      <span class="no">2pODUIDcpwG18yJPBiAZoW1nWYsrm5inCcWUJ3PCYd25BlonVjbcgr6sQFRpbKFg</span>
+      <span class="no">cjk+7R6h/kwvhfzX2WZ49YO0MzEHLkWarVpFmHXSehapz0Z82/9oibCDL/Abh4G5</span>
+      <span class="no">V4mTjJG1BUB/08GI5ic15yo7MIgVuNisNhKfuu5r0XY6nOTmUqxGfZDd8WCij0Dm</span>
+      <span class="no">cvGEfu84Qb1A+J587NqgjM6/cDDMp5WgvUEJVF+gFfoAIrfkaARhQJxMVlYJCh4T</span>
+      <span class="no">zxxxvx1Wox9TQz4/vVpiu4LCpgPg1cOukXzdB0rmO3K9QvCq0O6U2ALsi45twhQ+</span>
+      <span class="no">XFnlJWFmpHMZ7izAyL9T6pz6lOmw7bd2GVtur41RykEDn9LJkpWAg9UKM1dWkW0J</span>
+      <span class="no">9UqDI3KX82lvRfEvXzn/B9i58uj2YY4xmjE6X92HaJQQwNzUB2MtT9wdaG90YLss</span>
+      <span class="no">2F+P1cWAazzpOy81ZXstZOhPEUjexgalBiBBnTae3j8k3Rsk25eTphU6G7z9KxAq</span>
+      <span class="no">SLHIW2cPBOwzKPI+q838ITktfgSo0K4ekL9uPukIK3u9wMWjlWktabiUsp91qaYF</span>
+      <span class="no">PRS949wb9arThZqyGcIekg/2XmDP+gKQk5liVXY5AoU/Ug60aUYGKdji0JCCR9ix</span>
+      <span class="no">wUmcedZPtULlPtWLaIG2+XCcfdcaIdE7B0Xi/sfhZGUkLOuhcAUr92frHp84sM81</span>
+      <span class="no">DKmlre86vFvV2Cd6t12tndudLQodUlljWdWbqEwLF5JJ0cFMTd7c/4FhpJKZ+xOe</span>
+      <span class="no">8qUvaODA5oTG5h2UzmYAYzfJ6ndbd3AkcKnE+1eFBq7U/75V55gK+TQc4nEjGICW</span>
+      <span class="no">woGiU0xeSV5rFwmmrO30zJlvM9S4gSRe0HaRIbwyOk0EzlMTYmzfHjYWYKZHumfS</span>
+      <span class="no">PBu3PUDZu7tYFdr638oFHsjq2qV6PXeBgxA+JblcwUn9S9s7yfq+uWnGjHn7/gWk</span>
+      <span class="no">arMP0iDmLSwVeV1CoFh9I654WA66VO8h3nJesDPGqEFoGIIl6y6wmSGm5Qm0uZx2</span>
+      <span class="no">OJCyjjrJ2eutUI5brB/nF9tB4wNPz4pse/cYaAZC1q1mtCsVpNWGJ/2De/BZV758</span>
+      <span class="no">b/Q2xWw3BGSInhVtLLYRff05ueX9xgPJnoLVfdQYP8o7V8yj1z3XhmhO6x97i04u</span>
+      <span class="no">dxGBcXdMXTnWFUhjCzXJNnhEnEVB1V3r9+7n9kiSBQGndwD6qF69HJHFILrQDTJY</span>
+      <span class="no">xrtzuF9IKkSZAavBcUtTB9DpGzX5CHQHG5T2MjDWEFumV+F25p4DmQz+g0dJFA53</span>
+      <span class="no">/OvWY/AUnX1jfFH++wxsUj0uQMD+xZ7ZL9vC766UKM6C7D3TW0a3JMmOn7UZ+UPH</span>
+      <span class="no">Yg0AOwH0QfTPVUzKlIZbZyxd4wzTERgjdOSswXTSZPr+saQCBX3TGPjLa+D1ePZd</span>
+      <span class="no">O1ga0hP6hiCKQSFxh1xVTAnGtVZjTEG338Y4BA1aZJMjkLcsiD64CYEGuJVgRKYN</span>
+      <span class="no">dLLWnWwyVAbiCmWAuy3xgmiwgld9A5m2D92iG0AJenMuu7AgFt0B6f/JUHLFWQ9M</span>
+      <span class="no">i6xR+RtD8kY4Hb5/YDuIwr/hLX5qpBNW8Q+3m41xDJTTwHLTiU7MXqPAoxgKt730</span>
+      <span class="no">jz4iDd8Kk853Lzy7vgjPlbkFkcudMwkOct8htKHYDBID9BtaAVKRWowBVJRgGvXH</span>
+      <span class="no">3ZIwllN+rKXPS7j0GnaiOrjmvbFUUNsW4M282Qni16+BzYr3aNsuD6GEyUCty8Ut</span>
+      <span class="no">kr/NOBB/9KOMQWqdbs88P2AOBFxOz3uNNxPMs1zSCKv54nyRIWAzM2w8ertYoWIC</span>
+      <span class="no">ImT8t/fGXJF+Fceqc7pxLdpFSjnpONKY2Ydki8XsYUWW9tgipbkOxkGiiBy/xGtn</span>
+      <span class="no">+UOFBXUqmtyVJoS/4Uq//dx0uJYhGKIN2x2DQukqGwyxWbY8CgEMj2kS6ag3qpPc</span>
+      <span class="no">Bq4Co73AMVZfdb8yQZ7vDSl/MKB/gRxGdgqPXy+GWEP6/DLuSBsDmc8vWvkL8oaz</span>
+      <span class="no">0SWvGU/1K60BrbRrebb9j3UIRHCQYhx2Z0VIRqg8qBVTQmfuOrsjykasRsM7UaRZ</span>
+      <span class="no">nNfP8utBNfvh6uaQY/VpwRF4FifQFTFi1NeyjoCkn/DZHT3yhT0zjA8en5MSu4Fv</span>
+      <span class="no">jtGKEm9yrHHE2Hgu2bJ8xjDpIxT8uWzdsV8SYY+70TCK2wRXzJLHoI2CawAMq6u5</span>
+      <span class="no">F7G6XDTIhZuRKFAeaf+dRIG3O5xHhLPeSxPYuwfSAg+ZAyqOrhTJ8Ellddq7BfQr</span>
+      <span class="no">Eh0CPF92FrKyHJ84i5Z+XTM4My139T/Ts5JLP2A0Pa+ayUAjrP5FlQqxPU6/YVli</span>
+      <span class="no">5oMe5GjJZGisCYOvjEqrt49RP+1WucjGfgSUf3qIMIBNG47XOcyOA7vfvy8268B+</span>
+      <span class="no">QW+4cSJHCbq+2mKvOJ0LYjScOwZaYDMbxdZFA0iepFpvKjQGy1RC9NLUE15uu3KW</span>
+      <span class="no">ClLbpESqJ64TEo/omq1rrxC8bLHzQmHZ0HCEprCMcJvjzg8SmxreFgzrm7OqjjWR</span>
+      <span class="no">ZAoumaM7GGbMxVp6n2OLMIe7q/vQW1rBwvDIzfqWWtW2N0tknMmRXs1TLYYEyVGM</span>
+      <span class="no">umU9hf7gMk+l4hWReRAR74GlMT/0x/fRRYtu9mBv9crydJ5oZiY59jnEKbSIMg1/</span>
+      <span class="no">jarQIs4Hi0U5jonTcuUIOLIIKcIjI9UIbCG1lhzC2seQY/nWyYkJWzn3Y+x386o5</span>
+      <span class="no">S1GnY9slPzFJFyd/OYq2EngxM3QO62i48wzBkSFGdM1BxMJqamg38oz25Mrng9c9</span>
+      <span class="no">AihTv4ltE5QZizjLKp2wsTeQBuQaoW4gWhwnCCB+MjGdGZf3SuENjlvMniZxTfva</span>
+      <span class="no">hmjA7E3bLLekp/zg4ptQZzocPSWHijPZZXwvOa1/Xst4lN7OyF8MpHsaujQaXb68</span>
+      <span class="no">5Cw2Pt7VLi7NKpe9xUF3CcuIh4QSbU1nVucOPnu2zPYgmrycxUeO1clzQfsMZZm0</span>
+      <span class="no">/ZbLpwIoWbLOFwnEN+oLvMHqXEgEQIJP3RRMLf3le1N3/q4mGNdEqTJuhl4rznRh</span>
+      <span class="no">SZc8aKA4ibtV/KViKwwSgWLvNKsjcVkPvD02QzFA+1XjvdZhnmMIzlDBpowqrO6b</span>
+      <span class="no">6lVqkgm6N80RSRKnSYbz0GnIwf2H4XmdbH+NmtEREtb9VOcy2LxfLwhxIOHN7oX7</span>
+      <span class="no">/c8nWBr7WYksQ5y1jsWqe7MMzyIBhEeb5UFPv2I6DVtqe2PZOnqKTwHgyQuXeDgF</span>
+      <span class="no">IsKaqu11eZ2nvN6rMP0HRIK/T0CaADImj78btJiz8kdxU+69Ahq6oAY96jgd1avt</span>
+      <span class="no">Nh2ky/CTWCLf11nybxS/QoDA+MqhH9JxUdlEcp2EM8l6NMNgOo9DnmdDi5tUa0WE</span>
+      <span class="no">N2u1sQSaK//NW3UoWAQ+8QsM/Z3VrpkdTDeD2APX6K5CMqG7M5w6T0h2CzchG5C2</span>
+      <span class="no">=8Rrg</span>
+      <span class="no">-----END PGP MESSAGE-----</span>
+    <span class="l l-Scalar l-Scalar-Plain">dnn.key</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">-----BEGIN PGP MESSAGE-----</span>
+      <span class="no">Version: GnuPG v2</span>
+
+      <span class="no">hQEMAzfCuITl4pqUAQgAu/VcybBE7HT5qWh+E996YQdF8SdZmeYCHPDJmoowchHj</span>
+      <span class="no">6n4fGxMqN6wjD6JnxRtyRzV1cfbhXLoUlqAo3/HEqd+vY3t1X1ZamSoHQNosf3Rw</span>
+      <span class="no">KBn1l6aIIkCp9thE1zsVYSDHnGu206ibIZmPXgzkJ/mHI6pLOVj1QPrJd5dOGGi1</span>
+      <span class="no">SW+GQUg5XU/stz1gDPKZxLbqEarD5xJ5a51zGJal1U5bHR3fcwMBY1iM3vQY21QO</span>
+      <span class="no">dkyRARoTa0qvH5sD3vWPiDJzf2MMSJqoiITQZpZlbDxHffXPRGqimRSiIoyk/f4F</span>
+      <span class="no">pk641czbIFMB4mGs/c9iV0S5uYsQj/GEnHDrrOib5dLqAZUd5LgeXn2YULQTji64</span>
+      <span class="no">mdz6uOjutQZcQFwfHbC53XQLgoankJD6T1K2fEZEB6zJ+nRZ1kQ9llzxZwZa2ikV</span>
+      <span class="no">P0e/siCtu5cTiVvHjYqYka+6xIm0b+CaBXFUgSlNrUWbu37i2rrV/4KBXIG2lW7q</span>
+      <span class="no">CP8rcoOlyz4FkSV+mKje41wEF7hig5PufMw9hUZXfLEIz+0vSU+DqWzkQj68ZIX8</span>
+      <span class="no">+8Kq76skOegc7Sxy4m12WP8NC/Gv0Lx6mW8O1OI8+r/l+fBu9ZowkFpAmSRcZNcK</span>
+      <span class="no">pOFIGBz2jx79Ax5v62Cg/SUkN2GeNTV07s0um/b592t+yMv01Oy7jM36crw5M0EO</span>
+      <span class="no">Ueewl0kw8Q0xOdJy/XZ4g1+VjFdRszaBSXnmADElgfzeymNGWWVSBHZ2NyiSOA4m</span>
+      <span class="no">5+eroY+JxyUJVgpkgpKiObnVTfXDs/0eydoabnhAsYE25csAiXXQAbiH14y1Bd52</span>
+      <span class="no">k9c/Z/71v1DhHIliWZKZFZmavTR8P9K04iAOeTYDjZ4Ky97xQktuKz7dYtJwyYXN</span>
+      <span class="no">mb6UiJVjSx1Kw/qiHV+TSBMwoycw3O15ODI2XoiGHVxpdefaSvlg9QrKzJQXeHGe</span>
+      <span class="no">XyDv+VkhopU0+XPZTcWPuUmiyOOj2741gYXDA2u2N6DnDrWs9lqVtdtvdvrPYjEW</span>
+      <span class="no">tg0yswQG/NPJQ2Cj+xNZzNgLlvx8OU99+YNfZEp9gHk6BNrp8xCdKWCQUoSu2CRh</span>
+      <span class="no">unrSZi8sc0AQ7H05Cqhnu1EHnMf/QmyX3FR/F6r1RvYQ7V6Kegg4YznqHC/xUUj/</span>
+      <span class="no">ACccdFjGtY7/B8TWyRM592zBiVwqBRQmxUAk4Jk02Kmr1GKyzM7aU/ASZMmpjX0k</span>
+      <span class="no">Ly1ghOYF0VPZn59r9RGvD0OtOv5OusR3lULAefXpOrTRaAXq6UbPxxAl+yEonMGj</span>
+      <span class="no">UAx5MpJFlq3qyJYsw+JSaIGPntnWtfk8eD9j+2vof0fZ+mLm17RhcWCaXAMRgINH</span>
+      <span class="no">ICDWUck7150Huf5IxYedtqNvWwVTlt570gbkgCryzEokgANMg5zYL0dglcdQat6W</span>
+      <span class="no">COLN4+PwJRew4Qct1IyJKTiJLPshysoBARPttyc9FtSLDNBgsO3WmTWj0SDk2+Vx</span>
+      <span class="no">i0qp5uwh01lJ7zfN3VVENPCJ6VH2gU/3aNlz39SdebpZY9uS6aMqy+zCO5oCJz5H</span>
+      <span class="no">MPc5yPBBIfHxKcdfd3Leop6Yn293RlI7r2x4UVQtAgjs0eHwWk5F9eM1vYSqpSQ+</span>
+      <span class="no">XmQ65D6GBYGVgdQbzTPEil0JK9RozbRqbyRwWu70eotzfssLlMafeS5XMAqFgc7x</span>
+      <span class="no">oFIQ9EeVzpO/2OUJ40+Qtccs8GWysO2UUmRf7wDmaflZSUX3OpsuTr1wv9MSfctn</span>
+      <span class="no">WsCpdY8Y0QSSF45cO5Z+G5IOsTYBHmf/hBVh9rLlU6pXxwDCRc86XDX1UeOcGYiq</span>
+      <span class="no">l8aNUXSma9sHOpKtWMYrI7nRv8sdO5cCOxev6dB7+v2UnOU8e0ugF4jwPJseHWlP</span>
+      <span class="no">ikoEr8/F1sWZT8M3MwKiwPcR9YHK/RrGBLTusZw/SIIGeD7l36pBxhkXBEDL95rJ</span>
+      <span class="no">k/WjZUWFHHKdfI/icsmBvmpsRtvWqfXCR9nfICmvQSjofqP8pNB0fQs/9qPWD633</span>
+      <span class="no">ef+CkyR1QGpiITwOrWCZIZUxJQMcbmwXs0cJ3JeaLHchYqvd+b27TWdF/5ceCn2r</span>
+      <span class="no">WuiY6kehe/lrl1w4IIfV5j46sAxf4DupRycCkgaULNCL7tnmhLmM32BgaCG4rAnI</span>
+      <span class="no">7nvQBRiT0fVko58UKTR0n2evnLCUPBnPoAs59c2eJ4e8OdpwtH1fPCi4OjdPRIDa</span>
+      <span class="no">riHFFpDMQzZaYHyMJOMD6vqQ/59WWuEfXsVKdQ==</span>
+      <span class="no">=iuKd</span>
+      <span class="no">-----END PGP MESSAGE-----</span>
+
+<span class="l l-Scalar l-Scalar-Plain">fastd</span><span class="p p-Indicator">:</span> <span class="c1"># Test Daten</span>
+  <span class="l l-Scalar l-Scalar-Plain">secret</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+    <span class="no">-----BEGIN PGP MESSAGE-----</span>
+    <span class="no">Version: GnuPG v2</span>
+
+    <span class="no">hQEMAzfCuITl4pqUAQgAp/I+VHUZZSy3zMqf4bUWz5AylTL3Gcm5PJ+DdvYqJRpP</span>
+    <span class="no">SSOvqwJE+rZ/T94if0Hqkmmk/IagkeDpj6wJADvBI5N40AZznp1clmWNbH2JkN8/</span>
+    <span class="no">EltQrxG2dcBDQVfGqKsr09flgPfObtXBXggPefbjpTGUFqxH5z6KqswWZ9xKWMdF</span>
+    <span class="no">It/LavtBiQ/clBQm1T459TAfUucfZfBwBo+472DE/GR7FEpUiiggOsXZgMBy7r5X</span>
+    <span class="no">qEJd+AoOCJqfCqaczoOnR7UTf0qGsUvK46R+dv9t5GlPv/2pEgUKj7bHfPCZ1SAV</span>
+    <span class="no">rW13SXs47lW0rnoPAWdo1Dg3SJT+lM33HfgyExW/+tJ0AVaBNNneALC8M3WPClnQ</span>
+    <span class="no">p0o0iTRcblmX8lPk8apqgZ+TdWIWW+HYgJeySV9Jd+uwUOyqA+lSTUj4xCLuwhha</span>
+    <span class="no">ysLnbbREpB/Brjg0dyliG0cF71MJwXOXrdlooMIz11/UnQ5htmJy1iUr16Rks4Ef</span>
+    <span class="no">4a5gaEw=</span>
+    <span class="no">=w/3W</span>
+    <span class="no">-----END PGP MESSAGE-----</span>
+  <span class="l l-Scalar l-Scalar-Plain">public</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">871bde12620761fd7480a27874b572bde730a6a541e1057f7b2caf8bb8277c9a</span>
+  <span class="l l-Scalar l-Scalar-Plain">fqdn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">gw4.digital-nerv.net</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../peers/index.html" class="btn btn-neutral float-right" title="Peers" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../gw3/index.html" class="btn btn-neutral" title="Gateway 3" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

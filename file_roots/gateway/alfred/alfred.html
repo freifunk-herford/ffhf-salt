@@ -1,0 +1,323 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Stichwortverzeichnis"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Suche" href="../../../search.html"/>
+    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SaltStack Freifunk Herford
+          
+
+          
+            
+            <img src="../../../_static/freifunk.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">States</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network.html">Netzwerk Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testumgebung</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Installation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">alfred</span> <span class="n">alfred</span><span class="o">-</span><span class="n">json</span> <span class="n">batadv</span><span class="o">-</span><span class="n">vis</span>
+</pre></div>
+</div>
+<p>Beim Betrieb mit dem Init System <code class="docutils literal"><span class="pre">systemd</span></code> die Datei <code class="docutils literal"><span class="pre">/lib/systemd/system/batadv-vis.service</span></code> mit folgendem Inhalt anlegen.</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x">[Unit]</span>
+<span class="x">Description=batadv-vis Visualization Server</span>
+<span class="x">Documentation=man:batadv-vis(8)</span>
+<span class="x">Wants=network-online.target</span>
+<span class="x">After=network-online.target</span>
+<span class="x">After=alfred.service</span>
+<span class="x">ConditionPathExists=/etc/default/alfred</span>
+
+<span class="x">[Service]</span>
+<span class="x">EnvironmentFile=/etc/default/alfred</span>
+<span class="x">ExecStart=/bin/sh -ec &#39;/usr/sbin/batadv-vis -i $BATMANIF -u $UNIX_SOCKET -s&#39;</span>
+<span class="x">Type=simple</span>
+
+<span class="x">[Install]</span>
+<span class="x">WantedBy=multi-user.target</span>
+</pre></div>
+</div>
+<p>Und die Datei <code class="docutils literal"><span class="pre">/lib/systemd/system/alfred.service</span></code> mit folgendem Inhalt anlegen.</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x">[Unit]</span>
+<span class="x">Description=A.L.F.R.E.D. Almighty Lightweight Fact Remote Exchange Daemon</span>
+<span class="x">Documentation=man:alfred(8)</span>
+<span class="x">Wants=network-online.target</span>
+<span class="x">After=network-online.target</span>
+<span class="x">ConditionPathExists=/etc/default/alfred</span>
+
+<span class="x">[Service]</span>
+<span class="x">EnvironmentFile=/etc/default/alfred</span>
+<span class="x">ExecStart=/bin/sh -ec &#39;/usr/sbin/alfred -i $INTERFACE -b $BATMANIF -u $UNIX_SOCKET $DAEMON_ARGS&#39;</span>
+<span class="x">Type=simple</span>
+
+<span class="x">[Install]</span>
+<span class="x">WantedBy=multi-user.target</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="a-l-f-r-e-d-announce">
+<h1>A.L.F.R.E.D. Announce<a class="headerlink" href="#a-l-f-r-e-d-announce" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Folgende Pakete werden für die Installation benötigt.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">python3</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span><span class="o">-</span><span class="n">virtualenv</span>
+</pre></div>
+</div>
+<p>Script aus dem Repository laden.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">mkdir</span> <span class="o">-</span><span class="n">p</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">announce</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">announce</span>
+<span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">freifunk</span><span class="o">-</span><span class="n">mwu</span><span class="o">/</span><span class="n">ffnord</span><span class="o">-</span><span class="n">alfred</span><span class="o">-</span><span class="n">announce</span><span class="o">.</span><span class="n">git</span>
+</pre></div>
+</div>
+<p>Die Datei <code class="docutils literal"><span class="pre">/root/scripts/announce/requirement.txt</span></code> mit folgendem Inhalt anlegen.</p>
+<div class="highlight-default"><div class="highlight"><pre><span></span><span class="n">netifaces</span>
+<span class="n">py</span><span class="o">-</span><span class="n">cpuinfo</span>
+</pre></div>
+</div>
+<p>Einrichten der virtuellen Umgebung für das Script.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">announce</span>
+<span class="n">virtualenv</span> <span class="n">venv</span> <span class="o">-</span><span class="n">p</span> <span class="n">python3</span>
+<span class="n">source</span> <span class="n">venv</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">activate</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Nun erstellen wir in <code class="docutils literal"><span class="pre">/root/scripts</span></code> ein Script mit dem Namen <code class="docutils literal"><span class="pre">alfred-announce.sh</span></code> mit dem folgenden Inhalt.</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x">#!/usr/bin/env bash</span>
+<span class="x"># Copyright 2016 - 2016 Tobias Benzin tbenzin@digital-nerv.net</span>
+<span class="x">#                       Rally Vincent rvincent@digital-nerv.net</span>
+
+<span class="x"># This file is managed by Salt, do not edit.</span>
+
+<span class="x">PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin</span>
+<span class="x">SHELL=/bin/bash</span>
+
+<span class="x">base=&quot;/root/scripts/announce&quot;</span>
+
+<span class="x">${base}/venv/bin/python ${base}/ffnord-alfred-announce/announce.py \</span>
+<span class="x">-d /root/scripts/announce/ffnord-alfred-announce/nodeinfo.d/ \</span>
+<span class="x">-i </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> -b </span><span class="cp">{{</span> <span class="nv">batman</span> <span class="cp">}}</span><span class="x"> -f </span><span class="cp">{{</span> <span class="nv">mesh</span> <span class="cp">}}</span><span class="x"> -s </span><span class="cp">{{</span> <span class="nv">sitecode</span> <span class="cp">}}</span><span class="x"> | gzip | \</span>
+<span class="x">alfred -u </span><span class="cp">{{</span> <span class="nv">socket</span> <span class="cp">}}</span><span class="x"> -i </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> -b </span><span class="cp">{{</span> <span class="nv">batman</span> <span class="cp">}}</span><span class="x"> -s 158</span>
+
+<span class="x">${base}/venv/bin/python ${base}/ffnord-alfred-announce/announce.py \</span>
+<span class="x">-d /root/scripts/announce/ffnord-alfred-announce/statistics.d/ \</span>
+<span class="x">-i </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> -b </span><span class="cp">{{</span> <span class="nv">batman</span> <span class="cp">}}</span><span class="x"> -f </span><span class="cp">{{</span> <span class="nv">mesh</span> <span class="cp">}}</span><span class="x"> -s </span><span class="cp">{{</span> <span class="nv">sitecode</span> <span class="cp">}}</span><span class="x"> | gzip | \</span>
+<span class="x">alfred -u </span><span class="cp">{{</span> <span class="nv">socket</span> <span class="cp">}}</span><span class="x"> -i </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> -b </span><span class="cp">{{</span> <span class="nv">batman</span> <span class="cp">}}</span><span class="x"> -s 159</span>
+</pre></div>
+</div>
+<div class="admonition caution">
+<p class="first admonition-title">Vorsicht</p>
+<p class="last">Nicht vergessen das Script mit <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">alfred-announce.sh</span></code> ausführbar zu machen!</p>
+</div>
+<p>Jetzt legen wir einen Cronjob an der das Script jede Minute startet.</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">crontab</span> <span class="o">-</span><span class="n">e</span>
+</pre></div>
+</div>
+<p>Folgendes fügen wir in den nun ein.</p>
+<div class="code text highlight-default"><div class="highlight"><pre><span></span><span class="o">*/</span><span class="mi">1</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">alfred</span><span class="o">-</span><span class="n">announce</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="konfiguation">
+<h1>Konfiguation<a class="headerlink" href="#konfiguation" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x"># This file is managed by Salt, do not edit.</span>
+
+<span class="x">#</span>
+<span class="x"># /etc/default/alfred</span>
+<span class="x">#</span>
+
+<span class="x"># Additional command line options</span>
+<span class="x">DAEMON_ARGS=&quot;</span><span class="cp">{{</span> <span class="nv">args</span> <span class="cp">}}</span><span class="x">&quot;</span>
+
+<span class="x"># Interface for A.L.F.R.E.D. to listen on. Has to be specified.</span>
+<span class="x">INTERFACE=&quot;</span><span class="cp">{{</span> <span class="nv">interface</span> <span class="cp">}}</span><span class="x">&quot;</span>
+
+<span class="x"># Specify the batman-adv interface configured on the system (default: bat0).</span>
+<span class="x"># Use &#39;none&#39; to disable the batman-adv based best server selection.</span>
+<span class="x">BATMANIF=&quot;</span><span class="cp">{{</span> <span class="nv">batmanif</span> <span class="cp">}}</span><span class="x">&quot;</span>
+
+<span class="x"># Specify the unix socket to use. It is possible to run multiple alfred daemons.</span>
+<span class="x"># For this to work the unix socket has to be distinct, also.</span>
+<span class="x">UNIX_SOCKET=&quot;</span><span class="cp">{{</span> <span class="nv">socket</span> <span class="cp">}}</span><span class="x">&quot;</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

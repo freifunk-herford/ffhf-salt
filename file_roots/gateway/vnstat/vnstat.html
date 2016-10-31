@@ -1,0 +1,290 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Stichwortverzeichnis"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Suche" href="../../../search.html"/>
+    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SaltStack Freifunk Herford
+          
+
+          
+            
+            <img src="../../../_static/freifunk.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">States</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network.html">Netzwerk Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testumgebung</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Installation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">vnstat</span> <span class="n">vnstati</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="webseite">
+<h1>Webseite<a class="headerlink" href="#webseite" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Um die Statistik auf dem Server anzuzeigen ändern wir in den Dateien <code class="docutils literal"><span class="pre">/etc/apache2/sites-available/000-default.conf</span></code> und <code class="docutils literal"><span class="pre">/etc/apache2/sites-available/default-ssl.conf</span></code> die Dokumentenwurzel vom Webserver.</p>
+<div class="code apache highlight-default"><div class="highlight"><pre><span></span><span class="n">DocumentRoot</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">vnstat</span>
+</pre></div>
+</div>
+<p>Nun legen wir noch das Verzeichnis <code class="docutils literal"><span class="pre">/var/www/vnstat</span></code> mit <code class="docutils literal"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/var/www/vnstat</span></code> an.</p>
+</div>
+<div class="section" id="aktualisierung">
+<h1>Aktualisierung<a class="headerlink" href="#aktualisierung" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Um die Grafiken für die Statistiken zu aktualisieren lassen wir einen Cronjob alle 5 Minuten ein Script ausführen.</p>
+<p>Mit <code class="docutils literal"><span class="pre">crontab</span> <span class="pre">-e</span></code> legen wir einen Cronjob an und tragen dort folgendes ein.</p>
+<div class="code text highlight-default"><div class="highlight"><pre><span></span><span class="o">*/</span><span class="mi">5</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">update</span><span class="o">-</span><span class="n">vnstat</span><span class="o">-</span><span class="n">graphs</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+<p>Wir erstellen ein Script unter <code class="docutils literal"><span class="pre">/root/scripts</span></code> mit dem Namen <code class="docutils literal"><span class="pre">update-vnstat-graphs.sh</span></code> mit folgendem Inhalt.</p>
+<div class="admonition attention">
+<p class="first admonition-title">Achtung</p>
+<p class="last">Das Script mit <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">update-vnstat-graphs.sh</span></code> ausführbar machen!</p>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+<span class="c1"># Copyright 2016 - 2016 Tobias Benzin tbenzin@digital-nerv.net</span>
+<span class="c1">#                       Rally Vincent rvincent@digital-nerv.net</span>
+
+<span class="c1"># This file is managed by Salt, do not edit.</span>
+
+<span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+<span class="nv">SHELL</span><span class="o">=</span>/bin/bash
+
+<span class="nv">interfaces</span><span class="o">=</span><span class="k">$(</span>ls /var/lib/vnstat/<span class="k">)</span>
+
+<span class="nv">webroot</span><span class="o">=</span>/var/www/vnstat
+
+<span class="k">for</span> interface in <span class="si">${</span><span class="nv">interfaces</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+	vnstati -i <span class="si">${</span><span class="nv">interface</span><span class="si">}</span> -h -o <span class="si">${</span><span class="nv">webroot</span><span class="si">}</span>/<span class="si">${</span><span class="nv">interface</span><span class="si">}</span>_hourly.png
+	vnstati -i <span class="si">${</span><span class="nv">interface</span><span class="si">}</span> -d -o <span class="si">${</span><span class="nv">webroot</span><span class="si">}</span>/<span class="si">${</span><span class="nv">interface</span><span class="si">}</span>_daily.png
+	vnstati -i <span class="si">${</span><span class="nv">interface</span><span class="si">}</span> -m -o <span class="si">${</span><span class="nv">webroot</span><span class="si">}</span>/<span class="si">${</span><span class="nv">interface</span><span class="si">}</span>_monthly.png
+	vnstati -i <span class="si">${</span><span class="nv">interface</span><span class="si">}</span> -t -o <span class="si">${</span><span class="nv">webroot</span><span class="si">}</span>/<span class="si">${</span><span class="nv">interface</span><span class="si">}</span>_top10.png
+	vnstati -i <span class="si">${</span><span class="nv">interface</span><span class="si">}</span> -s -o <span class="si">${</span><span class="nv">webroot</span><span class="si">}</span>/<span class="si">${</span><span class="nv">interface</span><span class="si">}</span>_summary.png
+<span class="k">done</span>
+
+cat &gt; <span class="si">${</span><span class="nv">webroot</span><span class="si">}</span>/index.html <span class="s">&lt;&lt;EOT</span>
+<span class="s">&lt;!DOCTYPE html&gt;</span>
+<span class="s">&lt;html lang=&quot;en&quot;&gt;</span>
+<span class="s">	&lt;head&gt;</span>
+<span class="s">		&lt;title&gt;Network Traffic&lt;/title&gt;</span>
+<span class="s">		&lt;meta charset=&quot;utf-8&quot; /&gt;</span>
+<span class="s">		&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot; /&gt;</span>
+<span class="s">		&lt;style&gt;</span>
+<span class="s">			body {</span>
+<span class="s">				margin: 0;</span>
+<span class="s">				padding: 0;</span>
+<span class="s">				white-space: nowrap;</span>
+<span class="s">			}</span>
+<span class="s">			div {</span>
+<span class="s">				display: inline-block;</span>
+<span class="s">				vertical-align: top;</span>
+<span class="s">			}</span>
+<span class="s">			img {</span>
+<span class="s">				max-width: 100%;</span>
+<span class="s">				height: auto;</span>
+<span class="s">			}</span>
+<span class="s">		&lt;/style&gt;</span>
+<span class="s">	&lt;/head&gt;</span>
+<span class="s">	&lt;body&gt;</span>
+<span class="s">EOT</span>
+
+<span class="k">for</span> interface in <span class="si">${</span><span class="nv">interfaces</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
+	sed s/interface/<span class="si">${</span><span class="nv">interface</span><span class="si">}</span>/g &gt;&gt; <span class="si">${</span><span class="nv">webroot</span><span class="si">}</span>/index.html <span class="s">&lt;&lt;EOT</span>
+<span class="s">		&lt;div&gt;</span>
+<span class="s">	    	&lt;img src=&quot;interface_summary.png&quot; alt=&quot;Traffic Summary&quot; /&gt;&lt;br&gt;</span>
+<span class="s">	    	&lt;img src=&quot;interface_monthly.png&quot; alt=&quot;Traffic per Month&quot; /&gt;&lt;br&gt;</span>
+<span class="s">	    	&lt;img src=&quot;interface_hourly.png&quot; alt=&quot;Traffic per Hour&quot; /&gt;&lt;br&gt;</span>
+<span class="s">	    	&lt;img src=&quot;interface_top10.png&quot; alt=&quot;Traffic Top 10&quot; /&gt;&lt;br&gt;</span>
+<span class="s">	    	&lt;img src=&quot;interface_daily.png&quot; alt=&quot;Traffic per Day&quot; /&gt;</span>
+<span class="s">	    &lt;/div&gt;</span>
+<span class="s">EOT</span>
+<span class="k">done</span>
+
+cat &gt;&gt; <span class="si">${</span><span class="nv">webroot</span><span class="si">}</span>/index.html <span class="s">&lt;&lt;EOT</span>
+<span class="s">	&lt;/body&gt;</span>
+<span class="s">&lt;/html&gt;</span>
+<span class="s">EOT</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

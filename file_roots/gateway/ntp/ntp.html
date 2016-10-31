@@ -1,0 +1,278 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Stichwortverzeichnis"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Suche" href="../../../search.html"/>
+    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SaltStack Freifunk Herford
+          
+
+          
+            
+            <img src="../../../_static/freifunk.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">States</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network.html">Netzwerk Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testumgebung</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Installation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">ntp</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="konfiguration">
+<h1>Konfiguration<a class="headerlink" href="#konfiguration" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># This file is managed by Salt, do not edit.</span>
+
+<span class="c1"># /etc/ntp.conf, configuration for ntpd; see ntp.conf(5) for help</span>
+
+driftfile /var/lib/ntp/ntp.drift
+
+<span class="c1"># Enable this if you want statistics to be logged.</span>
+<span class="c1">#statsdir /var/log/ntpstats/</span>
+
+statistics loopstats peerstats clockstats
+filegen loopstats file loopstats <span class="nb">type</span> day <span class="nb">enable</span>
+filegen peerstats file peerstats <span class="nb">type</span> day <span class="nb">enable</span>
+filegen clockstats file clockstats <span class="nb">type</span> day <span class="nb">enable</span>
+
+<span class="c1"># Specify one or more NTP servers.</span>
+
+<span class="c1"># Use servers from the NTP Pool Project. Approved by Ubuntu Technical Board</span>
+<span class="c1"># on 2011-02-08 (LP: #104525). See http://www.pool.ntp.org/join.html for</span>
+<span class="c1"># more information.</span>
+pool 0.ubuntu.pool.ntp.org iburst
+pool 1.ubuntu.pool.ntp.org iburst
+pool 2.ubuntu.pool.ntp.org iburst
+pool 3.ubuntu.pool.ntp.org iburst
+
+<span class="c1"># Use Ubuntu&#39;s ntp server as a fallback.</span>
+pool ntp.ubuntu.com
+
+<span class="c1"># Access control configuration; see /usr/share/doc/ntp-doc/html/accopt.html for</span>
+<span class="c1"># details.  The web page &lt;http://support.ntp.org/bin/view/Support/AccessRestrictions&gt;</span>
+<span class="c1"># might also be helpful.</span>
+<span class="c1">#</span>
+<span class="c1"># Note that &quot;restrict&quot; applies to both servers and clients, so a configuration</span>
+<span class="c1"># that might be intended to block requests from certain clients could also end</span>
+<span class="c1"># up blocking replies from your own upstream servers.</span>
+
+<span class="c1"># By default, exchange time with everybody, but don&#39;t allow configuration.</span>
+restrict -4 default kod notrap nomodify nopeer noquery limited
+restrict -6 default kod notrap nomodify nopeer noquery limited
+
+<span class="c1"># Local users may interrogate the ntp server more closely.</span>
+restrict 127.0.0.1
+restrict ::1
+
+<span class="c1"># Needed for adding pool entries</span>
+restrict <span class="nb">source</span> notrap nomodify noquery
+
+<span class="c1"># Clients from this (example!) subnet have unlimited access, but only if</span>
+<span class="c1"># cryptographically authenticated.</span>
+<span class="c1">#restrict 192.168.123.0 mask 255.255.255.0 notrust</span>
+
+
+<span class="c1"># If you want to provide time to your local subnet, change the next line.</span>
+<span class="c1"># (Again, the address is an example only.)</span>
+<span class="c1">#broadcast 192.168.123.255</span>
+
+<span class="c1"># If you want to listen to time broadcasts on your local subnet, de-comment the</span>
+<span class="c1"># next lines.  Please do this only if you trust everybody on the network!</span>
+<span class="c1">#disable auth</span>
+<span class="c1">#broadcastclient</span>
+
+<span class="c1">#Changes recquired to use pps synchonisation as explained in documentation:</span>
+<span class="c1">#http://www.ntp.org/ntpfaq/NTP-s-config-adv.htm#AEN3918</span>
+
+<span class="c1">#server 127.127.8.1 mode 135 prefer    # Meinberg GPS167 with PPS</span>
+<span class="c1">#fudge 127.127.8.1 time1 0.0042        # relative to PPS for my hardware</span>
+
+<span class="c1">#server 127.127.22.1                   # ATOM(PPS)</span>
+<span class="c1">#fudge 127.127.22.1 flag3 1            # enable PPS API</span>
+</pre></div>
+</div>
+<p>Todo: Konfigurationsdatei anpassen, Deutsche Pool Server? VM Shift?</p>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

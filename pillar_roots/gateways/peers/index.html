@@ -1,0 +1,266 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Peers &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Stichwortverzeichnis"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Suche" href="../../../search.html"/>
+    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/>
+        <link rel="up" title="Gateways" href="../index.html"/>
+        <link rel="next" title="Gemeinsame Daten" href="../shared/index.html"/>
+        <link rel="prev" title="Gateway 4" href="../gw4/index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SaltStack Freifunk Herford
+          
+
+          
+            
+            <img src="../../../_static/freifunk.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../file_roots/index.html">States</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Pillars</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Gateways</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../gw1/index.html">Gateway 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw2/index.html">Gateway 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw3/index.html">Gateway 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw4/index.html">Gateway 4</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Peers</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../shared/index.html">Gemeinsame Daten</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network.html">Netzwerk Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testumgebung</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Pillars</a> &raquo;</li>
+      
+          <li><a href="../index.html">Gateways</a> &raquo;</li>
+      
+    <li>Peers</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="peers">
+<h1>Peers<a class="headerlink" href="#peers" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="section" id="salt-state-file">
+<h2>Salt State File<a class="headerlink" href="#salt-state-file" title="Link zu dieser Überschrift">¶</a></h2>
+<p>peers.sls</p>
+<div class="highlight-salt"><div class="highlight"><pre><span></span><span class="c1"># Peers</span>
+
+<span class="l l-Scalar l-Scalar-Plain">peers</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">gw1</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">fqdn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">gw1.herford.freifunk.net</span>
+    <span class="l l-Scalar l-Scalar-Plain">key</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">4033298711b9a5a9862405486e603db0984812e4abb2d85d74b89ab06626ce99</span>
+  <span class="l l-Scalar l-Scalar-Plain">gw2</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">fqdn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">gw2.herford.freifunk.net</span>
+    <span class="l l-Scalar l-Scalar-Plain">key</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">a2f590bcd6936b55c0a3e3493c4ee9a1c08fa6e2e505b168c5713218416145cd</span>
+  <span class="l l-Scalar l-Scalar-Plain">gw3</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">fqdn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">gw3.herford.freifunk.net</span>
+    <span class="l l-Scalar l-Scalar-Plain">key</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">6b9c2bbe6b90fef3c8046c8551a0681a8b3bf24c8fd9e87d12dd1bdcf2f38d1c</span>
+  <span class="l l-Scalar l-Scalar-Plain">gw4</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">fqdn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">gw4.herford.freifunk.net</span>
+    <span class="l l-Scalar l-Scalar-Plain">key</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">3f4bc64be2c5ade4297bac8846a499dee9e01da062161edda562a582a59bbb1f</span>
+  <span class="l l-Scalar l-Scalar-Plain">gw5</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">fqdn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">gw5.herford.freifunk.net</span>
+    <span class="l l-Scalar l-Scalar-Plain">key</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">081fdcf3e03976dcc340372ac1692b2fcd2de89f2d00db738078ea6ff2e13213</span>
+  <span class="l l-Scalar l-Scalar-Plain">gw6</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">fqdn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">gw6.herford.freifunk.net</span>
+    <span class="l l-Scalar l-Scalar-Plain">key</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">294e0a87b9700e4a3cde011a24c2839be243406b8b18818729b591e73e70fc1a</span>
+  <span class="c1"># gw7:</span>
+  <span class="c1">#   fqdn: gw7.herford.freifunk.net</span>
+  <span class="c1"># gw8:</span>
+  <span class="c1">#   fqdn: gw8.herford.freifunk.net</span>
+  <span class="c1"># gw9:</span>
+  <span class="c1">#   fqdn: gw9.herford.freifunk.net</span>
+  <span class="c1"># gw10:</span>
+  <span class="c1">#   fqdn: gw10.herford.freifunk.net</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../shared/index.html" class="btn btn-neutral float-right" title="Gemeinsame Daten" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../gw4/index.html" class="btn btn-neutral" title="Gateway 4" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

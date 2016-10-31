@@ -1,2 +1,0 @@
-remote {{ protocol }} "{{ fqdn }}" port {{ port }};
-key "{{ key }}";

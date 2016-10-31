@@ -1,0 +1,354 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Stichwortverzeichnis"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Suche" href="../../../search.html"/>
+    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SaltStack Freifunk Herford
+          
+
+          
+            
+            <img src="../../../_static/freifunk.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">States</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network.html">Netzwerk Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testumgebung</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+    <li>Installation</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">openvpn</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="konfiguation">
+<h1>Konfiguation<a class="headerlink" href="#konfiguation" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="admonition hint">
+<p class="first admonition-title">Hinweis</p>
+<p class="last"><code class="docutils literal"><span class="pre">{{</span> <span class="pre">exit</span> <span class="pre">}}</span></code> ist die VPN-Schnittstelle.</p>
+</div>
+<p>Ein Script mit dem folgenden Inhalt für die Überwachung des VPN Tunnels in <code class="docutils literal"><span class="pre">/root/scripts</span></code> mit dem Namen <code class="docutils literal"><span class="pre">check-openvpn.sh</span></code> anlegen.</p>
+<div class="admonition caution">
+<p class="first admonition-title">Vorsicht</p>
+<p class="last">Nicht vergessen das Script mit <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">+x</span> <span class="pre">scripts/check-openvpn.sh</span></code> ausführbar zu machen.</p>
+</div>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+<span class="c1"># Copyright 2016 - 2016 Tobias Benzin tbenzin@digital-nerv.net</span>
+<span class="c1">#                       Rally Vincent rvincent@digital-nerv.net</span>
+
+<span class="c1"># This file is managed by Salt, do not edit.</span>
+
+<span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+<span class="nv">SHELL</span><span class="o">=</span>/bin/bash
+
+<span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;</span><span class="k">$(</span>ifconfig <span class="p">|</span> grep <span class="o">{{</span> <span class="nb">exit</span> <span class="o">}}</span><span class="k">)</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+	service openvpn restart
+	<span class="nb">exit</span>
+<span class="k">fi</span>
+
+<span class="nv">testping</span><span class="o">=</span><span class="k">$(</span>ping -q -I <span class="o">{{</span> <span class="nb">exit</span> <span class="o">}}</span> 8.8.8.8 -c <span class="m">4</span> -i <span class="m">1</span> -W <span class="m">5</span> <span class="p">|</span> grep 100<span class="k">)</span>
+
+<span class="k">if</span> <span class="o">[</span> -n <span class="s2">&quot;</span><span class="si">${</span><span class="nv">testping</span><span class="si">}</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
+	service openvpn restart
+	<span class="nb">exit</span>
+<span class="k">fi</span>
+</pre></div>
+</div>
+<p>Einen Cronjob mit Hilfe von <code class="docutils literal"><span class="pre">crontab</span> <span class="pre">-e</span></code> mit folgendem Inhalt anlegen.</p>
+<div class="code text highlight-default"><div class="highlight"><pre><span></span><span class="o">*/</span><span class="mi">10</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">/</span><span class="n">root</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">check</span><span class="o">-</span><span class="n">openvpn</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="mullvad">
+<h1>Mullvad<a class="headerlink" href="#mullvad" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Can one account be used on multiple computers?</p>
+<blockquote>
+<div><p>Yes, up to three. Use the same customer id on all the computers.</p>
+<p>Set the customer id under Settings in the client program.</p>
+<p class="attribution">&mdash;<a class="reference external" href="https://mullvad.net/en/faq/#multiple_conn">Mullvad FAQ</a></p>
+</div></blockquote>
+<p>Von <a class="reference external" href="https://mullvad.net/">Mullvad</a> erhält man ein gepacktes Archiv <code class="docutils literal"><span class="pre">mullvadconfig.zip</span></code>, aus diesem Archiv legen wir die Dateien <code class="docutils literal"><span class="pre">ca.crt</span></code>, <code class="docutils literal"><span class="pre">crl.pem</span></code>, <code class="docutils literal"><span class="pre">mullvad.crt</span></code> und <code class="docutils literal"><span class="pre">mullvad.key</span></code> in den Ordner <code class="docutils literal"><span class="pre">/etc/openvpn</span></code> ab.</p>
+<div class="admonition hint">
+<p class="first admonition-title">Hinweis</p>
+<p class="last"><code class="docutils literal"><span class="pre">{{</span> <span class="pre">exit</span> <span class="pre">}}</span></code> ist die VPN-Schnittstelle.</p>
+</div>
+<p>Die Datei <code class="docutils literal"><span class="pre">mullvad_linux.conf</span></code> in den Ordner <code class="docutils literal"><span class="pre">/etc/openvpn</span></code> kopieren und wie folgt anpassen.</p>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x"># Notice to Mullvad customers:</span>
+<span class="x">#</span>
+<span class="x"># Apart from openvpn, you also need to install the</span>
+<span class="x"># package &quot;resolvconf&quot;, available via apt, e.g.</span>
+<span class="x">#</span>
+<span class="x"># For those of you behind very restrictive firewalls,</span>
+<span class="x"># you can use our tunnels on tcp port 443, as well as</span>
+<span class="x"># on udp port 53.</span>
+<span class="x">client</span>
+
+<span class="x">dev </span><span class="cp">{{</span> <span class="nv">exit</span> <span class="cp">}}</span><span class="x"> # Extra: exit = exitVPN; Original: dev tun</span>
+<span class="x">dev-type tun # Extra</span>
+<span class="x">proto udp</span>
+<span class="x">#proto udp</span>
+<span class="x">#proto tcp</span>
+
+<span class="x">remote nl.mullvad.net 1300 # Original: openvpn.mullvad.net 1300</span>
+<span class="x">cipher AES-256-CBC</span>
+
+<span class="x">#remote openvpn.mullvad.net 443</span>
+<span class="x">#cipher BF-CBC</span>
+
+<span class="x">#remote openvpn.mullvad.net 53</span>
+<span class="x">#cipher BF-CBC</span>
+
+<span class="x">#remote se.mullvad.net 1300 # Servers in Sweden</span>
+<span class="x">#cipher AES-256-CBC</span>
+
+<span class="x">#remote nl.mullvad.net 1300 # Servers in the Netherlands</span>
+<span class="x">#cipher AES-256-CBC</span>
+
+<span class="x">#remote de.mullvad.net 1300 # Servers in Germany</span>
+<span class="x">#cipher AES-256-CBC</span>
+
+<span class="x">#remote us.mullvad.net 1300 # Servers in the USA</span>
+<span class="x">#cipher AES-256-CBC</span>
+
+<span class="x">#remote openvpn.mullvad.net 1194</span>
+<span class="x">#remote openvpn.mullvad.net 443</span>
+<span class="x">#remote openvpn.mullvad.net 53</span>
+<span class="x">#remote se.mullvad.net # Servers in Sweden</span>
+<span class="x">#remote nl.mullvad.net # Servers in the Netherlands</span>
+<span class="x">#remote de.mullvad.net # Servers in Germany</span>
+<span class="x">#remote us.mullvad.net # Servers in the USA</span>
+
+<span class="x"># Tunnel IPv6 traffic as well as IPv4</span>
+<span class="x">tun-ipv6</span>
+
+<span class="x"># Keep trying indefinitely to resolve the</span>
+<span class="x"># host name of the OpenVPN server.  Very useful</span>
+<span class="x"># on machines which are not permanently connected</span>
+<span class="x"># to the internet such as laptops.</span>
+<span class="x">resolv-retry infinite</span>
+
+<span class="x"># Most clients don&#39;t need to bind to</span>
+<span class="x"># a specific local port number.</span>
+<span class="x">nobind</span>
+
+<span class="x"># Try to preserve some state across restarts.</span>
+<span class="x">persist-key</span>
+<span class="x">persist-tun</span>
+
+<span class="x"># Enable compression on the VPN link.</span>
+<span class="x">comp-lzo</span>
+
+<span class="x"># Set log file verbosity.</span>
+<span class="x">verb 3</span>
+
+<span class="x">remote-cert-tls server</span>
+
+<span class="x">ping-restart 60</span>
+
+<span class="x"># Allow calling of built-in executables and user-defined scripts.</span>
+<span class="x">script-security 2</span>
+
+<span class="x">route-noexec # Extra: Dont set default route. Don&#39;t add or remove routes automatically. Instead pass routes to --route-up script using environmental variables.</span>
+
+<span class="x"># Parses DHCP options from openvpn to update resolv.conf</span>
+<span class="x">up /etc/openvpn/openvpn-updown # Original: up /etc/openvpn/update-resolv-conf</span>
+<span class="x">down /etc/openvpn/openvpn-updown # Original: down /etc/openvpn/update-resolv-conf</span>
+
+<span class="x">ping 10</span>
+
+<span class="x">ca ca.crt</span>
+<span class="x">cert mullvad.crt</span>
+<span class="x">key mullvad.key</span>
+
+<span class="x">crl-verify crl.pem</span>
+
+<span class="x"># Limit range of possible TLS cipher-suites</span>
+<span class="x">tls-cipher TLS-DHE-RSA-WITH-AES-256-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-256-CBC-SHA:TLS-DHE-RSA-WITH-3DES-EDE-CBC-SHA:TLS-DHE-RSA-WITH-AES-128-CBC-SHA:TLS-DHE-RSA-WITH-SEED-CBC-SHA:TLS-DHE-RSA-WITH-CAMELLIA-128-CBC-SHA</span>
+</pre></div>
+</div>
+<p>In der Datei <code class="docutils literal"><span class="pre">/etc/default/openvpn</span></code> eine Eintrag wie folgt einfügen oder anpassen.</p>
+<div class="code text highlight-default"><div class="highlight"><pre><span></span><span class="n">AUTOSTART</span><span class="o">=</span><span class="s2">&quot;mullvad_linux&quot;</span>
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

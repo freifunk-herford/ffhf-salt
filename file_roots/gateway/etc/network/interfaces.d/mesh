@@ -1,8 +1,0 @@
-# This file is managed by Salt, do not edit.
-
-allow-hotplug {{ mesh }}
-iface {{ mesh }} inet6 manual
-    hwaddress {{ pillar['network']['mesh']['hwaddress'] }}
-    pre-up modprobe batman-adv
-    post-up batctl -m {{ batman }} if add $IFACE
-    post-up ip link set dev {{ batman }} up

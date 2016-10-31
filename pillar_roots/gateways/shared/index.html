@@ -1,0 +1,326 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Gemeinsame Daten &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Stichwortverzeichnis"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Suche" href="../../../search.html"/>
+    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/>
+        <link rel="up" title="Gateways" href="../index.html"/>
+        <link rel="next" title="Links" href="../../../links.html"/>
+        <link rel="prev" title="Peers" href="../peers/index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SaltStack Freifunk Herford
+          
+
+          
+            
+            <img src="../../../_static/freifunk.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../file_roots/index.html">States</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Pillars</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Gateways</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../gw1/index.html">Gateway 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw2/index.html">Gateway 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw3/index.html">Gateway 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw4/index.html">Gateway 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../peers/index.html">Peers</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Gemeinsame Daten</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network.html">Netzwerk Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testumgebung</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">Pillars</a> &raquo;</li>
+      
+          <li><a href="../index.html">Gateways</a> &raquo;</li>
+      
+    <li>Gemeinsame Daten</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gemeinsame-daten">
+<h1>Gemeinsame Daten<a class="headerlink" href="#gemeinsame-daten" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="section" id="salt-state-file">
+<h2>Salt State File<a class="headerlink" href="#salt-state-file" title="Link zu dieser Überschrift">¶</a></h2>
+<p>shared.sls</p>
+<div class="highlight-salt"><div class="highlight"><pre><span></span><span class="c1"># Gemeinsame Daten</span>
+
+<span class="l l-Scalar l-Scalar-Plain">dhcp</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">subnet</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.0.0</span>
+    <span class="l l-Scalar l-Scalar-Plain">netmask</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">255.255.0.0</span>
+    <span class="l l-Scalar l-Scalar-Plain">gw1</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.64.0</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_end</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.79.254</span>
+    <span class="l l-Scalar l-Scalar-Plain">gw2</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.80.0</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_end</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.95.254</span>
+    <span class="l l-Scalar l-Scalar-Plain">gw3</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.96.0</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_end</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.111.254</span>
+    <span class="l l-Scalar l-Scalar-Plain">gw4</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.112.0</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_end</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.127.254</span>
+    <span class="l l-Scalar l-Scalar-Plain">gw5</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.128.0</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_end</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.143.254</span>
+    <span class="l l-Scalar l-Scalar-Plain">gw6</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.144.0</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_end</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.159.254</span>
+    <span class="l l-Scalar l-Scalar-Plain">gw7</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.160.0</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_end</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.175.254</span>
+    <span class="l l-Scalar l-Scalar-Plain">gw8</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.176.0</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_end</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.191.254</span>
+    <span class="l l-Scalar l-Scalar-Plain">gw9</span><span class="p p-Indicator">:</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_start</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.192.0</span>
+      <span class="l l-Scalar l-Scalar-Plain">range_end</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.207.254</span>
+  <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">enable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+  <span class="l l-Scalar l-Scalar-Plain">interface_mtu</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1350</span>
+  <span class="l l-Scalar l-Scalar-Plain">default_lease_time</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">300</span>
+  <span class="l l-Scalar l-Scalar-Plain">max_lease_time</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">300</span>
+  <span class="l l-Scalar l-Scalar-Plain">min_lease_time</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">300</span>
+  <span class="l l-Scalar l-Scalar-Plain">log_facility</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">local6</span>
+  <span class="l l-Scalar l-Scalar-Plain">domain_search</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ffhf</span>
+
+<span class="l l-Scalar l-Scalar-Plain">bind</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">zones</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ffhf</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">34.10.in-addr.arpa</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">2.5.1.5.9.4.0.2.3.f.d.f.ip6.arpa</span>
+  <span class="l l-Scalar l-Scalar-Plain">trusted</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">127.0.0.1</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">10.34.0.0/16</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">::1</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">fdf3:2049:5152::/48</span>
+  <span class="l l-Scalar l-Scalar-Plain">masters</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.0.32; fdf3:2049:5152::a22:20;</span> <span class="c1"># das ist der MAP-Server als eizige DNS-Master ausserhalb der Gateways !</span>
+  <span class="c1"># Test Daten Dummy DNS Master</span>
+  <span class="c1">#masters: 10.34.0.2; fdf3:2049:5152::a22:2;</span>
+
+<span class="l l-Scalar l-Scalar-Plain">iptables</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">masquerade</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.0.0/16</span>
+
+<span class="l l-Scalar l-Scalar-Plain">network</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">bridge</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">interface</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">hfBR</span> <span class="c1"># br0</span>
+    <span class="l l-Scalar l-Scalar-Plain">netmask</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">255.255.0.0</span>
+    <span class="l l-Scalar l-Scalar-Plain">prefix</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fdf3:2049:5152::/64</span>
+  <span class="l l-Scalar l-Scalar-Plain">batman</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">interface</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">hfBAT</span> <span class="c1"># bat0</span>
+  <span class="l l-Scalar l-Scalar-Plain">mesh</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">interface</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">hfVPN</span> <span class="c1"># tun0/tap0</span>
+  <span class="l l-Scalar l-Scalar-Plain">exit</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">interface</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">exitVPN</span> <span class="c1"># tun0/tap0</span>
+  <span class="l l-Scalar l-Scalar-Plain">intercity</span><span class="p p-Indicator">:</span>
+    <span class="l l-Scalar l-Scalar-Plain">interface</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">icVPN</span> <span class="c1"># tun0/tap0</span>
+
+<span class="l l-Scalar l-Scalar-Plain">fastd</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">protocol</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ipv4</span>
+  <span class="l l-Scalar l-Scalar-Plain">port</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1244</span>
+  <span class="l l-Scalar l-Scalar-Plain">socket</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/run/fastd.sock</span>
+
+<span class="l l-Scalar l-Scalar-Plain">alfred</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">socket</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/run/alfred.sock</span>
+  <span class="l l-Scalar l-Scalar-Plain">sock</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/run/alfred.sock</span>
+  <span class="l l-Scalar l-Scalar-Plain">sitecode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ffhf</span>
+
+<span class="l l-Scalar l-Scalar-Plain">apache</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">serveradmin</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">webmaster@herford.freifunk.net</span>
+  <span class="l l-Scalar l-Scalar-Plain">sslcertificatefile</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/ssl/</span><span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;id&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="l l-Scalar l-Scalar-Plain">/public/cert.pem</span>
+  <span class="l l-Scalar l-Scalar-Plain">sslcertificatekeyfile</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/ssl/</span><span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;id&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="l l-Scalar l-Scalar-Plain">/private/privkey.pem</span>
+  <span class="l l-Scalar l-Scalar-Plain">sslcertificatechainfile</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/ssl/</span><span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;id&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="l l-Scalar l-Scalar-Plain">/intermediate.pem</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../../links.html" class="btn btn-neutral float-right" title="Links" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../peers/index.html" class="btn btn-neutral" title="Peers" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>

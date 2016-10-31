@@ -1,0 +1,418 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>IP Route &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+
+  
+
+  
+  
+    
+
+  
+
+  
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+
+  
+        <link rel="index" title="Stichwortverzeichnis"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Suche" href="../../../search.html"/>
+    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/>
+        <link rel="up" title="Gateway" href="../index.html"/>
+        <link rel="next" title="Net Filter/IP Tables Persistent" href="../iptables/index.html"/>
+        <link rel="prev" title="Network Interfaces &amp; Brige Utilities" href="../network/index.html"/> 
+
+  
+  <script src="../../../_static/js/modernizr.min.js"></script>
+
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search">
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SaltStack Freifunk Herford
+          
+
+          
+            
+            <img src="../../../_static/freifunk.png" class="logo" />
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.1
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+                <ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">States</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Gateway</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../bash/index.html">Bash - Bourne Again Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../git/index.html">git Version Control System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../etckeeper/index.html">etc Keeper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tmp/index.html">/tmp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../mosh/index.html">Mosh (Mobile shell)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../molly-guard/index.html">Molly-Guard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../ntp/index.html">NTP (Network Time Protocol)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../network/index.html">Network Interfaces &amp; Brige Utilities</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">IP Route</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#tabellen">Tabellen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#regeln-und-routen">Regeln und Routen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#weitere-informationen">Weitere Informationen</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../iptables/index.html">Net Filter/IP Tables Persistent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fail2ban/index.html">Fail2Ban Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../batman/index.html">B.A.T.M.A.N. - Better Approach To Mobile Adhoc Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fastd/index.html">Fastd - Fast and Secure Tunneling Daemon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bird/index.html">BIRD - Internet Routing Daemon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../radvd/index.html">RAdvD - Router Advertising Daemon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../alfred/index.html">A.L.F.R.E.D. - Almighty Lightweight Fact Remote Exchange Daemon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../dhcp-server/index.html">DHCP Server (Dynamic Host Configuration Protocol)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../name-server/index.html">DNS Server (Domain Name System)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../tinc/index.html">tinc VPN (Virtual Private Network)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../openvpn/index.html">OpenVPN - Virtual Private Network</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apache/index.html">Apache Web Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../vnstat/index.html">vnStat &amp; vnStati</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../syslog/index.html">Logging</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network.html">Netzwerk Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testumgebung</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          
+
+ 
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+      
+          <li><a href="../../index.html">States</a> &raquo;</li>
+      
+          <li><a href="../index.html">Gateway</a> &raquo;</li>
+      
+    <li>IP Route</li>
+      <li class="wy-breadcrumbs-aside">
+        
+          
+        
+      </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="ip-route">
+<h1>IP Route<a class="headerlink" href="#ip-route" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h2>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">iproute</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="tabellen">
+<h2>Tabellen<a class="headerlink" href="#tabellen" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Wir ergänzen die Datei <code class="docutils literal"><span class="pre">/etc/iproute2/rt_tables</span></code> mit unseren Routing Tabellen.</p>
+<div class="code text highlight-default"><div class="highlight"><pre><span></span><span class="c1">#</span>
+<span class="c1"># icvpn table</span>
+<span class="mi">23</span>  <span class="n">icvpn</span>
+<span class="c1">#</span>
+<span class="c1"># local community table</span>
+<span class="mi">41</span>  <span class="n">ffhf</span>
+<span class="c1">#</span>
+<span class="c1"># internet exit table</span>
+<span class="mi">61</span>  <span class="n">ffinetexit</span>
+</pre></div>
+</div>
+<p>Wie zu erkennen ist verwenden wir 3 Routing Tabellen:</p>
+<ul class="simple">
+<li>icvpn (wird dynamisch über BGP gefüllt)</li>
+<li>ffhf (enthält statische Routen der Community-Netze)</li>
+<li>ffinetexit (enthält Routen für den Internet-Verkehr)</li>
+</ul>
+</div>
+<div class="section" id="regeln-und-routen">
+<h2>Regeln und Routen<a class="headerlink" href="#regeln-und-routen" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Vor dem Eintrag <code class="docutils literal"><span class="pre">exit</span> <span class="pre">0</span></code> in der Datei <code class="docutils literal"><span class="pre">/etc/rc.local</span></code> fügen wir die Regeln und Routen ein, dass sollte dann in etwa so aussehen.</p>
+<div class="admonition caution">
+<p class="first admonition-title">Vorsicht</p>
+<p class="last">Die letzte Zeile der Datei muss <code class="docutils literal"><span class="pre">exit</span> <span class="pre">0</span></code> beinhalten!</p>
+</div>
+<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x">#!/bin/sh -e</span>
+<span class="x"># This file is managed by Salt, do not edit.</span>
+<span class="x">#</span>
+<span class="x"># rc.local</span>
+<span class="x">#</span>
+<span class="x"># This script is executed at the end of each multiuser runlevel.</span>
+<span class="x"># Make sure that the script will &quot;exit 0&quot; on success or any other</span>
+<span class="x"># value on error.</span>
+<span class="x">#</span>
+<span class="x"># In order to enable or disable this script just change the execution</span>
+<span class="x"># bits.</span>
+<span class="x">#</span>
+<span class="x"># By default this script does nothing.</span>
+
+<span class="x"># IP rules</span>
+<span class="x">#</span>
+<span class="x"># lookup rt_table ffhf for all incoming traffic of freifunk related interfaces</span>
+<span class="x">ip -4 rule add from all iif </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> lookup ffhf priority 7</span>
+<span class="x">ip -4 rule add from all iif </span><span class="cp">{{</span> <span class="nv">intercity</span> <span class="cp">}}</span><span class="x"> lookup ffhf priority 7</span>
+<span class="x">ip -4 rule add from all iif </span><span class="cp">{{</span> <span class="nv">exit</span> <span class="cp">}}</span><span class="x"> lookup ffhf priority 7</span>
+<span class="x">ip -6 rule add from all iif </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> lookup ffhf priority 7</span>
+<span class="x">ip -6 rule add from all iif </span><span class="cp">{{</span> <span class="nv">intercity</span> <span class="cp">}}</span><span class="x"> lookup ffhf priority 7</span>
+<span class="x">ip -6 rule add from all iif </span><span class="cp">{{</span> <span class="nv">exit</span> <span class="cp">}}</span><span class="x"> lookup ffhf priority 7</span>
+<span class="x">#</span>
+<span class="x"># lookup rt_table icvpn for all incoming traffic of freifunk bridges</span>
+<span class="x">ip -4 rule add from all iif </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> lookup icvpn priority 23</span>
+<span class="x">ip -6 rule add from all iif </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> lookup icvpn priority 23</span>
+<span class="x">#</span>
+<span class="x"># lookup rt_table ffinetexit for all incoming traffic of freifunk bridges</span>
+<span class="x">ip -4 rule add from all iif </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> lookup ffinetexit priority 41</span>
+<span class="x">ip -6 rule add from all iif </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> lookup ffinetexit priority 41</span>
+<span class="x">#</span>
+<span class="x"># at this point this is the end of policy routing for freifunk related routes</span>
+<span class="x">ip -4 rule add from all iif </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> type unreachable priority 61</span>
+<span class="x">ip -4 rule add from all iif </span><span class="cp">{{</span> <span class="nv">exit</span> <span class="cp">}}</span><span class="x"> type unreachable priority 61</span>
+<span class="x">ip -4 rule add from all iif </span><span class="cp">{{</span> <span class="nv">intercity</span> <span class="cp">}}</span><span class="x"> type unreachable priority 61</span>
+<span class="x">ip -4 rule add from all iif </span><span class="cp">{{</span> <span class="nv">primary</span> <span class="cp">}}</span><span class="x"> type unreachable priority 61</span>
+<span class="x">ip -6 rule add from all iif </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> type unreachable priority 61</span>
+<span class="x">ip -6 rule add from all iif </span><span class="cp">{{</span> <span class="nv">exit</span> <span class="cp">}}</span><span class="x"> type unreachable priority 61</span>
+<span class="x">ip -6 rule add from all iif </span><span class="cp">{{</span> <span class="nv">intercity</span> <span class="cp">}}</span><span class="x"> type unreachable priority 61</span>
+<span class="x">ip -6 rule add from all iif </span><span class="cp">{{</span> <span class="nv">primary</span> <span class="cp">}}</span><span class="x"> type unreachable priority 61</span>
+<span class="x">#</span>
+<span class="x"># lookup policies for the gateway host self originating traffic</span>
+<span class="x">ip -4 rule add from all lookup ffhf priority 107</span>
+<span class="x">ip -4 rule add from all lookup icvpn priority 107</span>
+<span class="x">ip -6 rule add from all lookup ffhf priority 107</span>
+<span class="x">ip -6 rule add from all lookup icvpn priority 107</span>
+<span class="x">#</span>
+<span class="x"># IP routes</span>
+<span class="x">#</span>
+<span class="x"># static herford routes for rt_table ffhf</span>
+<span class="x">ip -4 route add 10.34.0.0/16 proto static dev </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> table ffhf # Todo: Add Variable</span>
+<span class="x">ip -6 route add fdf3:2049:5152::/48 proto static dev </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> table ffhf # Todo: Add variable</span>
+<span class="x">#</span>
+<span class="x"># unreachable routes for rt_table ffinetexit</span>
+<span class="x">ip -4 route add unreachable default table ffinetexit</span>
+<span class="x">ip -6 route add unreachable default table ffinetexit</span>
+
+<span class="x">if [ -f /bin/systemctl ]; then</span>
+<span class="x">	if [ &quot;$(systemctl status alfred | grep -E &#39;Active: inactive|Active: failed&#39;)&quot; ]; then</span>
+<span class="x">		systemctl restart alfred</span>
+<span class="x">	fi</span>
+<span class="x">else</span>
+<span class="x">	if [ &quot;$(service alfred status | grep stop)&quot; ]; then</span>
+<span class="x">		service alfred start</span>
+<span class="x">	fi</span>
+<span class="x">fi</span>
+
+<span class="x">exit 0</span>
+</pre></div>
+</div>
+<p>Todo: Den Krams in Interfaces mir reinpacken und rauf- und runterfahren mit dem Interface?</p>
+</div>
+<div class="section" id="weitere-informationen">
+<h2>Weitere Informationen<a class="headerlink" href="#weitere-informationen" title="Link zu dieser Überschrift">¶</a></h2>
+<ul class="simple">
+<li><a class="reference external" href="https://gluon-gateway-doku.readthedocs.org/de/latest/configuration/policyrouting.html">Policy Routing</a> Anleitung vom Freifunk Mainz, Wiesbaden &amp; Umgebung</li>
+</ul>
+</div>
+<div class="section" id="salt-state-file">
+<h2>Salt State File<a class="headerlink" href="#salt-state-file" title="Link zu dieser Überschrift">¶</a></h2>
+<p>iproute.sls</p>
+<div class="highlight-salt"><div class="highlight"><pre><span></span><span class="c1"># IP Route</span>
+
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">iproute</span> <span class="o">=</span> <span class="nv">salt</span><span class="o">[</span><span class="s1">&#39;grains.filter_by&#39;</span><span class="o">]({</span>
+  <span class="s1">&#39;Debian&#39;</span><span class="o">:</span> <span class="o">{</span><span class="s1">&#39;pkg&#39;</span><span class="o">:</span> <span class="s1">&#39;iproute&#39;</span><span class="o">},</span>
+<span class="o">},</span> <span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Debian&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+
+<span class="cp">{{</span> <span class="nv">iproute.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">pkg.installed</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">iproute.pkg</span> <span class="cp">}}</span>
+
+<span class="c1"># ip route consults /etc/iproute2/rt_tables for a table identifier.</span>
+<span class="c1"># If it finds no identifier, it complains that it cannot find a reference to such a table.</span>
+<span class="c1"># If a table identifier is found, then the corresponding routing table is displayed.</span>
+<span class="l l-Scalar l-Scalar-Plain">/etc/iproute2/rt_tables</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.append</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/iproute2/rt_tables</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">text</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">#</span>
+        <span class="no"># icvpn table</span>
+        <span class="no">23  icvpn</span>
+        <span class="no">#</span>
+        <span class="no"># local community table</span>
+        <span class="no">41  ffhf</span>
+        <span class="no">#</span>
+        <span class="no"># internet exit table</span>
+        <span class="no">61  ffinetexit</span>
+
+<span class="c1"># should be put in interfaces</span>
+<span class="c1"># pre-up</span>
+<span class="c1"># up</span>
+<span class="c1"># post-down</span>
+<span class="c1"># down</span>
+<span class="l l-Scalar l-Scalar-Plain">/etc/rc.local</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/rc.local</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/rc.local</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">template</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span><span class="p p-Indicator">:</span>
+        <span class="l l-Scalar l-Scalar-Plain">primary</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;primary&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+        <span class="l l-Scalar l-Scalar-Plain">bridge</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+        <span class="l l-Scalar l-Scalar-Plain">exit</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+        <span class="l l-Scalar l-Scalar-Plain">intercity</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;intercity&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+  <span class="l l-Scalar l-Scalar-Plain">cmd.run</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">sh /etc/rc.local</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unless</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test -n &quot;$(ip rule show | grep 61)&quot;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/rc.local</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../iptables/index.html" class="btn btn-neutral float-right" title="Net Filter/IP Tables Persistent" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../network/index.html" class="btn btn-neutral" title="Network Interfaces &amp; Brige Utilities" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'0.1',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/translations.js"></script>
+
+  
+
+  
+  
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+  
+
+  
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   
+
+</body>
+</html>
