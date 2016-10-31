@@ -1,4 +1,4 @@
-# Gateway 2
+# Gateway 3
 
 dhcp:
   ipv4:

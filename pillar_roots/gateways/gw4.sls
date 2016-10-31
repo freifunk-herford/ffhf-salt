@@ -266,7 +266,7 @@ openvpn:
       =iuKd
       -----END PGP MESSAGE-----
 
-fastd: # Test Daten
+fastd: # for gw4.herford.freifunk.net
   secret: |
     -----BEGIN PGP MESSAGE-----
     Version: GnuPG v1
