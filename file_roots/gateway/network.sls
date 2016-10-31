@@ -94,7 +94,7 @@
         primary: {{ pillar['network']['primary']['interface'] }}
         batman: {{ pillar['network']['batman']['interface'] }}
         mesh: {{ pillar['network']['mesh']['interface'] }}
-        hwaddress: {{ pillar['network']['bridge']['hwaddress'] }}
+        hwaddress: {{ pillar['network']['mesh']['hwaddress'] }}
 {% endif %}
 
 # Forwarding
