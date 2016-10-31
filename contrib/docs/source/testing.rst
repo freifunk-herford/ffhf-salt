@@ -28,3 +28,8 @@ Meshviewer auf dem Map Server in der Testumgebung.
    :alt: Meshviewer OpenStreetMap
 
    Meshviewer OpenStreetMap
+
+Testumgebung einrichten.
+------------------------
+
+Todo: Pillar mit Testdaten in den Salt Master einbinden.
