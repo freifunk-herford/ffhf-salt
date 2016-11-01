@@ -442,7 +442,9 @@
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkgs</span><span class="p p-Indicator">:</span>
         <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os_family&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Debian&#39;</span> <span class="cp">%}</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ethtool</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Ubuntu&#39;</span> <span class="k">and</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;osrelease&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;16.04&#39;</span> <span class="cp">%}</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">virtualenv</span>
+        <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python3</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python3-dev</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python-virtualenv</span>
