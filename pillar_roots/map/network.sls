@@ -11,7 +11,7 @@ network:
     address6mask: fdf3:2049:5152::a22:20/64
     netmask6: 48
   mesh:
-    hwaddress: 02:42:0a:22:00:20
+    hwaddress: 02:00:0a:22:00:20
 
 alfred:
   master: True

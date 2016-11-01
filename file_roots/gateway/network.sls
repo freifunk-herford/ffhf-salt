@@ -38,10 +38,12 @@
 #     - group: root
 #     - mode: 64
 
+{% if not pillar['testing'] %}
 /etc/resolvconf/resolv.conf.d/head:
   file.managed:
     - name: /etc/resolvconf/resolv.conf.d/head
     - source: salt://gateway/etc/resolvconf/resolv.conf.d/head
+{% endif %}
 
 /etc/network/interfaces:
   file.append:

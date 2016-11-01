@@ -85,3 +85,5 @@ apache:
   sslcertificatefile: /etc/ssl/{{ grains['id'] }}/public/cert.pem
   sslcertificatekeyfile: /etc/ssl/{{ grains['id'] }}/private/privkey.pem
   sslcertificatechainfile: /etc/ssl/{{ grains['id'] }}/intermediate.pem
+
+testing: True
