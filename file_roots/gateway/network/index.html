@@ -291,10 +291,12 @@ iface <span class="o">{{</span> mesh <span class="o">}}</span> inet6 manual
 <span class="c1">#     - group: root</span>
 <span class="c1">#     - mode: 64</span>
 
+<span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;testing&#39;</span><span class="o">]</span> <span class="cp">%}</span>
 <span class="l l-Scalar l-Scalar-Plain">/etc/resolvconf/resolv.conf.d/head</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/resolvconf/resolv.conf.d/head</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/resolvconf/resolv.conf.d/head</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 
 <span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">file.append</span><span class="p p-Indicator">:</span>
