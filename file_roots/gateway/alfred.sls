@@ -133,7 +133,9 @@ alfred-announce-prepare:
     - pkgs:
         {% if grains['os_family'] == 'Debian' %}
         - ethtool
+        {% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '16.04' %}
         - virtualenv
+        {% endif %}
         - python3
         - python3-dev
         - python-virtualenv
