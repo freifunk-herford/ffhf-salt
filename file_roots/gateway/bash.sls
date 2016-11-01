@@ -22,5 +22,5 @@ root:
         alias cp='cp -i'
         alias mv='mv -i'
         # Some comfort
-        alias lc="awk '{ nlines++ } END { print nlines }'
+        alias lc="awk '{ nlines++ } END { print nlines }'"
     - makedirs: True
