@@ -25,7 +25,7 @@ gw5                 A       10.34.0.5
                     AAAA    fdf3:2049:5152::a22:5
 gw6                 A       10.34.0.6
                     AAAA    fdf3:2049:5152::a22:6
-firmware            CNAME   gw2
+firmware            CNAME   map
 webserver1          CNAME   gw2
 map                 A       10.34.0.32
                     AAAA    fdf3:2049:5152::a22:20

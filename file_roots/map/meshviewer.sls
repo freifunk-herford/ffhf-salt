@@ -81,3 +81,5 @@ change-documentroot-ssl:
 #           Allow from: all
 #           AllowOverride: All
 {% endif %}
+
+# Todo: add email-contact obfuscation

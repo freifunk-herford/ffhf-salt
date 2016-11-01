@@ -1,7 +1,7 @@
 /root/meshviewer/Dockerfile:
   file.managed:
     - name: /root/meshviewer/Dockerfile
-    - source: salt://map/root/meshviewer/Dockerfile
+    - source: salt://map/root/meshviewer-alpine/Dockerfile
     - makedirs: True
 
 # /root/meshviewer/build/config.json:
