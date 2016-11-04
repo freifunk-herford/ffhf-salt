@@ -21,3 +21,4 @@ base:
     - gateways.peers
     - map.network
     - map.meshviewer
+    - firmware.gluon

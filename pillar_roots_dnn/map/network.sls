@@ -1,3 +1,5 @@
+# Netzwerk Konfiguration
+
 network:
   primary:
     interface: enp0s3

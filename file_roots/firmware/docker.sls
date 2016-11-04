@@ -1,3 +1,5 @@
+# Docker
+
 {% if grains['os'] == 'Ubuntu' %}
 docker-repository:
   pkg.installed:
