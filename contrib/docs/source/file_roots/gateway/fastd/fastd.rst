@@ -33,16 +33,13 @@ Den Schlüssel generieren.
 
 Den privaten Schlüssel (Secret) speichern wir in die Datei ``/etc/fastd/{{ grains['id'] }}/secret.conf``, dass sollte dann so ausssehen.
 
-.. code:: jinja
-
-    secret "{{ pillar['fastd']['secret'] }}";
+.. literalinclude:: ../../../../../../file_roots/gateway/etc/fastd/gw/secret.conf
+   :language: jinja
 
 Den öffentlichen Schlüssel (Public) speichern wir dann unter ``/etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}``, dass sollte dann so aussehen.
 
-.. code:: jinja
-
-    remote ipv4 "{{ grains['id'] }}" port 1244;
-    key "{{ pillar['fastd']['public'] }}";
+.. literalinclude:: ../../../../../../file_roots/gateway/etc/fastd/gw/peers/peer
+   :language: jinja
 
 Entropie=Wahnsinn=haveged wozu?
 
@@ -66,9 +63,5 @@ Peers
 -----
 
 Die Peers sollten mit den anderen Gateways syncronisiert werden, so dass alle Peers dann in dem Verzeichnis ``/etc/fastd/{{ grains['id'] }}/peers`` verfügbar sind.
-
-.. code:: bash
-
-    Todo: Hier ein cooler rsync Befehl auf den Gateways sollten SSH Schlüssel untereinander ausgetauscht sein.
 
 .. _`Gmon`: https://forum.ffrn.de/t/entropie-wahnsinn-haveged-wozu/1069/10

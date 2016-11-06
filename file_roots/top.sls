@@ -7,3 +7,6 @@ base:
 
   'map':
     - map
+
+  'firmware':
+    - firmware

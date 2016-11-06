@@ -14,7 +14,7 @@ Nützliche Aliase in die Datei ``/root/.bash_aliases`` hinzufügen:
     alias cp='cp -i'
     alias mv='mv -i'
     # Some comfort
-    alias lc="awk '{ nlines++ } END { print nlines }'
+    alias lc="awk '{ nlines++ } END { print nlines }'"
 
 ======================================= ========================================================
 Befehl                                  Beschreibung

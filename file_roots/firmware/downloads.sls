@@ -13,7 +13,7 @@
 /etc/apache2/sites-available/firmware.ffhf.conf:
   file.managed:
     - name: /etc/apache2/sites-available/firmware.ffhf.conf
-    - source: salt://map/etc/apache2/sites-available/firmware.ffhf.conf
+    - source: salt://firmware/etc/apache2/sites-available/firmware.ffhf.conf
 
 /etc/apache2/sites-enabled/firmware.ffhf.conf:
   file.symlink:

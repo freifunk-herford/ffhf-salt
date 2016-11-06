@@ -1,3 +1,4 @@
+
 # Docker Container - Building Gluon
 
 /root/gluon/output:
@@ -13,5 +14,5 @@ gluon-build:
     - user: root
     - working_dir: /gluon
     - binds: /root/gluon/output:/gluon/output:rw
-    - command: /bin/sh -c "git clone -b {{ pillar['gluon']['branch'] }} {{ pillar['gluon']['repository'] }} /tmp/gluon && mv /tmp/gluon/* /gluon/ && rm /tmp/gluon -rf && git clone {{ pillar['gluon']['site'] }} /gluon/site && ls -lisah && make update && make GLUON_TARGET={{ pillar['gluon']['target'] }} FORCE_UNSAFE_CONFIGURE=1 V=s"
-    - unless: test -f /root/gluon/output/images/factory/gluon-ffhf-*-{{ pillar['gluon']['target'] }}.img.gz
+    - command: /bin/sh -c "git clone -b {{ pillar['gluon']['branch'] }} {{ pillar['gluon']['repository'] }} /tmp/gluon && mv /tmp/gluon/* /gluon/ && rm /tmp/gluon -rf && git clone {{ pillar['gluon']['site'] }} /gluon/site && ls -lisah && make update{% for target in pillar['gluon']['targets'] %} && make -j{{ pillar['gluon'].get('cpus', 1) }} GLUON_TARGET={{ target }} FORCE_UNSAFE_CONFIGURE=1 V=s{% endfor %} && make manifest GLUON_BRANCH=stable"
+    - unless: test -d /root/gluon/output/images/factory
