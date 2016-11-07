@@ -12,5 +12,5 @@ meshviewer-build:
     - image: ubuntu-build-environment
     - working_dir: /meshviewer
     - binds: /root/meshviewer/build:/meshviewer/build:rw
-    - command: /bin/sh -c "git clone -b plumpudding https://github.com/FreiFunkMuenster/meshviewer.git /tmp/meshviewer && mv /tmp/meshviewer/* /meshviewer && rm /tmp/meshviewer -rf && npm install && npm install grunt-cli && npm install grunt-bower-install-simple && node_modules/.bin/grunt"
+    - command: /bin/sh -c "git clone -b plumpudding https://github.com/FreiFunkMuenster/meshviewer.git /tmp/meshviewer && mv /tmp/meshviewer/* /meshviewer && rm /tmp/meshviewer -rf && npm install && npm install grunt-cli && nodejs node_modules/.bin/grunt"
     - unless: test -f /root/meshviewer/build/index.html
