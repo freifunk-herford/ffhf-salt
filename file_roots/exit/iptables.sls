@@ -1,5 +1,6 @@
 {% set iptables = salt['grains.filter_by']({
-  'Debian': {'pkg': 'iptables-persistent', 'srv': 'iptables-persistent'}
+  'Debian': {'pkg': 'iptables-persistent', 'srv': 'iptables-persistent'},
+  'Alpine': {'pkg': 'iptables', 'srv': 'iptables'}
 }, default='Debian') %}
 
 {% if grains['osrelease'] == '16.04' and grains['os'] == 'Ubuntu' %}
@@ -30,12 +31,18 @@
 nat-POSTROUTING-ACCEPT-MASQUERADE:
   iptables.append:
     - table: nat
+    {% if grains['os_family'] == 'Debian' %}
     - save: True
+    {% endif %}
     - family: ipv4
     - chain: POSTROUTING
     - jump: MASQUERADE
     - source: 10.8.0.0/16
+    {% if grains['os_family'] == 'Debian' %}
     - out-interface: {{ pillar['network']['secondary']['interface'] }}
+    {% else %}
+    - out-interface: eth1
+    {% endif %}
 
 # Todo: Not Saving iptables
 

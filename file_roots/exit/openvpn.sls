@@ -1,7 +1,8 @@
 # OpenVPN (Virtual Private Network)
 
 {% set openvpn = salt['grains.filter_by']({
-  'Debian': {'pkg': 'openvpn', 'srv': 'openvpn'}
+  'Debian': {'pkg': 'openvpn', 'srv': 'openvpn'},
+  'Alpine': {'pkg': 'openvpn', 'srv': 'openvpn'}
 }, default='Debian') %}
 
 {{ openvpn.pkg }}:
@@ -11,13 +12,21 @@
     - name: {{ openvpn.srv }}
     - enable: True
     - require:
+        {% if grains['os_family'] == 'Alpine' %}
+        - file: /etc/openvpn/openvpn.conf
+        {% else %}
         - file: /etc/openvpn/server.conf
+        {% endif %}
         - file: /etc/openvpn/dh2048.pem
         - file: /etc/openvpn/exit.crt
         - file: /etc/openvpn/exit.key
         - file: /etc/openvpn/ca.crt
     - watch:
+        {% if grains['os_family'] == 'Alpine' %}
+        - file: /etc/openvpn/openvpn.conf
+        {% else %}
         - file: /etc/openvpn/server.conf
+        {% endif %}
         - file: /etc/openvpn/dh2048.pem
         - file: /etc/openvpn/exit.crt
         - file: /etc/openvpn/exit.key
@@ -25,7 +34,11 @@
 
 /etc/openvpn/server.conf:
   file.managed:
+    {% if grains['os_family'] == 'Alpine' %}
+    - name: /etc/openvpn/openvpn.conf
+    {% else %}
     - name: /etc/openvpn/server.conf
+    {% endif %}
     - source: salt://exit/etc/openvpn/server.conf
     - mode: 600
     - user: root

@@ -1,5 +1,6 @@
 {% set iproute = salt['grains.filter_by']({
   'Debian': {'pkg': 'iproute'},
+  'Alpine': {'pkg': 'iproute2'}
 }, default='Debian') %}
 
 {{ iproute.pkg }}:
