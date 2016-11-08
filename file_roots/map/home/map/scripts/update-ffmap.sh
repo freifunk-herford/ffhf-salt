@@ -7,8 +7,8 @@
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 SHELL=/bin/bash
 
-base="/root/scripts/map"
-data="${base}/data"
+base="/home/map/scripts/map"
+#data="${base}/data"
 data="{{ data }}"
 
-${base}/venv/bin/python ${base}/ffmap-backend/backend.py -m {{ batman }} -d ${data} --with-rrd
+${base}/venv/bin/python ${base}/ffmap-backend/backend.py -m {{ batman }}:/var/run/alfred.sock -d ${data} --with-rrd -a ${base}/aliases.json -p 30

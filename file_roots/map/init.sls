@@ -13,6 +13,7 @@ include:
   - gateway.fail2ban
   - gateway.apache
   - gateway.syslog
+  - map.user
+  - map.meshviewer
   - map.rrd
   - map.ffmap-backend
-  - map.meshviewer

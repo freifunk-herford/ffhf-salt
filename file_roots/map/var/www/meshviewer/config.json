@@ -4,7 +4,7 @@
   ],
   "siteName": "Freifunk Herford",
   "mapSigmaScale": 0.5,
-  "showContact": true,
+  "showContact": false,
   "maxAge": 14,
   "blinkingHours": 8,
   "mapLayers": [
@@ -44,7 +44,7 @@
     { "site": "ffgl-lln", "name": "Leichlingen" },
     { "site": "ffgl-ode", "name": "Odenthal" },
     { "site": "ffgl-ovr", "name": "Overath" },
-    { "site": "ffgl-rrh", "name": "RÃ¶srath" },
+    { "site": "ffgl-rrh", "name": "Rösrath" },
     { "site": "ffdus", "name": "Flingern" }
   ]
 }

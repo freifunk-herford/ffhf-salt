@@ -9,17 +9,20 @@ ffmap-backend-prepare:
         - python-virtualenv
         {% endif %}
   file.managed:
-    - name: /root/scripts/map/requirements.txt
-    - source: salt://map/root/scripts/map/requirements.txt
+    - name: /home/map/scripts/map/requirements.txt
+    - source: salt://map/home/map/scripts/map/requirements.txt
+    - user: map
+    - group: map
     - makedirs: True
 
 ffmap-backend-venv:
   virtualenv.managed:
     - python: python3
-    - cwd: /root/scripts/map
-    - name: /root/scripts/map/venv
-    - requirements: /root/scripts/map/requirements.txt
+    - cwd: /home/map/scripts/map
+    - name: /home/map/scripts/map/venv
+    - requirements: /home/map/scripts/map/requirements.txt
     - pip_upgrade: True
+    - user: map
     - require:
       - pkg: ffmap-backend-prepare
       - file: ffmap-backend-prepare
@@ -27,41 +30,52 @@ ffmap-backend-venv:
 ffmap-backend-repository:
   git.latest:
     - name: https://github.com/ffnord/ffmap-backend
-    - target: /root/scripts/map/ffmap-backend
-    - unless: test -d /root/scripts/map/ffmap-backend
+    - target: /home/map/scripts/map/ffmap-backend
+    - unless: test -d /home/map/scripts/map/ffmap-backend
+    - user: map
     - require:
       - file: ffmap-backend-prepare
 
-/root/scripts/update-ffmap.sh:
+/home/map/scripts/update-ffmap.sh:
   file.managed:
-    - name: /root/scripts/update-ffmap.sh
-    - source: salt://map/root/scripts/update-ffmap.sh
+    - name: /home/map/scripts/update-ffmap.sh
+    - source: salt://map/home/map/scripts/update-ffmap.sh
     - template: jinja
     - defaults:
         batman: {{ pillar['network']['batman']['interface'] }}
         data: {{ pillar['meshviewer']['data'] }}
     - mode: 755
-    - user: root
-    - group: root
+    - user: map
+    - group: map
+    - makedirs: True
+
+/home/map/scripts/map/aliases.json:
+  file.managed:
+    - name: /home/map/scripts/map/aliases.json
+    - source: salt://map/home/map/scripts/map/aliases.json
+    - user: map
+    - group: map
     - makedirs: True
 
 {{ pillar['meshviewer']['data'] }}:
   file.directory:
     - name: {{ pillar['meshviewer']['data'] }}
+    - user: map
+    - group: map
     - makedirs: True
 
 update-ffmap-cron:
   cron.present:
-    - name: /root/scripts/update-ffmap.sh
+    - name: /home/map/scripts/update-ffmap.sh
     - identifier: update-ffmap
-    - user: root
+    - user: map
     - minute: '*/1'
     - comment: 'Update Map Data every Minute'
     - require:
-      - file: /root/scripts/update-ffmap.sh
+      - file: /home/map/scripts/update-ffmap.sh
 
-# Todo: file.managed /root/script/update-ffmap.sh
-# Todo: cron.present /root/script/update-ffmap.sh */1
+# Todo: file.managed /home/map/script/update-ffmap.sh
+# Todo: cron.present /home/map/script/update-ffmap.sh */1
 
 # venv/bin/python backend.py -a aliases.json -m hfBAT -d data
 

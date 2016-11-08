@@ -43,6 +43,8 @@ change-documentroot-ssl:
   file.managed:
     - name: /var/www/meshviewer/config.json
     - source: salt://map/var/www/meshviewer/config.json
+    - user: map
+    - group: map
 
 {% set apache = salt['grains.filter_by']({
   'Debian': {'pkg': 'apache2', 'srv': 'apache2'},
