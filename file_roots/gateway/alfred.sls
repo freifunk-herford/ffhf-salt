@@ -44,6 +44,10 @@ batadv-vis.service:
       - file: /etc/default/alfred
       - pkg: alfred
 
+alfred-group:
+  group.present:
+    - name: alfred
+
 alfred.service:
   service.running:
     - name: alfred

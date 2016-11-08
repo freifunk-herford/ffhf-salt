@@ -63,7 +63,7 @@ case "$1" in
                         exit 1
                 fi
                 log_daemon_msg "Starting $DESC" "$NAME"
-                start-stop-daemon --start --quiet --pidfile "$ALFRED_PID" \
+                start-stop-daemon --chuid root:alfred --start --quiet --pidfile "$ALFRED_PID" \
                         --exec /usr/bin/alfred -i ${INTERFACE} -b ${BATMANIF:-bat0} -u ${UNIX_SOCKET} ${DAEMON_ARGS}
                 sleep 2
 
