@@ -1,6 +1,6 @@
 gluon:
   repository: https://github.com/freifunk-gluon/gluon.git
-  branch: v2016.2
+  branch: v2016.2.1
   targets:
     - x86-generic
   cpus: 1

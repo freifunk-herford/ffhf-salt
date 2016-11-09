@@ -81,9 +81,11 @@ alfred:
   socket: /var/run/alfred.sock
   sock: /var/run/alfred.sock
   sitecode: ffhf
+  announce: True
 
 apache:
-  serveradmin: webmaster@herford.freifunk.net
+  documentroot: /var/www/vnstat
+  serveradmin: info@herford.freifunk.net
   sslcertificatefile: /etc/ssl/{{ grains['id'] }}/public/cert.pem
   sslcertificatekeyfile: /etc/ssl/{{ grains['id'] }}/private/privkey.pem
   sslcertificatechainfile: /etc/ssl/{{ grains['id'] }}/intermediate.pem

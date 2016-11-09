@@ -132,6 +132,7 @@ check-alfred-cron:
     - require:
       - file: /root/scripts/check-alfred.sh
 
+{% if pillar['alfred']['announce'] %}
 alfred-announce-prepare:
   pkg.installed:
     - pkgs:
@@ -193,3 +194,4 @@ alfred-announce-cron:
         mesh: {{ pillar['network']['mesh']['interface'] }}
         socket: {{ pillar['alfred']['socket'] }}
         sitecode: {{ pillar['alfred']['sitecode'] }}
+{% endif %}

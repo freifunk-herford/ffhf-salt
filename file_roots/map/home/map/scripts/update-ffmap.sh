@@ -8,7 +8,8 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 SHELL=/bin/bash
 
 base="/home/map/scripts/map"
-#data="${base}/data"
-data="{{ data }}"
 
-${base}/venv/bin/python ${base}/ffmap-backend/backend.py -m {{ batman }}:/var/run/alfred.sock -d ${data} --with-rrd -a ${base}/aliases.json -p 30
+${base}/venv/bin/python ${base}/ffmap-backend/backend.py \
+--mesh {{ batman }}:{{ socket }} --dest-dir {{ data }} \
+--aliases ${base}/aliases.json --prune 30 --with-rrd \
+--rrd-time-global 14d --rrd-time-node 7d --anonymize

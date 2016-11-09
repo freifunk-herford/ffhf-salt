@@ -22,6 +22,8 @@ base:
     - gateways.shared
     - gateways.peers
     - map.network
+    - map.fastd
+    - map.alfred
+    - map.apache
     - map.meshviewer
     - firmware.gluon
-

@@ -130,21 +130,6 @@ vnstat-cron:
 #     - require:
 #       - file: /var/www/vnstat
 
-change-documentroot:
-  file.replace:
-    - name: /etc/apache2/sites-available/000-default.conf
-    - pattern: 'DocumentRoot\ (.*)$'
-    #- repl: 'DocumentRoot /var/www/html'
-    - repl: 'DocumentRoot /var/www/vnstat'
-    - not_found_content: 'DocumentRoot /var/www/html'
-
-change-documentroot-ssl:
-  file.replace:
-    - name: /etc/apache2/sites-available/default-ssl.conf
-    - pattern: 'DocumentRoot\ (.*)$'
-    - repl: 'DocumentRoot /var/www/html'
-    - not_found_content: 'DocumentRoot /var/www/html'
-
 {% set apache = salt['grains.filter_by']({
   'Debian': {'pkg': 'apache2', 'srv': 'apache2'},
 }, default='Debian') %}
