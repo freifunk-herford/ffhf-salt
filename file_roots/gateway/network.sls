@@ -38,7 +38,7 @@
 #     - group: root
 #     - mode: 64
 
-{% if not pillar['testing'] %}
+{% if not pillar['testing'] is defined %}
 /etc/resolvconf/resolv.conf.d/head:
   file.managed:
     - name: /etc/resolvconf/resolv.conf.d/head
