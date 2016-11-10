@@ -1,0 +1,72 @@
+{
+  "name": "Freifunk Herford",
+  "url": "http://herford.freifunk.net",
+  "location": {
+    "city": "Herford",
+    "country": "DE",
+    "lat": 52.11815408871958,
+    "lon": 8.670616149902344,
+    "address": {
+      "Name": "Freifunk Herford - RecyclingBörse",
+      "Street": "Heidestrasse 7",
+      "Zipcode": "32051"
+    }
+  },
+  "contact": {
+    "email": "info@herford.freifunk.net",
+    "jabber": "freifunk-bielefeld@conference.jabber.ccc.de",
+    "facebook": "https://www.facebook.com/FreifunkHerford",
+    "twitter": "@freifunkhf"
+  },
+  "state": {
+    "focus": [
+      "infrastructure/backbone",
+      "Public Free Wifi",
+      "Social Community Building",
+      "Local services and content",
+      "Free internet access"
+    ],
+    "lastchange": "2016-11-10T03:03:43.965Z"
+  },
+  "nodeMaps": [
+    {
+      "url": "http://map.herford.freifunk.net/",
+      "interval": "1min",
+      "technicalType": "meshviewer",
+      "mapType": "geographical"
+    }
+  ],
+  "techDetails": {
+    "firmware": {
+      "name": "gluon",
+      "url": "http://firmware.herford.freifunk.net/",
+      "docs": "http://herford.freifunk.net/mitmachen/firmware/"
+    },
+    "dns": [
+      {
+        "domainname": "ffhf",
+        "nameserver": [
+          "map.herford.freifunk.net"
+        ]
+      }
+    ],
+    "networks": {
+      "ipv4": [
+        {
+          "network": "10.34.0.0/24"
+        }
+      ]
+    },
+    "routing": [
+      "batman-adv"
+    ],
+    "updatemode": [
+      "manual",
+      "autoupdate"
+    ],
+    "legals": [
+      "vpninternational"
+    ]
+  },
+  "api": "0.4.14"
+}

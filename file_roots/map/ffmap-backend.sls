@@ -19,7 +19,7 @@ ffmap-backend-venv:
   virtualenv.managed:
     - python: python3
     - cwd: /home/map/scripts/map
-    - name: /home/map/scripts/map/venv
+    - name: /home/map/scripts/map/venv3
     - requirements: /home/map/scripts/map/requirements.txt
     - pip_upgrade: True
     - user: map
@@ -30,7 +30,6 @@ ffmap-backend-venv:
 ffmap-backend-repository:
   git.latest:
     - name: https://github.com/freifunk-herford/ffmap-backend.git
-#    - name: https://github.com/ffnord/ffmap-backend
     - target: /home/map/scripts/map/ffmap-backend
     - unless: test -d /home/map/scripts/map/ffmap-backend
     - user: map

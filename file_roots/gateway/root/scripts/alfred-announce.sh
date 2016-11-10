@@ -9,12 +9,12 @@ SHELL=/bin/bash
 
 base="/root/scripts/announce"
 
-${base}/venv/bin/python ${base}/ffnord-alfred-announce/announce.py \
+${base}/venv3/bin/python ${base}/ffnord-alfred-announce/announce.py \
 -d /root/scripts/announce/ffnord-alfred-announce/nodeinfo.d/ \
 -i {{ bridge }} -b {{ batman }} -f {{ mesh }} -s {{ sitecode }} | gzip | \
 alfred -u {{ socket }} -i {{ bridge }} -b {{ batman }} -s 158
 
-${base}/venv/bin/python ${base}/ffnord-alfred-announce/announce.py \
+${base}/venv3/bin/python ${base}/ffnord-alfred-announce/announce.py \
 -d /root/scripts/announce/ffnord-alfred-announce/statistics.d/ \
 -i {{ bridge }} -b {{ batman }} -f {{ mesh }} -s {{ sitecode }} | gzip | \
 alfred -u {{ socket }} -i {{ bridge }} -b {{ batman }} -s 159

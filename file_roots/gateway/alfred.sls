@@ -154,12 +154,14 @@ alfred-announce-venv:
   virtualenv.managed:
     - python: python3
     - cwd: /root/scripts/announce
-    - name: /root/scripts/announce/venv
+    - name: /root/scripts/announce/venv3
     - requirements: /root/scripts/announce/requirements.txt
     - pip_upgrade: True
     - require:
       - pkg: alfred-announce-prepare
       - file: alfred-announce-prepare
+
+# Todo: /root/scripts/announce/venv entfernen
 
 ffnord-alfred-announce:
   git.latest:
