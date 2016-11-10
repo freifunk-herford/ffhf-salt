@@ -161,8 +161,6 @@ alfred-announce-venv:
       - pkg: alfred-announce-prepare
       - file: alfred-announce-prepare
 
-# Todo: /root/scripts/announce/venv entfernen
-
 ffnord-alfred-announce:
   git.latest:
     - name: https://github.com/freifunk-mwu/ffnord-alfred-announce.git

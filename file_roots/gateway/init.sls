@@ -15,6 +15,7 @@ include:
   - gateway.bird
   - gateway.radvd
   - gateway.alfred
+  - gateway.sysfsutils
   - gateway.dhcp-server
   - gateway.name-server
   - gateway.tinc
