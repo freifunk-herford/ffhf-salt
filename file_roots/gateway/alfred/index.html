@@ -37,7 +37,7 @@
         <link rel="search" title="Suche" href="../../../search.html"/>
     <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/>
         <link rel="up" title="Gateway" href="../index.html"/>
-        <link rel="next" title="DHCP Server (Dynamic Host Configuration Protocol)" href="../dhcp-server/index.html"/>
+        <link rel="next" title="sysfsutils: System Utilities Based on Sysfs" href="../sysfsutils/index.html"/>
         <link rel="prev" title="RAdvD - Router Advertising Daemon" href="../radvd/index.html"/> 
 
   
@@ -115,6 +115,7 @@
 <li class="toctree-l4"><a class="reference internal" href="#salt-state-file">Salt State File</a></li>
 </ul>
 </li>
+<li class="toctree-l3"><a class="reference internal" href="../sysfsutils/index.html">sysfsutils: System Utilities Based on Sysfs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../dhcp-server/index.html">DHCP Server (Dynamic Host Configuration Protocol)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../name-server/index.html">DNS Server (Domain Name System)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tinc/index.html">tinc VPN (Virtual Private Network)</a></li>
@@ -213,6 +214,8 @@
 <span class="x">[Service]</span>
 <span class="x">EnvironmentFile=/etc/default/alfred</span>
 <span class="x">ExecStart=/bin/sh -ec &#39;/usr/sbin/alfred -i $INTERFACE -b $BATMANIF -u $UNIX_SOCKET $DAEMON_ARGS&#39;</span>
+<span class="x">Group=alfred</span>
+<span class="x">UMask=007</span>
 <span class="x">Type=simple</span>
 
 <span class="x">[Install]</span>
@@ -256,12 +259,12 @@
 
 <span class="x">base=&quot;/root/scripts/announce&quot;</span>
 
-<span class="x">${base}/venv/bin/python ${base}/ffnord-alfred-announce/announce.py \</span>
+<span class="x">${base}/venv3/bin/python ${base}/ffnord-alfred-announce/announce.py \</span>
 <span class="x">-d /root/scripts/announce/ffnord-alfred-announce/nodeinfo.d/ \</span>
 <span class="x">-i </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> -b </span><span class="cp">{{</span> <span class="nv">batman</span> <span class="cp">}}</span><span class="x"> -f </span><span class="cp">{{</span> <span class="nv">mesh</span> <span class="cp">}}</span><span class="x"> -s </span><span class="cp">{{</span> <span class="nv">sitecode</span> <span class="cp">}}</span><span class="x"> | gzip | \</span>
 <span class="x">alfred -u </span><span class="cp">{{</span> <span class="nv">socket</span> <span class="cp">}}</span><span class="x"> -i </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> -b </span><span class="cp">{{</span> <span class="nv">batman</span> <span class="cp">}}</span><span class="x"> -s 158</span>
 
-<span class="x">${base}/venv/bin/python ${base}/ffnord-alfred-announce/announce.py \</span>
+<span class="x">${base}/venv3/bin/python ${base}/ffnord-alfred-announce/announce.py \</span>
 <span class="x">-d /root/scripts/announce/ffnord-alfred-announce/statistics.d/ \</span>
 <span class="x">-i </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> -b </span><span class="cp">{{</span> <span class="nv">batman</span> <span class="cp">}}</span><span class="x"> -f </span><span class="cp">{{</span> <span class="nv">mesh</span> <span class="cp">}}</span><span class="x"> -s </span><span class="cp">{{</span> <span class="nv">sitecode</span> <span class="cp">}}</span><span class="x"> | gzip | \</span>
 <span class="x">alfred -u </span><span class="cp">{{</span> <span class="nv">socket</span> <span class="cp">}}</span><span class="x"> -i </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> -b </span><span class="cp">{{</span> <span class="nv">batman</span> <span class="cp">}}</span><span class="x"> -s 159</span>
@@ -353,6 +356,10 @@
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/default/alfred</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">alfred</span>
 
+<span class="l l-Scalar l-Scalar-Plain">alfred-group</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">group.present</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">alfred</span>
+
 <span class="l l-Scalar l-Scalar-Plain">alfred.service</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">service.running</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">alfred</span>
@@ -437,6 +444,7 @@
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/root/scripts/check-alfred.sh</span>
 
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;alfred&#39;</span><span class="o">][</span><span class="s1">&#39;announce&#39;</span><span class="o">]</span> <span class="cp">%}</span>
 <span class="l l-Scalar l-Scalar-Plain">alfred-announce-prepare</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">pkg.installed</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkgs</span><span class="p p-Indicator">:</span>
@@ -458,7 +466,7 @@
   <span class="l l-Scalar l-Scalar-Plain">virtualenv.managed</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">python3</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cwd</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/root/scripts/announce</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/root/scripts/announce/venv</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/root/scripts/announce/venv3</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">requirements</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/root/scripts/announce/requirements.txt</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip_upgrade</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
@@ -498,6 +506,7 @@
         <span class="l l-Scalar l-Scalar-Plain">mesh</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;mesh&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
         <span class="l l-Scalar l-Scalar-Plain">socket</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;alfred&#39;</span><span class="o">][</span><span class="s1">&#39;socket&#39;</span><span class="o">]</span> <span class="cp">}}</span>
         <span class="l l-Scalar l-Scalar-Plain">sitecode</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;alfred&#39;</span><span class="o">][</span><span class="s1">&#39;sitecode&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 </pre></div>
 </div>
 </div>
@@ -510,7 +519,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../dhcp-server/index.html" class="btn btn-neutral float-right" title="DHCP Server (Dynamic Host Configuration Protocol)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../sysfsutils/index.html" class="btn btn-neutral float-right" title="sysfsutils: System Utilities Based on Sysfs" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="../radvd/index.html" class="btn btn-neutral" title="RAdvD - Router Advertising Daemon" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>

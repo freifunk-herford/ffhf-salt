@@ -22,6 +22,7 @@ Inhalt:
    bird/index
    radvd/index
    alfred/index
+   sysfsutils/index
    dhcp-server/index
    name-server/index
    tinc/index

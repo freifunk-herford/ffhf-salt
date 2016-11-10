@@ -170,6 +170,8 @@
 <span class="x">[Service]</span>
 <span class="x">EnvironmentFile=/etc/default/alfred</span>
 <span class="x">ExecStart=/bin/sh -ec &#39;/usr/sbin/alfred -i $INTERFACE -b $BATMANIF -u $UNIX_SOCKET $DAEMON_ARGS&#39;</span>
+<span class="x">Group=alfred</span>
+<span class="x">UMask=007</span>
 <span class="x">Type=simple</span>
 
 <span class="x">[Install]</span>
@@ -213,12 +215,12 @@
 
 <span class="x">base=&quot;/root/scripts/announce&quot;</span>
 
-<span class="x">${base}/venv/bin/python ${base}/ffnord-alfred-announce/announce.py \</span>
+<span class="x">${base}/venv3/bin/python ${base}/ffnord-alfred-announce/announce.py \</span>
 <span class="x">-d /root/scripts/announce/ffnord-alfred-announce/nodeinfo.d/ \</span>
 <span class="x">-i </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> -b </span><span class="cp">{{</span> <span class="nv">batman</span> <span class="cp">}}</span><span class="x"> -f </span><span class="cp">{{</span> <span class="nv">mesh</span> <span class="cp">}}</span><span class="x"> -s </span><span class="cp">{{</span> <span class="nv">sitecode</span> <span class="cp">}}</span><span class="x"> | gzip | \</span>
 <span class="x">alfred -u </span><span class="cp">{{</span> <span class="nv">socket</span> <span class="cp">}}</span><span class="x"> -i </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> -b </span><span class="cp">{{</span> <span class="nv">batman</span> <span class="cp">}}</span><span class="x"> -s 158</span>
 
-<span class="x">${base}/venv/bin/python ${base}/ffnord-alfred-announce/announce.py \</span>
+<span class="x">${base}/venv3/bin/python ${base}/ffnord-alfred-announce/announce.py \</span>
 <span class="x">-d /root/scripts/announce/ffnord-alfred-announce/statistics.d/ \</span>
 <span class="x">-i </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> -b </span><span class="cp">{{</span> <span class="nv">batman</span> <span class="cp">}}</span><span class="x"> -f </span><span class="cp">{{</span> <span class="nv">mesh</span> <span class="cp">}}</span><span class="x"> -s </span><span class="cp">{{</span> <span class="nv">sitecode</span> <span class="cp">}}</span><span class="x"> | gzip | \</span>
 <span class="x">alfred -u </span><span class="cp">{{</span> <span class="nv">socket</span> <span class="cp">}}</span><span class="x"> -i </span><span class="cp">{{</span> <span class="nv">bridge</span> <span class="cp">}}</span><span class="x"> -b </span><span class="cp">{{</span> <span class="nv">batman</span> <span class="cp">}}</span><span class="x"> -s 159</span>

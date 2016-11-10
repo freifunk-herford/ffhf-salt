@@ -116,6 +116,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../bird/index.html">BIRD - Internet Routing Daemon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../radvd/index.html">RAdvD - Router Advertising Daemon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../alfred/index.html">A.L.F.R.E.D. - Almighty Lightweight Fact Remote Exchange Daemon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sysfsutils/index.html">sysfsutils: System Utilities Based on Sysfs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../dhcp-server/index.html">DHCP Server (Dynamic Host Configuration Protocol)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../name-server/index.html">DNS Server (Domain Name System)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tinc/index.html">tinc VPN (Virtual Private Network)</a></li>
@@ -274,11 +275,15 @@
 
 <span class="x">if [ -f /bin/systemctl ]; then</span>
 <span class="x">	if [ &quot;$(systemctl status alfred | grep -E &#39;Active: inactive|Active: failed&#39;)&quot; ]; then</span>
+<span class="x">		systemctl restart fastd</span>
+<span class="x">		sleep 3</span>
 <span class="x">		systemctl restart alfred</span>
 <span class="x">	fi</span>
 <span class="x">else</span>
 <span class="x">	if [ &quot;$(service alfred status | grep stop)&quot; ]; then</span>
-<span class="x">		service alfred start</span>
+<span class="x">		service fastd restart</span>
+<span class="x">		sleep 3</span>
+<span class="x">		service alfred restart</span>
 <span class="x">	fi</span>
 <span class="x">fi</span>
 

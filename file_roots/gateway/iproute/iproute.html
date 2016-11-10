@@ -230,11 +230,15 @@
 
 <span class="x">if [ -f /bin/systemctl ]; then</span>
 <span class="x">	if [ &quot;$(systemctl status alfred | grep -E &#39;Active: inactive|Active: failed&#39;)&quot; ]; then</span>
+<span class="x">		systemctl restart fastd</span>
+<span class="x">		sleep 3</span>
 <span class="x">		systemctl restart alfred</span>
 <span class="x">	fi</span>
 <span class="x">else</span>
 <span class="x">	if [ &quot;$(service alfred status | grep stop)&quot; ]; then</span>
-<span class="x">		service alfred start</span>
+<span class="x">		service fastd restart</span>
+<span class="x">		sleep 3</span>
+<span class="x">		service alfred restart</span>
 <span class="x">	fi</span>
 <span class="x">fi</span>
 

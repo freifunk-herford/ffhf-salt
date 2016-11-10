@@ -138,25 +138,14 @@
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
-<p>Paketquelle für B.A.T.M.A.N. einbinden.</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">freifunk</span><span class="o">-</span><span class="n">mwu</span><span class="o">/</span><span class="n">freifunk</span><span class="o">-</span><span class="n">ppa</span>
-</pre></div>
-</div>
-<p>Paketquellen aktualsieren und B.A.T.M.A.N. Kontrollkommando und Kernelmodul installieren.</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
-<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">dist</span><span class="o">-</span><span class="n">upgrade</span>
-<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">batctl</span> <span class="n">batman</span><span class="o">-</span><span class="n">adv</span><span class="o">-</span><span class="n">dkms</span>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">sysfsutils</span>
 </pre></div>
 </div>
 </div>
-<div class="section" id="kernelmodul">
-<h1>Kernelmodul<a class="headerlink" href="#kernelmodul" title="Link zu dieser Überschrift">¶</a></h1>
-<p>Das Kernelmodul laden.</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">modprobe</span> <span class="o">-</span><span class="n">v</span> <span class="n">batman_adv</span>
-</pre></div>
-</div>
-<p>Um das Kernelmodul beim nächsten Systemstart automatisch laden, legen wir die Datei <code class="docutils literal"><span class="pre">/etc/modules-load.d/batman_adv.conf</span></code> mit folgendem Inhalt an.</p>
-<div class="code text highlight-default"><div class="highlight"><pre><span></span><span class="n">batman_adv</span>
+<div class="section" id="hop-penality">
+<h1>Hop Penality<a class="headerlink" href="#hop-penality" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Die Datei <code class="docutils literal"><span class="pre">/etc/sysfs.d/99-batman-hop-penalty.conf</span></code> mit folgendem Inhalt anlegen.</p>
+<div class="code jinja highlight-default"><div class="highlight"><pre><span></span><span class="n">class</span><span class="o">/</span><span class="n">net</span><span class="o">/</span><span class="p">{{</span> <span class="n">pillar</span><span class="p">[</span><span class="s1">&#39;network&#39;</span><span class="p">][</span><span class="s1">&#39;batman&#39;</span><span class="p">][</span><span class="s1">&#39;interface&#39;</span><span class="p">]</span> <span class="p">}}</span><span class="o">/</span><span class="n">mesh</span><span class="o">/</span><span class="n">hop_penalty</span> <span class="o">=</span> <span class="mi">60</span>
 </pre></div>
 </div>
 </div>

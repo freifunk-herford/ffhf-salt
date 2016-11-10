@@ -109,6 +109,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../bird/index.html">BIRD - Internet Routing Daemon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../radvd/index.html">RAdvD - Router Advertising Daemon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../alfred/index.html">A.L.F.R.E.D. - Almighty Lightweight Fact Remote Exchange Daemon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../sysfsutils/index.html">sysfsutils: System Utilities Based on Sysfs</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../dhcp-server/index.html">DHCP Server (Dynamic Host Configuration Protocol)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../name-server/index.html">DNS Server (Domain Name System)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../tinc/index.html">tinc VPN (Virtual Private Network)</a></li>
@@ -203,26 +204,48 @@
   <span class="l l-Scalar l-Scalar-Plain">service.running</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">apache.srv</span> <span class="cp">}}</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">enable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="c1"># - watch:</span>
-    <span class="c1">#   - file: change-documentroot</span>
-    <span class="c1">#   - file: change-documentroot-ssl</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">watch</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">change-documentroot</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">change-documentroot-ssl</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fix-serveradmin</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fix-serveradmin-ssl</span>
 
 <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os_family&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Debian&#39;</span> <span class="cp">%}</span>
-<span class="c1"># fix-serveradmin:</span>
-<span class="c1">#   file.replace:</span>
-<span class="c1">#     - name: /etc/apache2/sites-available/000-default.conf</span>
-<span class="c1">#     - pattern: &#39;ServerAdmin\ (.*)$&#39;</span>
-<span class="c1">#     - repl: &#39;ServerAdmin </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;apache&#39;</span><span class="o">][</span><span class="s1">&#39;serveradmin&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="c1">&#39;</span>
-<span class="c1">#     - require:</span>
-<span class="c1">#       - pkg: </span><span class="cp">{{</span> <span class="nv">apache.pkg</span> <span class="cp">}}</span>
-<span class="c1">#</span>
-<span class="c1"># fix-serveradmin-ssl:</span>
-<span class="c1">#   file.replace:</span>
-<span class="c1">#     - name: /etc/apache2/sites-available/default-ssl.conf</span>
-<span class="c1">#     - pattern: &#39;ServerAdmin\ (.*)$&#39;</span>
-<span class="c1">#     - repl: &#39;ServerAdmin </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;apache&#39;</span><span class="o">][</span><span class="s1">&#39;serveradmin&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="c1">&#39;</span>
-<span class="c1">#     - require:</span>
-<span class="c1">#       - pkg: </span><span class="cp">{{</span> <span class="nv">apache.pkg</span> <span class="cp">}}</span>
+<span class="l l-Scalar l-Scalar-Plain">change-documentroot</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.replace</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/apache2/sites-available/000-default.conf</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pattern</span><span class="p p-Indicator">:</span> <span class="s">&#39;DocumentRoot\</span><span class="nv"> </span><span class="s">(.*)$&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">repl</span><span class="p p-Indicator">:</span> <span class="s">&#39;DocumentRoot</span><span class="nv"> </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;apache&#39;</span><span class="o">][</span><span class="s1">&#39;documentroot&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="s">&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not_found_content</span><span class="p p-Indicator">:</span> <span class="s">&#39;DocumentRoot</span><span class="nv"> </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;apache&#39;</span><span class="o">][</span><span class="s1">&#39;documentroot&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="s">&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">apache.pkg</span> <span class="cp">}}</span>
+
+<span class="l l-Scalar l-Scalar-Plain">change-documentroot-ssl</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.replace</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/apache2/sites-available/default-ssl.conf</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pattern</span><span class="p p-Indicator">:</span> <span class="s">&#39;DocumentRoot\</span><span class="nv"> </span><span class="s">(.*)$&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">repl</span><span class="p p-Indicator">:</span> <span class="s">&#39;DocumentRoot</span><span class="nv"> </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;apache&#39;</span><span class="o">][</span><span class="s1">&#39;documentroot&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="s">&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not_found_content</span><span class="p p-Indicator">:</span> <span class="s">&#39;DocumentRoot</span><span class="nv"> </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;apache&#39;</span><span class="o">][</span><span class="s1">&#39;documentroot&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="s">&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">apache.pkg</span> <span class="cp">}}</span>
+
+<span class="l l-Scalar l-Scalar-Plain">fix-serveradmin</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.replace</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/apache2/sites-available/000-default.conf</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pattern</span><span class="p p-Indicator">:</span> <span class="s">&#39;ServerAdmin\</span><span class="nv"> </span><span class="s">(.*)$&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">repl</span><span class="p p-Indicator">:</span> <span class="s">&#39;ServerAdmin</span><span class="nv"> </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;apache&#39;</span><span class="o">][</span><span class="s1">&#39;serveradmin&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="s">&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not_found_content</span><span class="p p-Indicator">:</span> <span class="s">&#39;ServerAdmin</span><span class="nv"> </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;apache&#39;</span><span class="o">][</span><span class="s1">&#39;serveradmin&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="s">&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">apache.pkg</span> <span class="cp">}}</span>
+
+<span class="l l-Scalar l-Scalar-Plain">fix-serveradmin-ssl</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.replace</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/apache2/sites-available/default-ssl.conf</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pattern</span><span class="p p-Indicator">:</span> <span class="s">&#39;ServerAdmin\</span><span class="nv"> </span><span class="s">(.*)$&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">repl</span><span class="p p-Indicator">:</span> <span class="s">&#39;ServerAdmin</span><span class="nv"> </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;apache&#39;</span><span class="o">][</span><span class="s1">&#39;serveradmin&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="s">&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not_found_content</span><span class="p p-Indicator">:</span> <span class="s">&#39;ServerAdmin</span><span class="nv"> </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;apache&#39;</span><span class="o">][</span><span class="s1">&#39;serveradmin&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="s">&#39;</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">apache.pkg</span> <span class="cp">}}</span>
 <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 </pre></div>
 </div>
