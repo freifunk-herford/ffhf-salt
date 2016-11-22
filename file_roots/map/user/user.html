@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  <title>Konfiguration &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
   
 
   
@@ -124,7 +124,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../../index.html">Docs</a> &raquo;</li>
       
-    <li>&lt;no title&gt;</li>
+    <li>Konfiguration</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -136,7 +136,20 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  
+  <div class="section" id="konfiguration">
+<h1>Konfiguration<a class="headerlink" href="#konfiguration" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Den Benutzer <code class="docutils literal"><span class="pre">map</span></code> mit folgendem Befehl anlegen:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">useradd</span> <span class="o">--</span><span class="n">create</span><span class="o">-</span><span class="n">home</span> <span class="o">--</span><span class="n">home</span><span class="o">-</span><span class="nb">dir</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nb">map</span> <span class="o">--</span><span class="n">usergroup</span> <span class="o">--</span><span class="n">groups</span> <span class="n">alfred</span> <span class="o">--</span><span class="n">gid</span> <span class="nb">map</span> <span class="nb">map</span>
+</pre></div>
+</div>
+<p>Damit der Benutzer <code class="docutils literal"><span class="pre">map</span></code> den Befehl <code class="docutils literal"><span class="pre">/usr/sbin/batctl</span></code> auführen darf folgende Schritte durchführen.</p>
+<p>In die Datei <code class="docutils literal"><span class="pre">/etc/sudoers.d/map</span></code> folgenden Inhalt einfügen:</p>
+<div class="code text highlight-default"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ALL</span> <span class="o">=</span> <span class="n">NOPASSWD</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">batctl</span>
+</pre></div>
+</div>
+<p>Die rechte der Datei mit <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">0440</span> <span class="pre">/etc/sudoers.d/map</span></code> anpassen.</p>
+</div>
+
 
            </div>
           </div>

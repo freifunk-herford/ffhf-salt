@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>&lt;no title&gt; &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  <title>Installation &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
   
 
   
@@ -124,7 +124,7 @@
   <ul class="wy-breadcrumbs">
     <li><a href="../../../index.html">Docs</a> &raquo;</li>
       
-    <li>&lt;no title&gt;</li>
+    <li>Installation</li>
       <li class="wy-breadcrumbs-aside">
         
           
@@ -136,7 +136,250 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Als Benutzer <code class="docutils literal"><span class="pre">map</span></code> die Verzeichnisse <code class="docutils literal"><span class="pre">/home/map/scripts/map</span></code> mit <code class="docutils literal"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/home/map/scripts/map</span></code> anlegen.</p>
+<p>Eine virtuelle Python3 Umgebung erstellen:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span><span class="o">-</span><span class="n">virtualenv</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nb">map</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="nb">map</span>
+<span class="n">virtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=</span><span class="n">python3</span> <span class="n">venv3</span>
+</pre></div>
+</div>
+<p>Folgenden Inhalt in die PIP Vorraussetzungsdatei unter dem Dateinamen und Pfad <code class="docutils literal"><span class="pre">/home/map/scripts/map/requirements.txt</span></code> abspeichern.</p>
+<p>Die Vorraussetzungen für FFMap-Backend in der virtuellen Python3 Umgebung installieren:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nb">map</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="nb">map</span>
+<span class="n">source</span> <span class="n">venv3</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">active</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span> <span class="o">-</span><span class="n">r</span> <span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Das FFMap-Backend Repository in das Verzeichnis <code class="docutils literal"><span class="pre">/home/map/scripts/map/ffmap-backend</span></code> klonen:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">freifunk</span><span class="o">-</span><span class="n">herford</span><span class="o">/</span><span class="n">ffmap</span><span class="o">-</span><span class="n">backend</span><span class="o">.</span><span class="n">git</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nb">map</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="nb">map</span><span class="o">/</span><span class="n">ffmap</span><span class="o">-</span><span class="n">backend</span>
+</pre></div>
+</div>
+<p>Folgenden Inhalt in ein Script unter dem Dateinamen und Pfad <code class="docutils literal"><span class="pre">/home/map/scripts/update-ffmap.sh</span></code> abspeichern.</p>
+<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/usr/bin/env bash</span>
+<span class="c1"># Copyright 2016 - 2016 Tobias Benzin tbenzin@digital-nerv.net</span>
+<span class="c1">#                       Rally Vincent rvincent@digital-nerv.net</span>
+
+<span class="c1"># This file is managed by Salt, do not edit.</span>
+
+<span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+<span class="nv">SHELL</span><span class="o">=</span>/bin/bash
+
+<span class="nv">base</span><span class="o">=</span><span class="s2">&quot;/home/map/scripts/map&quot;</span>
+
+<span class="si">${</span><span class="nv">base</span><span class="si">}</span>/venv3/bin/python <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/ffmap-backend/backend.py <span class="se">\</span>
+--mesh <span class="o">{{</span> batman <span class="o">}}</span>:<span class="o">{{</span> socket <span class="o">}}</span> --dest-dir <span class="o">{{</span> data <span class="o">}}</span> <span class="se">\</span>
+--aliases <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/aliases.json --prune <span class="m">30</span> --with-rrd <span class="se">\</span>
+--rrd-time-global 14d --rrd-time-node 7d --anonymize
+
+<span class="si">${</span><span class="nv">base</span><span class="si">}</span>/venv3/bin/python <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/ffflash/ffflash.py <span class="se">\</span>
+--nodelist <span class="o">{{</span> data <span class="o">}}</span>/nodelist.json <span class="se">\</span>
+/var/www/meshviewer/freifunk-api/herford.json
+</pre></div>
+</div>
+<p>Folgenden Inhalt in die JSON Aliases Datei unter dem Dateinamen und Pfad <code class="docutils literal"><span class="pre">/home/map/scripts/map/aliases.json</span></code> abspeichern.</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">[</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;node_id&quot;</span><span class="p">:</span> <span class="s2">&quot;altermarkt2&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;Alter Markt 2&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;longitude&quot;</span><span class="p">:</span> <span class="mf">8.6710792</span><span class="p">,</span>
+      <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1140500</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;tunnel&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s2">&quot;00:25:86:e6:f1:bf&quot;</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;node_id&quot;</span><span class="p">:</span> <span class="s2">&quot;rathaus&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;Rathaus&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;longitude&quot;</span><span class="p">:</span> <span class="mf">8.6700260</span><span class="p">,</span>
+      <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1160820</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;tunnel&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s2">&quot;00:25:86:e6:f1:c0&quot;</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;node_id&quot;</span><span class="p">:</span> <span class="s2">&quot;kasernevloto001&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;Kaserne V.S. 01&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;longitude&quot;</span><span class="p">:</span> <span class="mf">8.6946963</span><span class="p">,</span>
+      <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1163048</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;tunnel&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s2">&quot;00:25:86:e6:f1:c1&quot;</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;node_id&quot;</span><span class="p">:</span> <span class="s2">&quot;kasernevloto002&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;Kaserne V.S. 02&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;longitude&quot;</span><span class="p">:</span> <span class="mf">8.6948519</span><span class="p">,</span>
+      <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1161072</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;tunnel&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s2">&quot;00:25:86:e6:f1:c2&quot;</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;node_id&quot;</span><span class="p">:</span> <span class="s2">&quot;kasernevloto003&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;Kaserne V.S. 03&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;longitude&quot;</span><span class="p">:</span> <span class="mf">8.6953347</span><span class="p">,</span>
+      <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1158634</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;tunnel&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s2">&quot;00:25:86:e6:f1:c3&quot;</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;node_id&quot;</span><span class="p">:</span> <span class="s2">&quot;kasernevloto004&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;Kaserne V.S. 04&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;longitude&quot;</span><span class="p">:</span> <span class="mf">8.6953669</span><span class="p">,</span>
+      <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1155076</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;tunnel&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s2">&quot;00:25:86:e6:f1:c4&quot;</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;node_id&quot;</span><span class="p">:</span> <span class="s2">&quot;kasernevloto005&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;Kaserne V.S. 05&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;longitude&quot;</span><span class="p">:</span> <span class="mf">8.6967563</span><span class="p">,</span>
+      <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1157613</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;tunnel&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s2">&quot;00:25:86:e6:f1:c5&quot;</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;node_id&quot;</span><span class="p">:</span> <span class="s2">&quot;kasernevloto006&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;Kaserne V.S. 06&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;longitude&quot;</span><span class="p">:</span> <span class="mf">8.6968260</span><span class="p">,</span>
+      <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1154451</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;tunnel&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s2">&quot;00:25:86:e6:f1:c6&quot;</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;node_id&quot;</span><span class="p">:</span> <span class="s2">&quot;kasernevloto007&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;Kaserne V.S. 07&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;longitude&quot;</span><span class="p">:</span> <span class="mf">8.6960321</span><span class="p">,</span>
+      <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1164168</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;tunnel&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s2">&quot;00:25:86:e6:f1:c7&quot;</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="p">{</span>
+    <span class="nt">&quot;node_id&quot;</span><span class="p">:</span> <span class="s2">&quot;berlinerstr10&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;hostname&quot;</span><span class="p">:</span> <span class="s2">&quot;Berliner Str&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;longitude&quot;</span><span class="p">:</span> <span class="mf">8.6734110</span><span class="p">,</span>
+      <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1172614</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
+          <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
+            <span class="nt">&quot;tunnel&quot;</span><span class="p">:</span> <span class="p">[</span>
+              <span class="s2">&quot;00:25:86:e6:f1:c8&quot;</span>
+            <span class="p">]</span>
+          <span class="p">}</span>
+        <span class="p">}</span>
+      <span class="p">}</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>Die Verzeichnisrechte für den Benutzer <code class="docutils literal"><span class="pre">map</span></code> mit dem Befehl <code class="docutils literal"><span class="pre">chown</span> <span class="pre">map:map</span> <span class="pre">/var/www/meshviewer/data</span> <span class="pre">-R</span></code> korrigieren.</p>
+<p>Einen Cronjob mit Hilfe von <code class="docutils literal"><span class="pre">crontab</span> <span class="pre">-e</span> <span class="pre">-u</span> <span class="pre">map</span></code> mit folgendem Inhalt anlegen.</p>
+<div class="code text highlight-default"><div class="highlight"><pre><span></span><span class="o">*/</span><span class="mi">1</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">*</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nb">map</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="n">update</span><span class="o">-</span><span class="n">ffmap</span><span class="o">.</span><span class="n">sh</span>
+</pre></div>
+</div>
+</div>
+
 
            </div>
           </div>

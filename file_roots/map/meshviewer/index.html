@@ -97,6 +97,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../rrd/index.html">RRD Tools</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/index.html">Map User Account</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Mesh Viewer</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#salt-state-file">Salt State File</a></li>
 </ul>
 </li>
@@ -159,6 +160,85 @@
             
   <div class="section" id="mesh-viewer">
 <h1>Mesh Viewer<a class="headerlink" href="#mesh-viewer" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Das Mesh Viwer Repository in das Verzeichnis <code class="docutils literal"><span class="pre">/var/www/meshviewer</span></code> klonen:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">freifunk</span><span class="o">-</span><span class="n">herford</span><span class="o">/</span><span class="n">meshviewer</span><span class="o">-</span><span class="n">build</span><span class="o">.</span><span class="n">git</span> <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">www</span><span class="o">/</span><span class="n">meshviewer</span>
+</pre></div>
+</div>
+<p>Folgenden Inhalt in die JSON Konfigurationsdatei unter dem Dateinamen und Pfad <code class="docutils literal"><span class="pre">/var/www/meshviewer/config.json</span></code> abspeichern.</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;dataPath&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="s2">&quot;data/&quot;</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;siteName&quot;</span><span class="p">:</span> <span class="s2">&quot;Freifunk Herford&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;mapSigmaScale&quot;</span><span class="p">:</span> <span class="mf">0.5</span><span class="p">,</span>
+  <span class="nt">&quot;showContact&quot;</span><span class="p">:</span> <span class="kc">false</span><span class="p">,</span>
+  <span class="nt">&quot;maxAge&quot;</span><span class="p">:</span> <span class="mi">14</span><span class="p">,</span>
+  <span class="nt">&quot;blinkingHours&quot;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span>
+  <span class="nt">&quot;mapLayers&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;OpenStreetMap&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://tiles.freifunk-bielefeld.de/{z}/{x}/{y}.png&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;subdomains&quot;</span><span class="p">:</span> <span class="s2">&quot;1234&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;osm&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;attribution&quot;</span><span class="p">:</span> <span class="s2">&quot;Tiles &amp;copy; Openstreetmap |&amp;copy; &lt;a href=\&quot;http://www.openstreetmap.org/copyright\&quot;&gt;OpenStreetMap&lt;/a&gt;&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;maxZoom&quot;</span><span class="p">:</span> <span class="mi">18</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;MapQuest&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;https://otile{s}-s.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpg&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;config&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="nt">&quot;subdomains&quot;</span><span class="p">:</span> <span class="s2">&quot;1234&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;type&quot;</span><span class="p">:</span> <span class="s2">&quot;osm&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;attribution&quot;</span><span class="p">:</span> <span class="s2">&quot;Tiles &amp;copy; &lt;a href=\&quot;https://www.mapquest.com/\&quot; target=\&quot;_blank\&quot;&gt;MapQuest&lt;/a&gt;, Data CC-BY-SA OpenStreetMap&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;maxZoom&quot;</span><span class="p">:</span> <span class="mi">18</span>
+      <span class="p">}</span>
+    <span class="p">},</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Stamen.TonerLite&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;nodeInfos&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Clientstatistik&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;href&quot;</span><span class="p">:</span> <span class="s2">&quot;data/nodes/{NODE_ID}.png&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;thumbnail&quot;</span><span class="p">:</span> <span class="s2">&quot;data/nodes/{NODE_ID}.png&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;caption&quot;</span><span class="p">:</span> <span class="s2">&quot;Knoten {NODE_ID}&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;siteNames&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span> <span class="nt">&quot;site&quot;</span><span class="p">:</span> <span class="s2">&quot;ffhf&quot;</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Herford&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nt">&quot;site&quot;</span><span class="p">:</span> <span class="s2">&quot;ffgl-bcd&quot;</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Burscheid&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nt">&quot;site&quot;</span><span class="p">:</span> <span class="s2">&quot;ffgl-bgl&quot;</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Bergisch Gladbach&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nt">&quot;site&quot;</span><span class="p">:</span> <span class="s2">&quot;ffgl-lln&quot;</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Leichlingen&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nt">&quot;site&quot;</span><span class="p">:</span> <span class="s2">&quot;ffgl-ode&quot;</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Odenthal&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nt">&quot;site&quot;</span><span class="p">:</span> <span class="s2">&quot;ffgl-ovr&quot;</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Overath&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nt">&quot;site&quot;</span><span class="p">:</span> <span class="s2">&quot;ffgl-rrh&quot;</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Rösrath&quot;</span> <span class="p">},</span>
+    <span class="p">{</span> <span class="nt">&quot;site&quot;</span><span class="p">:</span> <span class="s2">&quot;ffdus&quot;</span><span class="p">,</span> <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Flingern&quot;</span> <span class="p">}</span>
+  <span class="p">]</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>Folgenden Inhalt in die Apache Virtual Host Konfigurationsdatei unter dem Dateinamen und Pfad <code class="docutils literal"><span class="pre">/etc/apache2/sites-available/map.ffhf.conf</span></code> abspeichern.</p>
+<div class="highlight-apache"><div class="highlight"><pre><span></span><span class="nt">&lt;VirtualHost</span> <span class="s">*:80</span><span class="nt">&gt;</span>
+    <span class="nb">ServerName</span> map.ffhf
+    <span class="nb">ServerAlias</span> map.* www.map.*
+    <span class="nb">ServerAdmin</span> <span class="k">info</span>@herford.freifunk.net
+    <span class="nb">ErrorLog</span> ${APACHE_LOG_DIR}/map-error.log
+    <span class="nb">CustomLog</span> ${APACHE_LOG_DIR}/map-access.log combined
+    <span class="nb">DocumentRoot</span> <span class="sx">/var/www/meshviewer</span>
+    <span class="nt">&lt;Directory</span> <span class="s">/var/www/meshviewer</span><span class="nt">&gt;</span>
+        <span class="nb">Options</span> -Indexes
+        <span class="nb">Options</span> FollowSymlinks
+        <span class="nb">AllowOverride</span> <span class="k">None</span>
+        <span class="nb">Order</span> allow,deny
+        <span class="nb">Allow</span> from <span class="k">all</span>
+    <span class="nt">&lt;/Directory&gt;</span>
+<span class="nt">&lt;/VirtualHost&gt;</span>
+</pre></div>
+</div>
+<p>Und mit <code class="docutils literal"><span class="pre">a2ensite</span> <span class="pre">map.ffhf</span></code> aktivieren.</p>
+</div>
 <div class="section" id="salt-state-file">
 <h2>Salt State File<a class="headerlink" href="#salt-state-file" title="Link zu dieser Überschrift">¶</a></h2>
 <p>meshviewer.sls</p>

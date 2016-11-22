@@ -98,6 +98,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../user/index.html">Map User Account</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../meshviewer/index.html">Mesh Viewer</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Freifunk API</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#salt-state-file">Salt State File</a></li>
 </ul>
 </li>
@@ -159,6 +160,106 @@
             
   <div class="section" id="freifunk-api">
 <h1>Freifunk API<a class="headerlink" href="#freifunk-api" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="section" id="installation">
+<h2>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Als Benutzer <code class="docutils literal"><span class="pre">map</span></code> die Verzeichnisse <code class="docutils literal"><span class="pre">/home/map/scripts/map</span></code> mit <code class="docutils literal"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/home/map/scripts/map</span></code> anlegen.</p>
+<p>Eine virtuelle Python3 Umgebung erstellen:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span><span class="o">-</span><span class="n">virtualenv</span>
+<span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nb">map</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="nb">map</span>
+<span class="n">virtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=</span><span class="n">python3</span> <span class="n">venv3</span>
+</pre></div>
+</div>
+<p>Das FFFlash Repository in das Verzeichnis <code class="docutils literal"><span class="pre">/home/map/scripts/map</span></code> klonen:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">spookey</span><span class="o">/</span><span class="n">ffflash</span><span class="o">.</span><span class="n">git</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nb">map</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="nb">map</span><span class="o">/</span><span class="n">ffflash</span>
+</pre></div>
+</div>
+<p>Die Vorraussetzungen für FFFlash in der virtuellen Python3 Umgebung installieren:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nb">map</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="nb">map</span>
+<span class="n">sour</span><span class="o">..</span><span class="n">ce</span> <span class="n">venv3</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">active</span>
+<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span> <span class="o">-</span><span class="n">r</span> <span class="n">ffflash</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+</pre></div>
+</div>
+<p>Folgenden Inhalt in die JSON Freifunk API Datei unter dem Dateinamen und Pfad <code class="docutils literal"><span class="pre">/var/www/meshviewer/freifunk-api/herford.json</span></code> abspeichern.</p>
+<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+  <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Freifunk Herford&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://herford.freifunk.net&quot;</span><span class="p">,</span>
+  <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;city&quot;</span><span class="p">:</span> <span class="s2">&quot;Herford&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;country&quot;</span><span class="p">:</span> <span class="s2">&quot;DE&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;lat&quot;</span><span class="p">:</span> <span class="mf">52.11815408871958</span><span class="p">,</span>
+    <span class="nt">&quot;lon&quot;</span><span class="p">:</span> <span class="mf">8.670616149902344</span><span class="p">,</span>
+    <span class="nt">&quot;address&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;Name&quot;</span><span class="p">:</span> <span class="s2">&quot;Freifunk Herford - RecyclingBörse&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;Street&quot;</span><span class="p">:</span> <span class="s2">&quot;Heidestrasse 7&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;Zipcode&quot;</span><span class="p">:</span> <span class="s2">&quot;32051&quot;</span>
+    <span class="p">}</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;contact&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;email&quot;</span><span class="p">:</span> <span class="s2">&quot;info@herford.freifunk.net&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;jabber&quot;</span><span class="p">:</span> <span class="s2">&quot;freifunk-bielefeld@conference.jabber.ccc.de&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;facebook&quot;</span><span class="p">:</span> <span class="s2">&quot;https://www.facebook.com/FreifunkHerford&quot;</span><span class="p">,</span>
+    <span class="nt">&quot;twitter&quot;</span><span class="p">:</span> <span class="s2">&quot;@freifunkhf&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;state&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;focus&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;infrastructure/backbone&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Public Free Wifi&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Social Community Building&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Local services and content&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;Free internet access&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;lastchange&quot;</span><span class="p">:</span> <span class="s2">&quot;2016-11-10T03:03:43.965Z&quot;</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;nodeMaps&quot;</span><span class="p">:</span> <span class="p">[</span>
+    <span class="p">{</span>
+      <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://map.herford.freifunk.net/&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;interval&quot;</span><span class="p">:</span> <span class="s2">&quot;1min&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;technicalType&quot;</span><span class="p">:</span> <span class="s2">&quot;meshviewer&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mapType&quot;</span><span class="p">:</span> <span class="s2">&quot;geographical&quot;</span>
+    <span class="p">}</span>
+  <span class="p">],</span>
+  <span class="nt">&quot;techDetails&quot;</span><span class="p">:</span> <span class="p">{</span>
+    <span class="nt">&quot;firmware&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;gluon&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://firmware.herford.freifunk.net/&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;docs&quot;</span><span class="p">:</span> <span class="s2">&quot;http://herford.freifunk.net/mitmachen/firmware/&quot;</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;dns&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="p">{</span>
+        <span class="nt">&quot;domainname&quot;</span><span class="p">:</span> <span class="s2">&quot;ffhf&quot;</span><span class="p">,</span>
+        <span class="nt">&quot;nameserver&quot;</span><span class="p">:</span> <span class="p">[</span>
+          <span class="s2">&quot;map.herford.freifunk.net&quot;</span>
+        <span class="p">]</span>
+      <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;networks&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;ipv4&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+          <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="s2">&quot;10.34.0.0/24&quot;</span>
+        <span class="p">}</span>
+      <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="nt">&quot;routing&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;batman-adv&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;updatemode&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;manual&quot;</span><span class="p">,</span>
+      <span class="s2">&quot;autoupdate&quot;</span>
+    <span class="p">],</span>
+    <span class="nt">&quot;legals&quot;</span><span class="p">:</span> <span class="p">[</span>
+      <span class="s2">&quot;vpninternational&quot;</span>
+    <span class="p">]</span>
+  <span class="p">},</span>
+  <span class="nt">&quot;api&quot;</span><span class="p">:</span> <span class="s2">&quot;0.4.14&quot;</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="admonition hint">
+<p class="first admonition-title">Hinweis</p>
+<p class="last">Diese Datei kann man mit Hilfe des <a class="reference external" href="https://freifunk.net/api-generator/">Freifunk API Generator</a> erstellt werden.</p>
+</div>
+<p>Die Dateirechte mit <code class="docutils literal"><span class="pre">chown</span> <span class="pre">map:map</span> <span class="pre">/var/www/meshviewer/freifunk-api/herford.json</span></code> anpassen.</p>
+</div>
 <div class="section" id="salt-state-file">
 <h2>Salt State File<a class="headerlink" href="#salt-state-file" title="Link zu dieser Überschrift">¶</a></h2>
 <p>ffflash.sls</p>

@@ -96,6 +96,7 @@
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Map Server</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../rrd/index.html">RRD Tools</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Map User Account</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#konfiguration">Konfiguration</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#salt-state-file">Salt State File</a></li>
 </ul>
 </li>
@@ -159,6 +160,19 @@
             
   <div class="section" id="map-user-account">
 <h1>Map User Account<a class="headerlink" href="#map-user-account" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="section" id="konfiguration">
+<h2>Konfiguration<a class="headerlink" href="#konfiguration" title="Link zu dieser Überschrift">¶</a></h2>
+<p>Den Benutzer <code class="docutils literal"><span class="pre">map</span></code> mit folgendem Befehl anlegen:</p>
+<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">useradd</span> <span class="o">--</span><span class="n">create</span><span class="o">-</span><span class="n">home</span> <span class="o">--</span><span class="n">home</span><span class="o">-</span><span class="nb">dir</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nb">map</span> <span class="o">--</span><span class="n">usergroup</span> <span class="o">--</span><span class="n">groups</span> <span class="n">alfred</span> <span class="o">--</span><span class="n">gid</span> <span class="nb">map</span> <span class="nb">map</span>
+</pre></div>
+</div>
+<p>Damit der Benutzer <code class="docutils literal"><span class="pre">map</span></code> den Befehl <code class="docutils literal"><span class="pre">/usr/sbin/batctl</span></code> auführen darf folgende Schritte durchführen.</p>
+<p>In die Datei <code class="docutils literal"><span class="pre">/etc/sudoers.d/map</span></code> folgenden Inhalt einfügen:</p>
+<div class="code text highlight-default"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ALL</span> <span class="o">=</span> <span class="n">NOPASSWD</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">batctl</span>
+</pre></div>
+</div>
+<p>Die rechte der Datei mit <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">0440</span> <span class="pre">/etc/sudoers.d/map</span></code> anpassen.</p>
+</div>
 <div class="section" id="salt-state-file">
 <h2>Salt State File<a class="headerlink" href="#salt-state-file" title="Link zu dieser Überschrift">¶</a></h2>
 <p>user.sls</p>
