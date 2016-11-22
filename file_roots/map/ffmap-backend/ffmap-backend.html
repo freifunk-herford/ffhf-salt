@@ -170,9 +170,9 @@
 
 <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/venv3/bin/python <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/ffmap-backend/backend.py <span class="se">\</span>
 --mesh <span class="o">{{</span> batman <span class="o">}}</span>:<span class="o">{{</span> socket <span class="o">}}</span> --dest-dir <span class="o">{{</span> data <span class="o">}}</span> <span class="se">\</span>
---aliases <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/aliases.json --aliases-assume-online <span class="se">\</span>
---prune <span class="m">30</span> --with-rrd --rrd-time-global 14d <span class="se">\</span>
---rrd-time-node 7d --anonymize
+--online-aliases <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/aliases.json --prune <span class="m">30</span> <span class="se">\</span>
+--with-rrd --rrd-time-global 14d --rrd-time-node 7d <span class="se">\</span>
+--anonymize
 
 <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/venv3/bin/python <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/ffflash/ffflash.py <span class="se">\</span>
 --nodelist <span class="o">{{</span> data <span class="o">}}</span>/nodelist.json <span class="se">\</span>
