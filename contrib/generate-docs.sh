@@ -6,6 +6,8 @@ base="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 current=$(pwd)
 cd $base
 
+# gateways
+
 states=$(cat ../file_roots/gateway/init.sls | awk -F '.' '{/  -/;print $2}')
 
 for state in ${states[@]}; do
@@ -41,8 +43,6 @@ ${state}.sls
    :language: salt
 EOT
 done
-
-# yaml+jinja
 
 target=docs/source/file_roots/gateway/index.rst
 
@@ -100,6 +100,112 @@ target=docs/source/pillar_roots/gateways/index.rst
 cat > ${target} << EOT
 Gateways
 ========
+
+Inhalt:
+
+.. toctree::
+   :maxdepth: 4
+
+EOT
+
+for pillar in ${pillars[@]}; do
+    echo "   ${pillar%.sls}/index" >> ${target}
+done
+
+# map
+
+states=$(cat ../file_roots/map/init.sls | grep -v 'gateway' | awk -F '.' '{/  -/;print $2}')
+
+for state in ${states[@]}; do
+    base=docs/source/file_roots/map/${state}
+    mkdir -p ${base}
+    touch ${base}/${state}.rst
+
+    target=${base}/index.rst
+
+    title=$(head ../file_roots/map/${state}.sls -n 1 | awk -F '# ' '{print $2}')
+    titlemarkup=""
+
+    counter=0
+    length=$(echo ${#title})
+    while [ ${counter} -lt ${length} ]; do
+        titlemarkup="${titlemarkup}="
+        let counter=counter+1
+    done
+
+    echo ${title} > ${target}
+    echo ${titlemarkup} >> ${target}
+
+    cat >> ${target} << EOT
+
+.. include:: ${state}.rst
+
+Salt State File
+---------------
+
+${state}.sls
+
+.. literalinclude:: ../../../../../../file_roots/map/${state}.sls
+   :language: salt
+EOT
+done
+
+target=docs/source/file_roots/map/index.rst
+
+cat > ${target} << EOT
+Map Server
+==========
+
+Inhalt:
+
+.. toctree::
+   :maxdepth: 4
+
+EOT
+
+for state in ${states[@]}; do
+    echo "   ${state}/index" >> ${target}
+done
+
+pillars=$(ls ../pillar_roots/map)
+for pillar in ${pillars[@]}; do
+    base=docs/source/pillar_roots/map/${pillar%.sls}
+    mkdir -p ${base}
+    touch ${base}/${pillar%.sls}.rst
+    target=${base}/index.rst
+
+    title=$(head ../pillar_roots/map/${pillar} -n 1 | awk -F '# ' '{print $2}')
+    titlemarkup=""
+
+    counter=0
+    length=$(echo ${#title})
+    while [ ${counter} -lt ${length} ]; do
+        titlemarkup="${titlemarkup}="
+        let counter=counter+1
+    done
+
+    echo ${title} > ${target}
+    echo ${titlemarkup} >> ${target}
+
+    cat >> ${target} << EOT
+
+.. include:: ${pillar%.sls}.rst
+
+Salt State File
+---------------
+
+${pillar}
+
+.. literalinclude:: ../../../../../../pillar_roots/map/${pillar}
+   :language: salt
+EOT
+done
+
+target=docs/source/pillar_roots/map/index.rst
+
+cat > ${target} << EOT
+Map Server
+==========
 
 Inhalt:
 
