@@ -126,6 +126,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../syslog/index.html">Logging</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="../../map/index.html">Map Server</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
@@ -266,8 +267,11 @@
 <span class="l l-Scalar l-Scalar-Plain">fastd-repository</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">cmd.run</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
-        <span class="no">gpg --keyserver pgpkeys.mit.edu --recv-key 16EF3F64CB201D9C</span>
+        <span class="no">gpg --keyserver keyserver.ubuntu.com --recv-key 16EF3F64CB201D9C</span>
         <span class="no">gpg -a --export 16EF3F64CB201D9C | sudo apt-key add -</span>
+<span class="c1">#    - name: |</span>
+<span class="c1">#        gpg --keyserver pgpkeys.mit.edu --recv-key 16EF3F64CB201D9C</span>
+<span class="c1">#        gpg -a --export 16EF3F64CB201D9C | sudo apt-key add -</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unless</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test -n &quot;$(apt-key list | grep universe-factory.net)&quot;</span>
   <span class="l l-Scalar l-Scalar-Plain">pkgrepo.managed</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deb https://repo.universe-factory.net/debian/ sid main</span>

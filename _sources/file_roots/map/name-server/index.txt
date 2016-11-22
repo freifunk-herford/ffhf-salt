@@ -1,0 +1,12 @@
+
+
+
+.. include:: name-server.rst
+
+Salt State File
+---------------
+
+name-server.sls
+
+.. literalinclude:: ../../../../../../file_roots/map/name-server.sls
+   :language: salt

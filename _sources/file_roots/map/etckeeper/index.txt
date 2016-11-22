@@ -1,0 +1,12 @@
+
+
+
+.. include:: etckeeper.rst
+
+Salt State File
+---------------
+
+etckeeper.sls
+
+.. literalinclude:: ../../../../../../file_roots/map/etckeeper.sls
+   :language: salt

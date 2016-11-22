@@ -1,0 +1,12 @@
+
+
+
+.. include:: alfred.rst
+
+Salt State File
+---------------
+
+alfred.sls
+
+.. literalinclude:: ../../../../../../file_roots/map/alfred.sls
+   :language: salt

@@ -1,0 +1,12 @@
+
+
+
+.. include:: batman.rst
+
+Salt State File
+---------------
+
+batman.sls
+
+.. literalinclude:: ../../../../../../file_roots/map/batman.sls
+   :language: salt

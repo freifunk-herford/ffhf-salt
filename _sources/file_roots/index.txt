@@ -7,4 +7,5 @@ Inhalt:
    :maxdepth: 4
 
    gateway/index
+   map/index
 

@@ -1,0 +1,12 @@
+
+
+
+.. include:: bash.rst
+
+Salt State File
+---------------
+
+bash.sls
+
+.. literalinclude:: ../../../../../../file_roots/map/bash.sls
+   :language: salt
