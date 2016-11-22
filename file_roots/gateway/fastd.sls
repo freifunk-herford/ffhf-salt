@@ -8,8 +8,11 @@
 fastd-repository:
   cmd.run:
     - name: |
-        gpg --keyserver pgpkeys.mit.edu --recv-key 16EF3F64CB201D9C
+        gpg --keyserver keyserver.ubuntu.com --recv-key 16EF3F64CB201D9C
         gpg -a --export 16EF3F64CB201D9C | sudo apt-key add -
+#    - name: |
+#        gpg --keyserver pgpkeys.mit.edu --recv-key 16EF3F64CB201D9C
+#        gpg -a --export 16EF3F64CB201D9C | sudo apt-key add -
     - unless: test -n "$(apt-key list | grep universe-factory.net)"
   pkgrepo.managed:
     - name: deb https://repo.universe-factory.net/debian/ sid main
