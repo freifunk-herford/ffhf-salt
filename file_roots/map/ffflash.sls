@@ -6,8 +6,8 @@ ffflash-prepare:
   pkg.installed:
     - pkgs:
         {% if grains['os_family'] == 'Debian' %}
-        - python
-        - python-dev
+        - python3
+        - python3-dev
         - python-virtualenv
         {% endif %}
   file.managed:
@@ -28,9 +28,9 @@ ffflash-repository:
 
 ffflash-venv:
   virtualenv.managed:
-    - python: python
+    - python: python3
     - cwd: /home/map/scripts/map
-    - name: /home/map/scripts/map/venv
+    - name: /home/map/scripts/map/venv3
     - requirements: /home/map/scripts/map/ffflash/requirements.txt
     - pip_upgrade: True
     - user: map

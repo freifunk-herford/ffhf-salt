@@ -14,6 +14,6 @@ ${base}/venv3/bin/python ${base}/ffmap-backend/backend.py \
 --aliases ${base}/aliases.json --prune 30 --with-rrd \
 --rrd-time-global 14d --rrd-time-node 7d --anonymize
 
-${base}/venv/bin/python ${base}/ffflash/ffflash.py \
+${base}/venv3/bin/python ${base}/ffflash/ffflash.py \
 --nodelist {{ data }}/nodelist.json \
 /var/www/meshviewer/freifunk-api/herford.json
