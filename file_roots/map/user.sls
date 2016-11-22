@@ -9,7 +9,6 @@ user-map:
     - remove_groups: True
     - groups:
         - alfred
-        - sudo
 
 /etc/sudoers.d/map:
   file.managed:
