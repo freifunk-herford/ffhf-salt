@@ -64,6 +64,9 @@ ffmap-backend-repository:
     - user: map
     - group: map
     - makedirs: True
+    - recurse:
+      - user
+      - group
 
 update-ffmap-cron:
   cron.present:
