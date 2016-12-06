@@ -50,6 +50,15 @@ ffmap-backend-repository:
     - group: map
     - makedirs: True
 
+/home/map/scripts/update-node.sh:
+  file.managed:
+    - name: /home/map/scripts/update-node.sh
+    - source: salt://map/home/map/scripts/update-node.py
+    - mode: 755
+    - user: map
+    - group: map
+    - makedirs: True
+
 /home/map/scripts/map/aliases.json:
   file.managed:
     - name: /home/map/scripts/map/aliases.json
