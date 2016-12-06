@@ -4,6 +4,8 @@
   'Debian': {'pkg': 'radvd', 'srv': 'radvd'}
 }, default='Debian') %}
 
+{% if pillar['exit']['type'] == 'gre' %}
+
 {{ radvd.pkg }}:
   pkg.installed:
     - name: {{ radvd.pkg }}
@@ -27,3 +29,15 @@
         interface: {{ pillar['network']['bridge']['interface'] }}
         address: {{ pillar['network']['bridge']['address6'] }}
         prefix: {{ pillar['network']['bridge']['prefix'] }}
+
+{% else %}
+
+{{ radvd.pkg }}:
+  pkg.removed:
+    - name: {{ radvd.pkg }}
+
+/etc/radvd.conf:
+  file.absent:
+    - name: /etc/radvd.conf
+
+{% endif %}
