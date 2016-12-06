@@ -33,7 +33,8 @@ network:
     address: 89.163.130.241
     address6: 2001:4ba0:fff4:9b::4/64
 
-openvpn:
+exit:
+  type: openvpn # Verschiedene Arten sind möglich "gre" oder "openvpn"
   provider: mullvad_linux # Verschiedene Provider sind moeglich
   mullvad_linux: # Freifunk Herford
     mullvad.crt: |

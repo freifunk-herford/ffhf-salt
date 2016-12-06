@@ -33,7 +33,8 @@ network:
     address: 1.2.3.4 # TODO ChangeMe
     # address6: # Der Server hat keine IPv6 Adresse
 
-openvpn:
+exit:
+  type: openvpn # Verschiedene Arten sind möglich "gre" oder "openvpn"
   provider: mullvad_linux # Verschiedene Provider sind moeglich
   mullvad_linux: # Freifunk Herford
     mullvad.crt: |
