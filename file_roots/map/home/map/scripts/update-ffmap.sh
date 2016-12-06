@@ -7,14 +7,18 @@
 PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 SHELL=/bin/bash
 
-base="/home/map/scripts/map"
+base="/home/map/scripts"
 
-${base}/venv3/bin/python ${base}/ffmap-backend/backend.py \
+python ${base}/update-node.py \
+--url http://gw-hf.herford.freifunk.net/node.json \
+--node ${base}/map/gw-hf.json
+
+${base}/map/venv3/bin/python ${base}/map/ffmap-backend/backend.py \
 --mesh {{ batman }}:{{ socket }} --dest-dir {{ data }} \
---online-aliases ${base}/aliases.json --prune 30 \
+--online-aliases ${base}/map/aliases.json ${base}/map/gw-hf.json --prune 30 \
 --with-rrd --rrd-time-global 14d --rrd-time-node 7d \
 --anonymize
 
-${base}/venv3/bin/python ${base}/ffflash/ffflash.py \
+${base}/map/venv3/bin/python ${base}/map/ffflash/ffflash.py \
 --nodelist {{ data }}/nodelist.json \
 /var/www/meshviewer/freifunk-api/herford.json
