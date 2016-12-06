@@ -4,6 +4,8 @@
   'Debian': {'pkg': 'openvpn', 'srv': 'openvpn'}
 }, default='Debian') %}
 
+{% if pillar['exit']['type'] == 'openvpn' %}
+
 {{ openvpn.pkg }}:
   pkg.installed:
     - name: {{ openvpn.pkg }}
@@ -12,14 +14,14 @@
     - enable: True
     - require:
         - file: /etc/default/openvpn
-        {% if pillar['openvpn']['provider'] == 'mullvad_linux' %}
+        {% if pillar['exit']['provider'] == 'mullvad_linux' %}
         - file: /etc/openvpn/openvpn-updown
         - file: /etc/openvpn/ca.crt
         - file: /etc/openvpn/mullvad.crt
         - file: /etc/openvpn/mullvad.key
         - file: /etc/openvpn/mullvad_linux.conf
         {% endif %}
-        {% if pillar['openvpn']['provider'] == 'dnn_linux' %}
+        {% if pillar['exit']['provider'] == 'dnn_linux' %}
         - file: /etc/openvpn/openvpn-updown
         - file: /etc/openvpn/ca.crt
         - file: /etc/openvpn/dnn.crt
@@ -28,14 +30,14 @@
         {% endif %}
     - watch:
         - file: /etc/default/openvpn
-        {% if pillar['openvpn']['provider'] == 'mullvad_linux' %}
+        {% if pillar['exit']['provider'] == 'mullvad_linux' %}
         - file: /etc/openvpn/openvpn-updown
         - file: /etc/openvpn/ca.crt
         - file: /etc/openvpn/mullvad.crt
         - file: /etc/openvpn/mullvad.key
         - file: /etc/openvpn/mullvad_linux.conf
         {% endif %}
-        {% if pillar['openvpn']['provider'] == 'dnn_linux' %}
+        {% if pillar['exit']['provider'] == 'dnn_linux' %}
         - file: /etc/openvpn/openvpn-updown
         - file: /etc/openvpn/ca.crt
         - file: /etc/openvpn/dnn.crt
@@ -43,7 +45,7 @@
         - file: /etc/openvpn/dnn_linux.conf
         {% endif %}
 
-{% if pillar['openvpn']['provider'] == 'mullvad_linux' %}
+{% if pillar['exit']['provider'] == 'mullvad_linux' %}
 /etc/default/openvpn:
   file.replace:
     - name: /etc/default/openvpn
@@ -81,7 +83,7 @@
 /etc/openvpn/mullvad.crt:
   file.managed:
     - name: /etc/openvpn/mullvad.crt
-    - contents_pillar: openvpn:mullvad_linux:mullvad.crt
+    - contents_pillar: exit:mullvad_linux:mullvad.crt
     - mode: 600
     - user: root
     - group: root
@@ -89,7 +91,7 @@
 /etc/openvpn/mullvad.key:
   file.managed:
     - name: /etc/openvpn/mullvad.key
-    - contents_pillar: openvpn:mullvad_linux:mullvad.key
+    - contents_pillar: exit:mullvad_linux:mullvad.key
     - mode: 600
     - user: root
     - group: root
@@ -115,7 +117,7 @@
     - name: /etc/openvpn/dnn.crt
 {% endif %}
 
-{% if pillar['openvpn']['provider'] == 'dnn_linux' %}
+{% if pillar['exit']['provider'] == 'dnn_linux' %}
 /etc/openvpn/mullvad_linux.conf:
   file.absent:
     - name: /etc/openvpn/mullvad_linux.conf
@@ -161,7 +163,7 @@
 /etc/openvpn/dnn.crt:
   file.managed:
     - name: /etc/openvpn/dnn.crt
-    - contents_pillar: openvpn:dnn_linux:dnn.crt
+    - contents_pillar: exit:dnn_linux:dnn.crt
     - mode: 600
     - user: root
     - group: root
@@ -169,7 +171,7 @@
 /etc/openvpn/dnn.key:
   file.managed:
     - name: /etc/openvpn/dnn.key
-    - contents_pillar: openvpn:dnn_linux:dnn.key
+    - contents_pillar: exit:dnn_linux:dnn.key
     - mode: 600
     - user: root
     - group: root
@@ -207,3 +209,24 @@ openvpn-cron:
     - comment: 'Check OpenVPN Connection every 10 Minutes'
     - require:
       - file: /root/scripts/check-openvpn.sh
+
+{% else %}
+
+{{ openvpn.pkg }}:
+  pkg.removed:
+    - name: {{ openvpn.pkg }}
+
+/etc/openvpn:
+  file.absent:
+    - name: /etc/openvpn
+
+/root/scripts/check-openvpn.sh
+  file.absent:
+    - name: /root/scripts/check-openvpn.sh
+
+openvpn-cron:
+  cron.absent:
+    - name: /root/scripts/check-openvpn.sh
+    - identifier: check-openvpn
+
+{% endif %}
