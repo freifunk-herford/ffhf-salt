@@ -7,6 +7,8 @@
       "latitude": 52.1140500
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:bf",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -26,6 +28,8 @@
       "latitude": 52.1160820
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:c0",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -45,6 +49,8 @@
       "latitude": 52.1163048
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:c1",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -64,6 +70,8 @@
       "latitude": 52.1161072
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:c2",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -83,6 +91,8 @@
       "latitude": 52.1158634
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:c3",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -102,6 +112,8 @@
       "latitude": 52.1155076
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:c4",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -121,6 +133,8 @@
       "latitude": 52.1157613
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:c5",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -140,6 +154,8 @@
       "latitude": 52.1154451
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:c6",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -159,6 +175,8 @@
       "latitude": 52.1164168
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:c7",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -178,6 +196,8 @@
       "latitude": 52.1172614
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:c8",
       "mesh": {
         "bat0": {
           "interfaces": {
