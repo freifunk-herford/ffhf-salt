@@ -16,10 +16,8 @@ root:
 /root/.bash_profile:
   file.append:
     - name: /root/.bash_profile
-    - text:
-        if [ -f ~/.bashrc ]; then
-            . ~/.bashrc
-        fi
+    - text: |
+        if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
     - makedirs: True
 
 /root/.bash_aliases:
