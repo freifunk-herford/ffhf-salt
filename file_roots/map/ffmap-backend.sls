@@ -67,6 +67,14 @@ ffmap-backend-repository:
     - group: map
     - makedirs: True
 
+/home/map/scripts/map/gw-hf.json:
+  file.managed:
+    - name: /home/map/scripts/map/gw-hf.json
+    - source: salt://map/home/map/scripts/map/gw-hf.json
+    - user: map
+    - group: map
+    - makedirs: True
+
 {{ pillar['meshviewer']['data'] }}:
   file.directory:
     - name: {{ pillar['meshviewer']['data'] }}
