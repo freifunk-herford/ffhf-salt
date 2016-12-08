@@ -1,4 +1,5 @@
-# Fastd Konfiguration, erweitert gateways.shared
+# Fastd Konfiguration
+# erweitert gateways.shared
 
 fastd:
   fqdn: map.digital-nerv.net

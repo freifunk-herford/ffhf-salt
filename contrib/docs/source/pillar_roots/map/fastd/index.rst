@@ -1,5 +1,5 @@
-Fastd Konfiguration, erweitert gateways.shared
-==============================================
+Fastd Konfiguration
+===================
 
 .. include:: fastd.rst
 

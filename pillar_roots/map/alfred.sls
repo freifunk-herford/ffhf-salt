@@ -1,4 +1,5 @@
-# A.L.F.R.E.D. Konfiguration, erweitert gateways.shared
+# A.L.F.R.E.D. Konfiguration
+# erweitert gateways.shared
 
 alfred:
   master: True

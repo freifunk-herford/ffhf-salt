@@ -1,4 +1,5 @@
-# Netzwerk Konfiguration, erweitert gateways.shared
+# Netzwerk Konfiguration
+# erweitert gateways.shared
 
 network:
   primary:

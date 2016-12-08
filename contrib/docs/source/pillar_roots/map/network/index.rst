@@ -1,5 +1,5 @@
-Netzwerk Konfiguration, erweitert gateways.shared
-=================================================
+Netzwerk Konfiguration
+======================
 
 .. include:: network.rst
 
