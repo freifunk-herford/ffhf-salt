@@ -36,6 +36,7 @@ class Alfred:
                         free = int(free)
             used = (total - free)
             memory_usage = (float(used) / total) * 100
+            memory_usage = memory_usage / 100
         except Exception as error:
             if self.options.debug:
                 print(error)
@@ -45,6 +46,7 @@ class Alfred:
             total = (statvfs.f_blocks * statvfs.f_frsize)
             used = (statvfs.f_blocks - statvfs.f_bfree) * statvfs.f_frsize
             rootfs_usage = (float(used) / total) * 100
+            rootfs_usage = rootfs_usage / 100
         except Exception as error:
             if self.options.debug:
                 print(error)
