@@ -94,6 +94,20 @@
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">States</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../gateway/index.html">Gateway</a></li>
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Map Server</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/bash/index.html">Bash - Bourne Again Shell</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/git/index.html">git Version Control System</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/etckeeper/index.html">etc Keeper</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/mosh/index.html">Mosh (Mobile shell)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/tmp/index.html">/tmp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/ntp/index.html">NTP (Network Time Protocol)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/network/index.html">Network Interfaces &amp; Brige Utilities</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/batman/index.html">B.A.T.M.A.N. - Better Approach To Mobile Adhoc Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/fastd/index.html">Fastd - Fast and Secure Tunneling Daemon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/alfred/index.html">A.L.F.R.E.D. - Almighty Lightweight Fact Remote Exchange Daemon</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/name-server/index.html">DNS Server (Domain Name System)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/fail2ban/index.html">Fail2Ban Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/apache/index.html">Apache Web Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/syslog/index.html">Logging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../rrd/index.html">RRD Tools</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/index.html">Map User Account</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../meshviewer/index.html">Mesh Viewer</a></li>
@@ -190,15 +204,19 @@
 <span class="nv">PATH</span><span class="o">=</span>/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 <span class="nv">SHELL</span><span class="o">=</span>/bin/bash
 
-<span class="nv">base</span><span class="o">=</span><span class="s2">&quot;/home/map/scripts/map&quot;</span>
+<span class="nv">base</span><span class="o">=</span><span class="s2">&quot;/home/map/scripts&quot;</span>
 
-<span class="si">${</span><span class="nv">base</span><span class="si">}</span>/venv3/bin/python <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/ffmap-backend/backend.py <span class="se">\</span>
+python <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/update-node.py <span class="se">\</span>
+--url http://gw-hf.herford.freifunk.net/node.json <span class="se">\</span>
+--node <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/map/gw-hf.json
+
+<span class="si">${</span><span class="nv">base</span><span class="si">}</span>/map/venv3/bin/python <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/map/ffmap-backend/backend.py <span class="se">\</span>
 --mesh <span class="o">{{</span> batman <span class="o">}}</span>:<span class="o">{{</span> socket <span class="o">}}</span> --dest-dir <span class="o">{{</span> data <span class="o">}}</span> <span class="se">\</span>
---online-aliases <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/aliases.json --prune <span class="m">30</span> <span class="se">\</span>
+--online-aliases <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/map/aliases.json <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/map/gw-hf.json --prune <span class="m">30</span> <span class="se">\</span>
 --with-rrd --rrd-time-global 14d --rrd-time-node 7d <span class="se">\</span>
 --anonymize
 
-<span class="si">${</span><span class="nv">base</span><span class="si">}</span>/venv3/bin/python <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/ffflash/ffflash.py <span class="se">\</span>
+<span class="si">${</span><span class="nv">base</span><span class="si">}</span>/map/venv3/bin/python <span class="si">${</span><span class="nv">base</span><span class="si">}</span>/map/ffflash/ffflash.py <span class="se">\</span>
 --nodelist <span class="o">{{</span> data <span class="o">}}</span>/nodelist.json <span class="se">\</span>
 /var/www/meshviewer/freifunk-api/herford.json
 </pre></div>
@@ -213,6 +231,8 @@
       <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1140500</span>
     <span class="p">},</span>
     <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;0000000000a1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mac&quot;</span><span class="p">:</span> <span class="s2">&quot;00:25:86:e6:f1:bf&quot;</span><span class="p">,</span>
       <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
           <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -232,6 +252,8 @@
       <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1160820</span>
     <span class="p">},</span>
     <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;0000000000a1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mac&quot;</span><span class="p">:</span> <span class="s2">&quot;00:25:86:e6:f1:c0&quot;</span><span class="p">,</span>
       <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
           <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -251,6 +273,8 @@
       <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1163048</span>
     <span class="p">},</span>
     <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;0000000000a1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mac&quot;</span><span class="p">:</span> <span class="s2">&quot;00:25:86:e6:f1:c1&quot;</span><span class="p">,</span>
       <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
           <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -270,6 +294,8 @@
       <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1161072</span>
     <span class="p">},</span>
     <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;0000000000a1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mac&quot;</span><span class="p">:</span> <span class="s2">&quot;00:25:86:e6:f1:c2&quot;</span><span class="p">,</span>
       <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
           <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -289,6 +315,8 @@
       <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1158634</span>
     <span class="p">},</span>
     <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;0000000000a1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mac&quot;</span><span class="p">:</span> <span class="s2">&quot;00:25:86:e6:f1:c3&quot;</span><span class="p">,</span>
       <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
           <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -308,6 +336,8 @@
       <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1155076</span>
     <span class="p">},</span>
     <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;0000000000a1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mac&quot;</span><span class="p">:</span> <span class="s2">&quot;00:25:86:e6:f1:c4&quot;</span><span class="p">,</span>
       <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
           <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -327,6 +357,8 @@
       <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1157613</span>
     <span class="p">},</span>
     <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;0000000000a1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mac&quot;</span><span class="p">:</span> <span class="s2">&quot;00:25:86:e6:f1:c5&quot;</span><span class="p">,</span>
       <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
           <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -346,6 +378,8 @@
       <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1154451</span>
     <span class="p">},</span>
     <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;0000000000a1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mac&quot;</span><span class="p">:</span> <span class="s2">&quot;00:25:86:e6:f1:c6&quot;</span><span class="p">,</span>
       <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
           <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -365,6 +399,8 @@
       <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1164168</span>
     <span class="p">},</span>
     <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;0000000000a1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mac&quot;</span><span class="p">:</span> <span class="s2">&quot;00:25:86:e6:f1:c7&quot;</span><span class="p">,</span>
       <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
           <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -384,6 +420,8 @@
       <span class="nt">&quot;latitude&quot;</span><span class="p">:</span> <span class="mf">52.1172614</span>
     <span class="p">},</span>
     <span class="nt">&quot;network&quot;</span><span class="p">:</span> <span class="p">{</span>
+      <span class="nt">&quot;gateway&quot;</span><span class="p">:</span> <span class="s2">&quot;0000000000a1&quot;</span><span class="p">,</span>
+      <span class="nt">&quot;mac&quot;</span><span class="p">:</span> <span class="s2">&quot;00:25:86:e6:f1:c8&quot;</span><span class="p">,</span>
       <span class="nt">&quot;mesh&quot;</span><span class="p">:</span> <span class="p">{</span>
         <span class="nt">&quot;bat0&quot;</span><span class="p">:</span> <span class="p">{</span>
           <span class="nt">&quot;interfaces&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -459,10 +497,27 @@
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">makedirs</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
 
+<span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/update-node.py</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/update-node.py</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://map/home/map/scripts/update-node.py</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">755</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">makedirs</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+
 <span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/map/aliases.json</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/map/aliases.json</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://map/home/map/scripts/map/aliases.json</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">makedirs</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+
+<span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/map/gw-hf.json</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/map/gw-hf.json</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://map/home/map/scripts/map/gw-hf.json</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">makedirs</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>

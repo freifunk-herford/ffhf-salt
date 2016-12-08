@@ -235,6 +235,13 @@
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">shell</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/bin/bash</span>
 
+<span class="l l-Scalar l-Scalar-Plain">/root/.bash_profile</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.append</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/root/.bash_profile</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">text</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+        <span class="no">if [ -f ~/.bashrc ]; then . ~/.bashrc; fi</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">makedirs</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+
 <span class="l l-Scalar l-Scalar-Plain">/root/.bash_aliases</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">file.append</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/root/.bash_aliases</span>

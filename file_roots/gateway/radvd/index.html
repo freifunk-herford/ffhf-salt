@@ -222,6 +222,8 @@
   <span class="s1">&#39;Debian&#39;</span><span class="o">:</span> <span class="o">{</span><span class="s1">&#39;pkg&#39;</span><span class="o">:</span> <span class="s1">&#39;radvd&#39;</span><span class="o">,</span> <span class="s1">&#39;srv&#39;</span><span class="o">:</span> <span class="s1">&#39;radvd&#39;</span><span class="o">}</span>
 <span class="o">},</span> <span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Debian&#39;</span><span class="o">)</span> <span class="cp">%}</span>
 
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;type&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;gre&#39;</span> <span class="cp">%}</span>
+
 <span class="cp">{{</span> <span class="nv">radvd.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">pkg.installed</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">radvd.pkg</span> <span class="cp">}}</span>
@@ -245,6 +247,18 @@
         <span class="l l-Scalar l-Scalar-Plain">interface</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
         <span class="l l-Scalar l-Scalar-Plain">address</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;address6&#39;</span><span class="o">]</span> <span class="cp">}}</span>
         <span class="l l-Scalar l-Scalar-Plain">prefix</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;prefix&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+
+<span class="cp">{{</span> <span class="nv">radvd.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">pkg.removed</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">radvd.pkg</span> <span class="cp">}}</span>
+
+<span class="l l-Scalar l-Scalar-Plain">/etc/radvd.conf</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.absent</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/radvd.conf</span>
+
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 </pre></div>
 </div>
 </div>

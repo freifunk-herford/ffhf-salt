@@ -1,5 +1,5 @@
-Apache Webserver Konfiguration, erweitert gateways.shared
-=========================================================
+Apache Webserver Konfiguration
+==============================
 
 .. include:: apache.rst
 

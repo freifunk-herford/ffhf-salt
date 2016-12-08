@@ -236,6 +236,12 @@
   <span class="s1">&#39;Debian&#39;</span><span class="o">:</span> <span class="o">{</span><span class="s1">&#39;pkg&#39;</span><span class="o">:</span> <span class="s1">&#39;bird&#39;</span><span class="o">,</span> <span class="s1">&#39;srv&#39;</span><span class="o">:</span> <span class="s1">&#39;bird&#39;</span><span class="o">},</span>
 <span class="o">},</span> <span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Debian&#39;</span><span class="o">)</span> <span class="cp">%}</span>
 
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">bird6</span> <span class="o">=</span> <span class="nv">salt</span><span class="o">[</span><span class="s1">&#39;grains.filter_by&#39;</span><span class="o">]({</span>
+  <span class="s1">&#39;Debian&#39;</span><span class="o">:</span> <span class="o">{</span><span class="s1">&#39;pkg&#39;</span><span class="o">:</span> <span class="s1">&#39;bird6&#39;</span><span class="o">,</span> <span class="s1">&#39;srv&#39;</span><span class="o">:</span> <span class="s1">&#39;bird6&#39;</span><span class="o">},</span>
+<span class="o">},</span> <span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Debian&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;type&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;gre&#39;</span> <span class="cp">%}</span>
+
 <span class="cp">{{</span> <span class="nv">bird.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
   <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Ubuntu&#39;</span> <span class="k">and</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;osrelease&#39;</span><span class="o">]</span> <span class="p">!</span><span class="o">=</span> <span class="s1">&#39;16.04&#39;</span> <span class="cp">%}</span>
   <span class="l l-Scalar l-Scalar-Plain">pkgrepo.managed</span><span class="p p-Indicator">:</span>
@@ -254,27 +260,75 @@
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">refresh</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
     <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unless</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test -f /usr/sbin/bird</span>
-  <span class="c1"># service.running:</span>
-  <span class="c1">#   - name: </span><span class="cp">{{</span> <span class="nv">bird.srv</span> <span class="cp">}}</span>
-  <span class="c1">#   - enable: True</span>
-  <span class="c1">#   - watch:</span>
-  <span class="c1">#     - file: /etc/bird.conf</span>
+  <span class="l l-Scalar l-Scalar-Plain">service.running</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird.srv</span> <span class="cp">}}</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">enable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">watch</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird.conf</span>
 
 <span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird.conf</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird.conf</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird.conf</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/bird/bird.conf</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
 
+<span class="cp">{{</span> <span class="nv">bird6.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
+  <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Ubuntu&#39;</span> <span class="k">and</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;osrelease&#39;</span><span class="o">]</span> <span class="p">!</span><span class="o">=</span> <span class="s1">&#39;16.04&#39;</span> <span class="cp">%}</span>
+  <span class="l l-Scalar l-Scalar-Plain">pkgrepo.managed</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ppa</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cz.nic-labs/bird</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">keyid_ppa</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require_in</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird6.pkg</span> <span class="cp">}}</span>
+  <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+  <span class="l l-Scalar l-Scalar-Plain">pkg.installed</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird6.pkg</span> <span class="cp">}}</span>
+    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Ubuntu&#39;</span> <span class="k">and</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;osrelease&#39;</span><span class="o">]</span> <span class="p">!</span><span class="o">=</span> <span class="s1">&#39;16.04&#39;</span> <span class="cp">%}</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">fromrepo</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">trusty</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">skip_verify</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">skip_suggestions</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">install_recommends</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">refresh</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unless</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test -f /usr/sbin/bird6</span>
+  <span class="l l-Scalar l-Scalar-Plain">service.running</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird6.srv</span> <span class="cp">}}</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">enable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">watch</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird6.conf</span>
+
 <span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird6.conf</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird.conf</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/bird/bird.conf</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird6.conf</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/bird/bird6.conf</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
+
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+
+<span class="cp">{{</span> <span class="nv">bird.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">pkg.removed</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird.pkg</span> <span class="cp">}}</span>
+
+<span class="cp">{{</span> <span class="nv">bird6.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">pkg.removed</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird6.pkg</span> <span class="cp">}}</span>
+
+<span class="l l-Scalar l-Scalar-Plain">/etc/bird</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.absent</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird</span>
+
+<span class="l l-Scalar l-Scalar-Plain">/etc/bird.conf</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.absent</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird.conf</span>
+
+<span class="l l-Scalar l-Scalar-Plain">/etc/bird6.conf</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.absent</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird6.conf</span>
+
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 </pre></div>
 </div>
 </div>

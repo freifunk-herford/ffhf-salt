@@ -346,6 +346,8 @@
   <span class="s1">&#39;Debian&#39;</span><span class="o">:</span> <span class="o">{</span><span class="s1">&#39;pkg&#39;</span><span class="o">:</span> <span class="s1">&#39;openvpn&#39;</span><span class="o">,</span> <span class="s1">&#39;srv&#39;</span><span class="o">:</span> <span class="s1">&#39;openvpn&#39;</span><span class="o">}</span>
 <span class="o">},</span> <span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Debian&#39;</span><span class="o">)</span> <span class="cp">%}</span>
 
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;type&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;openvpn&#39;</span> <span class="cp">%}</span>
+
 <span class="cp">{{</span> <span class="nv">openvpn.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">pkg.installed</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">openvpn.pkg</span> <span class="cp">}}</span>
@@ -354,14 +356,14 @@
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">enable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/default/openvpn</span>
-        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;openvpn&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;mullvad_linux&#39;</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;mullvad_linux&#39;</span> <span class="cp">%}</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/openvpn-updown</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/ca.crt</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/mullvad.crt</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/mullvad.key</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/mullvad_linux.conf</span>
         <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;openvpn&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;dnn_linux&#39;</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;dnn_linux&#39;</span> <span class="cp">%}</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/openvpn-updown</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/ca.crt</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/dnn.crt</span>
@@ -370,14 +372,14 @@
         <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">watch</span><span class="p p-Indicator">:</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/default/openvpn</span>
-        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;openvpn&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;mullvad_linux&#39;</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;mullvad_linux&#39;</span> <span class="cp">%}</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/openvpn-updown</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/ca.crt</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/mullvad.crt</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/mullvad.key</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/mullvad_linux.conf</span>
         <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;openvpn&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;dnn_linux&#39;</span> <span class="cp">%}</span>
+        <span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;dnn_linux&#39;</span> <span class="cp">%}</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/openvpn-updown</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/ca.crt</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/dnn.crt</span>
@@ -385,7 +387,7 @@
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/dnn_linux.conf</span>
         <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 
-<span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;openvpn&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;mullvad_linux&#39;</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;mullvad_linux&#39;</span> <span class="cp">%}</span>
 <span class="l l-Scalar l-Scalar-Plain">/etc/default/openvpn</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">file.replace</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/default/openvpn</span>
@@ -423,7 +425,7 @@
 <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/mullvad.crt</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/mullvad.crt</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contents_pillar</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">openvpn:mullvad_linux:mullvad.crt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contents_pillar</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">exit:mullvad_linux:mullvad.crt</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">600</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
@@ -431,7 +433,7 @@
 <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/mullvad.key</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/mullvad.key</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contents_pillar</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">openvpn:mullvad_linux:mullvad.key</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contents_pillar</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">exit:mullvad_linux:mullvad.key</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">600</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
@@ -457,7 +459,7 @@
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/dnn.crt</span>
 <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 
-<span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;openvpn&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;dnn_linux&#39;</span> <span class="cp">%}</span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;dnn_linux&#39;</span> <span class="cp">%}</span>
 <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/mullvad_linux.conf</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">file.absent</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/mullvad_linux.conf</span>
@@ -503,7 +505,7 @@
 <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/dnn.crt</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/dnn.crt</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contents_pillar</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">openvpn:dnn_linux:dnn.crt</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contents_pillar</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">exit:dnn_linux:dnn.crt</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">600</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
@@ -511,7 +513,7 @@
 <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/dnn.key</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn/dnn.key</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contents_pillar</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">openvpn:dnn_linux:dnn.key</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">contents_pillar</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">exit:dnn_linux:dnn.key</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">600</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
@@ -549,6 +551,27 @@
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">comment</span><span class="p p-Indicator">:</span> <span class="s">&#39;Check</span><span class="nv"> </span><span class="s">OpenVPN</span><span class="nv"> </span><span class="s">Connection</span><span class="nv"> </span><span class="s">every</span><span class="nv"> </span><span class="s">10</span><span class="nv"> </span><span class="s">Minutes&#39;</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/root/scripts/check-openvpn.sh</span>
+
+<span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
+
+<span class="cp">{{</span> <span class="nv">openvpn.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">pkg.removed</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">openvpn.pkg</span> <span class="cp">}}</span>
+
+<span class="l l-Scalar l-Scalar-Plain">/etc/openvpn</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.absent</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/openvpn</span>
+
+<span class="l l-Scalar l-Scalar-Plain">/root/scripts/check-openvpn.sh</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.absent</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/root/scripts/check-openvpn.sh</span>
+
+<span class="l l-Scalar l-Scalar-Plain">openvpn-cron</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">cron.absent</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/root/scripts/check-openvpn.sh</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">identifier</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">check-openvpn</span>
+
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 </pre></div>
 </div>
 </div>
