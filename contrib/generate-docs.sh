@@ -6,50 +6,53 @@ base="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 current=$(pwd)
 cd $base
 
-# gateways
+function update_file_roots {
+	for item in ${init[@]}; do
+		folder=$(echo ${item} | awk -F '.' '{print $1}')
+		sls=$(echo ${item} | awk -F '.' '{print $2}')
+		base=docs/source/file_roots/${folder}/${sls}
+		mkdir -p ${base}
+		touch ${base}/${sls}.rst
+		target=${base}/index.rst
+		title=$(head ../file_roots/${folder}/${sls}.sls -n 1 | awk -F '# ' '{print $2}')
+		titlemarkup=""
+		counter=0
+		length=$(echo ${#title})
+		while [ ${counter} -lt ${length} ]; do
+			titlemarkup="${titlemarkup}="
+			let counter=counter+1
+		done
+		echo ${title} > ${target}
+		echo ${titlemarkup} >> ${target}
+		cat >> ${target} << EOT
 
-states=$(cat ../file_roots/gateway/init.sls | awk -F '.' '{/  -/;print $2}')
+.. include:: ${sls}.rst
 
-for state in ${states[@]}; do
-	base=docs/source/file_roots/gateway/${state}
-	mkdir -p ${base}
-	touch ${base}/${state}.rst
+Salt State File
+---------------
 
-	target=${base}/index.rst
+${sls}.sls
 
-	title=$(head ../file_roots/gateway/${state}.sls -n 1 | awk -F '# ' '{print $2}')
+.. literalinclude:: ../../../../../../file_roots/${folder}/${sls}.sls
+   :language: salt
+EOT
+	done
+}
+
+function update_file_roots_index {
+	target=docs/source/file_roots/${folder}/index.rst
 	titlemarkup=""
-
 	counter=0
 	length=$(echo ${#title})
 	while [ ${counter} -lt ${length} ]; do
 		titlemarkup="${titlemarkup}="
 		let counter=counter+1
 	done
-
 	echo ${title} > ${target}
 	echo ${titlemarkup} >> ${target}
 
 	cat >> ${target} << EOT
 
-.. include:: ${state}.rst
-
-Salt State File
----------------
-
-${state}.sls
-
-.. literalinclude:: ../../../../../../file_roots/gateway/${state}.sls
-   :language: salt
-EOT
-done
-
-target=docs/source/file_roots/gateway/index.rst
-
-cat > ${target} << EOT
-Gateway
-=======
-
 Inhalt:
 
 .. toctree::
@@ -57,31 +60,30 @@ Inhalt:
 
 EOT
 
-for state in ${states[@]}; do
-	echo "   ${state}/index" >> ${target}
-done
+	for item in ${init[@]}; do
+		folder=$(echo ${item} | awk -F '.' '{print $1}')
+		sls=$(echo ${item} | awk -F '.' '{print $2}')
+		echo "   ../${folder}/${sls}/index" >> ${target}
+	done
+}
 
-pillars=$(ls ../pillar_roots/gateways)
-for pillar in ${pillars[@]}; do
-    base=docs/source/pillar_roots/gateways/${pillar%.sls}
-    mkdir -p ${base}
-    touch ${base}/${pillar%.sls}.rst
-    target=${base}/index.rst
-
-    title=$(head ../pillar_roots/gateways/${pillar} -n 1 | awk -F '# ' '{print $2}')
-    titlemarkup=""
-
-    counter=0
-    length=$(echo ${#title})
-    while [ ${counter} -lt ${length} ]; do
-        titlemarkup="${titlemarkup}="
-        let counter=counter+1
-    done
-
-    echo ${title} > ${target}
-    echo ${titlemarkup} >> ${target}
-
-    cat >> ${target} << EOT
+function update_pillar_roots {
+	for pillar in ${pillars[@]}; do
+		base=docs/source/pillar_roots/${folder}/${pillar%.sls}
+		mkdir -p ${base}
+		touch ${base}/${pillar%.sls}.rst
+		target=${base}/index.rst
+		title=$(head ../pillar_roots/${folder}/${pillar} -n 1 | awk -F '# ' '{print $2}')
+		titlemarkup=""
+		counter=0
+		length=$(echo ${#title})
+		while [ ${counter} -lt ${length} ]; do
+			titlemarkup="${titlemarkup}="
+			let counter=counter+1
+		done
+		echo ${title} > ${target}
+		echo ${titlemarkup} >> ${target}
+		cat >> ${target} << EOT
 
 .. include:: ${pillar%.sls}.rst
 
@@ -90,16 +92,25 @@ Salt State File
 
 ${pillar}
 
-.. literalinclude:: ../../../../../../pillar_roots/gateways/${pillar}
+.. literalinclude:: ../../../../../../pillar_roots/${folder}/${pillar}
    :language: salt
 EOT
-done
+	done
+}
 
-target=docs/source/pillar_roots/gateways/index.rst
+function update_pillar_roots_index {
+	target=docs/source/pillar_roots/${folder}/index.rst
+	titlemarkup=""
+	counter=0
+	length=$(echo ${#title})
+	while [ ${counter} -lt ${length} ]; do
+		titlemarkup="${titlemarkup}="
+		let counter=counter+1
+	done
+	echo ${title} > ${target}
+	echo ${titlemarkup} >> ${target}
 
-cat > ${target} << EOT
-Gateways
-========
+	cat >> ${target} << EOT
 
 Inhalt:
 
@@ -108,115 +119,38 @@ Inhalt:
 
 EOT
 
-for pillar in ${pillars[@]}; do
-    echo "   ${pillar%.sls}/index" >> ${target}
-done
+	for pillar in ${pillars[@]}; do
+    	echo "   ${pillar%.sls}/index" >> ${target}
+	done
+}
 
-# map
+folder="gateway"
+init=$(cat ../file_roots/${folder}/init.sls | awk -F '  - ' '/^  -/{print $2}')
+update_file_roots
+folder="gateway"
+title="Gateway"
+update_file_roots_index
 
-states=$(cat ../file_roots/map/init.sls | grep -v 'gateway' | awk -F '.' '{/  -/;print $2}')
+folder="map"
+init=$(cat ../file_roots/${folder}/init.sls | awk -F '  - ' '/^  -/{print $2}')
+update_file_roots
+folder="map"
+title="Map Server"
+update_file_roots_index
 
-for state in ${states[@]}; do
-    base=docs/source/file_roots/map/${state}
-    mkdir -p ${base}
-    touch ${base}/${state}.rst
+folder="gateways"
+pillars=$(ls ../pillar_roots/${folder})
+update_pillar_roots
+folder="gateways"
+title="Gateways"
+update_pillar_roots_index
 
-    target=${base}/index.rst
-
-    title=$(head ../file_roots/map/${state}.sls -n 1 | awk -F '# ' '{print $2}')
-    titlemarkup=""
-
-    counter=0
-    length=$(echo ${#title})
-    while [ ${counter} -lt ${length} ]; do
-        titlemarkup="${titlemarkup}="
-        let counter=counter+1
-    done
-
-    echo ${title} > ${target}
-    echo ${titlemarkup} >> ${target}
-
-    cat >> ${target} << EOT
-
-.. include:: ${state}.rst
-
-Salt State File
----------------
-
-${state}.sls
-
-.. literalinclude:: ../../../../../../file_roots/map/${state}.sls
-   :language: salt
-EOT
-done
-
-target=docs/source/file_roots/map/index.rst
-
-cat > ${target} << EOT
-Map Server
-==========
-
-Inhalt:
-
-.. toctree::
-   :maxdepth: 4
-
-EOT
-
-for state in ${states[@]}; do
-    echo "   ${state}/index" >> ${target}
-done
-
-pillars=$(ls ../pillar_roots/map)
-for pillar in ${pillars[@]}; do
-    base=docs/source/pillar_roots/map/${pillar%.sls}
-    mkdir -p ${base}
-    touch ${base}/${pillar%.sls}.rst
-    target=${base}/index.rst
-
-    title=$(head ../pillar_roots/map/${pillar} -n 1 | awk -F '# ' '{print $2}')
-    titlemarkup=""
-
-    counter=0
-    length=$(echo ${#title})
-    while [ ${counter} -lt ${length} ]; do
-        titlemarkup="${titlemarkup}="
-        let counter=counter+1
-    done
-
-    echo ${title} > ${target}
-    echo ${titlemarkup} >> ${target}
-
-    cat >> ${target} << EOT
-
-.. include:: ${pillar%.sls}.rst
-
-Salt State File
----------------
-
-${pillar}
-
-.. literalinclude:: ../../../../../../pillar_roots/map/${pillar}
-   :language: salt
-EOT
-done
-
-target=docs/source/pillar_roots/map/index.rst
-
-cat > ${target} << EOT
-Map Server
-==========
-
-Inhalt:
-
-.. toctree::
-   :maxdepth: 4
-
-EOT
-
-for pillar in ${pillars[@]}; do
-    echo "   ${pillar%.sls}/index" >> ${target}
-done
+folder="map"
+pillars=$(ls ../pillar_roots/${folder})
+update_pillar_roots
+folder="map"
+title="Map Server"
+update_pillar_roots_index
 
 venv/bin/sphinx-build -b html -a docs/source docs/build/html -d docs/build/doctrees -c docs/source
 
