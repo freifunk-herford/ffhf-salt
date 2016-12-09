@@ -127,28 +127,35 @@ class Alfred:
         }
 
     def count_clients(self):
-        clients = 0
+        clients = []
+        ip = None
+        active = False
+        expired = False
         try:
             with open(self.options.leases, 'r') as content:
                 for line in content:
-                    if 'binding state active':
+                    if re.match(r'lease\s(.*)\s{$', line):
+                        lease = re.match(r'lease\s(.*)\s{$', line)
+                        ip = lease.groups()[0]
+                    if 'binding state active' in line:
                         active = True
                     if re.findall(r'ends\s\d\s\d{4}/\d{2}/\d{2}\s\d{2}:\d{2}:\d{2}', line):
                         ends = re.findall(r'\d{4}/\d{2}/\d{2}\s\d{2}:\d{2}:\d{2}', line)
                         expire = datetime.datetime.strptime(ends[0], '%Y/%m/%d %H:%M:%S')
-                        now = datetime.datetime.now()
+                        now = datetime.datetime.utcnow()
                         if expire < now:
                             expired = True
                     if re.findall(r'^}$', line):
                         if active and not expired:
-                            clients += 1
+                            if ip not in clients:
+                                clients.append(ip)
                         active = False
                         expired = False
         except Exception as error:
             if self.options.debug:
                 print(error)
             pass
-        return clients
+        return len(clients)
 
 
 def main(options):
