@@ -7,8 +7,6 @@
       "latitude": 52.1140500
     },
     "network": {
-      "gateway": "0000000000a1",
-      "mac": "00:25:86:e6:f1:bf",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -28,160 +26,11 @@
       "latitude": 52.1160820
     },
     "network": {
-      "gateway": "0000000000a1",
-      "mac": "00:25:86:e6:f1:c0",
       "mesh": {
         "bat0": {
           "interfaces": {
             "tunnel": [
               "00:25:86:e6:f1:c0"
-            ]
-          }
-        }
-      }
-    }
-  },
-  {
-    "node_id": "kasernevloto001",
-    "hostname": "Kaserne V.S. 01",
-    "location": {
-      "longitude": 8.6946963,
-      "latitude": 52.1163048
-    },
-    "network": {
-      "gateway": "0000000000a1",
-      "mac": "00:25:86:e6:f1:c1",
-      "mesh": {
-        "bat0": {
-          "interfaces": {
-            "tunnel": [
-              "00:25:86:e6:f1:c1"
-            ]
-          }
-        }
-      }
-    }
-  },
-  {
-    "node_id": "kasernevloto002",
-    "hostname": "Kaserne V.S. 02",
-    "location": {
-      "longitude": 8.6948519,
-      "latitude": 52.1161072
-    },
-    "network": {
-      "gateway": "0000000000a1",
-      "mac": "00:25:86:e6:f1:c2",
-      "mesh": {
-        "bat0": {
-          "interfaces": {
-            "tunnel": [
-              "00:25:86:e6:f1:c2"
-            ]
-          }
-        }
-      }
-    }
-  },
-  {
-    "node_id": "kasernevloto003",
-    "hostname": "Kaserne V.S. 03",
-    "location": {
-      "longitude": 8.6953347,
-      "latitude": 52.1158634
-    },
-    "network": {
-      "gateway": "0000000000a1",
-      "mac": "00:25:86:e6:f1:c3",
-      "mesh": {
-        "bat0": {
-          "interfaces": {
-            "tunnel": [
-              "00:25:86:e6:f1:c3"
-            ]
-          }
-        }
-      }
-    }
-  },
-  {
-    "node_id": "kasernevloto004",
-    "hostname": "Kaserne V.S. 04",
-    "location": {
-      "longitude": 8.6953669,
-      "latitude": 52.1155076
-    },
-    "network": {
-      "gateway": "0000000000a1",
-      "mac": "00:25:86:e6:f1:c4",
-      "mesh": {
-        "bat0": {
-          "interfaces": {
-            "tunnel": [
-              "00:25:86:e6:f1:c4"
-            ]
-          }
-        }
-      }
-    }
-  },
-  {
-    "node_id": "kasernevloto005",
-    "hostname": "Kaserne V.S. 05",
-    "location": {
-      "longitude": 8.6967563,
-      "latitude": 52.1157613
-    },
-    "network": {
-      "gateway": "0000000000a1",
-      "mac": "00:25:86:e6:f1:c5",
-      "mesh": {
-        "bat0": {
-          "interfaces": {
-            "tunnel": [
-              "00:25:86:e6:f1:c5"
-            ]
-          }
-        }
-      }
-    }
-  },
-  {
-    "node_id": "kasernevloto006",
-    "hostname": "Kaserne V.S. 06",
-    "location": {
-      "longitude": 8.6968260,
-      "latitude": 52.1154451
-    },
-    "network": {
-      "gateway": "0000000000a1",
-      "mac": "00:25:86:e6:f1:c6",
-      "mesh": {
-        "bat0": {
-          "interfaces": {
-            "tunnel": [
-              "00:25:86:e6:f1:c6"
-            ]
-          }
-        }
-      }
-    }
-  },
-  {
-    "node_id": "kasernevloto007",
-    "hostname": "Kaserne V.S. 07",
-    "location": {
-      "longitude": 8.6960321,
-      "latitude": 52.1164168
-    },
-    "network": {
-      "gateway": "0000000000a1",
-      "mac": "00:25:86:e6:f1:c7",
-      "mesh": {
-        "bat0": {
-          "interfaces": {
-            "tunnel": [
-              "00:25:86:e6:f1:c7"
             ]
           }
         }
@@ -196,13 +45,239 @@
       "latitude": 52.1172614
     },
     "network": {
-      "gateway": "0000000000a1",
-      "mac": "00:25:86:e6:f1:c8",
       "mesh": {
         "bat0": {
           "interfaces": {
             "tunnel": [
               "00:25:86:e6:f1:c8"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "node_id": "technrathaus",
+    "hostname": "Technisches Rathaus",
+    "location": {
+      "longitude": 8.666325,
+      "latitude": 52.117278
+    },
+    "network": {
+      "mesh": {
+        "bat0": {
+          "interfaces": {
+            "tunnel": [
+              "00:25:86:e6:f1:c9"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "node_id": "aufderfreiheit",
+    "hostname": "Auf der Freiheit",
+    "location": {
+      "longitude": 8.665359,
+      "latitude": 52.117281
+    },
+    "network": {
+      "mesh": {
+        "bat0": {
+          "interfaces": {
+            "tunnel": [
+              "00:25:86:e6:f1:d0"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "node_id": "elsbachhaus2",
+    "hostname": "Elsbach-Haus 2",
+    "location": {
+      "longitude": 8.666357,
+      "latitude": 52.120941
+    },
+    "network": {
+      "mesh": {
+        "bat0": {
+          "interfaces": {
+            "tunnel": [
+              "00:25:86:e6:f1:d1"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "node_id": "goebenstr",
+    "hostname": "Goebenstr.",
+    "location": {
+      "longitude": 8.669983,
+      "latitude": 52.124366
+    },
+    "network": {
+      "mesh": {
+        "bat0": {
+          "interfaces": {
+            "tunnel": [
+              "00:25:86:e6:f1:d2"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "node_id": "feuerwehr001",
+    "hostname": "Feuerwehr Herford 01",
+    "location": {
+      "longitude": 8.674908,
+      "latitude": 52.129905
+    },
+    "network": {
+      "mesh": {
+        "bat0": {
+          "interfaces": {
+            "tunnel": [
+              "00:25:86:e6:f1:d3"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "node_id": "freiwfeuerwehr001",
+    "hostname": "Freiwillige Feuerwehr 01",
+    "location": {
+      "longitude": 8.737907,
+      "latitude": 52.140709
+    },
+    "network": {
+      "mesh": {
+        "bat0": {
+          "interfaces": {
+            "tunnel": [
+              "00:25:86:e6:f1:d4"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "node_id": "freiwfeuerwehr002",
+    "hostname": "Freiwillige Feuerwehr 02",
+    "location": {
+      "longitude": 8.649266,
+      "latitude": 52.079021
+    },
+    "network": {
+      "mesh": {
+        "bat0": {
+          "interfaces": {
+            "tunnel": [
+              "00:25:86:e6:f1:d5"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "node_id": "freiwfeuerwehr003",
+    "hostname": "Freiwillige Feuerwehr 03",
+    "location": {
+      "longitude": 8.638301,
+      "latitude": 52.103362
+    },
+    "network": {
+      "mesh": {
+        "bat0": {
+          "interfaces": {
+            "tunnel": [
+              "00:25:86:e6:f1:d6"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "node_id": "stadttheater",
+    "hostname": "Stadt Theater",
+    "location": {
+      "longitude": 8.678545,
+      "latitude": 52.120312
+    },
+    "network": {
+      "mesh": {
+        "bat0": {
+          "interfaces": {
+            "tunnel": [
+              "00:25:86:e6:f1:d7"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "node_id": "bibliothek",
+    "hostname": "Bibliothek",
+    "location": {
+      "longitude": 8.672955,
+      "latitude": 52.115805
+    },
+    "network": {
+      "mesh": {
+        "bat0": {
+          "interfaces": {
+            "tunnel": [
+              "00:25:86:e6:f1:d8"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "node_id": "villaschoenfeld",
+    "hostname": "Villa Schönfeld",
+    "location": {
+      "longitude": 8.663535,
+      "latitude": 52.115298
+    },
+    "network": {
+      "mesh": {
+        "bat0": {
+          "interfaces": {
+            "tunnel": [
+              "00:25:86:e6:f1:d9"
+            ]
+          }
+        }
+      }
+    }
+  },
+  {
+    "node_id": "Poeppelmannhaus",
+    "hostname": "Daniel Pöppelmann Haus",
+    "location": {
+      "longitude": 8.663203,
+      "latitude": 52.115127
+    },
+    "network": {
+      "mesh": {
+        "bat0": {
+          "interfaces": {
+            "tunnel": [
+              "00:25:86:e6:f1:e0"
             ]
           }
         }
