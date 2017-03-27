@@ -17,6 +17,7 @@ root:
   file.append:
     - name: /root/.bash_profile
     - text: |
+        force_color_prompt=yes
         if [ -f ~/.bashrc ]; then . ~/.bashrc; fi
     - makedirs: True
 

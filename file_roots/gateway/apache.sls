@@ -15,6 +15,8 @@
       - file: change-documentroot-ssl
       - file: fix-serveradmin
       - file: fix-serveradmin-ssl
+    - require:
+      - pkg: {{ apache.pkg }}
 
 {% if grains['os_family'] == 'Debian' %}
 change-documentroot:

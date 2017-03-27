@@ -82,4 +82,3 @@ fastd:
 /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}-absent:
   file.absent:
     - name: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}
-

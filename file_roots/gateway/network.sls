@@ -97,6 +97,17 @@
         batman: {{ pillar['network']['batman']['interface'] }}
         mesh: {{ pillar['network']['mesh']['interface'] }}
         hwaddress: {{ pillar['network']['mesh']['hwaddress'] }}
+
+{% if pillar['exit'] is defined and pillar['exit']['provider'] == 'ffrl' %}
+/etc/network/interfaces.d/ffrl:
+  file.managed:
+    - name: /etc/network/interfaces.d/ffrl
+    - source: salt://gateway/etc/network/interfaces.d/ffrl
+    - user: root
+    - group: root
+    - mode: 644
+    - template: jinja
+{% endif %}
 {% endif %}
 
 # Forwarding

@@ -220,7 +220,7 @@ openvpn-cron:
   file.absent:
     - name: /etc/openvpn
 
-/root/scripts/check-openvpn.sh
+/root/scripts/check-openvpn.sh:
   file.absent:
     - name: /root/scripts/check-openvpn.sh
 

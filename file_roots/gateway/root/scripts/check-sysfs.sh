@@ -14,10 +14,10 @@ if [ -f /etc/sysfs.d/99-batman-hop-penalty.conf ]; then
 	present_value=$(awk '/[0-9]+/{print $1}' /sys/${key})
 
 	if [ ! ${desired_value} -eq ${present_value} ]; then
-	        if [ -f /bin/systemctl ]; then
-	                systemctl restart sysfsutils
-	        else
-	                service sysfsutils restart
-	        fi
+			if [ -f /bin/systemctl ]; then
+					systemctl restart sysfsutils
+			else
+					service sysfsutils restart
+			fi
 	fi
 fi

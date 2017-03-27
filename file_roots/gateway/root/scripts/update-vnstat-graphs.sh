@@ -48,12 +48,12 @@ EOT
 for interface in ${interfaces[@]}; do
 	sed s/interface/${interface}/g >> ${webroot}/index.html <<EOT
 		<div>
-	    	<img src="interface_summary.png" alt="Traffic Summary" /><br>
-	    	<img src="interface_monthly.png" alt="Traffic per Month" /><br>
-	    	<img src="interface_hourly.png" alt="Traffic per Hour" /><br>
-	    	<img src="interface_top10.png" alt="Traffic Top 10" /><br>
-	    	<img src="interface_daily.png" alt="Traffic per Day" />
-	    </div>
+			<img src="interface_summary.png" alt="Traffic Summary" /><br>
+			<img src="interface_monthly.png" alt="Traffic per Month" /><br>
+			<img src="interface_hourly.png" alt="Traffic per Hour" /><br>
+			<img src="interface_top10.png" alt="Traffic Top 10" /><br>
+			<img src="interface_daily.png" alt="Traffic per Day" />
+		</div>
 EOT
 done
 

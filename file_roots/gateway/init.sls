@@ -5,6 +5,7 @@ include:
   - gateway.tmp
   - gateway.mosh
   - gateway.molly-guard
+  - gateway.openssh-server
   - gateway.ntp
   - gateway.network
   - gateway.iproute

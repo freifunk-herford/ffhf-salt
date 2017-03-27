@@ -1,4 +1,5 @@
 include:
+  - gateway.openssh-server
   - gateway.bash
   - gateway.git
   - gateway.etckeeper

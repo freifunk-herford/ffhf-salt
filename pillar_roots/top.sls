@@ -22,6 +22,7 @@ base:
     - gateways.shared
     - gateways.peers
     - map.network
+    - map.openssh
     - map.fastd
     - map.alfred
     - map.apache

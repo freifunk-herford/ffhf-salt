@@ -11,6 +11,9 @@
     - name: {{ ntp.srv }}
     - watch:
       - file: /etc/ntp.conf
+    - unless: test -f /var/run/ntpd.pid
+    - require:
+      - pkg: {{ ntp.pkg }}
 
 /etc/ntp.conf:
   file.managed:
