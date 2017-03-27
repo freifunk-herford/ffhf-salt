@@ -7,6 +7,8 @@
       "latitude": 52.1140500
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:bf",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -26,6 +28,8 @@
       "latitude": 52.1160820
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:c0",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -45,6 +49,8 @@
       "latitude": 52.1172614
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:c8",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -64,6 +70,8 @@
       "latitude": 52.117278
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:c9",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -83,6 +91,8 @@
       "latitude": 52.117281
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:d0",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -102,6 +112,8 @@
       "latitude": 52.120941
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:d1",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -121,6 +133,8 @@
       "latitude": 52.124366
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:d2",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -140,6 +154,8 @@
       "latitude": 52.129905
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:d3",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -159,6 +175,8 @@
       "latitude": 52.140709
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:d4",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -178,6 +196,8 @@
       "latitude": 52.079021
     },
     "network": {
+      "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:d5",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -197,6 +217,8 @@
       "latitude": 52.103362
     },
     "network": {
+	  "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:d6",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -216,6 +238,8 @@
       "latitude": 52.120312
     },
     "network": {
+	  "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:d7",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -235,6 +259,8 @@
       "latitude": 52.115805
     },
     "network": {
+	  "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:d8",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -254,6 +280,8 @@
       "latitude": 52.115298
     },
     "network": {
+	  "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:d9",
       "mesh": {
         "bat0": {
           "interfaces": {
@@ -273,6 +301,8 @@
       "latitude": 52.115127
     },
     "network": {
+	  "gateway": "0000000000a1",
+      "mac": "00:25:86:e6:f1:e0",
       "mesh": {
         "bat0": {
           "interfaces": {
