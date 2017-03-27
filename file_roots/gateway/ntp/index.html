@@ -38,7 +38,7 @@
     <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/>
         <link rel="up" title="Gateway" href="../index.html"/>
         <link rel="next" title="Network Interfaces &amp; Brige Utilities" href="../network/index.html"/>
-        <link rel="prev" title="Molly-Guard" href="../molly-guard/index.html"/> 
+        <link rel="prev" title="OpenSSH - OpenBSD Secure Shell server" href="../openssh-server/index.html"/> 
 
   
   <script src="../../../_static/js/modernizr.min.js"></script>
@@ -99,6 +99,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../tmp/index.html">/tmp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mosh/index.html">Mosh (Mobile shell)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../molly-guard/index.html">Molly-Guard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../openssh-server/index.html">OpenSSH - OpenBSD Secure Shell server</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">NTP (Network Time Protocol)</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#konfiguration">Konfiguration</a></li>
@@ -276,6 +277,9 @@ restrict <span class="nb">source</span> notrap nomodify noquery
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">ntp.srv</span> <span class="cp">}}</span>
     <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">watch</span><span class="p p-Indicator">:</span>
       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/ntp.conf</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unless</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test -f /var/run/ntpd.pid</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
+      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">ntp.pkg</span> <span class="cp">}}</span>
 
 <span class="l l-Scalar l-Scalar-Plain">/etc/ntp.conf</span><span class="p p-Indicator">:</span>
   <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
@@ -303,7 +307,7 @@ restrict <span class="nb">source</span> notrap nomodify noquery
         <a href="../network/index.html" class="btn btn-neutral float-right" title="Network Interfaces &amp; Brige Utilities" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../molly-guard/index.html" class="btn btn-neutral" title="Molly-Guard" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../openssh-server/index.html" class="btn btn-neutral" title="OpenSSH - OpenBSD Secure Shell server" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   

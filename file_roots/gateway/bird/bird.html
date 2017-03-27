@@ -152,33 +152,108 @@
 <h1>Konfiguation<a class="headerlink" href="#konfiguation" title="Link zu dieser Überschrift">¶</a></h1>
 <p>Inhalt von <code class="docutils literal"><span class="pre">/etc/bird/bird.conf</span></code>.</p>
 <div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x"># This file is managed by Salt, do not edit.</span>
+<span class="x">#router id &lt;internal ipv4 address server (ffhf)&gt;</span>
 
-<span class="x"># This is a minimal configuration file, which allows the bird daemon to start</span>
-<span class="x"># but will not cause anything else to happen.</span>
-<span class="x">#</span>
-<span class="x"># Please refer to the documentation in the bird-doc package or BIRD User&#39;s</span>
-<span class="x"># Guide on http://bird.network.cz/ for more information on configuring BIRD and</span>
-<span class="x"># adding routing protocols.</span>
+<span class="x">protocol direct {</span>
+<span class="x">	interface &quot;*&quot;; # Restrict network interfaces it works with</span>
+<span class="x">};</span>
 
-<span class="x"># Change this into your BIRD router ID. It&#39;s a world-wide unique identification</span>
-<span class="x"># of your router, usually one of router&#39;s IPv4 addresses.</span>
-<span class="x">router id 198.51.100.1;</span>
-
-<span class="x"># The Kernel protocol is not a real routing protocol. Instead of communicating</span>
-<span class="x"># with other routers in the network, it performs synchronization of BIRD&#39;s</span>
-<span class="x"># routing tables with the OS kernel.</span>
 <span class="x">protocol kernel {</span>
-<span class="x">   scan time 60;</span>
-<span class="x">   import none;</span>
-<span class="x">#  export all;   # Actually insert routes into the kernel routing table</span>
+<span class="x">	device routes;</span>
+<span class="x">	import all;</span>
+<span class="x">	export all; # Default is export none</span>
+<span class="x">	kernel table 42; # Kernel table to synchronize with (default: main)</span>
+<span class="x">};</span>
+
+<span class="x">protocol device {</span>
+<span class="x">	scan time 8; # Scan interfaces every 10 seconds</span>
+<span class="x">};</span>
+
+<span class="x">function is_default() {</span>
+<span class="x">	return (net ~ [0.0.0.0/0]);</span>
+<span class="x">};</span>
+
+
+
+<span class="x"># interne BIRD Routing-Tabelle</span>
+<span class="x">table ffrl;</span>
+
+<span class="x">define ffrl_nat_address = 185.66.195.36; #ffrlnat</span>
+
+<span class="x"># Funktionen, die später aufgerufen werden</span>
+<span class="x">function is_ffrl_nat() {</span>
+<span class="x">    return net ~ [</span>
+<span class="x">        185.66.195.36/32</span>
+<span class="x">    ];</span>
 <span class="x">}</span>
 
-<span class="x"># The Device protocol is not a real routing protocol. It doesn&#39;t generate any</span>
-<span class="x"># routes and it only serves as a module for getting information about network</span>
-<span class="x"># interfaces from the kernel.</span>
-<span class="x">protocol device {</span>
-<span class="x">   scan time 60;</span>
+<span class="x">function is_ffrl_tunnel_nets() {</span>
+<span class="x">    return net ~ [</span>
+<span class="x">    	</span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">backbone</span> <span class="k">in</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;ffrl&#39;</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;ffrl&#39;</span><span class="o">][</span><span class="nv">backbone</span><span class="o">][</span><span class="s1">&#39;tunnel&#39;</span><span class="o">][</span><span class="s1">&#39;ipv4&#39;</span><span class="o">][</span><span class="s1">&#39;address&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x">/31</span><span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nb">loop</span><span class="nv">.last</span> <span class="cp">%}</span><span class="x">,</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">        </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">    ];</span>
 <span class="x">}</span>
+
+<span class="x"># BGP Import Filter für Rheinland</span>
+<span class="x">filter ebgp_ffrl_import_filter {</span>
+<span class="x">    if is_default() then accept;</span>
+<span class="x">    reject;</span>
+<span class="x">}</span>
+
+<span class="x"># BGP Export Filter für Rheinland</span>
+<span class="x">filter ebgp_ffrl_export_filter {</span>
+<span class="x">    if is_ffrl_nat() then accept;</span>
+<span class="x">    reject;</span>
+<span class="x">}</span>
+
+<span class="x"># IP-NAT-Adresse legen wir in die interne BIRD Routing Table</span>
+<span class="x">protocol static ffrl_uplink_hostroute {</span>
+<span class="x">    table ffrl;</span>
+<span class="x">    route </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;ffrl&#39;</span><span class="o">][</span><span class="s1">&#39;address&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x">/32 reject;</span>
+<span class="x">#    route 185.66.195.36/32 reject;</span>
+<span class="x">}</span>
+
+<span class="x"># Wir legen die Transfernetze in die interne BIRD Routing Table</span>
+<span class="x">protocol direct {</span>
+<span class="x">    table ffrl;</span>
+<span class="x">    interface &quot;ffrl-*&quot;;</span>
+<span class="x">    import where is_ffrl_tunnel_nets();</span>
+<span class="x">}</span>
+
+<span class="x"># Wir exportieren über Rheinland gelernte Routen in die Kernel Table 61 (ffinetexit)</span>
+<span class="x">protocol kernel kernel_ffrl {</span>
+<span class="x">    scan time 30;</span>
+<span class="x">    import none;</span>
+<span class="x">    export filter {</span>
+<span class="x">        krt_prefsrc = ffrl_nat_address;</span>
+<span class="x">        accept;</span>
+<span class="x">    };</span>
+<span class="x">    table ffrl;</span>
+<span class="x">    kernel table 61;</span>
+<span class="x">};</span>
+
+<span class="x"># BGP Template für Rheinland Peerings</span>
+<span class="x">template bgp ffrl_uplink {</span>
+<span class="x">    table ffrl;</span>
+<span class="x">    local as 65037; # AS Number ?? Private ASN 64,512 to 65,534 Autonomous system Number</span>
+<span class="x">    import keep filtered;</span>
+<span class="x">    import filter ebgp_ffrl_import_filter;</span>
+<span class="x">    export filter ebgp_ffrl_export_filter;</span>
+<span class="x">    next hop self;</span>
+<span class="x">    direct;</span>
+<span class="x">};</span>
+
+<span class="x"># P E E R I N G S</span>
+
+<span class="cp">{%</span> <span class="k">for</span> <span class="nv">backbone</span> <span class="k">in</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;ffrl&#39;</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x"># </span><span class="cp">{{</span> <span class="nv">backbone</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">protocol bgp ffrl_</span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;ffrl&#39;</span><span class="o">][</span><span class="nv">backbone</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x"> from ffrl_uplink {</span>
+<span class="x">    source address </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;ffrl&#39;</span><span class="o">][</span><span class="nv">backbone</span><span class="o">][</span><span class="s1">&#39;tunnel&#39;</span><span class="o">][</span><span class="s1">&#39;ipv4&#39;</span><span class="o">][</span><span class="s1">&#39;address&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x">;</span>
+<span class="x">    neighbor ??? 100.64.1.190 as 201701;</span>
+<span class="x">	</span><span class="cp">{%</span> <span class="k">if</span> <span class="nb">loop</span><span class="nv">.first</span> <span class="cp">%}</span><span class="x">default bgp_local_pref 200;</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x">};</span>
+<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
 </pre></div>
 </div>
 <p>Todo: Keine Ahnung was in die Konfigurationsdatei kommt. Gibt es noch bird6.conf dazu?</p>

@@ -99,6 +99,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../tmp/index.html">/tmp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mosh/index.html">Mosh (Mobile shell)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../molly-guard/index.html">Molly-Guard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../openssh-server/index.html">OpenSSH - OpenBSD Secure Shell server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ntp/index.html">NTP (Network Time Protocol)</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Network Interfaces &amp; Brige Utilities</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a></li>
@@ -352,6 +353,17 @@ iface <span class="o">{{</span> mesh <span class="o">}}</span> inet6 manual
         <span class="l l-Scalar l-Scalar-Plain">batman</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;batman&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
         <span class="l l-Scalar l-Scalar-Plain">mesh</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;mesh&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
         <span class="l l-Scalar l-Scalar-Plain">hwaddress</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;mesh&#39;</span><span class="o">][</span><span class="s1">&#39;hwaddress&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">]</span> <span class="k">is</span> <span class="nf">defined</span> <span class="k">and</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;ffrl&#39;</span> <span class="cp">%}</span>
+<span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/ffrl</span><span class="p p-Indicator">:</span>
+  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/ffrl</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/network/interfaces.d/ffrl</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
+    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">template</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 
 <span class="c1"># Forwarding</span>

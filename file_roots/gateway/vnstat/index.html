@@ -99,6 +99,7 @@
 <li class="toctree-l3"><a class="reference internal" href="../tmp/index.html">/tmp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mosh/index.html">Mosh (Mobile shell)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../molly-guard/index.html">Molly-Guard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../openssh-server/index.html">OpenSSH - OpenBSD Secure Shell server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ntp/index.html">NTP (Network Time Protocol)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../network/index.html">Network Interfaces &amp; Brige Utilities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../iproute/index.html">IP Route</a></li>
@@ -257,12 +258,12 @@ cat &gt; <span class="si">${</span><span class="nv">webroot</span><span class="s
 <span class="k">for</span> interface in <span class="si">${</span><span class="nv">interfaces</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span> <span class="k">do</span>
 	sed s/interface/<span class="si">${</span><span class="nv">interface</span><span class="si">}</span>/g &gt;&gt; <span class="si">${</span><span class="nv">webroot</span><span class="si">}</span>/index.html <span class="s">&lt;&lt;EOT</span>
 <span class="s">		&lt;div&gt;</span>
-<span class="s">	    	&lt;img src=&quot;interface_summary.png&quot; alt=&quot;Traffic Summary&quot; /&gt;&lt;br&gt;</span>
-<span class="s">	    	&lt;img src=&quot;interface_monthly.png&quot; alt=&quot;Traffic per Month&quot; /&gt;&lt;br&gt;</span>
-<span class="s">	    	&lt;img src=&quot;interface_hourly.png&quot; alt=&quot;Traffic per Hour&quot; /&gt;&lt;br&gt;</span>
-<span class="s">	    	&lt;img src=&quot;interface_top10.png&quot; alt=&quot;Traffic Top 10&quot; /&gt;&lt;br&gt;</span>
-<span class="s">	    	&lt;img src=&quot;interface_daily.png&quot; alt=&quot;Traffic per Day&quot; /&gt;</span>
-<span class="s">	    &lt;/div&gt;</span>
+<span class="s">			&lt;img src=&quot;interface_summary.png&quot; alt=&quot;Traffic Summary&quot; /&gt;&lt;br&gt;</span>
+<span class="s">			&lt;img src=&quot;interface_monthly.png&quot; alt=&quot;Traffic per Month&quot; /&gt;&lt;br&gt;</span>
+<span class="s">			&lt;img src=&quot;interface_hourly.png&quot; alt=&quot;Traffic per Hour&quot; /&gt;&lt;br&gt;</span>
+<span class="s">			&lt;img src=&quot;interface_top10.png&quot; alt=&quot;Traffic Top 10&quot; /&gt;&lt;br&gt;</span>
+<span class="s">			&lt;img src=&quot;interface_daily.png&quot; alt=&quot;Traffic per Day&quot; /&gt;</span>
+<span class="s">		&lt;/div&gt;</span>
 <span class="s">EOT</span>
 <span class="k">done</span>
 

@@ -6,6 +6,7 @@ Inhalt:
 .. toctree::
    :maxdepth: 4
 
+   ../gateway/openssh-server/index
    ../gateway/bash/index
    ../gateway/git/index
    ../gateway/etckeeper/index
