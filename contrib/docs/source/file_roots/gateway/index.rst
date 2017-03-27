@@ -12,6 +12,7 @@ Inhalt:
    ../gateway/tmp/index
    ../gateway/mosh/index
    ../gateway/molly-guard/index
+   ../gateway/openssh-server/index
    ../gateway/ntp/index
    ../gateway/network/index
    ../gateway/iproute/index
