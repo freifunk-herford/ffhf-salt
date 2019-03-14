@@ -1,24 +1,24 @@
 # Diese Datei wird nicht genutzt und dient als Beispiel
 
 base:
-  '^gw(.*)$':
+  '^gw\d.herford.freifunk.net$':
     - match: pcre
     - gateways.shared
     - gateways.peers
 
-  'gw1':
+  'gw1.herford.freifunk.net':
     - gateways.gw1
 
-  'gw2':
+  'gw2.herford.freifunk.net':
     - gateways.gw2
 
-  'gw3':
+  'gw3.herford.freifunk.net':
     - gateways.gw3
 
-  'gw4':
+  'gw4.herford.freifunk.net':
     - gateways.gw4
 
-  'map':
+  'map.herford.freifunk.net':
     - gateways.shared
     - gateways.peers
     - map.network
@@ -28,5 +28,5 @@ base:
     - map.apache
     - map.meshviewer
 
-  'firmware':
-    - firmware.gluon
+#  'firmware':
+#    - firmware.gluon
