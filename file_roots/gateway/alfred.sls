@@ -165,7 +165,8 @@ alfred-announce-venv:
 
 ffnord-alfred-announce:
   git.latest:
-    - name: https://github.com/freifunk-mwu/ffnord-alfred-announce.git
+    - name: https://github.com/freifunk-herford/ffnord-alfred-announce.git
+#   - name: https://github.com/freifunk-mwu/ffnord-alfred-announce.git
     - target: /root/scripts/announce/ffnord-alfred-announce
     - unless: test -d /root/scripts/announce/ffnord-alfred-announce
     - require:
