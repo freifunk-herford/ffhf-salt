@@ -9,20 +9,11 @@
   "blinkingHours": 8,
   "mapLayers": [
     { "name": "OpenStreetMap",
-      "url": "http://tiles.freifunk-bielefeld.de/{z}/{x}/{y}.png",
+      "url": "https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png",
       "config": {
-        "subdomains": "1234",
+        "subdomains": "abc",
         "type": "osm",
         "attribution": "Tiles &copy; Openstreetmap |&copy; <a href=\"http://www.openstreetmap.org/copyright\">OpenStreetMap</a>",
-        "maxZoom": 18
-      }
-    },
-    { "name": "MapQuest",
-      "url": "https://otile{s}-s.mqcdn.com/tiles/1.0.0/osm/{z}/{x}/{y}.jpg",
-      "config": {
-        "subdomains": "1234",
-        "type": "osm",
-        "attribution": "Tiles &copy; <a href=\"https://www.mapquest.com/\" target=\"_blank\">MapQuest</a>, Data CC-BY-SA OpenStreetMap",
         "maxZoom": 18
       }
     },
