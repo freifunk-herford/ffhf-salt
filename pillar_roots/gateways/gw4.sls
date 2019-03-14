@@ -28,10 +28,10 @@ network:
     netmask6: 48
   mesh:
     hwaddress: 02:00:0a:22:00:04
-  primary: # Test Daten
-    interface: enp0s3
-    address: 192.168.0.34
-    address6: fe80::a00:27ff:feee:3b00/64
+  primary:
+    interface: venet0
+    address: 85.214.87.18
+    # address6: # Der Server hat keine IPv6 Adresse
 
 exit:
   type: openvpn # Verschiedene Arten sind möglich "gre" oder "openvpn"
