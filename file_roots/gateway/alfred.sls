@@ -4,7 +4,7 @@
   'Debian': {'pkgs': ['alfred', 'alfred-json', 'batadv-vis']}
 }, default='Debian') %}
 
-{% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %}
+{% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '14.04' %}
 alfred:
   pkg.installed:
     - pkgs:
@@ -16,9 +16,7 @@ alfred:
     # - require:
     #   - sls: gateway.batman
     #   - sls: gateway.fastd
-{% endif %}
-
-{% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '16.04' %}
+{% elif grains['os'] == 'Ubuntu' and grains['osrelease'] == '16.04' %}
 alfred:
   pkg.installed:
     - sources:
@@ -27,6 +25,12 @@ alfred:
         - alfred-json: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred-json/alfred-json_0.3.1-0ffmwu1~trusty_amd64.deb 
 #       - batadv-vis: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/batadv-vis_2017.0-0ffmwu2~trusty_amd64.deb
         - batadv-vis: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/batadv-vis_2017.1-0ffmwu0~trusty_amd64.deb
+{% elif grains['os'] == 'Ubuntu' and grains['osrelease'] == '18.04' %}
+alfred:
+  pkg.installed:
+    - sources:
+      - alfred: http://ftp.us.debian.org/debian/pool/main/a/alfred/alfred_2018.2-1_amd64.deb
+      - alfred-json: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred-json/alfred-json_0.3.1-0ffmwu1~trusty_amd64.deb
 {% endif %}
 
 batadv-vis.service:
