@@ -8,6 +8,26 @@
   pkg.installed:
     - name: {{ bridgeutils.pkg }}
 
+{% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '18.04' %}
+
+{% set ifupdown = salt['grains.filter_by']({
+  'Debian': {'pkg': 'ifupdown'},
+}, default='Debian') %}
+
+{{ ifupdown.pkg }}:
+  pkg.installed:
+    - name: {{ ifupdown.pkg }}
+
+{% set resolvconf = salt['grains.filter_by']({
+  'Debian': {'pkg': 'resolvconf'},
+}, default='Debian') %}
+
+{{ resolvconf.pkg }}:
+  pkg.installed:
+    - name: {{ resolvconf.pkg }}
+
+{% endif %}
+
 # Interfaces
 
 {% if grains['os_family'] == 'Debian' %}
@@ -51,6 +71,11 @@
     - text: |
 
         source /etc/network/interfaces.d/*
+
+/etc/network/interfaces.d:
+  file.directory:
+    - name: /etc/network/interfaces.d
+    - makedirs: True
 
 /etc/network/interfaces.d/bridge:
   file.managed:

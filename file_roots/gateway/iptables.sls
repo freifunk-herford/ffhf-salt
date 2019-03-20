@@ -10,6 +10,12 @@
 }, default='Debian') %}
 {% endif %}
 
+{% if grains['osrelease'] == '18.04' and grains['os'] == 'Ubuntu' %}
+{% set iptables = salt['grains.filter_by']({
+  'Debian': {'pkg': 'netfilter-persistent', 'srv': 'netfilter-persistent'}
+}, default='Debian') %}
+{% endif %}
+
 {{ iptables.pkg }}:
   pkg.installed:
     - name: {{ iptables.pkg }}

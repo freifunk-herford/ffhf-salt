@@ -47,28 +47,48 @@ def batadvvis_version(command):
     if response:
         return response.stdout.read().split()[1]
 
+def tincd_version(command):
+    response = subprocess.Popen([command, "--version"], stdout=subprocess.PIPE)
+    if response:
+        return response.stdout.read().split()[2]
+
+def modinfo(module):
+    try:
+        response = subprocess.Popen(["modinfo", "-F", "version", module], stdout=subprocess.PIPE, stderr=subprocess.PIPE, shell=False)
+        if response:
+            return response.stdout.read().split()[0]
+    except:
+        pass
+
 def freifunk():
     # initialize a grains dictionary
     grains = {}
 
     alfred = which("alfred")
-    alfredjson = which("alfred-json")
-    fastd = which("fastd")
-    batctl = which("batctl")
     batadvvis = which("batadv-vis")
+    batctl = which("batctl")
+    batmanadv = modinfo("batman_adv")
+    alfredjson = which("alfred-json")
     bird = which("bird")
+    tincd = which("tincd")
+    fastd = which("fastd")
+
     if alfred:
         grains['freifunk'] = {'alfred': alfred_version(alfred)}
-        if alfredjson:
-            grains['freifunk']['alfred-json'] = alfredjson_version(alfredjson)
-        if fastd:
-            grains['freifunk']['fastd'] = fastd_version(fastd)
         if batadvvis:
             grains['freifunk']['batadv-vis'] = batadvvis_version(batadvvis)
+        if alfredjson:
+            grains['freifunk']['alfred-json'] = alfredjson_version(alfredjson)
         if batctl:
             grains['freifunk']['batctl'] = batctl_version(batctl)
+        if batmanadv:
+            grains['freifunk']['batman-adv'] = batmanadv
         if bird:
             grains['freifunk']['bird'] = bird_version(bird)
+        if tincd:
+            grains['freifunk']['tincd'] = tincd_version(tincd)
+        if fastd:
+            grains['freifunk']['fastd'] = fastd_version(fastd)
         return grains
     else:
         return grains
