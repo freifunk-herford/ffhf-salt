@@ -4,25 +4,25 @@
   'Debian': {'pkg': 'fastd', 'srv': 'fastd'}
 }, default='Debian') %}
 
-{% if grains['os_family'] == 'Debian' %}
-fastd-repository:
-  cmd.run:
-    - name: |
-        gpg --keyserver keyserver.ubuntu.com --recv-key 16EF3F64CB201D9C
-        gpg -a --export 16EF3F64CB201D9C | sudo apt-key add -
+#{% if grains['os_family'] == 'Debian' %}
+#fastd-repository:
+#  cmd.run:
 #    - name: |
-#        gpg --keyserver pgpkeys.mit.edu --recv-key 16EF3F64CB201D9C
+#        gpg --keyserver keyserver.ubuntu.com --recv-key 16EF3F64CB201D9C
 #        gpg -a --export 16EF3F64CB201D9C | sudo apt-key add -
-    - unless: test -n "$(apt-key list | grep universe-factory.net)"
-  pkgrepo.managed:
-    - name: deb https://repo.universe-factory.net/debian/ sid main
-    - file: /etc/apt/sources.list.d/repo.universe-factory.net.list
-    - require_in:
-      - pkg: {{ fastd.pkg }}
-    - require:
-      - cmd: fastd-repository
+##    - name: |
+##        gpg --keyserver pgpkeys.mit.edu --recv-key 16EF3F64CB201D9C
+##        gpg -a --export 16EF3F64CB201D9C | sudo apt-key add -
+#    - unless: test -n "$(apt-key list | grep universe-factory.net)"
+#  pkgrepo.managed:
+#    - name: deb https://repo.universe-factory.net/debian/ sid main
+#    - file: /etc/apt/sources.list.d/repo.universe-factory.net.list
+#    - require_in:
+#      - pkg: {{ fastd.pkg }}
+#    - require:
+#      - cmd: fastd-repository
 
-fastd:
+{{ fastd.pkg }}:
   pkg.installed:
     - name: {{ fastd.pkg }}
     - refresh: True
