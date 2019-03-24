@@ -29,6 +29,16 @@
     - mode: 755
     - user: root
     - group: root
+  {% elif grains['osrelease'] == '18.04' and grains['os'] == 'Ubuntu' %}
+  service.running:
+    - name: {{ iptables.srv }}
+    - enable: True
+  file.managed:
+    - name: /usr/share/netfilter-persistent/plugins.d/iptables-persistent
+    - source: salt://gateway/usr/share/netfilter-persistent/plugins.d/iptables-persistent
+    - mode: 755
+    - user: root
+    - group: root
   {% else %}
   service.enabled:
     - name: {{ iptables.srv }}
@@ -45,6 +55,14 @@ nat-POSTROUTING-ACCEPT-MASQUERADE:
     - out-interface: {{ pillar['network']['exit']['interface'] }}
 
 {% if grains['osrelease'] == '16.04' and grains['os'] == 'Ubuntu' %}
+netfilter-persistent-save:
+  cmd.run:
+    - name: service netfilter-persistent save
+    - onchanges:
+        - iptables: nat-POSTROUTING-ACCEPT-MASQUERADE
+{% endif %}
+
+{% if grains['osrelease'] == '18.04' and grains['os'] == 'Ubuntu' %}
 netfilter-persistent-save:
   cmd.run:
     - name: service netfilter-persistent save

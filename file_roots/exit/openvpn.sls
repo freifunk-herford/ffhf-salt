@@ -12,25 +12,25 @@
     - name: {{ openvpn.srv }}
     - enable: True
     - require:
-        {% if grains['os_family'] == 'Alpine' %}
-        - file: /etc/openvpn/openvpn.conf
-        {% else %}
-        - file: /etc/openvpn/server.conf
-        {% endif %}
-        - file: /etc/openvpn/dh2048.pem
-        - file: /etc/openvpn/exit.crt
-        - file: /etc/openvpn/exit.key
-        - file: /etc/openvpn/ca.crt
+      {% if grains['os_family'] == 'Alpine' %}
+      - file: /etc/openvpn/openvpn.conf
+      {% else %}
+      - file: /etc/openvpn/server.conf
+      {% endif %}
+      - file: /etc/openvpn/dh2048.pem
+      - file: /etc/openvpn/exit.crt
+      - file: /etc/openvpn/exit.key
+      - file: /etc/openvpn/ca.crt
     - watch:
-        {% if grains['os_family'] == 'Alpine' %}
-        - file: /etc/openvpn/openvpn.conf
-        {% else %}
-        - file: /etc/openvpn/server.conf
-        {% endif %}
-        - file: /etc/openvpn/dh2048.pem
-        - file: /etc/openvpn/exit.crt
-        - file: /etc/openvpn/exit.key
-        - file: /etc/openvpn/ca.crt
+      {% if grains['os_family'] == 'Alpine' %}
+      - file: /etc/openvpn/openvpn.conf
+      {% else %}
+      - file: /etc/openvpn/server.conf
+      {% endif %}
+      - file: /etc/openvpn/dh2048.pem
+      - file: /etc/openvpn/exit.crt
+      - file: /etc/openvpn/exit.key
+      - file: /etc/openvpn/ca.crt
 
 /etc/openvpn/server.conf:
   file.managed:

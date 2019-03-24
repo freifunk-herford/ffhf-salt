@@ -11,6 +11,6 @@ build-environment-image:
     - name: ubuntu-build-environment
     - build: /root/docker/ubuntu-build-environment/
     - require:
-       - file: /root/docker/ubuntu-build-environment/Dockerfile
+      - file: /root/docker/ubuntu-build-environment/Dockerfile
 
 # docker build -t alpine-build-environment:latest -f /root/docker/alpine-build-environment/Dockerfile .

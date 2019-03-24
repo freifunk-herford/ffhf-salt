@@ -16,10 +16,12 @@
         - file: /etc/default/openvpn
         {% if pillar['exit']['provider'] == 'mullvad_linux' %}
         - file: /etc/openvpn/openvpn-updown
-        - file: /etc/openvpn/ca.crt
-        - file: /etc/openvpn/mullvad.crt
-        - file: /etc/openvpn/mullvad.key
+        # - file: /etc/openvpn/ca.crt
+        # - file: /etc/openvpn/mullvad.crt
+        # - file: /etc/openvpn/mullvad.key
         - file: /etc/openvpn/mullvad_linux.conf
+        - file: /etc/openvpn/mullvad_ca.crt
+        - file: /etc/openvpn/mullvad_userpass.txt
         {% endif %}
         {% if pillar['exit']['provider'] == 'dnn_linux' %}
         - file: /etc/openvpn/openvpn-updown
@@ -32,10 +34,12 @@
         - file: /etc/default/openvpn
         {% if pillar['exit']['provider'] == 'mullvad_linux' %}
         - file: /etc/openvpn/openvpn-updown
-        - file: /etc/openvpn/ca.crt
-        - file: /etc/openvpn/mullvad.crt
-        - file: /etc/openvpn/mullvad.key
+        # - file: /etc/openvpn/ca.crt
+        # - file: /etc/openvpn/mullvad.crt
+        # - file: /etc/openvpn/mullvad.key
         - file: /etc/openvpn/mullvad_linux.conf
+        - file: /etc/openvpn/mullvad_ca.crt
+        - file: /etc/openvpn/mullvad_userpass.txt
         {% endif %}
         {% if pillar['exit']['provider'] == 'dnn_linux' %}
         - file: /etc/openvpn/openvpn-updown
@@ -54,47 +58,63 @@
     - not_found_content: 'AUTOSTART="mullvad_linux"'
     - append_if_not_found: True
     - require:
-       - pkg: {{ openvpn.pkg }}
-
-/etc/openvpn/openvpn-updown:
- file.managed:
-   - name: /etc/openvpn/openvpn-updown
-   - source: salt://gateway/etc/openvpn/openvpn-updown
-   - mode: 755
-   - require:
       - pkg: {{ openvpn.pkg }}
 
-/etc/openvpn/ca.crt:
+/etc/openvpn/openvpn-updown:
   file.managed:
-    - name: /etc/openvpn/ca.crt
-    - source: salt://gateway/etc/openvpn/mullvad/ca.crt
+    - name: /etc/openvpn/openvpn-updown
+    - source: salt://gateway/etc/openvpn/openvpn-updown
+    - mode: 755
+    - require:
+      - pkg: {{ openvpn.pkg }}
+
+# /etc/openvpn/ca.crt:
+#   file.managed:
+#     - name: /etc/openvpn/ca.crt
+#     - source: salt://gateway/etc/openvpn/mullvad/ca.crt
+#     - mode: 600
+#     - user: root
+#     - group: root
+
+/etc/openvpn/mullvad_ca.crt:
+  file.managed:
+    - name: /etc/openvpn/mullvad_ca.crt
+    - source: salt://gateway/etc/openvpn/mullvad_ca.crt
     - mode: 600
     - user: root
     - group: root
 
-/etc/openvpn/crl.pem:
+# /etc/openvpn/crl.pem:
+#   file.managed:
+#     - name: /etc/openvpn/crl.pem
+#     - source: salt://gateway/etc/openvpn/mullvad/crl.pem
+#     - mode: 600
+#     - user: root
+#     - group: root
+
+# /etc/openvpn/mullvad.crt:
+#   file.managed:
+#     - name: /etc/openvpn/mullvad.crt
+#     - contents_pillar: exit:mullvad_linux:mullvad.crt
+#     - mode: 600
+#     - user: root
+#     - group: root
+
+/etc/openvpn/mullvad_userpass.txt:
   file.managed:
-    - name: /etc/openvpn/crl.pem
-    - source: salt://gateway/etc/openvpn/mullvad/crl.pem
+    - name: /etc/openvpn/mullvad_userpass.txt
+    - contents_pillar: exit:mullvad_linux:mullvad_userpass.txt
     - mode: 600
     - user: root
     - group: root
 
-/etc/openvpn/mullvad.crt:
-  file.managed:
-    - name: /etc/openvpn/mullvad.crt
-    - contents_pillar: exit:mullvad_linux:mullvad.crt
-    - mode: 600
-    - user: root
-    - group: root
-
-/etc/openvpn/mullvad.key:
-  file.managed:
-    - name: /etc/openvpn/mullvad.key
-    - contents_pillar: exit:mullvad_linux:mullvad.key
-    - mode: 600
-    - user: root
-    - group: root
+# /etc/openvpn/mullvad.key:
+#   file.managed:
+#     - name: /etc/openvpn/mullvad.key
+#     - contents_pillar: exit:mullvad_linux:mullvad.key
+#     - mode: 600
+#     - user: root
+#     - group: root
 
 /etc/openvpn/mullvad_linux.conf:
   file.managed:
@@ -138,7 +158,7 @@
     - not_found_content: 'AUTOSTART="dnn_linux"'
     - append_if_not_found: True
     - require:
-       - pkg: {{ openvpn.pkg }}
+      - pkg: {{ openvpn.pkg }}
 
 /etc/openvpn/openvpn-updown:
   file.managed:
@@ -146,7 +166,7 @@
     - source: salt://gateway/etc/openvpn/openvpn-updown
     - mode: 755
     - require:
-       - pkg: {{ openvpn.pkg }}
+      - pkg: {{ openvpn.pkg }}
 
 /etc/openvpn/ca.crt:
   file.managed:

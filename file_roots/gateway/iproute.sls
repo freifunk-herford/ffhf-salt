@@ -45,3 +45,15 @@
     - unless: test -n "$(ip rule show | grep 61)"
     - require:
       - file: /etc/rc.local
+
+{% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
+
+{% set rclocal = salt['grains.filter_by']({
+  'Debian': {'pkg': 'rc-local', 'srv': 'rc-local'},
+}, default='Debian') %}
+
+{{ rclocal.srv }}:
+  service.enabled:
+    - name: {{ rclocal.srv }}
+
+{% endif %}

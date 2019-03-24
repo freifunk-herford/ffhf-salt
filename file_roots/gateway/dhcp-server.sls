@@ -32,7 +32,7 @@
     - not_found_content: 'INTERFACES="{{ pillar['network']['bridge']['interface'] }}"'
     - append_if_not_found: True
     - require:
-       - pkg: {{ dhcp.pkg }}
+        - pkg: {{ dhcp.pkg }}
 {% endif %}
 
 /etc/dhcp/dhcpd.conf:
@@ -59,9 +59,9 @@
         ntp_servers: {{ pillar['dhcp']['ipv4']['ntp_servers'] }}
         domain_search: {{ pillar['dhcp']['domain_search'] }}
     - require:
-       - pkg: {{ dhcp.pkg }}
+      - pkg: {{ dhcp.pkg }}
 
- # IPv6
+# IPv6
 {% if pillar['dhcp']['ipv6']['enable'] == True %}
 {% if grains['os_family'] == 'Debian' %}
 deploy-isc-dhcp6-server-default:
@@ -101,13 +101,13 @@ deploy-isc-dhcp6-server-init:
       - file: /etc/default/isc-dhcp6-server
       {% endif %}
     - require:
-       - pkg: {{ dhcp.pkg }}
-       {% if grains['os_family'] == 'Debian' %}
-       - file: deploy-isc-dhcp6-server-init
-       {% endif %}
-       {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
-       - file: /lib/systemd/system/isc-dhcp6-server.service
-       {% endif %}
+      - pkg: {{ dhcp.pkg }}
+      {% if grains['os_family'] == 'Debian' %}
+      - file: deploy-isc-dhcp6-server-init
+      {% endif %}
+      {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
+      - file: /lib/systemd/system/isc-dhcp6-server.service
+      {% endif %}
 
 {% if grains['os_family'] == 'Debian' %}
 /etc/default/isc-dhcp6-server:
@@ -118,8 +118,8 @@ deploy-isc-dhcp6-server-init:
     - not_found_content: 'INTERFACES="{{ pillar['network']['bridge']['interface'] }}"'
     - append_if_not_found: True
     - require:
-       - pkg: {{ dhcp.pkg }}
-       - file: deploy-isc-dhcp6-server-default
+      - pkg: {{ dhcp.pkg }}
+      - file: deploy-isc-dhcp6-server-default
 {% endif %}
 
 /etc/dhcp/dhcpd6.conf:
@@ -137,5 +137,5 @@ deploy-isc-dhcp6-server-init:
         name_servers: {{ pillar['dhcp']['ipv6']['domain_name_servers'] }}
         domain_search: {{ pillar['dhcp']['domain_search'] }}
     - require:
-       - pkg: {{ dhcp.pkg }}
+      - pkg: {{ dhcp.pkg }}
 {% endif%}

@@ -33,7 +33,7 @@
     - group: root
     - mode: 644
     - require:
-       - pkg: {{ bind.pkg }}
+      - pkg: {{ bind.pkg }}
 
 /etc/bind/named.conf.options:
   file.managed:
@@ -47,7 +47,7 @@
     - group: root
     - mode: 644
     - require:
-       - pkg: {{ bind.pkg }}
+      - pkg: {{ bind.pkg }}
 
 {% if pillar['bind'].get('master', None) %}
 {% for zone in pillar['bind']['zones'] %}

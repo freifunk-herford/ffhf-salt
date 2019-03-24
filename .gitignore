@@ -4,3 +4,4 @@ contrib/docs/build/
 *.save
 *.bak
 pillar_roots_dnn/
+.vscode

@@ -28,15 +28,30 @@ network:
     netmask6: 48
   mesh:
     hwaddress: 02:00:0a:22:00:04
-  primary:
+  primary: # Test Daten
     interface: ens3
     address: 185.162.249.190
-#    address6: 2a03:4000:1a:6e0::/64
+    address6: 2a03:4000:1a:6e0::/64
 
 exit:
   type: openvpn # Verschiedene Arten sind möglich "gre" oder "openvpn"
   provider: mullvad_linux # Verschiedene Provider sind moeglich
   mullvad_linux: # Freifunk Herford
+    mullvad_userpass.txt: |
+      -----BEGIN PGP MESSAGE-----
+
+      hQGMAy+gZA9xYWKnAQwAiKgEOYnMwgBxnDqOSFJnRAtA5IKT6V3YDFKYGHsS+mUD
+      wlKDIgCgzBufXzCv1QAmTgT52brx8IuRPd8/lxqM3cWimkqy3acbLTv3eFdM+p+c
+      fjBj17nHjMbrIlthgHDqs/xPaMD3Q3OIk1Lkka1eLOE6YDVcX3mFWPmVc0DUuDpd
+      8czlHoMoBOXcBaFSjiOkQkUXgitLiAmaQKNeERirWnDxU6kzT7euCbSGjRydlPkY
+      mtf0UM+v4juCUXBl6Ft6Dth5okJ6q/mbhH878pjiQj3jzzS3v9KgaZOWK5E6nLV6
+      kR3eeVAnTVu2i4iSvG8YzZrackGSVBZQfWEovaR5JpDpSldbPvijuiquGHujjC/j
+      jqdDvvEtyYspNtNJJzuSmroCF1D7TzfZFGBf48ofBUab0rg29ajk69N3CalDDrKj
+      dXjgRdN0tlxWKszzsqXSnYXFtWw9T7mI0ItMCrS/bHTstSe5P474PCq38WuyYnN2
+      NuzULNesqSwTEtTzCyFU0ksBC4+Xx8CAFnH0QpAWiSI+O/igZAC+Cx4eY8GODE8C
+      +gDOv/i/boSUF3yHBEhVlv6BGOQAHu5CDkhjXFNqeVUdbFS/Ru1FVL+wj3Q=
+      =HKyn
+      -----END PGP MESSAGE-----
     mullvad.crt: |
       -----BEGIN PGP MESSAGE-----
 
@@ -155,7 +170,7 @@ exit:
     dnn.crt: |
       -----BEGIN PGP MESSAGE-----
       Version: GnuPG v2
-      
+
       hQEMAzfCuITl4pqUAQf+KYJ3tC47AAFKGFUPEnwgQsOrcA79SGxtl65Ka4FVOTTp
       HHpFORonMQLpS46WUOGGk4mkVPvbKhTyc64ILb0ngPZuvgkETn8aWlaf+OkvwYE9
       yQPeAWvNnOwYpj44M0wzwhux4qrBecsE+qnjaofuPdsdWeMYs1ZdBCEKAl6hyiIY
@@ -229,7 +244,7 @@ exit:
     dnn.key: |
       -----BEGIN PGP MESSAGE-----
       Version: GnuPG v2
-      
+
       hQEMAzfCuITl4pqUAQgAu/VcybBE7HT5qWh+E996YQdF8SdZmeYCHPDJmoowchHj
       6n4fGxMqN6wjD6JnxRtyRzV1cfbhXLoUlqAo3/HEqd+vY3t1X1ZamSoHQNosf3Rw
       KBn1l6aIIkCp9thE1zsVYSDHnGu206ibIZmPXgzkJ/mHI6pLOVj1QPrJd5dOGGi1
@@ -268,10 +283,10 @@ exit:
       =iuKd
       -----END PGP MESSAGE-----
 
-fastd: # for gw4.herford.freifunk.net
+fastd: # for gw4.herford.freifunk.net - Change Key!
   secret: |
     -----BEGIN PGP MESSAGE-----
-    
+
     hQGMAy+gZA9xYWKnAQwAivHD3NjVsoyTsd++v9QkuMi3XzHB9s31QJNtiIrA6U4E
     94IiJ9IvXBAYn1hDabxUsso/GKtJkpTv3NMxrnjEcjN3Ko/PlFBnCZpxaoFWsfBj
     OCGkZaKfqrZ2qZ1qpskE8bvgVHx04QHtHcA0PFfXt/Nv0RloQnROnFHxt48itxKJ
