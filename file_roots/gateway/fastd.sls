@@ -42,6 +42,17 @@
       - pkg: {{ fastd.pkg }}
 {% endif %}
 
+{% set pattern = '^(|#)AUTOSTART="(.*)"$' %}
+{% set repl = 'AUTOSTART="%s"' % grains['id'] %}
+/etc/default/fastd:
+  file.replace:
+    - name: /etc/default/fastd
+    - pattern: {{ pattern }}
+    - repl: {{ repl }}
+    - append_if_not_found: True
+    - require:
+      - pkg: {{ fastd.pkg }}
+
 /etc/fastd/{{ grains['id'] }}/fastd.conf:
   file.managed:
     - name: /etc/fastd/{{ grains['id'] }}/fastd.conf

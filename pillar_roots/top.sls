@@ -18,6 +18,12 @@ base:
   'gw4':
     - gateways.gw4
 
+  'gw5':
+    - gateways.gw5
+
+  'gw6':
+    - gateways.gw6
+
   'map':
     - gateways.shared
     - gateways.peers

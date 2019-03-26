@@ -1,7 +1,9 @@
 # A.L.F.R.E.D. - Almighty Lightweight Fact Remote Exchange Daemon
 
+#  'Debian': {'pkgs': ['alfred', 'alfred-json', 'batadv-vis']}
+
 {% set alfred = salt['grains.filter_by']({
-  'Debian': {'pkgs': ['alfred', 'alfred-json', 'batadv-vis']}
+  'Debian': {'pkgs': ['alfred', 'alfred-json', 'libgps23']}
 }, default='Debian') %}
 
 {% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '14.04' %}
@@ -29,10 +31,10 @@ alfred:
 alfred:
   pkg.installed:
     - sources:
-#     - alfred: http://ftp.us.debian.org/debian/pool/main/a/alfred/alfred_2018.2-1_amd64.deb
-      - alfred: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/alfred_2017.1-0ffmwu0~trusty_amd64.deb
+      - alfred: http://ftp.us.debian.org/debian/pool/main/a/alfred/alfred_2018.2-1_amd64.deb
+#     - alfred: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/alfred_2017.1-0ffmwu0~trusty_amd64.deb
       - alfred-json: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred-json/alfred-json_0.3.1-0ffmwu1~trusty_amd64.deb
-      - batadv-vis: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/batadv-vis_2017.1-0ffmwu0~trusty_amd64.deb
+#     - batadv-vis: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/batadv-vis_2017.1-0ffmwu0~trusty_amd64.deb
 {% endif %}
 
 batadv-vis.service:

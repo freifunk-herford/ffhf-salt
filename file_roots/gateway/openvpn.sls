@@ -16,6 +16,12 @@
         - file: /etc/default/openvpn
         {% if pillar['exit']['provider'] == 'mullvad_linux' %}
         - file: /etc/openvpn/openvpn-updown
+        - file: /etc/openvpn/pia_linux.conf
+        - file: /etc/openvpn/pia_ca.crt
+        - file: /etc/openvpn/pia_userpass.txt
+        {% endif %}
+        {% if pillar['exit']['provider'] == 'mullvad_linux' %}
+        - file: /etc/openvpn/openvpn-updown
         # - file: /etc/openvpn/ca.crt
         # - file: /etc/openvpn/mullvad.crt
         # - file: /etc/openvpn/mullvad.key
@@ -41,6 +47,12 @@
         - file: /etc/openvpn/mullvad_ca.crt
         - file: /etc/openvpn/mullvad_userpass.txt
         {% endif %}
+        {% if pillar['exit']['provider'] == 'pia_linux' %}
+        - file: /etc/openvpn/openvpn-updown
+        - file: /etc/openvpn/pia_linux.conf
+        - file: /etc/openvpn/pia_ca.crt
+        - file: /etc/openvpn/pia_userpass.txt
+        {% endif %}
         {% if pillar['exit']['provider'] == 'dnn_linux' %}
         - file: /etc/openvpn/openvpn-updown
         - file: /etc/openvpn/ca.crt
@@ -48,6 +60,50 @@
         - file: /etc/openvpn/dnn.key
         - file: /etc/openvpn/dnn_linux.conf
         {% endif %}
+
+{% if pillar['exit']['provider'] == 'pia_linux' %}
+/etc/default/openvpn:
+  file.replace:
+    - name: /etc/default/openvpn
+    - pattern: '^AUTOSTART="(.*)"$'
+    - repl: 'AUTOSTART="pia_linux"'
+    - not_found_content: 'AUTOSTART="pia_linux"'
+    - append_if_not_found: True
+    - require:
+      - pkg: {{ openvpn.pkg }}
+
+/etc/openvpn/openvpn-updown:
+  file.managed:
+    - name: /etc/openvpn/openvpn-updown
+    - source: salt://gateway/etc/openvpn/openvpn-updown
+    - mode: 755
+    - require:
+      - pkg: {{ openvpn.pkg }}
+
+/etc/openvpn/pia_ca.crt:
+  file.managed:
+    - name: /etc/openvpn/pia_ca.crt
+    - source: salt://gateway/etc/openvpn/pia_ca.crt
+    - mode: 600
+    - user: root
+    - group: root
+
+/etc/openvpn/pia_userpass.txt:
+  file.managed:
+    - name: /etc/openvpn/pia_userpass.txt
+    - contents_pillar: exit:pia_linux:pia_userpass.txt
+    - mode: 600
+    - user: root
+    - group: root
+
+/etc/openvpn/pia_linux.conf:
+  file.managed:
+    - name: /etc/openvpn/pia_linux.conf
+    - source: salt://gateway/etc/openvpn/pia_linux.conf
+    - template: jinja
+    - defaults:
+        exit: {{ pillar['network']['exit']['interface'] }}
+{% endif %}
 
 {% if pillar['exit']['provider'] == 'mullvad_linux' %}
 /etc/default/openvpn:
@@ -250,3 +306,4 @@ openvpn-cron:
     - identifier: check-openvpn
 
 {% endif %}
+
