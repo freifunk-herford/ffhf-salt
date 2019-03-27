@@ -12,26 +12,24 @@
   service.running:
     - name: {{ openvpn.srv }}
     - enable: True
-
-{{ openvpn.srv }}@{{ pillar['exit']['provider'] }}:
-  service.running:
-    - name: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
-    - enable: True
     - require:
       - file: /etc/default/openvpn
       - file: /etc/openvpn/openvpn-updown
-      {% if pillar['exit']['provider'] == 'mullvad_linux' %}
-      - file: /etc/openvpn/openvpn-updown
+      {% if pillar['exit']['provider'] == 'pia_linux' %}
       - file: /etc/openvpn/pia_linux.conf
       - file: /etc/openvpn/pia_ca.crt
       - file: /etc/openvpn/pia_userpass.txt
-      {% endif %}
-      {% if pillar['exit']['provider'] == 'mullvad_linux' %}
+      {% elif pillar['exit']['provider'] == 'mullvad_linux' %}
       - file: /etc/openvpn/mullvad_linux.conf
       - file: /etc/openvpn/mullvad_ca.crt
       - file: /etc/openvpn/mullvad_userpass.txt
       {% endif %}
       - pkg: {{ openvpn.pkg }}
+
+{{ openvpn.srv }}@{{ pillar['exit']['provider'] }}:
+  service.running:
+    - name: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
+    - enable: True
 
 {% set pattern = '^(|#)AUTOSTART="(.*)"$' %}
 {% set repl = 'AUTOSTART="%s"' % pillar['exit']['provider'] %}
@@ -64,6 +62,8 @@
     - mode: 600
     - user: root
     - group: root
+    - require:
+      - pkg: {{ openvpn.pkg }}
     - watch_in:
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
@@ -74,6 +74,8 @@
     - mode: 600
     - user: root
     - group: root
+    - require:
+      - pkg: {{ openvpn.pkg }}
     - watch_in:
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
@@ -84,6 +86,8 @@
     - template: jinja
     - defaults:
         exit: {{ pillar['network']['exit']['interface'] }}
+    - require:
+      - pkg: {{ openvpn.pkg }}
     - watch_in:
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 {% endif %}
@@ -96,6 +100,8 @@
     - mode: 600
     - user: root
     - group: root
+    - require:
+      - pkg: {{ openvpn.pkg }}
     - watch_in:
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
@@ -106,6 +112,8 @@
     - mode: 600
     - user: root
     - group: root
+    - require:
+      - pkg: {{ openvpn.pkg }}
     - watch_in:
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
@@ -116,6 +124,8 @@
     - template: jinja
     - defaults:
         exit: {{ pillar['network']['exit']['interface'] }}
+    - require:
+      - pkg: {{ openvpn.pkg }}
     - watch_in:
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 {% endif %}
@@ -132,7 +142,9 @@
     - defaults:
         exit: {{ pillar['network']['exit']['interface'] }}
     - require:
-      - pkg: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
+      - pkg: {{ openvpn.pkg }}
+    - watch_in:
+      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
 # Show Cron: crontab -l
 openvpn-cron:
