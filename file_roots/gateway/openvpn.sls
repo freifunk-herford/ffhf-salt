@@ -10,7 +10,9 @@
   pkg.installed:
     - name: {{ openvpn.pkg }}
   service.running:
-    - name: {{ openvpn.srv }}
+    - name:
+      - {{ openvpn.srv }}
+      - {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
     - enable: True
     - require:
       - file: /etc/default/openvpn
