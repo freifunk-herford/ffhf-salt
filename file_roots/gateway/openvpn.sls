@@ -10,9 +10,7 @@
   pkg.installed:
     - name: {{ openvpn.pkg }}
   service.running:
-    - name:
-      - {{ openvpn.srv }}
-      - {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
+    - name: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
     - enable: True
     - require:
       - file: /etc/default/openvpn
@@ -46,7 +44,6 @@
     - require:
       - pkg: {{ openvpn.pkg }}
     - watch_in:
-      - service: {{ openvpn.srv }}
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
 /etc/openvpn/openvpn-updown:
@@ -57,7 +54,6 @@
     - require:
       - pkg: {{ openvpn.pkg }}
     - watch_in:
-      - service: {{ openvpn.srv }}
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
 {% if pillar['exit']['provider'] == 'pia_linux' %}
@@ -69,7 +65,6 @@
     - user: root
     - group: root
     - watch_in:
-      - service: {{ openvpn.srv }}
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
 /etc/openvpn/pia_userpass.txt:
@@ -80,7 +75,6 @@
     - user: root
     - group: root
     - watch_in:
-      - service: {{ openvpn.srv }}
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
 /etc/openvpn/pia_linux.conf:
@@ -91,7 +85,6 @@
     - defaults:
         exit: {{ pillar['network']['exit']['interface'] }}
     - watch_in:
-      - service: {{ openvpn.srv }}
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 {% endif %}
 
@@ -104,7 +97,6 @@
     - user: root
     - group: root
     - watch_in:
-      - service: {{ openvpn.srv }}
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
 /etc/openvpn/mullvad_userpass.txt:
@@ -115,7 +107,6 @@
     - user: root
     - group: root
     - watch_in:
-      - service: {{ openvpn.srv }}
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
 /etc/openvpn/mullvad_linux.conf:
@@ -126,7 +117,6 @@
     - defaults:
         exit: {{ pillar['network']['exit']['interface'] }}
     - watch_in:
-      - service: {{ openvpn.srv }}
       - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 {% endif %}
 
@@ -142,7 +132,7 @@
     - defaults:
         exit: {{ pillar['network']['exit']['interface'] }}
     - require:
-      - pkg: {{ openvpn.pkg }}
+      - pkg: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
 # Show Cron: crontab -l
 openvpn-cron:
