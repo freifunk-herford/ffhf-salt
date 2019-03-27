@@ -69,7 +69,7 @@ exit:
       =HKyn
       -----END PGP MESSAGE-----
 
-fastd: # Secret key von gw5 - nur den string!!! # Schlüssel tauschen
+fastd: # Secret key von gw4 - nur den string!!!
   secret: |
     -----BEGIN PGP MESSAGE-----
 
