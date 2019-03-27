@@ -2,40 +2,40 @@
 
 dhcp:
   ipv4:
-    routers: 10.34.0.1
-    domain_name_servers: 10.34.0.1
-    ntp_servers: 10.34.0.1
+    routers: '10.34.0.1'
+    domain_name_servers: '10.34.0.1'
+    ntp_servers: '10.34.0.1'
   ipv6: # Not used yet
     subnet: 'fe80::/64'
-    name_servers: fe80::a00:27ff:fe4c:84e7
-    routers: fe80::a00:27ff:fe4c:84e7
-    domain_name_servers: fe80::a00:27ff:fe4c:84e7
+    name_servers: 'fe80::a00:27ff:fe4c:84e7'
+    routers: 'fe80::a00:27ff:fe4c:84e7'
+    domain_name_servers: 'fe80::a00:27ff:fe4c:84e7'
 
 bind:
   master: False
   ipv6:
-    listen_on: ::1; fdf3:2049:5152::a22:1; # localhost; freifunk
+    listen_on: '::1; fdf3:2049:5152::a22:1;' # localhost; freifunk
   ipv4:
-    listen_on: 127.0.0.1; 10.34.0.1; # localhost; freifunk
+    listen_on: '127.0.0.1; 10.34.0.1;' # localhost; freifunk
 
 network:
   bridge: # 02 local 42 ist "Wayne" der Rest 10.34.0.2 in hex!
-    hwaddress: 02:42:0a:22:00:01 # Die HW-Adresse ist Freifunk-spezifisch
-    address: 10.34.0.1 # User Freifunk-Netzwerk IPv4
-    netmask: 255.255.0.0
-    address6: fdf3:2049:5152::a22:1 # User Freifunk-Netzwerk IPv6
-    address6mask: fdf3:2049:5152::a22:1/64
-    netmask6: 48
+    hwaddress: '02:42:0a:22:00:01' # Die HW-Adresse ist Freifunk-spezifisch
+    address: '10.34.0.1' # User Freifunk-Netzwerk IPv4
+    netmask: '255.255.0.0'
+    address6: 'fdf3:2049:5152::a22:1' # User Freifunk-Netzwerk IPv6
+    address6mask: 'fdf3:2049:5152::a22:1/64'
+    netmask6: '48'
   mesh: # 02 local 00 ist "Wayne" der Rest:10.34.0.2 in hex!
-    hwaddress: 02:00:0a:22:00:01
+    hwaddress: '02:00:0a:22:00:01'
   primary:
-    interface: ens3
-    address: 185.162.249.190
+    interface: 'ens3'
+    address: '185.162.249.190'
     # address6: # Der Server hat keine IPv6 Adresse
 
 exit:
-  type: openvpn # Verschiedene Arten sind moeglich "gre" oder "openvpn"
-  provider: mullvad_linux # Verschiedene Provider sind moeglich
+  type: 'openvpn' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
+  provider: 'mullvad_linux' # Verschiedene Provider sind moeglich
   pia_linux: # Private Internet Access Luca
     pia_userpass.txt: |
       -----BEGIN PGP MESSAGE-----
@@ -86,5 +86,5 @@ fastd: # Secret key von gw1 - nur den string!!!
     yvJuOHkuAVMY9OSwKf0Nb1B4NZt2TkeFdlDcX4od4+PbSCDuCQ==
     =kX80
     -----END PGP MESSAGE-----
-  public: 4033298711b9a5a9862405486e603db0984812e4abb2d85d74b89ab06626ce99
-  fqdn: gw1.herford.freifunk.net
+  public: '4033298711b9a5a9862405486e603db0984812e4abb2d85d74b89ab06626ce99'
+  fqdn: 'gw1.herford.freifunk.net'
