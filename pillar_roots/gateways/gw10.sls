@@ -20,21 +20,21 @@ bind:
 
 network:
   bridge:
-    hwaddress: 02:42:0a:22:00:10
+    hwaddress: 02:42:0a:22:00:0a
     address: 10.34.0.10
     netmask: 255.255.0.0
     address6: fdf3:2049:5152::a22:10
     address6mask: fdf3:2049:5152::a22:10/64
     netmask6: 48
   mesh:
-    hwaddress: 02:00:0a:22:00:10
-  primary: # Testdaten
-    interface: ens3
-    address: 188.68.40.226
+    hwaddress: 02:00:0a:22:00:0a
+  primary: # Test Daten
+    interface: vnet0
+    address: 127.0.0.1
     # address6: # Der Server hat keine IPv6 Adresse
 
 exit:
-  type: openvpn # Verschiedene Arten sind möglich "gre" oder "openvpn"
+  type: openvpn # Verschiedene Arten sind moeglich "gre" oder "openvpn"
   provider: pia_linux # Verschiedene Provider sind moeglich
   pia_linux: # Private Internet Access Luca
     pia_userpass.txt: |

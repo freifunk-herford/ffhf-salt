@@ -29,12 +29,12 @@ network:
   mesh: # 02 local 00 ist "Wayne" der Rest:10.34.0.2 in hex!
     hwaddress: 02:00:0a:22:00:02
   primary:
-    interface: eno1 # inet addr:89.163.225.133  Bcast:255.255.255.255  Mask:255.255.255.255
+    interface: eno1
     address: 89.163.225.133
     # address6: # Der Server hat keine IPv6 Adresse
 
 exit:
-  type: openvpn # Verschiedene Arten sind möglich "gre" oder "openvpn"
+  type: openvpn # Verschiedene Arten sind moeglich "gre" oder "openvpn"
   provider: mullvad_linux # Verschiedene Provider sind moeglich
   pia_linux: # Private Internet Access Luca
     pia_userpass.txt: |

@@ -34,7 +34,7 @@ network:
     # address6: # Der Server hat keine IPv6 Adresse
 
 exit:
-  type: openvpn # Verschiedene Arten sind möglich "gre" oder "openvpn"
+  type: openvpn # Verschiedene Arten sind moeglich "gre" oder "openvpn"
   provider: mullvad_linux # Verschiedene Provider sind moeglich
   pia_linux: # Private Internet Access Luca
     pia_userpass.txt: |
