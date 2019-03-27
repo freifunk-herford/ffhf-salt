@@ -10,6 +10,11 @@
   pkg.installed:
     - name: {{ openvpn.pkg }}
   service.running:
+    - name: {{ openvpn.srv }}
+    - enable: True
+
+{{ openvpn.srv }}@{{ pillar['exit']['provider'] }}:
+  service.running:
     - name: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
     - enable: True
     - require:
@@ -26,12 +31,7 @@
       - file: /etc/openvpn/mullvad_ca.crt
       - file: /etc/openvpn/mullvad_userpass.txt
       {% endif %}
-      {% if pillar['exit']['provider'] == 'dnn_linux' %}
-      - file: /etc/openvpn/ca.crt
-      - file: /etc/openvpn/dnn.crt
-      - file: /etc/openvpn/dnn.key
-      - file: /etc/openvpn/dnn_linux.conf
-      {% endif %}
+      - pkg: {{ openvpn.pkg }}
 
 {% set pattern = '^(|#)AUTOSTART="(.*)"$' %}
 {% set repl = 'AUTOSTART="%s"' % pillar['exit']['provider'] %}
