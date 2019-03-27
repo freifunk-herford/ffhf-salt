@@ -2,40 +2,40 @@
 
 dhcp:
   ipv4:
-    routers: 10.34.0.7
-    domain_name_servers: 10.34.0.7
-    ntp_servers: 10.34.0.7
+    routers: '10.34.0.7'
+    domain_name_servers: '10.34.0.7'
+    ntp_servers: '10.34.0.7'
   ipv6: # Not used yet
     subnet: 'fe80::/64'
-    name_servers: fe80::a00:27ff:feee:ec3f
-    routers: fe80::a00:27ff:feee:ec3f
-    domain_name_servers: fe80::a00:27ff:feee:ec3f
+    name_servers: 'fe80::a00:27ff:feee:ec3f'
+    routers: 'fe80::a00:27ff:feee:ec3f'
+    domain_name_servers: 'fe80::a00:27ff:feee:ec3f'
 
 bind:
   master: False
   ipv6:
-    listen_on: ::1; fdf3:2049:5152::a22:7;
+    listen_on: '::1; fdf3:2049:5152::a22:7;'
   ipv4:
-    listen_on: 127.0.0.1; 10.34.0.7;
+    listen_on: '127.0.0.1; 10.34.0.7;'
 
 network:
   bridge:
-    hwaddress: 02:42:0a:22:00:07
-    address: 10.34.0.7
-    netmask: 255.255.0.0
-    address6: fdf3:2049:5152::a22:7
-    address6mask: fdf3:2049:5152::a22:7/64
-    netmask6: 48
+    hwaddress: '02:42:0a:22:00:07'
+    address: '10.34.0.7'
+    netmask: '255.255.0.0'
+    address6: 'fdf3:2049:5152::a22:7'
+    address6mask: 'fdf3:2049:5152::a22:7/64'
+    netmask6: '48'
   mesh:
-    hwaddress: 02:00:0a:22:00:07
+    hwaddress: '02:00:0a:22:00:07'
   primary: # Test Daten
-    interface: vnet0
-    address: 127.0.0.1
+    interface: 'vnet0'
+    address: '127.0.0.1'
     # address6: # Der Server hat keine IPv6 Adresse
 
 exit:
-  type: openvpn # Verschiedene Arten sind moeglich "gre" oder "openvpn"
-  provider: pia_linux # Verschiedene Provider sind moeglich
+  type: 'openvpn' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
+  provider: 'pia_linux' # Verschiedene Provider sind moeglich
   pia_linux: # Private Internet Access Luca
     pia_userpass.txt: |
       -----BEGIN PGP MESSAGE-----
@@ -86,5 +86,5 @@ fastd: # Secret key von gw7 - nur den string!!!
     OArehneq4tCS+3vBElKg6WyVn2XTyUhJt/mt1LV60ycZNxEGOnk=
     =MKgm
     -----END PGP MESSAGE-----
-  public: 784c99cfa9a1cf2e29ccd5b4b9b239a32820f01e98e8e7c2139e03104657ce00
-  fqdn: gw7.herford.freifunk.net
+  public: '784c99cfa9a1cf2e29ccd5b4b9b239a32820f01e98e8e7c2139e03104657ce00'
+  fqdn: 'gw7.herford.freifunk.net'
