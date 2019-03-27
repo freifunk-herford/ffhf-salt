@@ -22,7 +22,6 @@
       - file: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}
     - require:
       - pkg: {{ fastd.pkg }}
-{% endif %}
 
 {% set pattern = '^(|#)AUTOSTART="(.*)"$' %}
 {% set repl = 'AUTOSTART="%s"' % grains['id'] %}

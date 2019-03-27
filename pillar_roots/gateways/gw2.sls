@@ -36,6 +36,7 @@ network:
 exit:
   type: openvpn # Verschiedene Arten sind möglich "gre" oder "openvpn"
   provider: mullvad_linux # Verschiedene Provider sind moeglich
+  pia_linux: # Private Internet Access Luca
     pia_userpass.txt: |
       -----BEGIN PGP MESSAGE-----
 
