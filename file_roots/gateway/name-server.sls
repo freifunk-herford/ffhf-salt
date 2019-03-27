@@ -34,6 +34,8 @@
     - mode: 644
     - require:
       - pkg: {{ bind.pkg }}
+    - watch_in:
+      - service: {{ bind.srv }}
 
 /etc/bind/named.conf.options:
   file.managed:
@@ -48,6 +50,8 @@
     - mode: 644
     - require:
       - pkg: {{ bind.pkg }}
+    - watch_in:
+      - service: {{ bind.srv }}
 
 {% if pillar['bind'].get('master', None) %}
 {% for zone in pillar['bind']['zones'] %}
@@ -56,6 +60,8 @@
     - name: /etc/bind/db.{{ zone }}
     - source: salt://gateway/etc/bind/db.{{ zone }}
     # - unless: test -f /etc/bind/db.{{ zone }}
+    - watch_in:
+      - service: {{ bind.srv }}
 {% endfor %}
 {% else %}
 

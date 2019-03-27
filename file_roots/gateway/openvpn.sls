@@ -13,64 +13,39 @@
     - name: {{ openvpn.srv }}
     - enable: True
     - require:
-        - file: /etc/default/openvpn
-        {% if pillar['exit']['provider'] == 'mullvad_linux' %}
-        - file: /etc/openvpn/openvpn-updown
-        - file: /etc/openvpn/pia_linux.conf
-        - file: /etc/openvpn/pia_ca.crt
-        - file: /etc/openvpn/pia_userpass.txt
-        {% endif %}
-        {% if pillar['exit']['provider'] == 'mullvad_linux' %}
-        - file: /etc/openvpn/openvpn-updown
-        # - file: /etc/openvpn/ca.crt
-        # - file: /etc/openvpn/mullvad.crt
-        # - file: /etc/openvpn/mullvad.key
-        - file: /etc/openvpn/mullvad_linux.conf
-        - file: /etc/openvpn/mullvad_ca.crt
-        - file: /etc/openvpn/mullvad_userpass.txt
-        {% endif %}
-        {% if pillar['exit']['provider'] == 'dnn_linux' %}
-        - file: /etc/openvpn/openvpn-updown
-        - file: /etc/openvpn/ca.crt
-        - file: /etc/openvpn/dnn.crt
-        - file: /etc/openvpn/dnn.key
-        - file: /etc/openvpn/dnn_linux.conf
-        {% endif %}
-    - watch:
-        - file: /etc/default/openvpn
-        {% if pillar['exit']['provider'] == 'mullvad_linux' %}
-        - file: /etc/openvpn/openvpn-updown
-        # - file: /etc/openvpn/ca.crt
-        # - file: /etc/openvpn/mullvad.crt
-        # - file: /etc/openvpn/mullvad.key
-        - file: /etc/openvpn/mullvad_linux.conf
-        - file: /etc/openvpn/mullvad_ca.crt
-        - file: /etc/openvpn/mullvad_userpass.txt
-        {% endif %}
-        {% if pillar['exit']['provider'] == 'pia_linux' %}
-        - file: /etc/openvpn/openvpn-updown
-        - file: /etc/openvpn/pia_linux.conf
-        - file: /etc/openvpn/pia_ca.crt
-        - file: /etc/openvpn/pia_userpass.txt
-        {% endif %}
-        {% if pillar['exit']['provider'] == 'dnn_linux' %}
-        - file: /etc/openvpn/openvpn-updown
-        - file: /etc/openvpn/ca.crt
-        - file: /etc/openvpn/dnn.crt
-        - file: /etc/openvpn/dnn.key
-        - file: /etc/openvpn/dnn_linux.conf
-        {% endif %}
+      - file: /etc/default/openvpn
+      - file: /etc/openvpn/openvpn-updown
+      {% if pillar['exit']['provider'] == 'mullvad_linux' %}
+      - file: /etc/openvpn/openvpn-updown
+      - file: /etc/openvpn/pia_linux.conf
+      - file: /etc/openvpn/pia_ca.crt
+      - file: /etc/openvpn/pia_userpass.txt
+      {% endif %}
+      {% if pillar['exit']['provider'] == 'mullvad_linux' %}
+      - file: /etc/openvpn/mullvad_linux.conf
+      - file: /etc/openvpn/mullvad_ca.crt
+      - file: /etc/openvpn/mullvad_userpass.txt
+      {% endif %}
+      {% if pillar['exit']['provider'] == 'dnn_linux' %}
+      - file: /etc/openvpn/ca.crt
+      - file: /etc/openvpn/dnn.crt
+      - file: /etc/openvpn/dnn.key
+      - file: /etc/openvpn/dnn_linux.conf
+      {% endif %}
 
-{% if pillar['exit']['provider'] == 'pia_linux' %}
+{% set pattern = '^(|#)AUTOSTART="(.*)"$' %}
+{% set repl = 'AUTOSTART="%s"' % pillar['exit']['provider'] %}
 /etc/default/openvpn:
   file.replace:
     - name: /etc/default/openvpn
-    - pattern: '^AUTOSTART="(.*)"$'
-    - repl: 'AUTOSTART="pia_linux"'
-    - not_found_content: 'AUTOSTART="pia_linux"'
+    - pattern: {{ pattern }}
+    - repl: {{ repl }}
     - append_if_not_found: True
     - require:
       - pkg: {{ openvpn.pkg }}
+    - watch_in:
+      - service: {{ openvpn.srv }}
+      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
 /etc/openvpn/openvpn-updown:
   file.managed:
@@ -79,7 +54,11 @@
     - mode: 755
     - require:
       - pkg: {{ openvpn.pkg }}
+    - watch_in:
+      - service: {{ openvpn.srv }}
+      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
+{% if pillar['exit']['provider'] == 'pia_linux' %}
 /etc/openvpn/pia_ca.crt:
   file.managed:
     - name: /etc/openvpn/pia_ca.crt
@@ -87,6 +66,9 @@
     - mode: 600
     - user: root
     - group: root
+    - watch_in:
+      - service: {{ openvpn.srv }}
+      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
 /etc/openvpn/pia_userpass.txt:
   file.managed:
@@ -95,6 +77,9 @@
     - mode: 600
     - user: root
     - group: root
+    - watch_in:
+      - service: {{ openvpn.srv }}
+      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
 /etc/openvpn/pia_linux.conf:
   file.managed:
@@ -103,35 +88,12 @@
     - template: jinja
     - defaults:
         exit: {{ pillar['network']['exit']['interface'] }}
+    - watch_in:
+      - service: {{ openvpn.srv }}
+      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 {% endif %}
 
 {% if pillar['exit']['provider'] == 'mullvad_linux' %}
-/etc/default/openvpn:
-  file.replace:
-    - name: /etc/default/openvpn
-    - pattern: '^AUTOSTART="(.*)"$'
-    - repl: 'AUTOSTART="mullvad_linux"'
-    - not_found_content: 'AUTOSTART="mullvad_linux"'
-    - append_if_not_found: True
-    - require:
-      - pkg: {{ openvpn.pkg }}
-
-/etc/openvpn/openvpn-updown:
-  file.managed:
-    - name: /etc/openvpn/openvpn-updown
-    - source: salt://gateway/etc/openvpn/openvpn-updown
-    - mode: 755
-    - require:
-      - pkg: {{ openvpn.pkg }}
-
-# /etc/openvpn/ca.crt:
-#   file.managed:
-#     - name: /etc/openvpn/ca.crt
-#     - source: salt://gateway/etc/openvpn/mullvad/ca.crt
-#     - mode: 600
-#     - user: root
-#     - group: root
-
 /etc/openvpn/mullvad_ca.crt:
   file.managed:
     - name: /etc/openvpn/mullvad_ca.crt
@@ -139,22 +101,9 @@
     - mode: 600
     - user: root
     - group: root
-
-# /etc/openvpn/crl.pem:
-#   file.managed:
-#     - name: /etc/openvpn/crl.pem
-#     - source: salt://gateway/etc/openvpn/mullvad/crl.pem
-#     - mode: 600
-#     - user: root
-#     - group: root
-
-# /etc/openvpn/mullvad.crt:
-#   file.managed:
-#     - name: /etc/openvpn/mullvad.crt
-#     - contents_pillar: exit:mullvad_linux:mullvad.crt
-#     - mode: 600
-#     - user: root
-#     - group: root
+    - watch_in:
+      - service: {{ openvpn.srv }}
+      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
 /etc/openvpn/mullvad_userpass.txt:
   file.managed:
@@ -163,14 +112,9 @@
     - mode: 600
     - user: root
     - group: root
-
-# /etc/openvpn/mullvad.key:
-#   file.managed:
-#     - name: /etc/openvpn/mullvad.key
-#     - contents_pillar: exit:mullvad_linux:mullvad.key
-#     - mode: 600
-#     - user: root
-#     - group: root
+    - watch_in:
+      - service: {{ openvpn.srv }}
+      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 
 /etc/openvpn/mullvad_linux.conf:
   file.managed:
@@ -179,86 +123,9 @@
     - template: jinja
     - defaults:
         exit: {{ pillar['network']['exit']['interface'] }}
-
-/etc/openvpn/dnn_linux.conf:
-  file.absent:
-    - name: /etc/openvpn/dnn_linux.conf
-
-/etc/openvpn/dnn.key:
-  file.absent:
-    - name: /etc/openvpn/dnn.key
-
-/etc/openvpn/dnn.crt:
-  file.absent:
-    - name: /etc/openvpn/dnn.crt
-{% endif %}
-
-{% if pillar['exit']['provider'] == 'dnn_linux' %}
-/etc/openvpn/mullvad_linux.conf:
-  file.absent:
-    - name: /etc/openvpn/mullvad_linux.conf
-
-/etc/openvpn/mullvad.key:
-  file.absent:
-    - name: /etc/openvpn/mullvad.key
-
-/etc/openvpn/mullvad.crt:
-  file.absent:
-    - name: /etc/openvpn/mullvad.crt
-
-/etc/default/openvpn:
-  file.replace:
-    - name: /etc/default/openvpn
-    - pattern: '^AUTOSTART="(.*)"$'
-    - repl: 'AUTOSTART="dnn_linux"'
-    - not_found_content: 'AUTOSTART="dnn_linux"'
-    - append_if_not_found: True
-    - require:
-      - pkg: {{ openvpn.pkg }}
-
-/etc/openvpn/openvpn-updown:
-  file.managed:
-    - name: /etc/openvpn/openvpn-updown
-    - source: salt://gateway/etc/openvpn/openvpn-updown
-    - mode: 755
-    - require:
-      - pkg: {{ openvpn.pkg }}
-
-/etc/openvpn/ca.crt:
-  file.managed:
-    - name: /etc/openvpn/ca.crt
-    - source: salt://gateway/etc/openvpn/dnn/ca.crt
-    - mode: 600
-    - user: root
-    - group: root
-
-/etc/openvpn/crl.pem:
-  file.absent:
-    - name: /etc/openvpn/crl.pem
-
-/etc/openvpn/dnn.crt:
-  file.managed:
-    - name: /etc/openvpn/dnn.crt
-    - contents_pillar: exit:dnn_linux:dnn.crt
-    - mode: 600
-    - user: root
-    - group: root
-
-/etc/openvpn/dnn.key:
-  file.managed:
-    - name: /etc/openvpn/dnn.key
-    - contents_pillar: exit:dnn_linux:dnn.key
-    - mode: 600
-    - user: root
-    - group: root
-
-/etc/openvpn/dnn_linux.conf:
-  file.managed:
-    - name: /etc/openvpn/dnn_linux.conf
-    - source: salt://gateway/etc/openvpn/dnn_linux.conf
-    - template: jinja
-    - defaults:
-        exit: {{ pillar['network']['exit']['interface'] }}
+    - watch_in:
+      - service: {{ openvpn.srv }}
+      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
 {% endif %}
 
 /root/scripts/check-openvpn.sh:

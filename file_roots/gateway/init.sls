@@ -2,7 +2,6 @@ include:
   - gateway.bash
   - gateway.git
   - gateway.etckeeper
-  - gateway.tmp
   - gateway.mosh
   - gateway.molly-guard
   - gateway.openssh-server

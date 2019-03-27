@@ -4,7 +4,6 @@ include:
   - gateway.git
   - gateway.etckeeper
   - gateway.mosh
-  - gateway.tmp
   - gateway.ntp
   - gateway.network
   - gateway.batman

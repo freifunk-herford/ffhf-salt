@@ -1,41 +1,42 @@
-# Gateway 3
+# Gateway 7
 
 dhcp:
   ipv4:
-    routers: 10.34.0.3
-    domain_name_servers: 10.34.0.3
-    ntp_servers: 10.34.0.3
+    routers: 10.34.0.7
+    domain_name_servers: 10.34.0.7
+    ntp_servers: 10.34.0.7
   ipv6: # Not used yet
     subnet: 'fe80::/64'
-    name_servers: fe80::10a4:20ff:feb1:c3da/64
-    routers: fe80::10a4:20ff:feb1:c3da/64
-    domain_name_servers: fe80::10a4:20ff:feb1:c3da/64
+    name_servers: fe80::a00:27ff:feee:ec3f
+    routers: fe80::a00:27ff:feee:ec3f
+    domain_name_servers: fe80::a00:27ff:feee:ec3f
 
 bind:
   master: False
   ipv6:
-    listen_on: ::1; fdf3:2049:5152::a22:3; # localhost; freifunk
+    listen_on: ::1; fdf3:2049:5152::a22:7;
   ipv4:
-    listen_on: 127.0.0.1; 10.34.0.3; # localhost; freifunk
+    listen_on: 127.0.0.1; 10.34.0.7;
 
 network:
-  bridge: # 02 local 42 ist "Wayne" der Rest 10.34.0.2 in hex!
-    hwaddress: 02:42:0a:22:00:03 # Die HW-Adresse ist Freifunk-spezifisch
-    address: 10.34.0.3 # User Freifunk-Netzwerk IPv4
+  bridge:
+    hwaddress: 02:42:0a:22:00:07
+    address: 10.34.0.7
     netmask: 255.255.0.0
-    address6: fdf3:2049:5152::a22:3 # User Freifunk-Netzwerk IPv6
-    address6mask: fdf3:2049:5152::a22:3/64
+    address6: fdf3:2049:5152::a22:7
+    address6mask: fdf3:2049:5152::a22:7/64
     netmask6: 48
-  mesh: # 02 local 00 ist "Wayne" der Rest:10.34.0.2 in hex!
-    hwaddress: 02:00:0a:22:00:03
-  primary:
-    interface: eth0
-    address: 89.163.130.241
+  mesh:
+    hwaddress: 02:00:0a:22:00:07
+  primary: # Testdaten
+    interface: ens3
+    address: 188.68.40.226
     # address6: # Der Server hat keine IPv6 Adresse
 
 exit:
   type: openvpn # Verschiedene Arten sind möglich "gre" oder "openvpn"
-  provider: mullvad_linux # Verschiedene Provider sind moeglich
+  provider: pia_linux # Verschiedene Provider sind moeglich
+  pia_linux: # Private Internet Access Luca
     pia_userpass.txt: |
       -----BEGIN PGP MESSAGE-----
 
@@ -68,22 +69,22 @@ exit:
       =HKyn
       -----END PGP MESSAGE-----
 
-fastd: # Secret key von gw3 - nur den string!!!
+fastd: # Secret key von gw7 - nur den string!!!
   secret: |
     -----BEGIN PGP MESSAGE-----
 
-    hQGMAy+gZA9xYWKnAQv9Efr2inW0VGsM8hlNQ07vRm7oJgnFIVhlxlGwK0XNEabm
-    xT9zCvw4VW8hIOT4I+krOBeQMkUx7u4LFd6ok/aFxRS62/SpdUxbyyrgyNxA3jlJ
-    OHGC4vVGLb0pwRRqJmDd1rP3tEog/OcyFJOIluxqadoeFcgM9NSkVRzSNO01P5L2
-    CI8KIgOHNVICcLTMOKLWAf88oNChVxwbIGix+hugMK6gTlLfE9NJZnmtYdQLJMS7
-    5p6+GmZVgOZFROSwWE/+Mdhx3l4vY+kUVOqaC77aky1703M3l8COOpeXGaE+fwgJ
-    oZ2O9RvJVKyBMMcKOuU5YYmoOXLdUbhIpfgU8fIP1LIupDDfaxcI0Tvy+UIFHn9T
-    Q8l7aDvjKfgSKt8CkI1AbGa4dNKW9y+ygsYiR5Hn/Jq3OpTE6LBYUwhkoh+93PjU
-    ge0mJSG0sJBvkzP75PKsyu7mkM12o1i0S36VRo8yEIMAxaD1TwCMuPbb6BoGoMOL
-    lJj1t/LBc9aZ9bb8Qs180nMBE22S74j/BjOfwjbh85jmWXERN6HHRw+kIpDovLGV
-    OVQZvc9f5AK2FqX4Q4LEQ60FWUL3yQYs7acCA0IBOTcE5SJByvcb+QM9GNd6bNiI
-    XU8B8ly7nLfAX1ArwMSrnx0BamHv9ogkzgLa0XmT09yj8TLZ
-    =aiYB
+    hQGMAy+gZA9xYWKnAQwAnd9Uy9tOWgTke6HVAAW8Hup3n7fsexbY5W1UawGLeGuV
+    9/4aFsWVDTUhcVaaNScNnbRjWquL2jWcMkfsNdb9+obzxYsLPnVqaBZsI2rBbyVk
+    MCFQVFDvmEe7qj812Wt2J5kPaor1znLnxoPhbC6yaZQNxnR1kxPI0EmrGvkYmvHH
+    GL6RFUkbd62y26e4+UKdLLlH66AOUB3dTVXcav5Kf1y0bvlRHEoQ6eRBClFSJaAX
+    9iIelAdbRv7iRh7D6fGsI1JzgET/eLjqdEGktfyBmt4lgy/dmcpS0UHudk/tkBqU
+    hz8QJ2EqOpVKgDkgcHaEopnXVbYjUn5Nq/Ui02ktR6M/c/OR93pmcigEufQMeSfy
+    wlGbG0YfTc4H/nlwdB+CnluLgwsHVfYNddizlUTjrb47DcuV9pQZqT/6bmFfsWsn
+    wmHK4jID9ZPADj6+fv4Xa35VYLO4GX0RSlFNz6ymw5WbO+y4hfWHsZHvRMW02PRD
+    fHsirS5HKNU72bThdftQ0nUBhcFR1+fa7wPbtDMHV8k+ey+ZgF7FfBOFq3vFe3tj
+    UUq1y4BCZCk/QpyflSB4Qu/6vtJ+dHPLmQWGWV/EpQcWNVsvk6V+OCpMQIicNb7x
+    OArehneq4tCS+3vBElKg6WyVn2XTyUhJt/mt1LV60ycZNxEGOnk=
+    =MKgm
     -----END PGP MESSAGE-----
-  public: 6b9c2bbe6b90fef3c8046c8551a0681a8b3bf24c8fd9e87d12dd1bdcf2f38d1c
-  fqdn: gw3.herford.freifunk.net
+  public: 784c99cfa9a1cf2e29ccd5b4b9b239a32820f01e98e8e7c2139e03104657ce00
+  fqdn: gw7.herford.freifunk.net

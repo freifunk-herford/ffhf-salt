@@ -12,12 +12,12 @@
 
 /etc/etckeeper/etckeeper.conf:
    file.replace:
-   - name: /etc/etckeeper/etckeeper.conf
-   - pattern: '^VCS="(.*)"$'
-   - repl: 'VCS="git"'
-   - not_found_content: 'VCS="git"'
-   - append_if_not_found: True
-   - require:
+    - name: /etc/etckeeper/etckeeper.conf
+    - pattern: '^VCS="(.*)"$'
+    - repl: 'VCS="git"'
+    - not_found_content: 'VCS="git"'
+    - append_if_not_found: True
+    - require:
       - pkg: {{ etckeeper.pkg }}
 
 etckeeper-init:
@@ -33,5 +33,5 @@ etckeeper-init:
     - name: /etc/.git/config
     - text: |
         [user]
-           email = root@localhost
-           name = root
+            email = root@localhost
+            name = root
