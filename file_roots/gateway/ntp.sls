@@ -7,13 +7,13 @@
 {{ ntp.pkg }}:
   pkg.installed:
     - name: {{ ntp.pkg }}
-  service.running:
+  service.enabled:
     - name: {{ ntp.srv }}
-    - watch:
-      - file: /etc/ntp.conf
-    - unless: test -f /var/run/ntpd.pid
-    - require:
-      - pkg: {{ ntp.pkg }}
+    # - watch:
+    #   - file: /etc/ntp.conf
+    # - unless: test -f /var/run/ntpd.pid
+    # - require:
+    #   - pkg: {{ ntp.pkg }}
 
 /etc/ntp.conf:
   file.managed:
@@ -24,5 +24,7 @@
     - mode: 644
     - require:
       - pkg: {{ ntp.pkg }}
+    - watch_in:
+      - service: {{ ntp.srv }}
 
 # Show Status: ntpq -p

@@ -36,43 +36,58 @@ init-vnstat-{{ pillar['network']['primary']['interface'] }}:
     - name: |
         if [ -n "$(ip a | grep {{ pillar['network']['primary']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['primary']['interface'] }}; fi
     - unless: test -f /var/lib/vnstat/{{ pillar['network']['primary']['interface'] }}
+    - runas: vnstat
+    - require:
+      - pkg: {{ vnstat.pkg }}
 
 init-vnstat-{{ pillar['network']['bridge']['interface'] }}:
   cmd.run:
     - name: |
         if [ -n "$(ip a | grep {{ pillar['network']['bridge']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['bridge']['interface'] }}; fi
     - unless: test -f /var/lib/vnstat/{{ pillar['network']['bridge']['interface'] }}
+    - runas: vnstat
+    - require:
+      - pkg: {{ vnstat.pkg }}
 
 init-vnstat-{{ pillar['network']['batman']['interface'] }}:
   cmd.run:
     - name: |
         if [ -n "$(ip a | grep {{ pillar['network']['batman']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['batman']['interface'] }}; fi
     - unless: test -f /var/lib/vnstat/{{ pillar['network']['batman']['interface'] }}
+    - runas: vnstat
+    - require:
+      - pkg: {{ vnstat.pkg }}
 
 init-vnstat-{{ pillar['network']['mesh']['interface'] }}:
   cmd.run:
     - name: |
         if [ -n "$(ip a | grep {{ pillar['network']['mesh']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['mesh']['interface'] }}; fi
     - unless: test -f /var/lib/vnstat/{{ pillar['network']['mesh']['interface'] }}
+    - runas: vnstat
+    - require:
+      - pkg: {{ vnstat.pkg }}
 
 init-vnstat-{{ pillar['network']['exit']['interface'] }}:
   cmd.run:
     - name: |
         if [ -n "$(ip a | grep {{ pillar['network']['exit']['interface'] }})" ]; then vnstat -u -i {{ pillar['network']['exit']['interface'] }}; fi
     - unless: test -f /var/lib/vnstat/{{ pillar['network']['exit']['interface'] }}
-
-/var/lib/vnstat:
-  file.directory:
-    - name: /var/lib/vnstat
-    - user: vnstat
-    - group: vnstat
-    - file_mode: 644
-    - recurse:
-        - mode
-        - user
-        - group
+    - runas: vnstat
     - require:
       - pkg: {{ vnstat.pkg }}
+
+# /var/lib/vnstat:
+#   file.directory:
+#     - name: /var/lib/vnstat
+#     - user: vnstat
+#     - group: vnstat
+#     - file_mode: 644
+#     - recurse:
+#         - mode
+#         - user
+#         - group
+#     - require:
+#       - pkg: {{ vnstat.pkg }}
 
 {% set vnstati = salt['grains.filter_by']({
   'Debian': {'pkg': 'vnstati'}
@@ -149,7 +164,7 @@ vnstat-cron:
     - name: {{ apache.srv }}
     - enable: True
     - watch:
-        - file: /etc/apache2/sites-enabled/{{ grains['id'] }}.ffhf.conf
+      - file: /etc/apache2/sites-enabled/{{ grains['id'] }}.ffhf.conf
 {% endif %}
 
 {% if grains['os_family'] == 'Debian' %}
