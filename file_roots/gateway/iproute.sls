@@ -34,6 +34,7 @@
   file.managed:
     - name: /etc/rc.local
     - source: salt://gateway/etc/rc.local
+    - mode: 755
     - template: jinja
     - defaults:
         primary: {{ pillar['network']['primary']['interface'] }}
@@ -42,7 +43,7 @@
         intercity: {{ pillar['network']['intercity']['interface'] }}
   cmd.run:
     - name: sh /etc/rc.local
-    - unless: test -n "$(ip rule show | grep 61)"
+    - unless: test -n "$(ip rule show table all | grep ffhf)"
     - require:
       - file: /etc/rc.local
 
