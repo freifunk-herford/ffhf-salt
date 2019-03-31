@@ -37,7 +37,7 @@
     # - unless: test -n "$(ip rule show table all | grep ffhf)"
     - require:
       - file: /etc/rc.local
-    - on_changes_in:
+    - onchanges:
       - file: /etc/rc.local
 
 /etc/rc.local:
