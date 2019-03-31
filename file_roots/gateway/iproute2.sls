@@ -30,6 +30,16 @@
 # up
 # post-down
 # down
+
+/etc/rc.local-init:
+  cmd.run:
+    - name: sh /etc/rc.local
+    # - unless: test -n "$(ip rule show table all | grep ffhf)"
+    - require:
+      - file: /etc/rc.local
+    - on_changes_in:
+      - file: /etc/rc.local
+
 /etc/rc.local:
   file.managed:
     - name: /etc/rc.local
@@ -41,11 +51,6 @@
         bridge: {{ pillar['network']['bridge']['interface'] }}
         exit: {{ pillar['network']['exit']['interface'] }}
         intercity: {{ pillar['network']['intercity']['interface'] }}
-  cmd.run:
-    - name: sh /etc/rc.local
-    - unless: test -n "$(ip rule show table all | grep ffhf)"
-    - require:
-      - file: /etc/rc.local
 
 {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
 
