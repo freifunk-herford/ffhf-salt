@@ -71,6 +71,7 @@ ffmap-backend-repository:
   file.managed:
     - name: /home/map/scripts/map/gw-hf.json
     - source: salt://map/home/map/scripts/map/gw-hf.json
+    - unless: test -f /home/map/scripts/map/gw-hf.json
     - user: map
     - group: map
     - makedirs: True
