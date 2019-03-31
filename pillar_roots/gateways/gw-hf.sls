@@ -1,4 +1,4 @@
-# Gateway 10
+# Gateway Herford
 
 dhcp:
   ipv4:
@@ -29,12 +29,12 @@ network:
   mesh:
     hwaddress: '02:00:0a:22:00:0a'
   primary: # Test Daten
-    interface: 'vnet0'
-    address: '127.0.0.1'
+    interface: 'eth1'
+    address: '78.94.9.77'
     # address6: # Der Server hat keine IPv6 Adresse
 
 exit:
-  type: 'openvpn' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
+  type: 'gre' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
   provider: 'pia_linux' # Verschiedene Provider sind moeglich
   pia_linux: # Private Internet Access Luca
     pia_userpass.txt: |

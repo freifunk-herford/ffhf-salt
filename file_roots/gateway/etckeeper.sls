@@ -10,12 +10,13 @@
     # - require:
     #   - sls: gateway.git
 
+{% set pattern = '^(|#)VCS="(.*)"$' %}
+{% set repl = 'VCS="git"' %}
 /etc/etckeeper/etckeeper.conf:
-   file.replace:
+  file.replace:
     - name: /etc/etckeeper/etckeeper.conf
-    - pattern: '^VCS="(.*)"$'
-    - repl: 'VCS="git"'
-    - not_found_content: 'VCS="git"'
+    - pattern: {{ pattern }}
+    - repl: {{ repl }}
     - append_if_not_found: True
     - require:
       - pkg: {{ etckeeper.pkg }}

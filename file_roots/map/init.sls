@@ -1,18 +1,19 @@
 include:
-  - gateway.openssh-server
   - gateway.bash
   - gateway.git
   - gateway.etckeeper
   - gateway.mosh
+  - gateway.molly-guard
   - gateway.ntp
+  - gateway.openssh-server
   - gateway.network
   - gateway.batman
   - gateway.fastd
   - gateway.alfred
-  - gateway.name-server
+  - gateway.bind9
   - gateway.fail2ban
-  - gateway.apache
-  - gateway.syslog
+  - gateway.apache2
+  - gateway.rsyslog
   - map.rrd
   - map.user
   - map.meshviewer

@@ -4,10 +4,11 @@ include:
   - gateway.etckeeper
   - gateway.mosh
   - gateway.molly-guard
+  - gateway.haveged
   - gateway.openssh-server
   - gateway.ntp
   - gateway.network
-  - gateway.iproute
+  - gateway.iproute2
   - gateway.iptables
   - gateway.fail2ban
   - gateway.batman
@@ -16,10 +17,10 @@ include:
   - gateway.radvd
   - gateway.alfred
   - gateway.sysfsutils
-  - gateway.dhcp-server
-  - gateway.name-server
+  - gateway.isc-dhcp-server
+  - gateway.bind9
   - gateway.tinc
   - gateway.openvpn
-  - gateway.apache
+  - gateway.apache2
   - gateway.vnstat
-  - gateway.syslog
+  - gateway.rsyslog
