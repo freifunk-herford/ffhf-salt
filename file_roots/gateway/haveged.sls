@@ -12,7 +12,7 @@
     - enable: True
 
 {% set pattern = '(|#)DAEMON_ARGS="(.*)"' %}
-{% set repl = 'DAEMON_ARGS="%s"' % '-w 1024' %}}
+{% set repl = 'DAEMON_ARGS="-w 1024"' %}
 /etc/default/haveged:
   file.replace:
     - name: /etc/default/haveged
