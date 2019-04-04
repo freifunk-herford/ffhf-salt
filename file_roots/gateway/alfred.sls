@@ -7,7 +7,7 @@
 }, default='Debian') %}
 
 {% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '14.04' %}
-alfred:
+{{ alfred.pkg }}:
   pkg.installed:
     - pkgs:
         {% for pkg in alfred.pkgs %}
@@ -19,7 +19,7 @@ alfred:
     #   - sls: gateway.batman
     #   - sls: gateway.fastd
 {% elif grains['os'] == 'Ubuntu' and grains['osrelease'] == '16.04' %}
-alfred:
+{{ alfred.pkg }}:
   pkg.installed:
     - sources:
       - alfred: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/alfred_2017.1-0ffmwu0~trusty_amd64.deb
@@ -28,7 +28,7 @@ alfred:
       #- alfred: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/alfred_2017.0-0ffmwu2~trusty_amd64.deb
       #- batadv-vis: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/batadv-vis_2017.0-0ffmwu2~trusty_amd64.deb
 {% elif grains['os'] == 'Ubuntu' and grains['osrelease'] == '18.04' %}
-alfred:
+{{ alfred.pkg }}:
   pkg.installed:
     - sources:
       - alfred: http://ftp.us.debian.org/debian/pool/main/a/alfred/alfred_2018.2-1_amd64.deb
@@ -37,45 +37,9 @@ alfred:
       #- batadv-vis: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred/batadv-vis_2017.1-0ffmwu0~trusty_amd64.deb
 {% endif %}
 
-batadv-vis.service:
-  service.running:
-    - name: batadv-vis
-    - enable: True
-    - init_delay: 30
-    - watch:
-      {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
-      - file: /lib/systemd/system/batadv-vis.service
-      {% endif %}
-      - file: /etc/default/alfred
-    - require:
-      {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
-      - file: /lib/systemd/system/batadv-vis.service
-      {% endif %}
-      - file: /etc/default/alfred
-      - pkg: alfred
-
 alfred-group:
   group.present:
     - name: alfred
-
-alfred.service:
-  service.running:
-    - name: alfred
-    - enable: True
-    - init_delay: 10
-    - watch:
-      {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
-      - file: /lib/systemd/system/alfred.service
-      {% endif %}
-      - file: /etc/default/alfred
-      # - sls: gateway.fastd
-    - require:
-      {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
-      - file: /lib/systemd/system/alfred.service
-      {% endif %}
-      - file: /etc/default/alfred
-      - pkg: alfred
-      # - sls: gateway.fastd
 
 {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
 /etc/systemd/system/batadv-vis.service:
@@ -124,6 +88,42 @@ alfred.service:
     - context:
         args: '-m'
     {% endif %}
+
+batadv-vis.service:
+  service.running:
+    - name: batadv-vis
+    - enable: True
+    - init_delay: 30
+    # - watch:
+    #   {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
+    #   - file: /etc/systemd/system/batadv-vis.service
+    #   {% endif %}
+    #   - file: /etc/default/alfred
+    - require:
+      {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
+      - file: /etc/systemd/system/batadv-vis.service
+      {% endif %}
+      - file: /etc/default/alfred
+      - pkg: alfred
+
+alfred.service:
+  service.running:
+    - name: alfred
+    - enable: True
+    - init_delay: 10
+    # - watch:
+    #   {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
+    #   - file: /etc/systemd/system/alfred.service
+    #   {% endif %}
+    #   - file: /etc/default/alfred
+    #   # - sls: gateway.fastd
+    - require:
+      {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
+      - file: /etc/systemd/system/alfred.service
+      {% endif %}
+      - file: /etc/default/alfred
+      - pkg: alfred
+      # - sls: gateway.fastd
 
 /root/scripts/check-alfred.sh:
   file.managed:
