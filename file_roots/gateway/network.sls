@@ -34,7 +34,7 @@
 # /etc/network/interfaces:
 #   file.managed:
 #     - name: /etc/network/interfaces
-#     - srouce: salt://etc/network/interfaces-{{ grains['nodename'] }}
+#     - srouce: salt://etc/network/interfaces-{#{ grains['nodename'] }#}
 
 # /etc/network/interfaces.d/br0:
 #   file.managed:
@@ -42,10 +42,10 @@
 #     - source: salt://gateway/etc/network/interfaces.d/br0
 #     - template: jinja
 #     - defaults:
-#         address: pillar['network']['bridge']['ipv4']['address'] }}
-#         netmask: pillar['network']['bridge']['ipv4']['netmask'] }}
-#         address6: pillar['network']['bridge']['ipv6']['address'] }}
-#         netmask6: pillar['network']['bridge']['ipv6']['netmask'] }}
+#         address: {#{ pillar['network']['bridge']['ipv4']['address'] }#}
+#         netmask: {#{ pillar['network']['bridge']['ipv4']['netmask'] }#}
+#         address6: {#{ pillar['network']['bridge']['ipv6']['address'] }#}
+#         netmask6: {#{ pillar['network']['bridge']['ipv6']['netmask'] }#}
 #     - user: root
 #     - group: root
 #     - mode: 644
@@ -96,6 +96,8 @@
     - name: ifup {{ pillar['network']['bridge']['interface'] }}
     - unless: test -n "$(ifconfig | grep {{ pillar['network']['bridge']['interface'] }})"
 
+{% if pillar['fastd']['secret'] is defined %}
+
 /etc/network/interfaces.d/batman:
   file.managed:
     - name: /etc/network/interfaces.d/batman
@@ -108,6 +110,10 @@
         primary: {{ pillar['network']['primary']['interface'] }}
         bridge: {{ pillar['network']['bridge']['interface'] }}
         batman: {{ pillar['network']['batman']['interface'] }}
+
+{% endif %}
+
+{% if pillar['network']['mesh'] is defined %}
 
 /etc/network/interfaces.d/mesh:
   file.managed:
@@ -123,6 +129,8 @@
         mesh: {{ pillar['network']['mesh']['interface'] }}
         hwaddress: {{ pillar['network']['mesh']['hwaddress'] }}
 
+{% if endif %}
+
 {% if pillar['exit'] is defined and pillar['exit']['provider'] == 'ffrl' %}
 /etc/network/interfaces.d/ffrl:
   file.managed:
@@ -133,6 +141,7 @@
     - mode: 644
     - template: jinja
 {% endif %}
+
 {% endif %}
 
 # Forwarding

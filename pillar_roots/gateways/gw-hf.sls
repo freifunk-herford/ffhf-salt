@@ -36,4 +36,40 @@ network:
 exit:
   type: 'gre' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
   provider: 'ffrl' # Verschiedene Provider sind moeglich
-  ffrl:
+  ffrl: # Freifunk Rheinland Backbone
+    bb-a.ak.ber:
+      interface: bb-a-ak-ber
+      tunnel:
+        ipv4:
+          address: 100.64.4.205
+          dstaddr: 100.64.4.204
+          netmask: 255.255.255.255
+          # local: <ipaddress>
+          endoint: 185.66.195.0
+          ttl: 64
+          mtu: 1400
+          mode: gre
+    bb-b.ak.ber:
+      interface: bb-b-ak-ber
+        endpoint: 185.66.195.1
+        ttl: 64
+        mtu: 1400
+        mode: gre
+    bb-a.ix.dus:
+      interface: bb-a-ix-dus
+        endpoint: 185.66.193.0
+        ttl: 64
+        mtu: 1400
+        mode: gre
+    bb-b.ix.dus:
+      interface: bb-b-ix-dus
+        endpoint: 185.66.193.1
+        ttl: 64
+        mtu: 1400
+        mode: gre
+    # bb-a.fra3.fra:
+    #   interface: bb-a-fra3-fra
+    #     endpoint: 185.66.194.0
+    # bb-b.fra3.fra:
+    #   interface: bb-b-fra3-fra
+    #     endpoint: 185.66.194.1
