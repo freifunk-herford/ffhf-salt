@@ -4,7 +4,7 @@
   'Debian': {'pkgs': ['batctl', 'batman-adv-dkms']},
 }, default='Debian') %}
 
-{% if pillar['network']['mesh'] is defined %}
+{% if pillar['network']['mesh']['hwaddress'] is defined %}
 
 {% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '14.04' %}
 batman:

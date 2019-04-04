@@ -114,7 +114,7 @@
 
 {% endif %}
 
-{% if pillar['network']['mesh'] is defined %}
+{% if pillar['network']['mesh']['hwaddress'] is defined %}
 
 /etc/network/interfaces.d/mesh:
   file.managed:
