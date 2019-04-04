@@ -226,4 +226,24 @@ alfred-announce-cron:
         sitecode: {{ pillar['alfred']['sitecode'] }}
 {% endif %}
 
+{% else %}
+
+/root/scripts/alfred-collect,py:
+  file.managed:
+    - name: /root/scripts/alfred-collect.py
+    - source: salt://gateway/root/scripts/alfred-collect.py
+    - makedirs: True
+    - user: root
+    - group: root
+
+alfred-collect-cron:
+  cron.present:
+    - name: /usr/bin/python /root/scripts/alfred-collect.py -l /var/lib/dhcp/dhcpd.leases -o /var/www/vnstat/node.json
+    - identifier: alfred-collect
+    - user: root
+    - minute: '*/1'
+    - comment: 'A.L.F.R.E.D. Emulator provides hardware info and dhcp clients as nodes'
+    - require:
+      - file: /root/scripts/alfred-collect.py
+
 {% endif %}

@@ -18,5 +18,5 @@ fastd:
     /useSvVYSaa6lSRRD0xo3JpGYWvljJ+Uce9xlOJ0nc4Z49bDCA==
     =0MJO
     -----END PGP MESSAGE-----
-  public: 870344430a2606e373d133b2e9070a4c959a1a889e8040d5dca8a16409ec3a7e
-  fqdn: map.digital-nerv.net
+  public: '870344430a2606e373d133b2e9070a4c959a1a889e8040d5dca8a16409ec3a7e'
+  fqdn: 'map.digital-nerv.net'

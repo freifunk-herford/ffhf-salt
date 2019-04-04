@@ -2,4 +2,4 @@
 # erweitert gateways.shared
 
 apache:
-  documentroot: /var/www/meshviewer
+  documentroot: '/var/www/meshviewer'

@@ -19,7 +19,7 @@
     - pattern: {{ pattern }}
     - repl: {{ repl }}
     - append_if_not_found: True
-    - watch_in:
-      - service: {{ haveged.srv }}
     - require:
       - pkg: {{ haveged.pkg }}
+    - listen_in:
+      - service: {{ haveged.srv }}

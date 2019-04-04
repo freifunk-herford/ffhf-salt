@@ -61,5 +61,6 @@
 {{ rclocal.srv }}:
   service.enabled:
     - name: {{ rclocal.srv }}
+    - enable: True
 
 {% endif %}

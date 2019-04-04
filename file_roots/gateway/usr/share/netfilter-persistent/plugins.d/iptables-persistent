@@ -8,24 +8,24 @@ PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
 SHELL=/bin/bash
 
 case $1 in
-   start)
-       iptables-restore /etc/iptables/rules.v4
-       ;;
-   stop)
-       iptables -F
-       iptables -F -t mangle
-       iptables -F -t nat
-       iptables -F -t filter
-       ;;
-   flush)
-       iptables -F
-       iptables -F -t mangle
-       iptables -F -t nat
-       iptables -F -t filter
-       ;;
-   save)
-       iptables-save /etc/iptables/rules.v4
-       ;;
+	start)
+		iptables-restore /etc/iptables/rules.v4
+		;;
+	stop)
+		iptables -F
+		iptables -F -t mangle
+		iptables -F -t nat
+		iptables -F -t filter
+		;;
+	flush)
+		iptables -F
+		iptables -F -t mangle
+		iptables -F -t nat
+		iptables -F -t filter
+		;;
+	save)
+		iptables-save /etc/iptables/rules.v4
+		;;
 esac
 
 exit 0

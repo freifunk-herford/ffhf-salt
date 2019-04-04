@@ -28,7 +28,7 @@ network:
     netmask6: '48'
   # mesh:
   #   hwaddress: '02:00:0a:22:00:0a'
-  primary: # Test Daten
+  primary:
     interface: 'eth1'
     address: '78.94.9.77'
     # address6: # Der Server hat keine IPv6 Adresse
@@ -51,6 +51,7 @@ exit:
     bb-b.ak.ber:
       interface: 'bb-b-ak-ber'
       address6: '2a03:2260:0:aa::2/64'
+      netmask: '255.255.255.255'
       endpoint: '185.66.195.1'
       ttl: '64'
       mtu: '1400'
@@ -58,13 +59,15 @@ exit:
     bb-a.ix.dus:
       interface: 'bb-a-ix-dus'
       address6: '2a03:2260:0:ab::2/64'
+      netmask: '255.255.255.255'
       endpoint: '185.66.193.0'
       ttl: '64'
       mtu: '1400'
       mode: 'gre'
     bb-b.ix.dus:
       interface: 'bb-b-ix-dus'
-      address: '2a03:2260:0:ac::2/64'
+      address6: '2a03:2260:0:ac::2/64'
+      netmask: '255.255.255.255'
       endpoint: '185.66.193.1'
       ttl: '64'
       mtu: '1400'

@@ -5,11 +5,11 @@ base:
     - match: pcre
     - gateway
 
-  'map':
-    - map
-
   'gw-hf':
     - gateway
+
+  'map':
+    - map
 
   'firmware':
     - firmware

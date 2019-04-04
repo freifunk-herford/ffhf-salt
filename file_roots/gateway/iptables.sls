@@ -59,7 +59,7 @@ netfilter-persistent-save:
   cmd.run:
     - name: service netfilter-persistent save
     - onchanges:
-        - iptables: nat-POSTROUTING-ACCEPT-MASQUERADE
+      - iptables: nat-POSTROUTING-ACCEPT-MASQUERADE
 {% endif %}
 
 {% if grains['osrelease'] == '18.04' and grains['os'] == 'Ubuntu' %}
@@ -67,7 +67,7 @@ netfilter-persistent-save:
   cmd.run:
     - name: service netfilter-persistent save
     - onchanges:
-        - iptables: nat-POSTROUTING-ACCEPT-MASQUERADE
+      - iptables: nat-POSTROUTING-ACCEPT-MASQUERADE
 {% endif %}
 
 # /etc/iptables/rules.v4

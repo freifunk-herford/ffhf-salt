@@ -14,10 +14,10 @@
     - name: {{ fastd.srv }}
     - init_delay: 120
     - enable: True
-    - watch:
-      - file: /etc/fastd/{{ grains['id'] }}/fastd.conf
-      - file: /etc/fastd/{{ grains['id'] }}/secret.conf
-      - file: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}
+    # - watch:
+    #   - file: /etc/fastd/{{ grains['id'] }}/fastd.conf
+    #   - file: /etc/fastd/{{ grains['id'] }}/secret.conf
+    #   - file: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}
     - require:
       - file: /etc/fastd/{{ grains['id'] }}/fastd.conf
       - file: /etc/fastd/{{ grains['id'] }}/secret.conf
@@ -35,7 +35,7 @@
     - append_if_not_found: True
     - require:
       - pkg: {{ fastd.pkg }}
-    - watch_in:
+    - listen_in:
       - service: {{ fastd.srv }}
 
 /etc/fastd/{{ grains['id'] }}/fastd.conf:
@@ -49,7 +49,7 @@
         interface: {{ pillar['network']['mesh']['interface'] }}
         address: {{ pillar['network']['primary']['address'] }}
     - makedirs: True
-    - watch_in:
+    - listen_in:
       - service: {{ fastd.srv }}
 
 /etc/fastd/{{ grains['id'] }}/secret.conf:
@@ -60,7 +60,7 @@
     - defaults:
         secret: {{ pillar['fastd']['secret'] }}
     - makedirs: True
-    - watch_in:
+    - listen_in:
       - service: {{ fastd.srv }}
 
 {% for peer, data in pillar['peers'].items() %}
@@ -76,7 +76,7 @@
         port: {{ pillar['fastd']['port'] }}
         key: {{ data.key }}
     - makedirs: True
-    - watch_in:
+    - listen_in:
       - service: {{ fastd.srv }}
 {% endif %}
 {% endfor %}

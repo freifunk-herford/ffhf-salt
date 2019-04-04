@@ -1,1 +1,0 @@
-*/5 * * * * root /usr/local/bin/alfred-collect.py -l /var/lib/dhcp/dhcpd.leases -o /var/www/vnstat/node.json
