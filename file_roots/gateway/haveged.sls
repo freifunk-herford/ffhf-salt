@@ -1,4 +1,4 @@
-# haveged
+# haveged - Entropy daemon using the HAVEGE algorithm
 
 {% set haveged = salt['grains.filter_by']({
   'Debian': {'pkg': 'haveged', 'srv': 'haveged'},

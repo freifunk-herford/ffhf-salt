@@ -58,6 +58,9 @@ iptables:
   ipv4:
     masquerade: '10.34.0.0/16'
 
+bird:
+  as: '64866' # Freifunk Herford ASN from Freifunk Rheinland
+
 network:
   bridge:
     interface: 'hfBR' # br0

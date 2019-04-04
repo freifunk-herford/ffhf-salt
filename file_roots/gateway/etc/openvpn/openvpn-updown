@@ -1,5 +1,7 @@
 #!/bin/sh
 
+# This file is managed by Salt, do not edit.
+
 # http://manpages.ubuntu.com/manpages/maverick/en/man8/openvpn.8.html#contenttoc5
 
 set -x

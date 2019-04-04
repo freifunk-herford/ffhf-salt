@@ -29,6 +29,13 @@ indent_style = tab
 indent_size = 4
 trim_trailing_whitespace = true
 
+# Shell Script Files
+[*.conf]
+charset = utf-8
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
 # restructuredText Files
 [*.rst]
 indent_style = space

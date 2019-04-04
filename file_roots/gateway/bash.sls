@@ -31,4 +31,6 @@ root:
         alias mv='mv -i'
         # Some comfort
         alias lc="awk '{ nlines++ } END { print nlines }'"
+        # Emulate Gentoo rc-status
+        alias rc-status="systemctl list-units --no-pager --type=service --state=running --no-legend"
     - makedirs: True
