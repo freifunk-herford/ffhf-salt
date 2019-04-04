@@ -78,31 +78,33 @@ alfred.service:
       # - sls: gateway.fastd
 
 {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
-/lib/systemd/system/batadv-vis.service:
+/etc/systemd/system/batadv-vis.service:
   file.managed:
-    - name: /lib/systemd/system/batadv-vis.service
-    - source: salt://gateway/lib/systemd/system/batadv-vis.service
+    - name: /etc/systemd/system/batadv-vis.service
+    - source: salt://gateway/etc/systemd/system/batadv-vis.service
+    - unless: test -f /lib/systemd/system/batadv-vis.service
     - user: root
     - group: root
     - mode: 644
   cmd.run:
     - name: systemctl daemon-reload
     - onchanges:
-      - file: /lib/systemd/system/batadv-vis.service
+      - file: /etc/systemd/system/batadv-vis.service
 {% endif %}
 
 {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
-/lib/systemd/system/alfred.service:
+/etc/systemd/system/alfred.service:
   file.managed:
-    - name: /lib/systemd/system/alfred.service
-    - source: salt://gateway/lib/systemd/system/alfred.service
+    - name: /etc/systemd/system/alfred.service
+    - source: salt://gateway/etc/systemd/system/alfred.service
+    - unless: test -f /lib/systemd/system/alfred.service
     - user: root
     - group: root
     - mode: 644
   cmd.run:
     - name: systemctl daemon-reload
     - onchanges:
-      - file: /lib/systemd/system/alfred.service
+      - file: /etc/systemd/system/alfred.service
 {% endif %}
 
 /etc/default/alfred:

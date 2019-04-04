@@ -10,14 +10,14 @@
   service.running:
     - name: {{ bind.srv }}
     - enable: True
-    - watch:
-      - file: /etc/bind/named.conf.local
-      - file: /etc/bind/named.conf.options
-      {% if pillar['bind'].get('master', None) %}
-      {% for zone in pillar['bind']['zones'] %}
-      - file: /etc/bind/db.{{ zone }}
-      {% endfor %}
-      {% endif %}
+    # - watch:
+    #   - file: /etc/bind/named.conf.local
+    #   - file: /etc/bind/named.conf.options
+    #   {% if pillar['bind'].get('master', None) %}
+    #   {% for zone in pillar['bind']['zones'] %}
+    #   - file: /etc/bind/db.{{ zone }}
+    #   {% endfor %}
+    #   {% endif %}
 
 /etc/bind/named.conf.local:
   file.managed:
@@ -34,7 +34,7 @@
     - mode: 644
     - require:
       - pkg: {{ bind.pkg }}
-    - watch_in:
+    - listen_in:
       - service: {{ bind.srv }}
 
 /etc/bind/named.conf.options:
@@ -50,7 +50,7 @@
     - mode: 644
     - require:
       - pkg: {{ bind.pkg }}
-    - watch_in:
+    - listen_in:
       - service: {{ bind.srv }}
 
 {% if pillar['bind'].get('master', None) %}
@@ -60,7 +60,9 @@
     - name: /etc/bind/db.{{ zone }}
     - source: salt://gateway/etc/bind/db.{{ zone }}
     # - unless: test -f /etc/bind/db.{{ zone }}
-    - watch_in:
+    # - watch_in:
+    #   - service: {{ bind.srv }}
+    - listen_in:
       - service: {{ bind.srv }}
 {% endfor %}
 {% else %}

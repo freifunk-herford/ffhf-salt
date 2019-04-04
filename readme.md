@@ -13,4 +13,4 @@ Anleitung unter <https://freifunk-herford.github.io/ffhf-salt/> lesen.
 
 ## GPG Encryption
 
-Render [Documentation](http://docs.saltstack.com/en/latest/ref/renderers/all/salt.renderers.gpg.html)
+[Salt Renderers GPG Documentation](http://docs.saltstack.com/en/latest/ref/renderers/all/salt.renderers.gpg.html)

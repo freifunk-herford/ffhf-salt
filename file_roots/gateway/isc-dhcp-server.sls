@@ -4,9 +4,10 @@
   'Debian': {
     'pkg': 'isc-dhcp-server',
     'srv': 'isc-dhcp-server',
-    'srv6': 'isc-dhcp6-server'
   },
 }, default='Debian') %}
+
+{% set dhcp6 = { 'srv': 'isc-dhcp6-server' } %}}
 
 # IPv4
 {{ dhcp.pkg }}:
@@ -15,11 +16,11 @@
   service.running:
     - name: {{ dhcp.srv }}
     - enable: True
-    - watch:
-      - file: /etc/dhcp/dhcpd.conf
-      {% if grains['os_family'] == 'Debian' %}
-      - file: /etc/default/isc-dhcp-server
-      {% endif %}
+    # - watch:
+    #   - file: /etc/dhcp/dhcpd.conf
+    #   {% if grains['os_family'] == 'Debian' %}
+    #   - file: /etc/default/isc-dhcp-server
+    #   {% endif %}
     # - require:
     #   - sls: gateway.network
 
@@ -32,7 +33,9 @@
     - not_found_content: 'INTERFACES="{{ pillar['network']['bridge']['interface'] }}"'
     - append_if_not_found: True
     - require:
-        - pkg: {{ dhcp.pkg }}
+      - pkg: {{ dhcp.pkg }}
+    - listen_in:
+      - service: {{ dhcp.srv }}
 {% endif %}
 
 /etc/dhcp/dhcpd.conf:
@@ -60,19 +63,20 @@
         domain_search: {{ pillar['dhcp']['domain_search'] }}
     - require:
       - pkg: {{ dhcp.pkg }}
-
+    - listen_in:
+      - service: {{ dhcp.srv }}
 # IPv6
 {% if pillar['dhcp']['ipv6']['enable'] == True %}
 {% if grains['os_family'] == 'Debian' %}
-deploy-isc-dhcp6-server-default:
-  file.managed:
-    - name: /etc/default/isc-dhcp6-server
-    - source: salt://gateway/etc/default/isc-dhcp6-server
-    - user: root
-    - group: root
-    - mode: 644
+# /etc/default/isc-dhcp6-server:
+#   file.managed:
+#     - name: /etc/default/isc-dhcp6-server
+#     - source: salt://gateway/etc/default/isc-dhcp6-server
+#     - user: root
+#     - group: root
+#     - mode: 644
 
-deploy-isc-dhcp6-server-init:
+/etc/init.d/isc-dhcp6-server:
   file.managed:
     - name: /etc/init.d/isc-dhcp6-server
     - source: salt://gateway/etc/init.d/isc-dhcp6-server
@@ -82,10 +86,11 @@ deploy-isc-dhcp6-server-init:
 {% endif %}
 
 {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
-/lib/systemd/system/isc-dhcp6-server.service:
+/etc/systemd/system/isc-dhcp6-server.service:
   file.managed:
-    - name: /lib/systemd/system/isc-dhcp6-server.service
-    - source: salt://gateway/lib/systemd/system/isc-dhcp6-server.service
+    - name: /etc/systemd/system/isc-dhcp6-server.service
+    - source: salt://gateway/etc/systemd/system/isc-dhcp6-server.service
+    - unless: /lib/systemd/system/isc-dhcp6-server.service
     - user: root
     - group: root
     - mode: 644
@@ -95,15 +100,15 @@ deploy-isc-dhcp6-server-init:
   service.running:
     - name: {{ dhcp.srv6 }}
     - enable: True
-    - watch:
-      - file: /etc/dhcp/dhcpd6.conf
-      {% if grains['os_family'] == 'Debian' %}
-      - file: /etc/default/isc-dhcp6-server
-      {% endif %}
+    # - watch:
+    #   - file: /etc/dhcp/dhcpd6.conf
+    #   {% if grains['os_family'] == 'Debian' %}
+    #   - file: /etc/default/isc-dhcp6-server
+    #   {% endif %}
     - require:
       - pkg: {{ dhcp.pkg }}
       {% if grains['os_family'] == 'Debian' %}
-      - file: deploy-isc-dhcp6-server-init
+      - file: /etc/init.d/isc-dhcp6-server
       {% endif %}
       {% if grains['os_family'] == 'Debian' and grains['init'] == 'systemd' %}
       - file: /lib/systemd/system/isc-dhcp6-server.service
@@ -119,7 +124,9 @@ deploy-isc-dhcp6-server-init:
     - append_if_not_found: True
     - require:
       - pkg: {{ dhcp.pkg }}
-      - file: deploy-isc-dhcp6-server-default
+      # - file: /etc/default/isc-dhcp6-server
+    - listen_in:
+      - service: {{ dhcp6.srv }}
 {% endif %}
 
 /etc/dhcp/dhcpd6.conf:
@@ -138,4 +145,6 @@ deploy-isc-dhcp6-server-init:
         domain_search: {{ pillar['dhcp']['domain_search'] }}
     - require:
       - pkg: {{ dhcp.pkg }}
+    - listen_in:
+      - service: {{ dhcp6.srv }}
 {% endif%}
