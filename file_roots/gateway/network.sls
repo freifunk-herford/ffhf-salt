@@ -8,7 +8,7 @@
   pkg.installed:
     - name: {{ bridgeutils.pkg }}
 
-{% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '18.04' %}
+# {#% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '18.04' %#}
 
 {% set ifupdown = salt['grains.filter_by']({
   'Debian': {'pkg': 'ifupdown'},
@@ -26,11 +26,12 @@
   pkg.installed:
     - name: {{ resolvconf.pkg }}
 
-{% endif %}
+# {#% endif %#}
 
 # Interfaces
 
 {% if grains['os_family'] == 'Debian' %}
+
 # /etc/network/interfaces:
 #   file.managed:
 #     - name: /etc/network/interfaces
@@ -129,9 +130,10 @@
         mesh: {{ pillar['network']['mesh']['interface'] }}
         hwaddress: {{ pillar['network']['mesh']['hwaddress'] }}
 
-{% if endif %}
+{% endif %}
 
 {% if pillar['exit'] is defined and pillar['exit']['provider'] == 'ffrl' %}
+
 /etc/network/interfaces.d/ffrl:
   file.managed:
     - name: /etc/network/interfaces.d/ffrl
@@ -140,6 +142,7 @@
     - group: root
     - mode: 644
     - template: jinja
+
 {% endif %}
 
 {% endif %}
