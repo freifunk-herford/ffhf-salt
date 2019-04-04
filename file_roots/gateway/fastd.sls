@@ -4,6 +4,8 @@
   'Debian': {'pkg': 'fastd', 'srv': 'fastd'}
 }, default='Debian') %}
 
+{% if pillar['fastd']['secret'] is defined %}
+
 {{ fastd.pkg }}:
   pkg.installed:
     - name: {{ fastd.pkg }}
@@ -82,3 +84,5 @@
 /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}-absent:
   file.absent:
     - name: /etc/fastd/{{ grains['id'] }}/peers/{{ grains['id'] }}
+
+{% endif %}

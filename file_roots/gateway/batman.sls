@@ -4,6 +4,8 @@
   'Debian': {'pkgs': ['batctl', 'batman-adv-dkms']},
 }, default='Debian') %}
 
+{% if pillar['network']['mesh'] is defined %}
+
 {% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '14.04' %}
 batman:
   pkgrepo.managed:
@@ -42,3 +44,5 @@ batman_adv:
   kmod.present:
     - name: batman_adv
     - persist: True
+
+{% endif %}

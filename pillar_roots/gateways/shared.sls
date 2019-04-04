@@ -31,6 +31,9 @@ dhcp:
     gw9:
       range_start: '10.34.192.0'
       range_end: '10.34.207.254'
+    gw-hf:
+      range_start: '10.34.208.0'
+      range_end: '10.34.223.254'
   ipv6:
     enable: 'False'
   interface_mtu: '1350'

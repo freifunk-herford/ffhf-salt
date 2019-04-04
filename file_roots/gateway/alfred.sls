@@ -6,6 +6,8 @@
   'Debian': {'pkgs': ['alfred', 'alfred-json', 'libgps23']}
 }, default='Debian') %}
 
+{% if pillar['network']['mesh'] is defined %}
+
 {% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '14.04' %}
 alfred:
   pkg.installed:
@@ -222,4 +224,6 @@ alfred-announce-cron:
         mesh: {{ pillar['network']['mesh']['interface'] }}
         socket: {{ pillar['alfred']['socket'] }}
         sitecode: {{ pillar['alfred']['sitecode'] }}
+{% endif %}
+
 {% endif %}
