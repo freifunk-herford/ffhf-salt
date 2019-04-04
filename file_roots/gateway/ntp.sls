@@ -9,6 +9,7 @@
     - name: {{ ntp.pkg }}
   service.enabled:
     - name: {{ ntp.srv }}
+    - enable: True
     # - watch:
     #   - file: /etc/ntp.conf
     # - unless: test -f /var/run/ntpd.pid
@@ -24,7 +25,7 @@
     - mode: 644
     - require:
       - pkg: {{ ntp.pkg }}
-    - watch_in:
+    - listen_in:
       - service: {{ ntp.srv }}
 
 # Show Status: ntpq -p
