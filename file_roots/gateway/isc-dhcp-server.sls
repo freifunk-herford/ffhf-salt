@@ -3,11 +3,13 @@
 {% set dhcp = salt['grains.filter_by']({
   'Debian': {
     'pkg': 'isc-dhcp-server',
-    'srv': 'isc-dhcp-server',
+    'srv': 'isc-dhcp-server'
   },
 }, default='Debian') %}
 
-{% set dhcp6 = { 'srv': 'isc-dhcp6-server' } %}}
+{% set dhcp6 = {
+  'srv': 'isc-dhcp6-server'
+} %}
 
 # IPv4
 {{ dhcp.pkg }}:
