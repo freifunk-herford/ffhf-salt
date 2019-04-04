@@ -8,5 +8,8 @@ base:
   'map':
     - map
 
+  'gw-hf':
+    - gateway
+
   'firmware':
     - firmware

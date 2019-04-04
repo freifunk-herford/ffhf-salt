@@ -24,6 +24,20 @@ base:
   'gw6':
     - gateways.gw6
 
+  'gw7':
+    - gateways.gw7
+
+  'gw8':
+    - gateways.gw8
+
+  'gw9':
+    - gateways.gw9
+
+  'gw-hf':
+    - gateways.shared
+    - gateways.peers
+    - gateway.gw-hf
+
   'map':
     - gateways.shared
     - gateways.peers
