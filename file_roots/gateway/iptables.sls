@@ -205,7 +205,7 @@ netfilter-persistent-save:
 #     - chain: POSTROUTING
 #     - jump: SNAT
 #     - out-interface: tun-+
-#     - to-source: {{ pillar['network']['bridge']['ipv4']['address'] }}
+#     - to-source: {#{ pillar['network']['bridge']['ipv4']['address'] }#}
     # Public IPv4 Address GW
 
   # cmd.run:
