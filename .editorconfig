@@ -30,7 +30,14 @@ indent_size = 4
 trim_trailing_whitespace = true
 
 # Config Files
-[*.conf]
+[*.{conf,options}]
+charset = utf-8
+indent_style = space
+indent_size = 4
+trim_trailing_whitespace = true
+
+# Text Files
+[*.txt]
 charset = utf-8
 indent_style = space
 indent_size = 4
