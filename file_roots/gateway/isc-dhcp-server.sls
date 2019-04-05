@@ -25,7 +25,7 @@
     - enable: True
     - require:
       - pkg: {{ dhcp.pkg }}
-{% %}
+{% endif %}
     # - watch:
     #   - file: /etc/dhcp/dhcpd.conf
     #   {% if grains['os_family'] == 'Debian' %}
