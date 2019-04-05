@@ -26,11 +26,11 @@
 # Todo: Interface for IPv6
 {% if pillar['dhcp']['ipv6']['enable'] == True %}
 {% set pattern = '^(|#)INTERFACESv6="(.*)$"'%}
-{% set repl = 'INTERFACESv6="%s"' % pillar['network']['bridge']['interface'] %}}
+{% set repl = 'INTERFACESv6="%s"' % pillar['network']['bridge']['interface'] %}
 {% endif %}}
 
 {% set pattern = '^(|#)INTERFACESv4="(.*)$"'%}
-{% set repl = 'INTERFACESv4="%s"' % pillar['network']['bridge']['interface'] %}}
+{% set repl = 'INTERFACESv4="%s"' % pillar['network']['bridge']['interface'] %}
 /etc/default/isc-dhcp-server:
   file.replace:
     - name: /etc/default/isc-dhcp-server
