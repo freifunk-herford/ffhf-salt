@@ -4,7 +4,7 @@
   'Debian': {'pkg': 'openssh-server', 'srv': 'ssh'}
 }, default='Debian') %}
 
-pkg-{{ openssh.pkg }}:
+{{ openssh.pkg }}:
   pkg.installed:
     - name: {{ openssh.pkg }}
   service.running:
@@ -22,11 +22,8 @@ pkg-{{ openssh.pkg }}:
     - pattern: {{ pattern }}
     - repl: {{ repl }}
     - append_if_not_found: True
-  service.running:
-    - name: {{ openssh.srv }}
-    - reload: True
-    - onchanges:
-      - file: /etc/ssh/sshd_config
+    - listen_in:
+      - service: {{ openssh.srv }}
 {% endfor %}
 
 {% if pillar['openssh'].get('ssh_auth') %}
