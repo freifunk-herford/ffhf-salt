@@ -14,11 +14,13 @@ pkg-{{ openssh.pkg }}:
       - pkg: {{ openssh.pkg }}
 
 {% for item in pillar['openssh']['sshd_config'] %}
+{% set pattern = '^(|#)%s(.*)$' % item.split()[0] %}
+{% set repl = item %}
 /etc/ssh/sshd_config-{{ item }}:
   file.replace:
     - name: /etc/ssh/sshd_config
-    - pattern: {{ '^(#)%s(.*)$' % item.split()[0] }}
-    - repl: {{ item }}
+    - pattern: {{ pattern }}
+    - repl: {{ repl }}
     - append_if_not_found: True
   service.running:
     - name: {{ openssh.srv }}
