@@ -29,8 +29,8 @@ network:
   mesh: # 02 local 00 ist "Wayne" der Rest:10.34.0.2 in hex!
     hwaddress: '02:00:0a:22:00:02'
   primary:
-    interface: 'eno1'
-    address: '89.163.225.133'
+    interface: 'ens3'
+    address: '37.120.186.226'
     # address6: # Der Server hat keine IPv6 Adresse
 
 exit:

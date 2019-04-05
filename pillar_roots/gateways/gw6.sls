@@ -28,9 +28,9 @@ network:
     netmask6: '48'
   mesh:
     hwaddress: '02:00:0a:22:00:06'
-  primary: # Test Daten
-    interface: 'vnet0'
-    address: '127.0.0.1'
+  primary:
+    interface: 'ens3'
+    address: '185.170.115.147'
     # address6: # Der Server hat keine IPv6 Adresse
 
 exit:
