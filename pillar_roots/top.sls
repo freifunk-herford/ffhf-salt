@@ -35,7 +35,6 @@ base:
 
   'gw-hf':
     - gateways.shared
-    - gateways.peers
     - gateways.gw-hf
 
   'map':

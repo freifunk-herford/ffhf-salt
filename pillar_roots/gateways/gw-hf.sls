@@ -80,9 +80,6 @@ exit:
     #   endpoint: '185.66.194.1'
 
 openssh:
-  sshd_config:
-    - 'UsePAM yes'
-    - 'PermitRootLogin no'
   ssh_auth:
     user:
       root:
@@ -95,15 +92,15 @@ openssh:
         sven@osics5:
           key: 'AAAAB3NzaC1yc2EAAAADAQABAAABgQDoVluxv7IpZRuWAUsJo+Mqh7pE4r8716t0+enVhOxbEFjIbphQw3EHZe8ciXtImLqZmFuGfMS0ll+UY+yr6VAqy4kFyPC8fFunpKOZilhc7evU5esyRJ1tnltZuASHIHP96UDNkTZJmV0/34Kg6aYand1L5YZ2TSU02LWS5qzAfBrvC1MzkTx5Ny9k56Id07eyTak/xUbq1yHpg1I5XVp0sQKO5H98Pq0V9vRY4ZzzMzE4yw22DpNAwTdtvPcSMMQ/YIJUh0MgcUbrbGNXAfakQtxAu6MxhLhFkjFh2clxfg1F9ecYsLQrVX8lnt/KvTcfziSbM2WWKjoPQtH0jEnM5h+ME2Ve9LOmfewnK/5aesFUzov6dtjOFeCu/Ko0h/xxjM+YUqp3t6sXgj6sB2ba34F94YK5nDPFxEFKJeXSWDn/N08/zhS59j4oyW4BS3jVvIa5wJkGIwyZAF7yQtM8bWmgTa9OTAsriXT8J1CSFCQPMuBRZG8nKN7kXjjM4eE='
           enc: 'ssh-rsa'
-        freifunk@backups.homelinux.org:
-          key: 'AAAAB3NzaC1yc2EAAAADAQABAAACAQC1938av1T7ITtiLEvvq7uo/Ybqaz0JLNQ7aeu5tiY+onzg1NugEJYHAWAz8YzSbP3K5gXnLISvgVm/plULThifhKHTxReG9nH0FZGbj4xgCk2rfCdyB6OiE6Do/MriLu3RcyBDBWZOpb+qbOZmD6pYk6HB7hDXibSDFAcDcKHJwx4uHyN2+aMLJu5pE7o8XLIxHDrz/sCvmRgVYo3T2kmwjin1sxnA8q8ivOzsLJjKoAn0ue3PMxx7O3hTxp45GGfErqdquqg6zXWKyJ9Ko0gOxxwXgX0C4Rao1p/H4ELGL1JxpMyPN1efPANdwW5qU2dFVy/nO7yzLG6iwK6M0BhDkLgOwrigcZmuZ1CgsQlyPOdH4HGhTmAuJe7kBJJWM61mMizninTI61Y0P4VvEaPYcZmJoWdlI0rAtWozxm2Dv50NPnVBZR7+sdXgDgPI9QRBA0QtW4fZYimwYARwyLMj1Wb5Xzol+muETFDksScCKo+2l3P8f3XEZgdgzY+wmH2Y26j+BuQGont3N+I0PkuULelnHoJlxBewDyb/u0KJwsYVWvPNJ2zzNVG5owbzT+tk6sCwy/vKUTQXbA9czXqqYJDmCqjF4lgG8Pd3COO4r0QeEVve5ZSDsPqHDhGLcxLQfSH0jaVrG8335I0obYuXo0bJm6yaY5mBdbW7vsvUeQ=='
-          enc: 'ssh-rsa'
+        # freifunk@backups.homelinux.org:
+        #   key: 'AAAAB3NzaC1yc2EAAAADAQABAAACAQC1938av1T7ITtiLEvvq7uo/Ybqaz0JLNQ7aeu5tiY+onzg1NugEJYHAWAz8YzSbP3K5gXnLISvgVm/plULThifhKHTxReG9nH0FZGbj4xgCk2rfCdyB6OiE6Do/MriLu3RcyBDBWZOpb+qbOZmD6pYk6HB7hDXibSDFAcDcKHJwx4uHyN2+aMLJu5pE7o8XLIxHDrz/sCvmRgVYo3T2kmwjin1sxnA8q8ivOzsLJjKoAn0ue3PMxx7O3hTxp45GGfErqdquqg6zXWKyJ9Ko0gOxxwXgX0C4Rao1p/H4ELGL1JxpMyPN1efPANdwW5qU2dFVy/nO7yzLG6iwK6M0BhDkLgOwrigcZmuZ1CgsQlyPOdH4HGhTmAuJe7kBJJWM61mMizninTI61Y0P4VvEaPYcZmJoWdlI0rAtWozxm2Dv50NPnVBZR7+sdXgDgPI9QRBA0QtW4fZYimwYARwyLMj1Wb5Xzol+muETFDksScCKo+2l3P8f3XEZgdgzY+wmH2Y26j+BuQGont3N+I0PkuULelnHoJlxBewDyb/u0KJwsYVWvPNJ2zzNVG5owbzT+tk6sCwy/vKUTQXbA9czXqqYJDmCqjF4lgG8Pd3COO4r0QeEVve5ZSDsPqHDhGLcxLQfSH0jaVrG8335I0obYuXo0bJm6yaY5mBdbW7vsvUeQ=='
+        #   enc: 'ssh-rsa'
         felixannen@web.de:
           key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDTPilqWfeYXAz3+MtQvVTrxXtLxyWoQdEDtyFkUVONNlqZ0yZfsKlFbuf10JME5y+Hd9THgiB5xh0Ir8fUJVN6JMCvdaaG293L7VK8tlyogcKbGN3aOdDmI3AsDK1ir4F1ZsbiZr/xcypXdWKCWsqgj2QaOS27oJFYCBlyTmdazPxEP/7BkZvDiFaU08kJuESwtCedvmT1BRNrsm73qsnlxsMI9SIg+tba+GPyQ97G7W864w5iimloNtIuETfIvEFjEZczWBEuLb2+kNkSWjgCguacp6iRyO0+Ho0H7YiLc/xGaCqvyDwNvIuXWfNzcYJcjQQbAxb9Vtu3Dc2Qlaib'
           enc: 'ssh-rsa'
         sven@ThinkPad-T430-protected:
           key: 'AAAAB3NzaC1yc2EAAAADAQABAAACAQDFxPbd2/4E9ukHmZt1yAMN6X+mDYORg0lgYle2WjftPhtkz9i9V4T1TecgNwGGl2bDU1p2HxjI30ynauYGHBDVymj7uN2V+OMDiwOAW7m7Bp+fR6gDSMdQYgQhkhmUq8B78f01VjZYu/NoL9ner9W9Y56EdNwW85KoqMw2811PkQH/CxyNLmXHXjOhcHvIjRnFA4BWwNlbqfyUsn22/AxPFL3uDxwg8rtO2GkXILlgTD/sz0jJsN2pQsq7HYKRvoRyTy83b01Dialap+cBM+j9EIirx3riHpBE3T/1/r3VrFDfvwK7OBj/qVt3YGxXE0l67J9N4UNhsK7mW6MhocyZgAK6XzY6qrGbMJ3cDmj4S6KhyB0DgQGw2L3bwpwH0BmMcSBoptwiaw6C50tatatCICVrEKsHhNzCNOHKAbKGCDNyaB7asOcqWkpkSjUcKZemS3jetTKKZ6PJu5chu2EH61ZuZkT1gG7f2W+1zRsgu1PeLsa+oAIxHB91rpS6AqFpoX+VBbGHuLj0mI9S/zytx6NlUcAu+W4uZa80XQSTo2opmOXiRLwSDwWPzEayGkxQSUcWoUuUXbrLq8jabRirfZ0z26DSGEiDEZZbhb1uq67KG6Zack7Fk87bO3Kblf3s4W09rNtyeUndPcHrO3bnwdIFJkZ4F/i14CiRQcwiRw=='
           enc: 'ssh-rsa'
-        root@ff-salt:
-          key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDbxiM391fPpi7eomRqvLGzEIv3GCOBNyzBf/m2Hmv0WdU3NaCPDPcODm3TJQ37Q5ABNN94lOtA3i8n1IfhbsT4/RvlKoc8kqXDAKn0I4fUE5uSq1pDQxSLm3fSRRn3O4ppWJIDv2YLz8x/AAsDOebLVMG6dgeCU7Q2OrOmRr7z1qdoHdzSeo0wxydfeYJnT9VrFlLCEXtd+/Lc8y5rk0WsWf8BVPpIZMsXXq9BjPrJfVrWxye/k96lU2dwdStAjIVnEZ9txRgJRFGkNeG/GKuc8Q2png9n/1hFEOow6VQ7afiPDc7c67jxdsfg3Ke0MrlMAw14E4gDQ2atarEKHhVL'
-          enc: 'ssh-rsa'
+        # root@ff-salt:
+        #   key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDbxiM391fPpi7eomRqvLGzEIv3GCOBNyzBf/m2Hmv0WdU3NaCPDPcODm3TJQ37Q5ABNN94lOtA3i8n1IfhbsT4/RvlKoc8kqXDAKn0I4fUE5uSq1pDQxSLm3fSRRn3O4ppWJIDv2YLz8x/AAsDOebLVMG6dgeCU7Q2OrOmRr7z1qdoHdzSeo0wxydfeYJnT9VrFlLCEXtd+/Lc8y5rk0WsWf8BVPpIZMsXXq9BjPrJfVrWxye/k96lU2dwdStAjIVnEZ9txRgJRFGkNeG/GKuc8Q2png9n/1hFEOow6VQ7afiPDc7c67jxdsfg3Ke0MrlMAw14E4gDQ2atarEKHhVL'
+        #   enc: 'ssh-rsa'
