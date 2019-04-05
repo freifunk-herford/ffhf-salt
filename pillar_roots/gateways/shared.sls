@@ -62,7 +62,7 @@ iptables:
     masquerade: '10.34.0.0/16'
 
 bird:
-  as: '64866' # Freifunk Herford ASN from Freifunk Rheinland
+  myas: '64866' # Freifunk Herford ASN from Freifunk Rheinland
 
 network:
   bridge:
@@ -100,6 +100,7 @@ openssh:
   sshd_config:
     - 'UsePAM yes'
     - 'PermitRootLogin no'
+    - 'PubkeyAuthentication yes'
   ssh_auth:
     user:
       root:
