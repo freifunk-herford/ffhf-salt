@@ -27,7 +27,7 @@
 {% if pillar['dhcp']['ipv6']['enable'] == True %}
 {% set pattern = '^(|#)INTERFACESv6="(.*)$"'%}
 {% set repl = 'INTERFACESv6="%s"' % pillar['network']['bridge']['interface'] %}
-{% endif %}}
+{% endif %}
 
 {% set pattern = '^(|#)INTERFACESv4="(.*)$"'%}
 {% set repl = 'INTERFACESv4="%s"' % pillar['network']['bridge']['interface'] %}
@@ -43,7 +43,7 @@
       - service: {{ dhcp.srv }}
       {% if pillar['dhcp']['ipv6']['enable'] == True %}
       - service: {{ dhcp.srv }}6
-      {% endif %}}
+      {% endif %}
 
 /etc/dhcp/dhcpd.conf:
   file.managed:
