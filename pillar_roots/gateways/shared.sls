@@ -99,7 +99,7 @@ apache:
 openssh:
   sshd_config:
     - 'UsePAM yes'
-    - 'PermitRootLogin yes'
+    - 'PermitRootLogin no'
   ssh_auth:
     user:
       root:
