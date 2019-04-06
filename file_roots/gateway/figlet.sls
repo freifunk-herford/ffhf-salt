@@ -11,6 +11,7 @@
 /etc/update-motd.d/00-ffhf-header:
   file.managed:
     - name: /etc/update-motd.d/00-ffhf-header
+    - source: salt://gateway/etc/update-motd.d/00-ffhf-header
     - mode: 755
     - user: root
     - group: root
