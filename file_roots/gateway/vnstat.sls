@@ -18,7 +18,9 @@
       - cmd: init-vnstat-{{ pillar['network']['batman']['interface'] }}
       - cmd: init-vnstat-{{ pillar['network']['mesh']['interface'] }}
       {% endif %}
+      {% if pillar['exit']['type'] != 'gre' %}
       - cmd: init-vnstat-{{ pillar['network']['exit']['interface'] }}
+      {% endif %}
 
 /etc/vnstat.conf:
   file.managed:
@@ -73,6 +75,8 @@ init-vnstat-{{ pillar['network']['mesh']['interface'] }}:
 
 {% endif %}
 
+{% if pillar['exit']['type'] != 'gre' %}
+
 init-vnstat-{{ pillar['network']['exit']['interface'] }}:
   cmd.run:
     - name: |
@@ -81,6 +85,8 @@ init-vnstat-{{ pillar['network']['exit']['interface'] }}:
     - runas: vnstat
     - require:
       - pkg: {{ vnstat.pkg }}
+
+{% endif %}
 
 # /var/lib/vnstat:
 #   file.directory:
