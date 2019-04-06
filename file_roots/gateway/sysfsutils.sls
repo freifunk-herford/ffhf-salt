@@ -4,6 +4,8 @@
   'Debian': {'pkg': 'sysfsutils'},
 }, default='Debian') %}
 
+{% if pillar['network']['mesh']['hwaddress'] is defined %}
+
 {{ sysfsutils.pkg }}:
   pkg.installed:
     - name: {{ sysfsutils.pkg }}
@@ -34,3 +36,5 @@ check-sysfs-cron:
     - comment: 'Check if hop_penality is set every 5 Minutes'
     - require:
       - file: /root/scripts/check-sysfs.sh
+
+{% endif %}

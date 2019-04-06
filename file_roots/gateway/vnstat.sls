@@ -14,8 +14,10 @@
       - file: /etc/vnstat.conf
       - cmd: init-vnstat-{{ pillar['network']['primary']['interface'] }}
       - cmd: init-vnstat-{{ pillar['network']['bridge']['interface'] }}
+      {% if pillar['network']['mesh']['hwaddress'] is defined %}
       - cmd: init-vnstat-{{ pillar['network']['batman']['interface'] }}
       - cmd: init-vnstat-{{ pillar['network']['mesh']['interface'] }}
+      {% endif %}
       - cmd: init-vnstat-{{ pillar['network']['exit']['interface'] }}
 
 /etc/vnstat.conf:
@@ -49,6 +51,8 @@ init-vnstat-{{ pillar['network']['bridge']['interface'] }}:
     - require:
       - pkg: {{ vnstat.pkg }}
 
+{% if pillar['network']['mesh']['hwaddress'] is defined %}
+
 init-vnstat-{{ pillar['network']['batman']['interface'] }}:
   cmd.run:
     - name: |
@@ -66,6 +70,8 @@ init-vnstat-{{ pillar['network']['mesh']['interface'] }}:
     - runas: vnstat
     - require:
       - pkg: {{ vnstat.pkg }}
+
+{% endif %}
 
 init-vnstat-{{ pillar['network']['exit']['interface'] }}:
   cmd.run:
