@@ -19,3 +19,4 @@ include:
   - map.meshviewer
   - map.ffflash
   - map.ffmap-backend
+  - gateway.figlet

@@ -24,3 +24,4 @@ include:
   - gateway.apache2
   - gateway.vnstat
   - gateway.rsyslog
+  - gateway.figlet
