@@ -9,7 +9,7 @@
     - name: {{ ntp.pkg }}
   service.enabled:
     - name: {{ ntp.srv }}
-    - enable: True
+    # - enable: True # Trigger error
     # - watch:
     #   - file: /etc/ntp.conf
     # - unless: test -f /var/run/ntpd.pid
