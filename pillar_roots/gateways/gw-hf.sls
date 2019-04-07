@@ -78,7 +78,7 @@ exit:
       netmask: '255.255.255.255'
       address: '100.64.4.205'
       dstaddr: '100.64.4.204'
-      endoint: '185.66.195.0'
+      endpoint: '185.66.195.0'
       address6: '2a03:2260:0:a9::2/64'
     bb-a.ix.dus:
       interface: 'bb-a-ix-dus'

@@ -64,14 +64,14 @@ ip -6 rule add from all lookup ffhf priority 107
 ip -4 route add 10.34.0.0/16 proto static dev {{ bridge }} table ffhf # Todo: Add Variable
 ip -6 route add fdf3:2049:5152::/48 proto static dev {{ bridge }} table ffhf # Todo: Add variable
 
-{%- if pillar['exit']['type'] == 'gre' %}
-{%- else -%}
+{% if pillar['exit']['type'] != 'gre' %}
 #
 # unreachable routes for rt_table ffinetexit
 ip -4 route add unreachable default table ffinetexit
 ip -6 route add unreachable default table ffinetexit
-{% endif -%}
+{% endif %}
 
+{% if pillar['network']['mesh']['hwaddress'] is defined %}
 if [ -f /bin/systemctl ]; then
 	if [ "$(systemctl status alfred | grep -E 'Active: inactive|Active: failed')" ]; then
 		systemctl restart fastd
@@ -85,5 +85,6 @@ else
 		service alfred restart
 	fi
 fi
+{% endif %}
 
 exit 0
