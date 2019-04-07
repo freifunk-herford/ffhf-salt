@@ -5,7 +5,7 @@ network:
   primary:
     interface: 'eth0'
     address: '5.45.102.246'
-    address6: 'fe80::44eb:1cff:fec1:8db1/64'
+    # address6: # Der Server hat keine IPv6 Adresse
   bridge:
     hwaddress: '02:42:0a:22:00:20'
     address: '10.34.0.32'
@@ -15,6 +15,3 @@ network:
     netmask6: '48'
   mesh:
     hwaddress: '02:00:0a:22:00:20'
-
-
-

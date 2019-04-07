@@ -31,7 +31,7 @@ network:
   primary:
     interface: 'ens3'
     address: '37.120.186.226'
-    # address6: # Der Server hat keine IPv6 Adresse
+    # address6: '2a03:4000:f:621::/64'
 
 exit:
   type: 'openvpn' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
