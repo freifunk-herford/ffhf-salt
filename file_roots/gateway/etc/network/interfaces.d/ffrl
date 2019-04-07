@@ -1,6 +1,7 @@
 # This file is managed by Salt, do not edit.
 {% for backbone in pillar['exit']['ffrl'] %}
 # GRE-Tunnel zu {{ backbone }}
+
 auto {{ pillar['exit']['ffrl'][backbone]['interface'] }}
 iface {{ pillar['exit']['ffrl'][backbone]['interface'] }} inet tunnel # static
     mode gre
@@ -11,12 +12,12 @@ iface {{ pillar['exit']['ffrl'][backbone]['interface'] }} inet tunnel # static
     endpoint {{ pillar['exit']['ffrl'][backbone]['endpoint'] }}
     ttl 64
     mtu 1400
-    # pre-up ip tunnel add $IFACE mode gre local {#{ pillar['network']['primary']['address'] }} remote {{ pillar['exit']['ffrl'][backbone]['address'] }#} ttl 255
-    # post-up ip link set $IFACE mtu 1400
-	# post-up ip addr add {#{ pillar['exit']['ffrl']['address'] }#}/32 dev $IFACE
-    # post-down ip tunnel del $IFACE
+    {# pre-up ip tunnel add $IFACE mode gre local {#{ pillar['network']['primary']['address'] }} remote {{ pillar['exit']['ffrl'][backbone]['address'] }#} ttl 255 #}
+    {# post-up ip link set $IFACE mtu 1400 #}
+    {# post-up ip addr add {#{ pillar['exit']['ffrl']['address'] }#}/32 dev $IFACE #}
+    {# post-down ip tunnel del $IFACE #}
 
 iface {{ pillar['exit']['ffrl'][backbone]['interface'] }} inet6 static
     address {{ pillar['exit']['ffrl'][backbone]['address6'] }}
-    # netmask {#{ pillar['exit']['ffrl'][backbone]['tunnel']['ipv6']['netmask'] }#}
+    {# netmask {#{ pillar['exit']['ffrl'][backbone]['tunnel']['ipv6']['netmask'] }#} #}
 {% endfor %}

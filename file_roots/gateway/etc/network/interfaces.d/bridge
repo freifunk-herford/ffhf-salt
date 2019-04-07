@@ -2,6 +2,7 @@
 
 auto {{ bridge }}
 iface {{ bridge }} inet static
+    bridge_ports {{ bridge_ports }}
     hwaddress {{ hwaddress }}
     address {{ address }}
     netmask {{ netmask }}
