@@ -44,6 +44,8 @@
     - name: {{ iptables.srv }}
   {% endif %}
 
+{% if pillar['exit']['type'] != 'gre' %}
+
 nat-POSTROUTING-ACCEPT-MASQUERADE:
   iptables.append:
     - table: nat
@@ -53,6 +55,8 @@ nat-POSTROUTING-ACCEPT-MASQUERADE:
     - jump: MASQUERADE
     - source: {{ pillar['iptables']['ipv4']['masquerade'] }}
     - out-interface: {{ pillar['network']['exit']['interface'] }}
+
+{% endif %}
 
 {% if grains['osrelease'] == '16.04' and grains['os'] == 'Ubuntu' %}
 netfilter-persistent-save:
