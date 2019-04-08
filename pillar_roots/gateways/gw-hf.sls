@@ -42,17 +42,17 @@ iptables:
   tables:
     nat:
       postrouting:
-        '-s 10.34.0.0/16 -o bb+ -j ffrl-nat'
+        - '-s 10.34.0.0/16 -o bb+ -j ffrl-nat'
       ffrl-nat:
-        '-s 100.64.4.204/31 -o bb+ -j RETURN'
-        '-s 100.64.4.206/31 -o bb+ -j RETURN'
-        '-s 100.64.4.208/31 -o bb+ -j RETURN'
-        '-s 100.64.4.210/31 -o bb+ -j RETURN'
-        '-s 10.34.0.0/16 -o bb+ -j SNAT --to-source 185.66.193.96'
+        - '-s 100.64.4.204/31 -o bb+ -j RETURN'
+        - '-s 100.64.4.206/31 -o bb+ -j RETURN'
+        - '-s 100.64.4.208/31 -o bb+ -j RETURN'
+        - '-s 100.64.4.210/31 -o bb+ -j RETURN'
+        - '-s 10.34.0.0/16 -o bb+ -j SNAT --to-source 185.66.193.96'
     mangle:
       forward:
-        '-i hfBR -o ffrl+ -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu'
-        '-i ffrl+ -o hfBR -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu'
+        - '-i hfBR -o ffrl+ -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu'
+        - '-i ffrl+ -o hfBR -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu'
 
 exit:
   type: 'gre' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
