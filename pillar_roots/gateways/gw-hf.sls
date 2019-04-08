@@ -94,6 +94,13 @@ exit:
       dstaddr: '100.64.4.204'
       endpoint: '185.66.195.0'
       address6: '2a03:2260:0:a9::2/64'
+    # bb-a.fra3.fra:
+    #   interface: 'bb-a-fra3-fra'
+    #   netmask: '255.255.255.255'
+    #   address: ''
+    #   dstaddr: ''
+    #   endpoint: '185.66.194.0'
+    #   address6: ''
     bb-a.ix.dus:
       interface: 'bb-a-ix-dus'
       netmask: '255.255.255.255'
@@ -108,6 +115,13 @@ exit:
       dstaddr: '100.64.4.208'
       endpoint: '185.66.195.1'
       address6: '2a03:2260:0:ab::2/64'
+    # bb-b.fra3.fra:
+    #   interface: 'bb-b-fra3-fra'
+    #   netmask: '255.255.255.255'
+    #   address: ''
+    #   dstaddr: ''
+    #   endpoint: '185.66.194.1'
+    #   address6: ''
     bb-b.ix.dus:
       interface: 'bb-b-ix-dus'
       netmask: '255.255.255.255'
@@ -115,12 +129,6 @@ exit:
       dstaddr: '100.64.4.210'
       endpoint: '185.66.193.1'
       address6: '2a03:2260:0:ac::2/64'
-    # bb-a.fra3.fra:
-    #   interface: 'bb-a-fra3-fra'
-    #   endpoint: '185.66.194.0'
-    # bb-b.fra3.fra:
-    #   interface: 'bb-b-fra3-fra'
-    #   endpoint: '185.66.194.1'
 
 openssh:
   ssh_auth:
