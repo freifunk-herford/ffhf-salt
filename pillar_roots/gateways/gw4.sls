@@ -49,8 +49,8 @@ netfilter:
       - '-A FORWARD -i bb+ -o hfBR -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu'
 
 exit:
-  type: 'openvpn' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
-  provider: 'gre' # Verschiedene Provider sind moeglich
+  type: 'gre' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
+  provider: 'ffrl' # Verschiedene Provider sind moeglich
   pia_linux: # Private Internet Access Luca
     pia_userpass.txt: |
       -----BEGIN PGP MESSAGE-----
