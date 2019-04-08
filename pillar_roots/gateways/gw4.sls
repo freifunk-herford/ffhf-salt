@@ -115,12 +115,14 @@ exit:
       address6: '2a03:2260:0:34b::2/64'
     # bb-b.fra3.fra:
     #   interface: 'bb-b-fra3-fra'
+    #   netmask: '255.255.255.255'
     #   address: '100.64.6.81'
     #   dstaddr: '100.64.6.80'
     #   endpoint: '185.66.194.1'
     #   address6: '2a03:2260:0:34c::2/64'
     bb-b.ix.dus:
       interface: 'bb-b-ix-dus'
+      netmask: '255.255.255.255'
       address: '100.64.6.83'
       dstaddr: '100.64.6.82'
       endpoint: '185.66.193.1'
