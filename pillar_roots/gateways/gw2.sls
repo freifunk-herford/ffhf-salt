@@ -33,11 +33,10 @@ network:
     address: '37.120.186.226'
     # address6: '2a03:4000:f:621::/64'
 
-iptables:
+netfilter:
   tables:
     nat:
-      postrouting:
-        - '-s 10.34.0.0/16 -o exitVPN -j MASQUERADE'
+      - '-A POSTROUTING -s 10.34.0.0/16 -o exitVPN -j MASQUERADE'
 
 exit:
   type: 'openvpn' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
