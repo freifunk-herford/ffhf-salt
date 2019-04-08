@@ -9,7 +9,6 @@ include:
   - gateway.ntp
   - gateway.network
   - gateway.iproute2
-  # - gateway.iptables
   - gateway.netfilter
   - gateway.fail2ban
   - gateway.batman
