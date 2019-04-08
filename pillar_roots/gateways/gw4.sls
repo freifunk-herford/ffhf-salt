@@ -38,6 +38,7 @@ netfilter:
     nat:
       # - '-A POSTROUTING -s 10.34.0.0/16 -o exitVPN -j MASQUERADE'
       # iptables -t nat -D POSTROUTING -s 10.34.0.0/16 -o exitVPN -j MASQUERADE
+      - '-N ffrl-nat'
       - '-A POSTROUTING -s 10.34.0.0/16 -o bb+ -j ffrl-nat'
       - '-A ffrl-nat -s 100.64.4.204/31 -o bb+ -j RETURN'
       - '-A ffrl-nat -s 100.64.4.206/31 -o bb+ -j RETURN'

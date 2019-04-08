@@ -177,4 +177,3 @@ openvpn-cron:
     - identifier: check-openvpn
 
 {% endif %}
-

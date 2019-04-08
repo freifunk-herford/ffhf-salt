@@ -4,7 +4,7 @@
   'Ubuntu': {'pkg': 'iptables-persistent', 'srv': 'iptables-persistent'},
 }, default='Ubuntu') %}
 
-pkg-{{ iptables.pkg }}:
+{{ iptables.pkg }}:
   pkg.installed:
     - name: {{ iptables.pkg }}
 
