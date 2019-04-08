@@ -50,7 +50,7 @@ netfilter:
 
 exit:
   type: 'openvpn' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
-  provider: 'pia_linux' # Verschiedene Provider sind moeglich
+  provider: 'gre' # Verschiedene Provider sind moeglich
   pia_linux: # Private Internet Access Luca
     pia_userpass.txt: |
       -----BEGIN PGP MESSAGE-----
