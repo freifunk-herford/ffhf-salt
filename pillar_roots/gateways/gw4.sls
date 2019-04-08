@@ -44,7 +44,7 @@ netfilter:
       - '-A ffrl-nat -s 100.64.4.206/31 -o bb+ -j RETURN'
       - '-A ffrl-nat -s 100.64.4.208/31 -o bb+ -j RETURN'
       - '-A ffrl-nat -s 100.64.4.210/31 -o bb+ -j RETURN'
-      - '-A ffrl-nat -s 10.34.0.0/16 -o bb+ -j SNAT --to-source 185.66.193.96'
+      - '-A ffrl-nat -s 10.34.0.0/16 -o bb+ -j SNAT --to-source 185.66.193.96' # 100.64.6.72' # ? 185.66.193.96
     filter:
       - '-A FORWARD -i hfBR -o bb+ -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu'
       - '-A FORWARD -i bb+ -o hfBR -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu'
@@ -88,37 +88,43 @@ exit:
     bb-a.ak.ber:
       interface: 'bb-a-ak-ber'
       netmask: '255.255.255.255'
-      address: '100.64.4.205'
-      dstaddr: '100.64.4.204'
+      address: '100.64.6.73'
+      dstaddr: '100.64.6.72'
       endpoint: '185.66.195.0'
-      address6: '2a03:2260:0:a9::2/64'
+      address6: '2a03:2260:0:348::2/64'
+    # bb-a.fra3.fra:
+    #   interface: 'bb-a.fra3.fra'
+    #   netmask: '255.255.255.255'
+    #   address: '100.64.6.75'
+    #   dstaddr: '100.64.6.74'
+    #   endpoint: '185.66.194.0'
+    #   address6: '2a03:2260:0:349::2/64'
     bb-a.ix.dus:
-      interface: 'bb-a-ix-dus'
+      interface: 'bb-a.ix.dus'
       netmask: '255.255.255.255'
-      address: '100.64.4.207'
-      dstaddr: '100.64.4.206'
+      address: '100.64.6.77'
+      dstaddr: '100.64.6.76'
       endpoint: '185.66.193.0'
-      address6: '2a03:2260:0:aa::2/64'
+      address6: '2a03:2260:0:34a::2/64'
     bb-b.ak.ber:
       interface: 'bb-b-ak-ber'
       netmask: '255.255.255.255'
-      address: '100.64.4.209'
-      dstaddr: '100.64.4.208'
+      address: '100.64.6.79'
+      dstaddr: '100.64.6.78'
       endpoint: '185.66.195.1'
-      address6: '2a03:2260:0:ab::2/64'
-    bb-b.ix.dus:
-      interface: 'bb-b-ix-dus'
-      netmask: '255.255.255.255'
-      address: '100.64.4.211'
-      dstaddr: '100.64.4.210'
-      endpoint: '185.66.193.1'
-      address6: '2a03:2260:0:ac::2/64'
-    # bb-a.fra3.fra:
-    #   interface: 'bb-a-fra3-fra'
-    #   endpoint: '185.66.194.0'
+      address6: '2a03:2260:0:34b::2/64'
     # bb-b.fra3.fra:
     #   interface: 'bb-b-fra3-fra'
+    #   address: '100.64.6.81'
+    #   dstaddr: '100.64.6.80'
     #   endpoint: '185.66.194.1'
+    #   address6: '2a03:2260:0:34c::2/64'
+    bb-b.ix.dus:
+      interface: 'bb-b-ix-dus'
+      address: '100.64.6.83'
+      dstaddr: '100.64.6.82'
+      endpoint: '185.66.193.1'
+      address6: '2a03:2260:0:34d::2/64'
 
 fastd: # Secret key von gw4 - nur den string!!!
   secret: |
