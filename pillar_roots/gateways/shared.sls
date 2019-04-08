@@ -57,10 +57,6 @@ bind:
   # Test Daten Dummy DNS Master
   #masters: 10.34.0.2; fdf3:2049:5152::a22:2;
 
-iptables:
-  ipv4:
-    masquerade: '10.34.0.0/16'
-
 bird:
   myas: '64866' # Freifunk Herford ASN from Freifunk Rheinland
 

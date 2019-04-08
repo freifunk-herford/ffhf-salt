@@ -33,6 +33,11 @@ network:
     address: '89.163.130.241'
     # address6: # Der Server hat keine IPv6 Adresse
 
+iptables:
+  tables:
+    nat:
+      - '-A POSTROUTING -s 10.34.0.0/16 -o exitVPN -j MASQUERADE'
+
 exit:
   type: 'openvpn' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
   provider: 'mullvad_linux' # Verschiedene Provider sind moeglich

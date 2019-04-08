@@ -33,6 +33,11 @@ network:
     address: '185.170.115.147'
     # address6: '2a03:4000:15:7fc::/64'
 
+iptables:
+  tables:
+    nat:
+      - '-A POSTROUTING -s 10.34.0.0/16 -o exitVPN -j MASQUERADE'
+
 exit:
   type: 'openvpn' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
   provider: 'pia_linux' # Verschiedene Provider sind moeglich
