@@ -40,10 +40,10 @@ netfilter:
       # iptables -t nat -D POSTROUTING -s 10.34.0.0/16 -o exitVPN -j MASQUERADE
       - '-N ffrl-nat'
       - '-A POSTROUTING -s 10.34.0.0/16 -o bb+ -j ffrl-nat'
-      - '-A ffrl-nat -s 100.64.4.204/31 -o bb+ -j RETURN'
-      - '-A ffrl-nat -s 100.64.4.206/31 -o bb+ -j RETURN'
-      - '-A ffrl-nat -s 100.64.4.208/31 -o bb+ -j RETURN'
-      - '-A ffrl-nat -s 100.64.4.210/31 -o bb+ -j RETURN'
+      - '-A ffrl-nat -s 100.64.6.72/31 -o bb+ -j RETURN'
+      - '-A ffrl-nat -s 100.64.6.76/31 -o bb+ -j RETURN'
+      - '-A ffrl-nat -s 100.64.6.78/31 -o bb+ -j RETURN'
+      - '-A ffrl-nat -s 100.64.6.80/31 -o bb+ -j RETURN'
       - '-A ffrl-nat -s 10.34.0.0/16 -o bb+ -j SNAT --to-source 185.66.193.96' # 100.64.6.72' # ? 185.66.193.96
     filter:
       - '-A FORWARD -i hfBR -o bb+ -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu'
