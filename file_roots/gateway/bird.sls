@@ -52,10 +52,6 @@
   pkg.removed:
     - pkg: {{ bird.pkg }}
 
-{{ bird6.pkg }}:
-  pkg.removed:
-    - pkg: {{ bird6.pkg }}
-
 /etc/bird:
   file.absent:
     - name: /etc/bird
