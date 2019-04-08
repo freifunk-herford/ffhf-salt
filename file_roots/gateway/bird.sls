@@ -5,7 +5,7 @@
 }, default='Debian') %}
 
 {% set bird6 = salt['grains.filter_by']({
-  'Debian': {'pkg': 'bird6', 'srv': 'bird6'},
+  'Debian': {'pkg': 'bird', 'srv': 'bird6'},
 }, default='Debian') %}
 
 {% if pillar['exit']['type'] == 'gre' %}
