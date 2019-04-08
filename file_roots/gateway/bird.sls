@@ -13,14 +13,6 @@
 {{ bird.pkg }}:
   pkg.installed:
     - name: {{ bird.pkg }}
-    {% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %}
-    - fromrepo: trusty
-    - skip_verify: True
-    - skip_suggestions: True
-    - install_recommends: False
-    - refresh: True
-    - unless: test -f /usr/sbin/bird
-    {% endif %}
   service.running:
     - name: {{ bird.srv }}
     - enable: True
@@ -39,23 +31,8 @@
       - service: {{ bird.srv }}
 
 {{ bird6.pkg }}:
-  {% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %}
-  pkgrepo.managed:
-    - ppa: cz.nic-labs/bird
-    - keyid_ppa: True
-    - require_in:
-      - pkg: {{ bird6.pkg }}
-  {% endif %}
   pkg.installed:
     - name: {{ bird6.pkg }}
-    {% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %}
-    - fromrepo: trusty
-    - skip_verify: True
-    - skip_suggestions: True
-    - install_recommends: False
-    - refresh: True
-    - unless: test -f /usr/sbin/bird6
-    {% endif %}
   service.running:
     - name: {{ bird6.srv }}
     - enable: True
@@ -104,3 +81,28 @@
   #   - require_in:
   #     - pkg: {{ bird.pkg }}
   # {#% endif %#}
+
+    {#% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %#}
+    # - fromrepo: bionic
+    # - skip_verify: True
+    # - skip_suggestions: True
+    # - install_recommends: False
+    # - refresh: True
+    # - unless: test -f /usr/sbin/bird
+    {#% endif %#}
+
+  {#% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %#}
+  # pkgrepo.managed:
+  #   - ppa: cz.nic-labs/bird
+  #   - keyid_ppa: True
+  #   - require_in:
+  #     - pkg: {{ bird6.pkg }}
+  {#% endif %#}
+    # {#% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %#}
+    # - fromrepo: trusty
+    # - skip_verify: True
+    # - skip_suggestions: True
+    # - install_recommends: False
+    # - refresh: True
+    # - unless: test -f /usr/sbin/bird6
+    # {#% endif %#}
