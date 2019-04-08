@@ -36,7 +36,17 @@ network:
 netfilter:
   tables:
     nat:
-      - '-A POSTROUTING -s 10.34.0.0/16 -o exitVPN -j MASQUERADE'
+      # - '-A POSTROUTING -s 10.34.0.0/16 -o exitVPN -j MASQUERADE'
+      # iptables -t nat -D POSTROUTING -s 10.34.0.0/16 -o exitVPN -j MASQUERADE
+      - '-A POSTROUTING -s 10.34.0.0/16 -o bb+ -j ffrl-nat'
+      - '-A ffrl-nat -s 100.64.4.204/31 -o bb+ -j RETURN'
+      - '-A ffrl-nat -s 100.64.4.206/31 -o bb+ -j RETURN'
+      - '-A ffrl-nat -s 100.64.4.208/31 -o bb+ -j RETURN'
+      - '-A ffrl-nat -s 100.64.4.210/31 -o bb+ -j RETURN'
+      - '-A ffrl-nat -s 10.34.0.0/16 -o bb+ -j SNAT --to-source 185.66.193.96'
+    filter:
+      - '-A FORWARD -i hfBR -o bb+ -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu'
+      - '-A FORWARD -i bb+ -o hfBR -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu'
 
 exit:
   type: 'openvpn' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
@@ -73,6 +83,41 @@ exit:
       +gDOv/i/boSUF3yHBEhVlv6BGOQAHu5CDkhjXFNqeVUdbFS/Ru1FVL+wj3Q=
       =HKyn
       -----END PGP MESSAGE-----
+  ffrl: # Freifunk Rheinland Backbone
+    bb-a.ak.ber:
+      interface: 'bb-a-ak-ber'
+      netmask: '255.255.255.255'
+      address: '100.64.4.205'
+      dstaddr: '100.64.4.204'
+      endpoint: '185.66.195.0'
+      address6: '2a03:2260:0:a9::2/64'
+    bb-a.ix.dus:
+      interface: 'bb-a-ix-dus'
+      netmask: '255.255.255.255'
+      address: '100.64.4.207'
+      dstaddr: '100.64.4.206'
+      endpoint: '185.66.193.0'
+      address6: '2a03:2260:0:aa::2/64'
+    bb-b.ak.ber:
+      interface: 'bb-b-ak-ber'
+      netmask: '255.255.255.255'
+      address: '100.64.4.209'
+      dstaddr: '100.64.4.208'
+      endpoint: '185.66.195.1'
+      address6: '2a03:2260:0:ab::2/64'
+    bb-b.ix.dus:
+      interface: 'bb-b-ix-dus'
+      netmask: '255.255.255.255'
+      address: '100.64.4.211'
+      dstaddr: '100.64.4.210'
+      endpoint: '185.66.193.1'
+      address6: '2a03:2260:0:ac::2/64'
+    # bb-a.fra3.fra:
+    #   interface: 'bb-a-fra3-fra'
+    #   endpoint: '185.66.194.0'
+    # bb-b.fra3.fra:
+    #   interface: 'bb-b-fra3-fra'
+    #   endpoint: '185.66.194.1'
 
 fastd: # Secret key von gw4 - nur den string!!!
   secret: |
