@@ -11,13 +11,6 @@
 {% if pillar['exit']['type'] == 'gre' %}
 
 {{ bird.pkg }}:
-  {% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %}
-  pkgrepo.managed:
-    - ppa: cz.nic-labs/bird
-    - keyid_ppa: True
-    - require_in:
-      - pkg: {{ bird.pkg }}
-  {% endif %}
   pkg.installed:
     - name: {{ bird.pkg }}
     {% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %}
@@ -103,3 +96,11 @@
 #     - name: /etc/bird6.conf
 
 {% endif %}
+
+  # {#% if grains['os'] == 'Ubuntu' and grains['osrelease'] != '16.04' %#}
+  # pkgrepo.managed:
+  #   - ppa: cz.nic-labs/bird
+  #   - keyid_ppa: True
+  #   - require_in:
+  #     - pkg: {{ bird.pkg }}
+  # {#% endif %#}
