@@ -57,9 +57,9 @@
     - listen_in:
       - service: {{ bird6.srv }}
 
-/etc/bird/ffrl_{{ grains['host'] }}_upstream.conf:
+/etc/bird/ffrl_{{ grains['host'] }}_upstream6.conf:
   file.managed:
-    - name: /etc/bird/ffrl_{{ grains['host'] }}_upstream.conf
+    - name: /etc/bird/ffrl_{{ grains['host'] }}_upstream6.conf
     - source: salt://gateway/etc/bird/ffrl_{{ grains['host'] }}_upstream6.conf
     - template: jinja
     - user: root
