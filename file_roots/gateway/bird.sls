@@ -28,6 +28,17 @@
     - listen_in:
       - service: {{ bird.srv }}
 
+/etc/bird/ffrl_{{ grains['host'] }}_upstream.conf:
+  file.managed:
+    - name: /etc/bird/ffrl_{{ grains['host'] }}_upstream.conf
+    - source: salt://gateway/etc/bird/ffrl_{{ grains['host'] }}_upstream.conf
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 644
+    - listen_in:
+      - service: {{ bird.srv }}
+
 {{ bird6.srv }}:
   service.running:
     - name: {{ bird6.srv }}
@@ -45,6 +56,17 @@
     - mode: 644
     - listen_in:
       - service: {{ bird6.srv }}
+
+/etc/bird/ffrl_{{ grains['host'] }}_upstream.conf:
+  file.managed:
+    - name: /etc/bird/ffrl_{{ grains['host'] }}_upstream.conf
+    - source: salt://gateway/etc/bird/ffrl_{{ grains['host'] }}_upstream6.conf
+    - template: jinja
+    - user: root
+    - group: root
+    - mode: 644
+    - listen_in:
+      - service: {{ bird.srv }}
 
 {% else %}
 
