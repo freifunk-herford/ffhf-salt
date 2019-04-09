@@ -44,7 +44,7 @@ netfilter:
       - '-A ffrl-nat -s 100.64.6.76/31 -o bb+ -j RETURN'
       - '-A ffrl-nat -s 100.64.6.78/31 -o bb+ -j RETURN'
       - '-A ffrl-nat -s 100.64.6.80/31 -o bb+ -j RETURN'
-      - '-A ffrl-nat -s 10.34.0.0/16 -o bb+ -j SNAT --to-source 185.66.193.96' # 100.64.6.72' # ? 185.66.193.96
+      - '-A ffrl-nat -s 10.34.0.0/16 -o bb+ -j SNAT --to-source 185.66.193.96'
     filter:
       - '-A FORWARD -i hfBR -o bb+ -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu'
       - '-A FORWARD -i bb+ -o hfBR -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu'
