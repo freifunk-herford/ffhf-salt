@@ -5,6 +5,6 @@ iface {{ batman }} inet6 manual
     pre-up modprobe batman-adv
     post-up brctl addif {{ bridge }} $IFACE
     post-up batctl -m $IFACE it 10000
-#    post-up batctl -m $IFACE vm server # Error - The installed batctl version and kernel module don't have vis support. The vis functionality
+    # post-up batctl -m $IFACE vm server # Error - The installed batctl version and kernel module don't have vis support. The vis functionality
     post-up batctl -m $IFACE gw server 96mbit/96mbit
     pre-down brctl delif {{ bridge }} $IFACE || true

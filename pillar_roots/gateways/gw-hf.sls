@@ -24,8 +24,7 @@ network:
     address: '10.34.0.10'
     netmask: '255.255.0.0'
     address6: 'fdf3:2049:5152::a22:10'
-    # address6mask: 'fdf3:2049:5152::a22:10/64' # ????
-    address6mask: 'fdf3:2049:5152::a22:000a/64'
+    address6mask: 'fdf3:2049:5152::a22:000a/64' # address6mask: 'fdf3:2049:5152::a22:10/64' # ????
     netmask6: '48'
   # mesh:
   #   hwaddress: '02:00:0a:22:00:0a'
@@ -97,10 +96,10 @@ exit:
     # bb-a.fra3.fra:
     #   interface: 'bb-a-fra3-fra'
     #   netmask: '255.255.255.255'
-    #   address: ''
-    #   dstaddr: ''
+    #   address: '100.64.2.61'
+    #   dstaddr: '100.64.2.60'
     #   endpoint: '185.66.194.0'
-    #   address6: ''
+    #   address6: '2a03:2260:0:126::2/64'
     bb-a.ix.dus:
       interface: 'bb-a-ix-dus'
       netmask: '255.255.255.255'
@@ -118,10 +117,10 @@ exit:
     # bb-b.fra3.fra:
     #   interface: 'bb-b-fra3-fra'
     #   netmask: '255.255.255.255'
-    #   address: ''
-    #   dstaddr: ''
+    #   address: '100.64.2.59'
+    #   dstaddr: '100.64.2.58'
     #   endpoint: '185.66.194.1'
-    #   address6: ''
+    #   address6: '2a03:2260:0:127::2/64'
     bb-b.ix.dus:
       interface: 'bb-b-ix-dus'
       netmask: '255.255.255.255'
