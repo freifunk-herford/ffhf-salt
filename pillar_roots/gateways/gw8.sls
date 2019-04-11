@@ -26,6 +26,7 @@ network:
     address6: 'fdf3:2049:5152::a22:8'
     address6mask: 'fdf3:2049:5152::a22:8/64'
     netmask6: '48'
+    # bridge_ports: ''
   mesh:
     hwaddress: '02:00:0a:22:00:08'
   primary: # Test Daten

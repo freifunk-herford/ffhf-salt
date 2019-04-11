@@ -4,7 +4,7 @@ include:
   - gateway.etckeeper
   - gateway.mosh
   - gateway.molly-guard
-  # - gateway.haveged
+  - gateway.haveged
   - gateway.openssh-server
   - gateway.ntp
   - gateway.network

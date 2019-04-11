@@ -2,7 +2,7 @@
 
 auto {{ bridge }}
 iface {{ bridge }} inet static
-    bridge_ports {{ bridge_ports }}
+    {%- if pillar['network']['bridge']['bridge_ports'] is defined %}bridge_ports {{ pillar['network']['primary']['interface'] }}{% endif -%}
     hwaddress {{ hwaddress }}
     address {{ address }}
     netmask {{ netmask }}

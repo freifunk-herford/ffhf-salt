@@ -89,7 +89,6 @@
     - defaults:
         primary: {{ pillar['network']['primary']['interface'] }}
         bridge: {{ pillar['network']['bridge']['interface'] }}
-        bridge_ports: {{ pillar['network']['primary']['interface'] }}
         hwaddress: {{ pillar['network']['bridge']['hwaddress'] }}
         address: {{ pillar['network']['bridge']['address'] }}
         netmask: {{ pillar['network']['bridge']['netmask'] }}

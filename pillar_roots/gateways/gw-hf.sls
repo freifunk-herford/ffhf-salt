@@ -26,6 +26,7 @@ network:
     address6: 'fdf3:2049:5152::a22:10'
     address6mask: 'fdf3:2049:5152::a22:000a/64' # address6mask: 'fdf3:2049:5152::a22:10/64' # ????
     netmask6: '48'
+    bridge_ports: 'eth1'
   # mesh:
   #   hwaddress: '02:00:0a:22:00:0a'
   primary:

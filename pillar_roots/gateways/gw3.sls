@@ -26,6 +26,7 @@ network:
     address6: 'fdf3:2049:5152::a22:3' # User Freifunk-Netzwerk IPv6
     address6mask: 'fdf3:2049:5152::a22:3/64'
     netmask6: '48'
+    # bridge_ports: ''
   mesh: # 02 local 00 ist "Wayne" der Rest:10.34.0.2 in hex!
     hwaddress: '02:00:0a:22:00:03'
   primary:
