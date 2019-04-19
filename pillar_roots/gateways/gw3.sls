@@ -75,6 +75,14 @@ exit:
       =HKyn
       -----END PGP MESSAGE-----
 
+openssh:
+  ssh_auth:
+    user:
+      root:
+        felixannen@web.de: # Felix
+          key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDTPilqWfeYXAz3+MtQvVTrxXtLxyWoQdEDtyFkUVONNlqZ0yZfsKlFbuf10JME5y+Hd9THgiB5xh0Ir8fUJVN6JMCvdaaG293L7VK8tlyogcKbGN3aOdDmI3AsDK1ir4F1ZsbiZr/xcypXdWKCWsqgj2QaOS27oJFYCBlyTmdazPxEP/7BkZvDiFaU08kJuESwtCedvmT1BRNrsm73qsnlxsMI9SIg+tba+GPyQ97G7W864w5iimloNtIuETfIvEFjEZczWBEuLb2+kNkSWjgCguacp6iRyO0+Ho0H7YiLc/xGaCqvyDwNvIuXWfNzcYJcjQQbAxb9Vtu3Dc2Qlaib'
+          enc: 'ssh-rsa'
+
 fastd: # Secret key von gw3 - nur den string!!!
   secret: |
     -----BEGIN PGP MESSAGE-----

@@ -1,3 +1,5 @@
+jinja2
+PyYAML
 sphinx
-sphinx_rtd_theme
 recommonmark
+sphinx_rtd_theme

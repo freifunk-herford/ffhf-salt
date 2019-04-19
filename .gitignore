@@ -1,7 +1,9 @@
+.idea/
+.vscode/
 contrib/temp/
 contrib/venv/
 contrib/docs/build/
+pillar_roots_dnn/
 *.save
 *.bak
-pillar_roots_dnn/
-.vscode
+*.pyc

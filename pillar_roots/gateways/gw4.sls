@@ -129,6 +129,14 @@ exit:
       endpoint: '185.66.193.1'
       address6: '2a03:2260:0:34d::2/64'
 
+openssh:
+  ssh_auth:
+    user:
+      root:
+        iwo@1337book.localdomain: # Iwo
+          key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQCYyi0aw9S+i1Hye5EE9fX9l+VJhxW4RExw/zzxpB2PeECOMRRoZqhNSntkjuGLCKFf3Pdehcj8h3obGIhbut2p2IUzpa3YQi5VMVyVzRLs0roTq47mUYvV1Prcds3ejHRzrSc1skY5Js7goIOHUfNOPtEJj/QUy8typ9pnoqgzAdcIDSGDnnb3tD12zWKQ3v8byJTYfje5vggU6i0W2xwx2+lGpY0uSruTkeShAM0f1Mc1T9JaWjP2YhUs2YLRo0kj3Gd2FU75jktWq8IJDplW+5JTPW7tAJb+jgGlPtOxcopXvUjyj55EDwub3BzDzO67SWIEQIImKgs9PzRa3VpX'
+          enc: 'ssh-rsa'
+
 fastd: # Secret key von gw4 - nur den string!!!
   secret: |
     -----BEGIN PGP MESSAGE-----

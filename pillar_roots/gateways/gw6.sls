@@ -75,6 +75,14 @@ exit:
       =HKyn
       -----END PGP MESSAGE-----
 
+openssh:
+  ssh_auth:
+    user:
+      root:
+        lmb@lmb-nb: # Luca
+          key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC1RXq+yTsKtt8brNQLRH51TAdC2CxiSi2JsJJtw47b9hFdWhDlEOoMqQI0XqCBKHevhmtt7nc3k6vOX9yiC078Tz5hauQBTcMWbo+xSH1AxFlVo2pmPjL/N/9EritIe/4tJD3cIWSuGzjR69cyAQcCWshpivTV85xbpsiZS5ljKC4+TgAGC3jbSBGGMfoeb1MqWaMcuttcKXO2GFOOLxFYv2QVdOpQNf6S0Y992WLsBQ3BS0E6HTBCj/AXdt/x7eK25BpdAzrahCJw7Ytklmus6Fsi1LbJlaYBnKoRxwwpizbK7SHQ16Zca6NzsrI3H8c6SvPAj7p3lW88WntasoK9'
+          enc: 'ssh-rsa'
+
 fastd: # Secret key von gw6 - nur den string!!!
   secret: |
     -----BEGIN PGP MESSAGE-----
