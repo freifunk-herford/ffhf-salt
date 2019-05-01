@@ -3,7 +3,7 @@ Installation
 
 .. code:: bash
 
-   apt-get install rsyslog
+   apt install rsyslog
 
 Konfiguation
 ------------
@@ -18,16 +18,16 @@ Folgende Zeile:
 
 .. code:: text
 
-	*.*;auth,authpriv.none	-/var/log/syslog
+   *.*;auth,authpriv.none	-/var/log/syslog
 
 wird zu:
 
 .. code::
 
-	*.*;auth,authpriv.none;local6.none	-/var/log/syslog
+   *.*;auth,authpriv.none;local6.none	-/var/log/syslog
 
 Anlegen der "Blackhole Logging Facility": ``local6`` in dem Ordner ``/etc/rsyslog.d/`` in der Datei ``99-blackhole.conf``.
 
 .. code:: text
 
-	local6.*	/dev/null
+   local6.*	/dev/null

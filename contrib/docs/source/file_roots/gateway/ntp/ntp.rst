@@ -3,7 +3,7 @@ Installation
 
 .. code:: bash
 
-    apt-get install ntp
+   apt install ntp
 
 Konfiguration
 -------------

@@ -3,4 +3,4 @@ Installation
 
 .. code:: bash
 
-    apt-get install molly-guard
+   apt install molly-guard

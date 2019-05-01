@@ -3,18 +3,18 @@ Installation
 
 .. code:: bash
 
-    apt-get install bash
+   apt install bash
 
 Nützliche Aliase in die Datei ``/root/.bash_aliases`` hinzufügen:
 
 .. code:: bash
 
-    # Some more alias to avoid making mistakes:
-    alias rm='rm -i'
-    alias cp='cp -i'
-    alias mv='mv -i'
-    # Some comfort
-    alias lc="awk '{ nlines++ } END { print nlines }'"
+   # Some more alias to avoid making mistakes:
+   alias rm='rm -i'
+   alias cp='cp -i'
+   alias mv='mv -i'
+   # Some comfort
+   alias lc="awk '{ nlines++ } END { print nlines }'"
 
 ======================================= ========================================================
 Befehl                                  Beschreibung

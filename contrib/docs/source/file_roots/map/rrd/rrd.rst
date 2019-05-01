@@ -3,5 +3,5 @@ Installation
 
 .. code:: bash
 
-	apt install rrdtool
+   apt install rrdtool
 

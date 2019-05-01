@@ -3,7 +3,7 @@ Installation
 
 .. code:: bash
 
-   apt-get install apache2
+   apt install apache2
 
 Konfiguation
 ------------

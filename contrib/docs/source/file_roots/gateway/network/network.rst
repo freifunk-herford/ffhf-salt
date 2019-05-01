@@ -3,7 +3,7 @@ Installation
 
 .. code:: bash
 
-    apt-get install bridge-utils
+   apt install bridge-utils
 
 Kernel Parameter
 ----------------
@@ -12,14 +12,14 @@ Folgende Kernel Parameter einstellen und speichern.
 
 .. code:: bash
 
-    sysctl -w net.ipv4.ip_forward="1"
-    sysctl -w net.ipv4.conf.default.rp_filter="0"
-    sysctl -w net.ipv4.conf.all.rp_filter="0"
-    sysctl -w net.ipv6.conf.all.forwarding="1"
-    sysctl -w net.ipv6.conf.all.autoconf="0"
-    sysctl -w net.ipv6.conf.default.autoconf="0"
-    sysctl -w net.ipv6.conf.all.accept_ra="0"
-    sysctl -w net.ipv6.conf.default.accept_ra="0"
+   sysctl -w net.ipv4.ip_forward="1"
+   sysctl -w net.ipv4.conf.default.rp_filter="0"
+   sysctl -w net.ipv4.conf.all.rp_filter="0"
+   sysctl -w net.ipv6.conf.all.forwarding="1"
+   sysctl -w net.ipv6.conf.all.autoconf="0"
+   sysctl -w net.ipv6.conf.default.autoconf="0"
+   sysctl -w net.ipv6.conf.all.accept_ra="0"
+   sysctl -w net.ipv6.conf.default.accept_ra="0"
 
 Schnittstellen
 --------------

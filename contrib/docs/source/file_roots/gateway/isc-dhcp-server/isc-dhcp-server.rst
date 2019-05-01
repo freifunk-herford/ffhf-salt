@@ -3,7 +3,7 @@ Installation
 
 .. code:: bash
 
-   apt-get install isc-dhcp-server
+   apt install isc-dhcp-server
 
 Für den IPv4 Betrieb des DHCP Servers in der Datei ``/etc/default/isc-dhcp-server`` den Eintrag ``INTERFACESv4=""`` mit dem Interface der Brückenschnittstelle füllen.
 

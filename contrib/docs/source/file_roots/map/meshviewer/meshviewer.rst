@@ -5,7 +5,7 @@ Das Mesh Viwer Repository in das Verzeichnis ``/var/www/meshviewer`` klonen:
 
 .. code:: bash
 
-    git clone https://github.com/freifunk-herford/meshviewer-build.git /var/www/meshviewer
+   git clone https://github.com/freifunk-herford/meshviewer-build.git /var/www/meshviewer
 
 Folgenden Inhalt in die JSON Konfigurationsdatei unter dem Dateinamen und Pfad ``/var/www/meshviewer/config.json`` abspeichern.
 
@@ -18,4 +18,3 @@ Folgenden Inhalt in die Apache Virtual Host Konfigurationsdatei unter dem Datein
    :language: apache
 
 Und mit ``a2ensite map.ffhf`` aktivieren.
-
