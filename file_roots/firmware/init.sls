@@ -1,4 +1,4 @@
 include:
   - gateway.openssh-server
-  - gateway.apache
+  - gateway.apache2
   - firmware.downloads

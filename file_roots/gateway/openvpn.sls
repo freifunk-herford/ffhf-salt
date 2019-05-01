@@ -26,9 +26,11 @@
       {% endif %}
       - pkg: {{ openvpn.pkg }}
 
-{{ openvpn.srv }}@{{ pillar['exit']['provider'] }}:
+{% set service = '%s@%s' % (openvpn.srv, pillar['exit']['provider']) %}
+
+{{ service }}:
   service.running:
-    - name: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
+    - name: {{ service }}
     - enable: True
 
 {% set pattern = '^(|#)AUTOSTART="(.*)"$' %}
@@ -42,7 +44,7 @@
     - require:
       - pkg: {{ openvpn.pkg }}
     - watch_in:
-      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
+      - service: {{ service }}
 
 /etc/openvpn/openvpn-updown:
   file.managed:
@@ -52,7 +54,7 @@
     - require:
       - pkg: {{ openvpn.pkg }}
     - watch_in:
-      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
+      - service: {{ service }}
 
 {% if pillar['exit']['provider'] == 'pia_linux' %}
 /etc/openvpn/pia_ca.crt:
@@ -65,7 +67,7 @@
     - require:
       - pkg: {{ openvpn.pkg }}
     - watch_in:
-      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
+      - service: {{ service }}
 
 /etc/openvpn/pia_userpass.txt:
   file.managed:
@@ -77,7 +79,7 @@
     - require:
       - pkg: {{ openvpn.pkg }}
     - watch_in:
-      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
+      - service: {{ service }}
 
 /etc/openvpn/pia_linux.conf:
   file.managed:
@@ -89,7 +91,7 @@
     - require:
       - pkg: {{ openvpn.pkg }}
     - watch_in:
-      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
+      - service: {{ service }}
 {% endif %}
 
 {% if pillar['exit']['provider'] == 'mullvad_linux' %}
@@ -103,7 +105,7 @@
     - require:
       - pkg: {{ openvpn.pkg }}
     - watch_in:
-      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
+      - service: {{ service }}
 
 /etc/openvpn/mullvad_userpass.txt:
   file.managed:
@@ -115,7 +117,7 @@
     - require:
       - pkg: {{ openvpn.pkg }}
     - watch_in:
-      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
+      - service: {{ service }}
 
 /etc/openvpn/mullvad_linux.conf:
   file.managed:
@@ -127,7 +129,7 @@
     - require:
       - pkg: {{ openvpn.pkg }}
     - watch_in:
-      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
+      - service: {{ service }}
 {% endif %}
 
 /root/scripts/check-openvpn.sh:
@@ -144,7 +146,7 @@
     - require:
       - pkg: {{ openvpn.pkg }}
     - watch_in:
-      - service: {{ openvpn.srv }}@{{ pillar['exit']['provider'] }}
+      - service: {{ service }}
 
 # Show Cron: crontab -l
 openvpn-cron:

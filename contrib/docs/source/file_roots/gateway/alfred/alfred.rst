@@ -3,17 +3,7 @@ Installation
 
 .. code:: bash
 
-    apt-get install alfred alfred-json batadv-vis
-
-Beim Betrieb mit dem Init System ``systemd`` die Datei ``/lib/systemd/system/batadv-vis.service`` mit folgendem Inhalt anlegen.
-
-.. literalinclude:: ../../../../../../file_roots/gateway/lib/systemd/system/batadv-vis.service
-  :language: jinja
-
-Und die Datei ``/lib/systemd/system/alfred.service`` mit folgendem Inhalt anlegen.
-
-.. literalinclude:: ../../../../../../file_roots/gateway/lib/systemd/system/alfred.service
-  :language: jinja
+    apt-get install alfred alfred-json
 
 A.L.F.R.E.D. Announce
 ---------------------

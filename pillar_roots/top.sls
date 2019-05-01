@@ -48,3 +48,5 @@ base:
 
   'firmware':
     - firmware.gluon
+
+  'gateways':

@@ -1,13 +1,16 @@
-Map Server
-==========
+Map
+===
 
 Inhalt:
 
 .. toctree::
    :maxdepth: 4
 
-   alfred/index
-   apache/index
-   fastd/index
-   meshviewer/index
-   network/index
+   ../gateways/shared/index
+   ../gateways/peers/index
+   ../map/network/index
+   ../map/fastd/index
+   ../map/alfred/index
+   ../map/apache/index
+   ../map/meshviewer/index
+   

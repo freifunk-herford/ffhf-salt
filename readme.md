@@ -6,10 +6,8 @@ Anleitung unter <https://freifunk-herford.github.io/ffhf-salt/> lesen.
 
     cd contrib
     virtualenv venv
-    source venv/bin/activate
-    pip install --upgrade pip -r requirements
-    cd docs
-    make html
+    venv/bin/pip install --upgrade pip -r requirements.txt
+    bash generate-docs.sh
 
 ## GPG Encryption
 

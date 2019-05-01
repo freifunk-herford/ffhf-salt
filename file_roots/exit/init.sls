@@ -1,6 +1,6 @@
 include:
   - gateway.openssh-server
   - exit.network
-  - exit.iptables
-  - exit.iproute
+  - exit.netfilter
+  - exit.iproute2
   - exit.openvpn

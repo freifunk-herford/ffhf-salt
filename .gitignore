@@ -4,6 +4,7 @@ contrib/temp/
 contrib/venv/
 contrib/docs/build/
 pillar_roots_dnn/
+__pycache__
 *.save
 *.bak
 *.pyc
