@@ -3,7 +3,7 @@ Installation
 
 .. code:: bash
 
-    apt-get install vnstat vnstati
+   apt install vnstat vnstati
 
 Webseite
 --------
@@ -12,7 +12,7 @@ Um die Statistik auf dem Server anzuzeigen ändern wir in den Dateien ``/etc/apa
 
 .. code:: apache
 
-    DocumentRoot /var/www/vnstat
+   DocumentRoot /var/www/vnstat
 
 Nun legen wir noch das Verzeichnis ``/var/www/vnstat`` mit ``mkdir -p /var/www/vnstat`` an.
 
@@ -25,7 +25,7 @@ Mit ``crontab -e`` legen wir einen Cronjob an und tragen dort folgendes ein.
 
 .. code:: text
 
-    */5 * * * * /root/scripts/update-vnstat-graphs.sh
+   */5 * * * * /root/scripts/update-vnstat-graphs.sh
 
 Wir erstellen ein Script unter ``/root/scripts`` mit dem Namen ``update-vnstat-graphs.sh`` mit folgendem Inhalt.
 

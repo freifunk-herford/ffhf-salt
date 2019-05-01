@@ -3,7 +3,7 @@ Installation
 
 .. code:: bash
 
-    apt-get install sysfsutils
+   apt install sysfsutils
 
 Hop Penality
 ------------
@@ -12,5 +12,5 @@ Die Datei ``/etc/sysfs.d/99-batman-hop-penalty.conf`` mit folgendem Inhalt anleg
 
 .. code:: jinja
 
-    class/net/{{ pillar['network']['batman']['interface'] }}/mesh/hop_penalty = 60
+   class/net/{{ pillar['network']['batman']['interface'] }}/mesh/hop_penalty = 60
 

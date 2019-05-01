@@ -5,13 +5,13 @@ IPTables Persistent installieren.
 
 .. code:: bash
 
-   apt-get install iptables-persistent
+   apt install iptables-persistent
 
 Falls das Paket nicht verfügbar ist NetFilter Persistent installieren.
 
 .. code:: bash
 
-   apt-get install netfilter-persistent
+   apt install netfilter-persistent
 
 Konfiguration
 -------------

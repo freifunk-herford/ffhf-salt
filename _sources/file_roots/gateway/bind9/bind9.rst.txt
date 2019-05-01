@@ -3,7 +3,7 @@ Installation
 
 .. code:: bash
 
-   apt-get install bind9
+   apt install bind9
 
 Konfiguation
 ------------

@@ -3,4 +3,4 @@ Installation
 
 .. code:: bash
 
-    apt-get install git
+   apt install git

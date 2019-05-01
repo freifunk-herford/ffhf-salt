@@ -159,13 +159,7 @@
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
-<p>Paketquelle für bird einbinden.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>add-apt-repository ppa:cz.nic-labs/bird
-</pre></div>
-</div>
-<p>Paketquellen aktualsieren und bird installieren.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get update
-apt-get install bird
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt install bird
 </pre></div>
 </div>
 </div>
@@ -237,7 +231,68 @@ apt-get install bird
 <span class="x">include &quot;/etc/bird/ffrl_</span><span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x">_upstream.conf&quot;;</span>
 </pre></div>
 </div>
-<p>Todo: Keine Ahnung was in die Konfigurationsdatei kommt. Gibt es noch bird6.conf dazu?</p>
+<p>Inhalt von <code class="docutils literal notranslate"><span class="pre">/etc/bird/bird6.conf</span></code>.</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x"># This file is managed by Salt, do not edit.</span>
+
+<span class="x"># Change this into your BIRD router ID. It&#39;s a world-wide unique identification</span>
+<span class="x"># of your router, usually one of router&#39;s IPv4 addresses.</span>
+<span class="x"># Unsere externe feste IPv4-Adresse: </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;primary&#39;</span><span class="o">][</span><span class="s1">&#39;address&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">router id </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;primary&#39;</span><span class="o">][</span><span class="s1">&#39;address&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x">;</span>
+
+<span class="x"># Our Autonomous System Number from Freifunk Rheinland</span>
+<span class="x">define myas = </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;bird&#39;</span><span class="o">][</span><span class="s1">&#39;myas&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x">;</span>
+
+<span class="x"># Functions</span>
+<span class="x">function net_ffrl() {</span>
+<span class="x">    return net ~ [ 2a03:2260:3010::/48+ ];</span>
+<span class="x">}</span>
+
+<span class="x">function ip6_default() {</span>
+<span class="x">    return net ~ [ ::/0 ];</span>
+<span class="x">}</span>
+
+<span class="x"># The Device protocol is not a real routing protocol. It doesn&#39;t generate any</span>
+<span class="x"># routes and it only serves as a module for getting information about network</span>
+<span class="x"># interfaces from the kernel.</span>
+<span class="x">protocol device {</span>
+<span class="x">    scan time 10;</span>
+<span class="x">}</span>
+
+<span class="x"># The Kernel protocol is not a real routing protocol. Instead of communicating</span>
+<span class="x"># with other routers in the network, it performs synchronization of BIRD&#39;s</span>
+<span class="x"># routing tables with the OS kernel.</span>
+<span class="x">protocol kernel {</span>
+<span class="x">    kernel table 61;</span>
+<span class="x">    scan time 10;</span>
+<span class="x">    import none;</span>
+<span class="x">    export filter {</span>
+<span class="x">        if ip6_default() then accept;</span>
+<span class="x">        reject;</span>
+<span class="x">    };</span>
+<span class="x">};</span>
+
+<span class="x"># Static Routes for bgp Public IPv6 from Freifunk Rheinland</span>
+<span class="x">protocol static {</span>
+<span class="x">    route 2a03:2260:11f::/48 reject;</span>
+<span class="x">}</span>
+
+<span class="x"># Templates for bgp</span>
+<span class="x">template bgp ffrl_upstream {</span>
+<span class="x">    local as myas;</span>
+<span class="x">    import where ip6_default();</span>
+<span class="x">    export where net_ffrl();</span>
+<span class="x">    direct;</span>
+<span class="x">}</span>
+
+<span class="x"># Logging</span>
+<span class="x">log &quot;/var/log/bird.log&quot; all;</span>
+<span class="x">log syslog all;</span>
+
+<span class="x"># Include Freifunk Rheinland IPv6 Upstream</span>
+<span class="x">include &quot;/etc/bird/ffrl_</span><span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x">_upstream6.conf&quot;;</span>
+</pre></div>
+</div>
+<p>TODO: Upstream Konfiguration einbinden.</p>
 </div>
 
 

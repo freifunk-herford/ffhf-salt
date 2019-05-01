@@ -159,20 +159,27 @@
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install alfred alfred-json
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget http://ftp.us.debian.org/debian/pool/main/a/alfred/alfred_2018.2-1_amd64.deb
+dpkg -i alfred_2018.2-1_amd64.deb
 </pre></div>
 </div>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>wget http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/a/alfred-json/alfred-json_0.3.1-0ffmwu1~trusty_amd64.deb
+dpkg -i alfred-json_0.3.1-0ffmwu1~trusty_amd64.deb
+</pre></div>
+</div>
+<p>TODO: batadv-vis.service / alfred.service
+TODO: default alfred</p>
 </div>
 <div class="section" id="a-l-f-r-e-d-announce">
 <h1>A.L.F.R.E.D. Announce<a class="headerlink" href="#a-l-f-r-e-d-announce" title="Link zu dieser Überschrift">¶</a></h1>
 <p>Folgende Pakete werden für die Installation benötigt.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install python3 python3-dev python-virtualenv
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt install python3 python3-dev python-virtualenv
 </pre></div>
 </div>
 <p>Script aus dem Repository laden.</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>mkdir -p /root/scripts/announce
 <span class="nb">cd</span> /root/scripts/announce
-git clone https://github.com/freifunk-mwu/ffnord-alfred-announce.git
+git clone https://github.com/freifunk-herford/ffnord-alfred-announce.git
 </pre></div>
 </div>
 <p>Die Datei <code class="docutils literal notranslate"><span class="pre">/root/scripts/announce/requirement.txt</span></code> mit folgendem Inhalt anlegen.</p>

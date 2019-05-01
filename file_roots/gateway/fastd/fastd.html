@@ -159,17 +159,9 @@
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
-<p>Um die Paketquellen von fastd einzubinden erstellen wir eine die Datei <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/repo.universe-factory.net.list</span></code> und tragen dort folgendes ein.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>deb https://repo.universe-factory.net/debian/ sid main
-</pre></div>
-</div>
-<p>Nun aktualisieren wir unsere Paketquellen und installieren fastd.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-key adv --keyserver keyserver.ubuntu.com --recv 16EF3F64CB201D9C
-apt-get update
-apt-get dist-upgrade
-apt-get install fastd
-</pre></div>
-</div>
+<blockquote>
+<div><p>apt install fastd</p>
+</div></blockquote>
 </div>
 <div class="section" id="schlussel-generieren">
 <h1>Schlüssel generieren<a class="headerlink" href="#schlussel-generieren" title="Link zu dieser Überschrift">¶</a></h1>
@@ -177,7 +169,7 @@ apt-get install fastd
 <p class="admonition-title">Hinweis</p>
 <p>Der Schlüssel kann auch Lokal generiert werden.</p>
 </div>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install haveged
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt install haveged
 </pre></div>
 </div>
 <p>Den Schlüssel generieren.</p>

@@ -7,9 +7,9 @@ Eine virtuelle Python3 Umgebung erstellen:
 
 .. code:: bash
 
-    apt install python3 python3-dev python-virtualenv 
-    cd /home/map/scripts/map
-    virtualenv --python=python3 venv3
+   apt install python3 python3-dev python-virtualenv 
+   cd /home/map/scripts/map
+   virtualenv --python=python3 venv3
 
 Folgenden Inhalt in die PIP Vorraussetzungsdatei unter dem Dateinamen und Pfad ``/home/map/scripts/map/requirements.txt`` abspeichern.
 
@@ -17,15 +17,15 @@ Die Vorraussetzungen für FFMap-Backend in der virtuellen Python3 Umgebung insta
 
 .. code:: bash
 
-	cd /home/map/scripts/map
-	source venv3/bin/active
-	pip install --upgrade pip -r requirements.txt
+   cd /home/map/scripts/map
+   source venv3/bin/active
+   pip install --upgrade pip -r requirements.txt
 
 Das FFMap-Backend Repository in das Verzeichnis ``/home/map/scripts/map/ffmap-backend`` klonen:
 
 .. code:: bash
 
-    git clone https://github.com/freifunk-herford/ffmap-backend.git /home/map/scripts/map/ffmap-backend
+   git clone https://github.com/freifunk-herford/ffmap-backend.git /home/map/scripts/map/ffmap-backend
 
 Folgenden Inhalt in ein Script unter dem Dateinamen und Pfad ``/home/map/scripts/update-ffmap.sh`` abspeichern.
 
@@ -44,5 +44,4 @@ Einen Cronjob mit Hilfe von ``crontab -e -u map`` mit folgendem Inhalt anlegen.
 
 .. code:: text
 
-    */1 * * * * /home/map/scripts/update-ffmap.sh
-
+   */1 * * * * /home/map/scripts/update-ffmap.sh

@@ -3,7 +3,7 @@ Installation
 
 .. code:: bash
 
-    apt-get install openvpn
+   apt install openvpn
 
 Konfiguation
 ------------
@@ -28,11 +28,11 @@ Mullvad
 
 Can one account be used on multiple computers?
 
-    Yes, up to three. Use the same customer id on all the computers.
+   Yes, up to three. Use the same customer id on all the computers.
 
-    Set the customer id under Settings in the client program.
+   Set the customer id under Settings in the client program.
 
-    -- `Mullvad FAQ`_
+   -- `Mullvad FAQ`_
 
 Von `Mullvad`_ erhält man ein gepacktes Archiv ``mullvadconfig.zip``, aus diesem Archiv legen wir die Dateien ``ca.crt``, ``crl.pem``, ``mullvad.crt`` und ``mullvad.key`` in den Ordner ``/etc/openvpn`` ab.
 
@@ -47,7 +47,7 @@ In der Datei ``/etc/default/openvpn`` eine Eintrag wie folgt einfügen oder anpa
 
 .. code:: text
 
-    AUTOSTART="mullvad_linux"
+   AUTOSTART="mullvad_linux"
 
 .. _`Mullvad`: https://mullvad.net/
 .. _`Mullvad FAQ`: https://mullvad.net/en/faq/#multiple_conn

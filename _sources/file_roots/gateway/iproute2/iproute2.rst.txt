@@ -3,7 +3,7 @@ Installation
 
 .. code:: bash
 
-   apt-get install iproute
+   apt install iproute2
 
 Tabellen
 --------
