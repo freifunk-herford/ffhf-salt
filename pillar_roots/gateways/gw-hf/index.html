@@ -1,0 +1,383 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="de" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Gateway Herford &mdash; SaltStack Freifunk Herford 0.2 Dokumentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../../../genindex.html" />
+    <link rel="search" title="Suche" href="../../../search.html" />
+    <link rel="next" title="Map" href="../../map/index.html" />
+    <link rel="prev" title="Gateway 9" href="../gw9/index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SaltStack Freifunk Herford
+          
+
+          
+            
+            <img src="../../../_static/freifunk.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../../../file_roots/index.html">States</a></li>
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Pillars</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Gateways</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../shared/index.html">Gemeinsame Daten</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../peers/index.html">Peers</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw1/index.html">Gateway 1</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw2/index.html">Gateway 2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw3/index.html">Gateway 3</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw4/index.html">Gateway 4</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw5/index.html">Gateway 5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw6/index.html">Gateway 6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw7/index.html">Gateway 7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw8/index.html">Gateway 8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw9/index.html">Gateway 9</a></li>
+<li class="toctree-l3 current"><a class="current reference internal" href="#">Gateway Herford</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../map/index.html">Map</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network.html">Netzwerk Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testumgebung</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SaltStack Freifunk Herford</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../../index.html">Pillars</a> &raquo;</li>
+        
+          <li><a href="../index.html">Gateways</a> &raquo;</li>
+        
+      <li>Gateway Herford</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="gateway-herford">
+<h1>Gateway Herford<a class="headerlink" href="#gateway-herford" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="section" id="salt-state-file">
+<h2>Salt State File<a class="headerlink" href="#salt-state-file" title="Link zu dieser Überschrift">¶</a></h2>
+<p>gw-hf.sls</p>
+<div class="highlight-salt notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gateway Herford</span>
+
+<span class="nt">dhcp</span><span class="p">:</span>
+  <span class="nt">ipv4</span><span class="p">:</span>
+    <span class="nt">routers</span><span class="p">:</span> <span class="s">&#39;10.34.0.10&#39;</span>
+    <span class="nt">domain_name_servers</span><span class="p">:</span> <span class="s">&#39;10.34.0.10&#39;</span>
+    <span class="nt">ntp_servers</span><span class="p">:</span> <span class="s">&#39;10.34.0.10&#39;</span>
+  <span class="nt">ipv6</span><span class="p">:</span> <span class="c1"># Not used yet</span>
+    <span class="nt">subnet</span><span class="p">:</span> <span class="s">&#39;fe80::/64&#39;</span>
+    <span class="nt">name_servers</span><span class="p">:</span> <span class="s">&#39;fe80::a00:27ff:feee:ec3f&#39;</span>
+    <span class="nt">routers</span><span class="p">:</span> <span class="s">&#39;fe80::a00:27ff:feee:ec3f&#39;</span>
+    <span class="nt">domain_name_servers</span><span class="p">:</span> <span class="s">&#39;fe80::a00:27ff:feee:ec3f&#39;</span>
+
+<span class="nt">bind</span><span class="p">:</span>
+  <span class="nt">master</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+  <span class="nt">ipv6</span><span class="p">:</span>
+    <span class="nt">listen_on</span><span class="p">:</span> <span class="s">&#39;::1;</span><span class="nv"> </span><span class="s">fdf3:2049:5152::a22:10;&#39;</span>
+  <span class="nt">ipv4</span><span class="p">:</span>
+    <span class="nt">listen_on</span><span class="p">:</span> <span class="s">&#39;127.0.0.1;</span><span class="nv"> </span><span class="s">10.34.0.10;&#39;</span>
+
+<span class="nt">network</span><span class="p">:</span>
+  <span class="nt">bridge</span><span class="p">:</span>
+    <span class="nt">hwaddress</span><span class="p">:</span> <span class="s">&#39;02:42:0a:22:00:0a&#39;</span>
+    <span class="nt">address</span><span class="p">:</span> <span class="s">&#39;10.34.0.10&#39;</span>
+    <span class="nt">netmask</span><span class="p">:</span> <span class="s">&#39;255.255.0.0&#39;</span>
+    <span class="nt">address6</span><span class="p">:</span> <span class="s">&#39;fdf3:2049:5152::a22:10&#39;</span>
+    <span class="nt">address6mask</span><span class="p">:</span> <span class="s">&#39;fdf3:2049:5152::a22:000a/64&#39;</span> <span class="c1"># address6mask: &#39;fdf3:2049:5152::a22:10/64&#39; # ????</span>
+    <span class="nt">netmask6</span><span class="p">:</span> <span class="s">&#39;48&#39;</span>
+    <span class="nt">bridge_ports</span><span class="p">:</span> <span class="s">&#39;eth1&#39;</span>
+  <span class="c1"># mesh:</span>
+  <span class="c1">#   hwaddress: &#39;02:00:0a:22:00:0a&#39;</span>
+  <span class="nt">primary</span><span class="p">:</span>
+    <span class="nt">interface</span><span class="p">:</span> <span class="s">&#39;eth1&#39;</span>
+    <span class="nt">address</span><span class="p">:</span> <span class="s">&#39;78.94.9.77&#39;</span>
+    <span class="c1"># netmask: 255.255.255.248</span>
+    <span class="c1"># network: 78.94.9.72</span>
+    <span class="c1"># broadcast: 78.94.9.79</span>
+    <span class="c1"># gateway: 78.94.9.73</span>
+    <span class="c1"># address6: # Der Server hat keine IPv6 Adresse</span>
+
+<span class="nt">netfilter</span><span class="p">:</span>
+  <span class="nt">tables</span><span class="p">:</span>
+    <span class="nt">nat</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&#39;-A</span><span class="nv"> </span><span class="s">POSTROUTING</span><span class="nv"> </span><span class="s">-s</span><span class="nv"> </span><span class="s">10.34.0.0/16</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">bb+</span><span class="nv"> </span><span class="s">-j</span><span class="nv"> </span><span class="s">ffrl-nat&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&#39;-A</span><span class="nv"> </span><span class="s">ffrl-nat</span><span class="nv"> </span><span class="s">-s</span><span class="nv"> </span><span class="s">100.64.4.204/31</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">bb+</span><span class="nv"> </span><span class="s">-j</span><span class="nv"> </span><span class="s">RETURN&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&#39;-A</span><span class="nv"> </span><span class="s">ffrl-nat</span><span class="nv"> </span><span class="s">-s</span><span class="nv"> </span><span class="s">100.64.4.206/31</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">bb+</span><span class="nv"> </span><span class="s">-j</span><span class="nv"> </span><span class="s">RETURN&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&#39;-A</span><span class="nv"> </span><span class="s">ffrl-nat</span><span class="nv"> </span><span class="s">-s</span><span class="nv"> </span><span class="s">100.64.4.208/31</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">bb+</span><span class="nv"> </span><span class="s">-j</span><span class="nv"> </span><span class="s">RETURN&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&#39;-A</span><span class="nv"> </span><span class="s">ffrl-nat</span><span class="nv"> </span><span class="s">-s</span><span class="nv"> </span><span class="s">100.64.4.210/31</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">bb+</span><span class="nv"> </span><span class="s">-j</span><span class="nv"> </span><span class="s">RETURN&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&#39;-A</span><span class="nv"> </span><span class="s">ffrl-nat</span><span class="nv"> </span><span class="s">-s</span><span class="nv"> </span><span class="s">10.34.0.0/16</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">bb+</span><span class="nv"> </span><span class="s">-j</span><span class="nv"> </span><span class="s">SNAT</span><span class="nv"> </span><span class="s">--to-source</span><span class="nv"> </span><span class="s">185.66.193.96&#39;</span>
+    <span class="nt">filter</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&#39;-A</span><span class="nv"> </span><span class="s">FORWARD</span><span class="nv"> </span><span class="s">-i</span><span class="nv"> </span><span class="s">hfBR</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">bb+</span><span class="nv"> </span><span class="s">-p</span><span class="nv"> </span><span class="s">tcp</span><span class="nv"> </span><span class="s">-m</span><span class="nv"> </span><span class="s">tcp</span><span class="nv"> </span><span class="s">--tcp-flags</span><span class="nv"> </span><span class="s">SYN,RST</span><span class="nv"> </span><span class="s">SYN</span><span class="nv"> </span><span class="s">-j</span><span class="nv"> </span><span class="s">TCPMSS</span><span class="nv"> </span><span class="s">--clamp-mss-to-pmtu&#39;</span>
+      <span class="p p-Indicator">-</span> <span class="s">&#39;-A</span><span class="nv"> </span><span class="s">FORWARD</span><span class="nv"> </span><span class="s">-i</span><span class="nv"> </span><span class="s">bb+</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">hfBR</span><span class="nv"> </span><span class="s">-p</span><span class="nv"> </span><span class="s">tcp</span><span class="nv"> </span><span class="s">-m</span><span class="nv"> </span><span class="s">tcp</span><span class="nv"> </span><span class="s">--tcp-flags</span><span class="nv"> </span><span class="s">SYN,RST</span><span class="nv"> </span><span class="s">SYN</span><span class="nv"> </span><span class="s">-j</span><span class="nv"> </span><span class="s">TCPMSS</span><span class="nv"> </span><span class="s">--clamp-mss-to-pmtu&#39;</span>
+
+<span class="nt">exit</span><span class="p">:</span>
+  <span class="nt">type</span><span class="p">:</span> <span class="s">&#39;gre&#39;</span> <span class="c1"># Verschiedene Arten sind moeglich &quot;gre&quot; oder &quot;openvpn&quot;</span>
+  <span class="nt">provider</span><span class="p">:</span> <span class="s">&#39;ffrl&#39;</span> <span class="c1"># Verschiedene Provider sind moeglich</span>
+  <span class="nt">pia_linux</span><span class="p">:</span> <span class="c1"># Private Internet Access Luca</span>
+    <span class="nt">pia_userpass.txt</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">-----BEGIN PGP MESSAGE-----</span>
+
+      <span class="no">hQGMAy+gZA9xYWKnAQv/fDwi5gGKP+lhiubBS4c80oVEn5Ap2acHhTuSOrABs5ar</span>
+      <span class="no">0bYDoiw2wvvf2IGzNurgtVBP3yLkiUYnaDg2r2fEbMArU/2uGVCMuwcBt8R4TWsb</span>
+      <span class="no">JjrhLQqxbgilh6jrdlJwCi26rfWL5dVF3Trr8UwT5ciOsXs4naAJ8NFFPV9BmtPz</span>
+      <span class="no">dlnX2E5cE8HmN0QafZZbgod9w/oVVKZ3sF2feR4lgeFQZ0RNiq6btoGJ1KXZH8oJ</span>
+      <span class="no">Nf5z/mCIPJ4+2c7g/l/SFGFjpB3z0yA3a+RjHzpcVTLwl3gfvOFCFcXkfSLGE5wQ</span>
+      <span class="no">yoSqHpn4Flno8tQSyqz2w97YP8SBNso5BfxsLYsGa07NRP+DVQkW8r1NnjxvJIAg</span>
+      <span class="no">0W0dbmxxuIAwTg8sdMSoJIZv5/xh+3OpR81unujrgbUguK+BSPvMHF5muT6qaP1c</span>
+      <span class="no">BMjSNJCtAfj7ORrp6l8Nu4gzuEQGamBZ5amEtOic1PpTWcVQKdOyTSltZFfODZrV</span>
+      <span class="no">HDM88WCFZAp0w1JMzfr10k8B0EWsSJ8tSfl4MCnVj2MiDGMEx4EojQHID6VBXnX/</span>
+      <span class="no">+YVbXinEzd5V55e+xQROu5vIqx8VsmXDIxprAwnID6W8n1ihNg2qxAq+TMsVR6UG</span>
+      <span class="no">=l8yR</span>
+      <span class="no">-----END PGP MESSAGE-----</span>
+  <span class="nt">mullvad_linux</span><span class="p">:</span> <span class="c1"># Mullvad Freifunk Herford</span>
+    <span class="nt">mullvad_userpass.txt</span><span class="p">:</span> <span class="p p-Indicator">|</span>
+      <span class="no">-----BEGIN PGP MESSAGE-----</span>
+
+      <span class="no">hQGMAy+gZA9xYWKnAQwAiKgEOYnMwgBxnDqOSFJnRAtA5IKT6V3YDFKYGHsS+mUD</span>
+      <span class="no">wlKDIgCgzBufXzCv1QAmTgT52brx8IuRPd8/lxqM3cWimkqy3acbLTv3eFdM+p+c</span>
+      <span class="no">fjBj17nHjMbrIlthgHDqs/xPaMD3Q3OIk1Lkka1eLOE6YDVcX3mFWPmVc0DUuDpd</span>
+      <span class="no">8czlHoMoBOXcBaFSjiOkQkUXgitLiAmaQKNeERirWnDxU6kzT7euCbSGjRydlPkY</span>
+      <span class="no">mtf0UM+v4juCUXBl6Ft6Dth5okJ6q/mbhH878pjiQj3jzzS3v9KgaZOWK5E6nLV6</span>
+      <span class="no">kR3eeVAnTVu2i4iSvG8YzZrackGSVBZQfWEovaR5JpDpSldbPvijuiquGHujjC/j</span>
+      <span class="no">jqdDvvEtyYspNtNJJzuSmroCF1D7TzfZFGBf48ofBUab0rg29ajk69N3CalDDrKj</span>
+      <span class="no">dXjgRdN0tlxWKszzsqXSnYXFtWw9T7mI0ItMCrS/bHTstSe5P474PCq38WuyYnN2</span>
+      <span class="no">NuzULNesqSwTEtTzCyFU0ksBC4+Xx8CAFnH0QpAWiSI+O/igZAC+Cx4eY8GODE8C</span>
+      <span class="no">+gDOv/i/boSUF3yHBEhVlv6BGOQAHu5CDkhjXFNqeVUdbFS/Ru1FVL+wj3Q=</span>
+      <span class="no">=HKyn</span>
+      <span class="no">-----END PGP MESSAGE-----</span>
+  <span class="nt">ffrl</span><span class="p">:</span> <span class="c1"># Freifunk Rheinland Backbone</span>
+    <span class="nt">bb-a.ak.ber</span><span class="p">:</span>
+      <span class="nt">interface</span><span class="p">:</span> <span class="s">&#39;bb-a-ak-ber&#39;</span>
+      <span class="nt">netmask</span><span class="p">:</span> <span class="s">&#39;255.255.255.255&#39;</span>
+      <span class="nt">address</span><span class="p">:</span> <span class="s">&#39;100.64.4.205&#39;</span>
+      <span class="nt">dstaddr</span><span class="p">:</span> <span class="s">&#39;100.64.4.204&#39;</span>
+      <span class="nt">endpoint</span><span class="p">:</span> <span class="s">&#39;185.66.195.0&#39;</span>
+      <span class="nt">address6</span><span class="p">:</span> <span class="s">&#39;2a03:2260:0:a9::2/64&#39;</span>
+    <span class="c1"># bb-a.fra3.fra:</span>
+    <span class="c1">#   interface: &#39;bb-a-fra3-fra&#39;</span>
+    <span class="c1">#   netmask: &#39;255.255.255.255&#39;</span>
+    <span class="c1">#   address: &#39;100.64.2.61&#39;</span>
+    <span class="c1">#   dstaddr: &#39;100.64.2.60&#39;</span>
+    <span class="c1">#   endpoint: &#39;185.66.194.0&#39;</span>
+    <span class="c1">#   address6: &#39;2a03:2260:0:126::2/64&#39;</span>
+    <span class="nt">bb-a.ix.dus</span><span class="p">:</span>
+      <span class="nt">interface</span><span class="p">:</span> <span class="s">&#39;bb-a-ix-dus&#39;</span>
+      <span class="nt">netmask</span><span class="p">:</span> <span class="s">&#39;255.255.255.255&#39;</span>
+      <span class="nt">address</span><span class="p">:</span> <span class="s">&#39;100.64.4.207&#39;</span>
+      <span class="nt">dstaddr</span><span class="p">:</span> <span class="s">&#39;100.64.4.206&#39;</span>
+      <span class="nt">endpoint</span><span class="p">:</span> <span class="s">&#39;185.66.193.0&#39;</span>
+      <span class="nt">address6</span><span class="p">:</span> <span class="s">&#39;2a03:2260:0:aa::2/64&#39;</span>
+    <span class="nt">bb-b.ak.ber</span><span class="p">:</span>
+      <span class="nt">interface</span><span class="p">:</span> <span class="s">&#39;bb-b-ak-ber&#39;</span>
+      <span class="nt">netmask</span><span class="p">:</span> <span class="s">&#39;255.255.255.255&#39;</span>
+      <span class="nt">address</span><span class="p">:</span> <span class="s">&#39;100.64.4.209&#39;</span>
+      <span class="nt">dstaddr</span><span class="p">:</span> <span class="s">&#39;100.64.4.208&#39;</span>
+      <span class="nt">endpoint</span><span class="p">:</span> <span class="s">&#39;185.66.195.1&#39;</span>
+      <span class="nt">address6</span><span class="p">:</span> <span class="s">&#39;2a03:2260:0:ab::2/64&#39;</span>
+    <span class="c1"># bb-b.fra3.fra:</span>
+    <span class="c1">#   interface: &#39;bb-b-fra3-fra&#39;</span>
+    <span class="c1">#   netmask: &#39;255.255.255.255&#39;</span>
+    <span class="c1">#   address: &#39;100.64.2.59&#39;</span>
+    <span class="c1">#   dstaddr: &#39;100.64.2.58&#39;</span>
+    <span class="c1">#   endpoint: &#39;185.66.194.1&#39;</span>
+    <span class="c1">#   address6: &#39;2a03:2260:0:127::2/64&#39;</span>
+    <span class="nt">bb-b.ix.dus</span><span class="p">:</span>
+      <span class="nt">interface</span><span class="p">:</span> <span class="s">&#39;bb-b-ix-dus&#39;</span>
+      <span class="nt">netmask</span><span class="p">:</span> <span class="s">&#39;255.255.255.255&#39;</span>
+      <span class="nt">address</span><span class="p">:</span> <span class="s">&#39;100.64.4.211&#39;</span>
+      <span class="nt">dstaddr</span><span class="p">:</span> <span class="s">&#39;100.64.4.210&#39;</span>
+      <span class="nt">endpoint</span><span class="p">:</span> <span class="s">&#39;185.66.193.1&#39;</span>
+      <span class="nt">address6</span><span class="p">:</span> <span class="s">&#39;2a03:2260:0:ac::2/64&#39;</span>
+
+<span class="nt">openssh</span><span class="p">:</span>
+  <span class="nt">ssh_auth</span><span class="p">:</span>
+    <span class="nt">user</span><span class="p">:</span>
+      <span class="nt">root</span><span class="p">:</span>
+        <span class="nt">felixannen@web.de</span><span class="p">:</span> <span class="c1"># Felix</span>
+          <span class="nt">key</span><span class="p">:</span> <span class="s">&#39;AAAAB3NzaC1yc2EAAAADAQABAAABAQDTPilqWfeYXAz3+MtQvVTrxXtLxyWoQdEDtyFkUVONNlqZ0yZfsKlFbuf10JME5y+Hd9THgiB5xh0Ir8fUJVN6JMCvdaaG293L7VK8tlyogcKbGN3aOdDmI3AsDK1ir4F1ZsbiZr/xcypXdWKCWsqgj2QaOS27oJFYCBlyTmdazPxEP/7BkZvDiFaU08kJuESwtCedvmT1BRNrsm73qsnlxsMI9SIg+tba+GPyQ97G7W864w5iimloNtIuETfIvEFjEZczWBEuLb2+kNkSWjgCguacp6iRyO0+Ho0H7YiLc/xGaCqvyDwNvIuXWfNzcYJcjQQbAxb9Vtu3Dc2Qlaib&#39;</span>
+          <span class="nt">enc</span><span class="p">:</span> <span class="s">&#39;ssh-rsa&#39;</span>
+</pre></div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../../map/index.html" class="btn btn-neutral float-right" title="Map" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="../gw9/index.html" class="btn btn-neutral float-left" title="Gateway 9" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

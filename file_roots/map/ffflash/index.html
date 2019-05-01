@@ -1,58 +1,55 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="de" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Freifunk API &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  <title>Freifunk API &mdash; SaltStack Freifunk Herford 0.2 Dokumentation</title>
   
 
   
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
   
+  
+  
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Stichwortverzeichnis"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Suche" href="../../../search.html"/>
-    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/>
-        <link rel="up" title="Map Server" href="../index.html"/>
-        <link rel="next" title="Freifunk Map Backend" href="../ffmap-backend/index.html"/>
-        <link rel="prev" title="Mesh Viewer" href="../meshviewer/index.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../../../genindex.html" />
+    <link rel="search" title="Suche" href="../../../search.html" />
+    <link rel="next" title="Freifunk Map Backend" href="../ffmap-backend/index.html" />
+    <link rel="prev" title="Mesh Viewer" href="../meshviewer/index.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,7 +58,7 @@
 
           
             
-            <img src="../../../_static/freifunk.png" class="logo" />
+            <img src="../../../_static/freifunk.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -69,7 +66,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -90,25 +87,29 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">States</a><ul class="current">
 <li class="toctree-l2"><a class="reference internal" href="../../gateway/index.html">Gateway</a></li>
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Map Server</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../../gateway/openssh-server/index.html">OpenSSH - OpenBSD Secure Shell server</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Map</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../../gateway/bash/index.html">Bash - Bourne Again Shell</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gateway/git/index.html">git Version Control System</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gateway/etckeeper/index.html">etc Keeper</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gateway/mosh/index.html">Mosh (Mobile shell)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../gateway/tmp/index.html">/tmp</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/molly-guard/index.html">Molly-Guard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/haveged/index.html">haveged - Entropy daemon using the HAVEGE algorithm</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gateway/ntp/index.html">NTP (Network Time Protocol)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/openssh-server/index.html">OpenSSH - OpenBSD Secure Shell server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gateway/network/index.html">Network Interfaces &amp; Brige Utilities</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gateway/batman/index.html">B.A.T.M.A.N. - Better Approach To Mobile Adhoc Networking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gateway/fastd/index.html">Fastd - Fast and Secure Tunneling Daemon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gateway/alfred/index.html">A.L.F.R.E.D. - Almighty Lightweight Fact Remote Exchange Daemon</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../gateway/name-server/index.html">DNS Server (Domain Name System)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/bind9/index.html">DNS Server (Domain Name System)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../../gateway/fail2ban/index.html">Fail2Ban Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../gateway/apache/index.html">Apache Web Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../../gateway/syslog/index.html">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/apache2/index.html">Apache Web Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/rsyslog/index.html">Logging</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../rrd/index.html">RRD Tools</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../user/index.html">Map User Account</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../meshviewer/index.html">Mesh Viewer</a></li>
@@ -118,6 +119,7 @@
 </ul>
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../ffmap-backend/index.html">Freifunk Map Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../gateway/figlet/index.html">figlet - display large characters made up of ordinary screen characters</a></li>
 </ul>
 </li>
 </ul>
@@ -138,36 +140,56 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SaltStack Freifunk Herford</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../index.html">States</a> &raquo;</li>
-      
-          <li><a href="../index.html">Map Server</a> &raquo;</li>
-      
-    <li>Freifunk API</li>
+        
+          <li><a href="../index.html">Map</a> &raquo;</li>
+        
+      <li>Freifunk API</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -177,25 +199,25 @@
 <h1>Freifunk API<a class="headerlink" href="#freifunk-api" title="Link zu dieser Überschrift">¶</a></h1>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Als Benutzer <code class="docutils literal"><span class="pre">map</span></code> die Verzeichnisse <code class="docutils literal"><span class="pre">/home/map/scripts/map</span></code> mit <code class="docutils literal"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/home/map/scripts/map</span></code> anlegen.</p>
+<p>Als Benutzer <code class="docutils literal notranslate"><span class="pre">map</span></code> die Verzeichnisse <code class="docutils literal notranslate"><span class="pre">/home/map/scripts/map</span></code> mit <code class="docutils literal notranslate"><span class="pre">mkdir</span> <span class="pre">-p</span> <span class="pre">/home/map/scripts/map</span></code> anlegen.</p>
 <p>Eine virtuelle Python3 Umgebung erstellen:</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span> <span class="n">install</span> <span class="n">python3</span> <span class="n">python3</span><span class="o">-</span><span class="n">dev</span> <span class="n">python</span><span class="o">-</span><span class="n">virtualenv</span>
-<span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nb">map</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="nb">map</span>
-<span class="n">virtualenv</span> <span class="o">--</span><span class="n">python</span><span class="o">=</span><span class="n">python3</span> <span class="n">venv3</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt install python3 python3-dev python-virtualenv
+<span class="nb">cd</span> /home/map/scripts/map
+virtualenv --python<span class="o">=</span>python3 venv3
 </pre></div>
 </div>
-<p>Das FFFlash Repository in das Verzeichnis <code class="docutils literal"><span class="pre">/home/map/scripts/map</span></code> klonen:</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">git</span> <span class="n">clone</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">github</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">spookey</span><span class="o">/</span><span class="n">ffflash</span><span class="o">.</span><span class="n">git</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nb">map</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="nb">map</span><span class="o">/</span><span class="n">ffflash</span>
+<p>Das FFFlash Repository in das Verzeichnis <code class="docutils literal notranslate"><span class="pre">/home/map/scripts/map</span></code> klonen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>git clone https://github.com/spookey/ffflash.git /home/map/scripts/map/ffflash
 </pre></div>
 </div>
 <p>Die Vorraussetzungen für FFFlash in der virtuellen Python3 Umgebung installieren:</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">cd</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nb">map</span><span class="o">/</span><span class="n">scripts</span><span class="o">/</span><span class="nb">map</span>
-<span class="n">sour</span><span class="o">..</span><span class="n">ce</span> <span class="n">venv3</span><span class="o">/</span><span class="nb">bin</span><span class="o">/</span><span class="n">active</span>
-<span class="n">pip</span> <span class="n">install</span> <span class="o">--</span><span class="n">upgrade</span> <span class="n">pip</span> <span class="o">-</span><span class="n">r</span> <span class="n">ffflash</span><span class="o">/</span><span class="n">requirements</span><span class="o">.</span><span class="n">txt</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">cd</span> /home/map/scripts/map
+sour..ce venv3/bin/active
+pip install --upgrade pip -r ffflash/requirements.txt
 </pre></div>
 </div>
-<p>Folgenden Inhalt in die JSON Freifunk API Datei unter dem Dateinamen und Pfad <code class="docutils literal"><span class="pre">/var/www/meshviewer/freifunk-api/herford.json</span></code> abspeichern.</p>
-<div class="highlight-json"><div class="highlight"><pre><span></span><span class="p">{</span>
+<p>Folgenden Inhalt in die JSON Freifunk API Datei unter dem Dateinamen und Pfad <code class="docutils literal notranslate"><span class="pre">/var/www/meshviewer/freifunk-api/herford.json</span></code> abspeichern.</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
   <span class="nt">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Freifunk Herford&quot;</span><span class="p">,</span>
   <span class="nt">&quot;url&quot;</span><span class="p">:</span> <span class="s2">&quot;http://herford.freifunk.net&quot;</span><span class="p">,</span>
   <span class="nt">&quot;location&quot;</span><span class="p">:</span> <span class="p">{</span>
@@ -270,53 +292,53 @@
 </pre></div>
 </div>
 <div class="admonition hint">
-<p class="first admonition-title">Hinweis</p>
-<p class="last">Diese Datei kann man mit Hilfe des <a class="reference external" href="https://freifunk.net/api-generator/">Freifunk API Generator</a> erstellt werden.</p>
+<p class="admonition-title">Hinweis</p>
+<p>Diese Datei kann man mit Hilfe des <a class="reference external" href="https://freifunk.net/api-generator/">Freifunk API Generator</a> erstellt werden.</p>
 </div>
-<p>Die Dateirechte mit <code class="docutils literal"><span class="pre">chown</span> <span class="pre">map:map</span> <span class="pre">/var/www/meshviewer/freifunk-api/herford.json</span></code> anpassen.</p>
+<p>Die Dateirechte mit <code class="docutils literal notranslate"><span class="pre">chown</span> <span class="pre">map:map</span> <span class="pre">/var/www/meshviewer/freifunk-api/herford.json</span></code> anpassen.</p>
 </div>
 <div class="section" id="salt-state-file">
 <h2>Salt State File<a class="headerlink" href="#salt-state-file" title="Link zu dieser Überschrift">¶</a></h2>
 <p>ffflash.sls</p>
-<div class="highlight-salt"><div class="highlight"><pre><span></span><span class="c1"># Freifunk API</span>
+<div class="highlight-salt notranslate"><div class="highlight"><pre><span></span><span class="c1"># Freifunk API</span>
 
 <span class="c1"># http://ffflash.readthedocs.io/en/latest/</span>
 
-<span class="l l-Scalar l-Scalar-Plain">ffflash-prepare</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">pkg.installed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkgs</span><span class="p p-Indicator">:</span>
+<span class="nt">ffflash-prepare</span><span class="p">:</span>
+  <span class="nt">pkg.installed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">pkgs</span><span class="p">:</span>
         <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os_family&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Debian&#39;</span> <span class="cp">%}</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python3</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python3-dev</span>
         <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python-virtualenv</span>
         <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/www/meshviewer/freifunk-api/herford.json</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://map/var/www/meshviewer/freifunk-api/herford.json</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">makedirs</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+  <span class="nt">file.managed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/var/www/meshviewer/freifunk-api/herford.json</span>
+    <span class="p p-Indicator">-</span> <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://map/var/www/meshviewer/freifunk-api/herford.json</span>
+    <span class="p p-Indicator">-</span> <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+    <span class="p p-Indicator">-</span> <span class="nt">group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+    <span class="p p-Indicator">-</span> <span class="nt">makedirs</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
 
 <span class="c1"># https://freifunk.net/api-generator/</span>
 
-<span class="l l-Scalar l-Scalar-Plain">ffflash-repository</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">git.latest</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/spookey/ffflash.git</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">target</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/map/ffflash</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unless</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test -d /home/map/scripts/map/ffflash</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+<span class="nt">ffflash-repository</span><span class="p">:</span>
+  <span class="nt">git.latest</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">https://github.com/spookey/ffflash.git</span>
+    <span class="p p-Indicator">-</span> <span class="nt">target</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/map/ffflash</span>
+    <span class="p p-Indicator">-</span> <span class="nt">unless</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test -d /home/map/scripts/map/ffflash</span>
+    <span class="p p-Indicator">-</span> <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
 
-<span class="l l-Scalar l-Scalar-Plain">ffflash-venv</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">virtualenv.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">python</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">python3</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">cwd</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/map</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/map/venv3</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">requirements</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/map/ffflash/requirements.txt</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pip_upgrade</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ffflash-prepare</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">git</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ffflash-repository</span>
+<span class="nt">ffflash-venv</span><span class="p">:</span>
+  <span class="nt">virtualenv.managed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">python</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">python3</span>
+    <span class="p p-Indicator">-</span> <span class="nt">cwd</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/map</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/map/venv3</span>
+    <span class="p p-Indicator">-</span> <span class="nt">requirements</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/home/map/scripts/map/ffflash/requirements.txt</span>
+    <span class="p p-Indicator">-</span> <span class="nt">pip_upgrade</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="p p-Indicator">-</span> <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">map</span>
+    <span class="p p-Indicator">-</span> <span class="nt">require</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">pkg</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ffflash-prepare</span>
+      <span class="p p-Indicator">-</span> <span class="nt">git</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ffflash-repository</span>
 </pre></div>
 </div>
 </div>
@@ -324,15 +346,16 @@
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../ffmap-backend/index.html" class="btn btn-neutral float-right" title="Freifunk Map Backend" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../ffmap-backend/index.html" class="btn btn-neutral float-right" title="Freifunk Map Backend" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../meshviewer/index.html" class="btn btn-neutral" title="Mesh Viewer" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../meshviewer/index.html" class="btn btn-neutral float-left" title="Mesh Viewer" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -356,36 +379,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/translations.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -1,55 +1,53 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="de" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  <title>Installation &mdash; SaltStack Freifunk Herford 0.2 Dokumentation</title>
   
 
   
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
   
+  
+  
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Stichwortverzeichnis"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Suche" href="../../../search.html"/>
-    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../../../genindex.html" />
+    <link rel="search" title="Suche" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -58,7 +56,7 @@
 
           
             
-            <img src="../../../_static/freifunk.png" class="logo" />
+            <img src="../../../_static/freifunk.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -66,7 +64,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -87,7 +85,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">States</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
@@ -105,32 +106,52 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SaltStack Freifunk Herford</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
-    <li>Installation</li>
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -138,57 +159,57 @@
             
   <div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
-<p>Um die Paketquellen von fastd einzubinden erstellen wir eine die Datei <code class="docutils literal"><span class="pre">/etc/apt/sources.list.d/repo.universe-factory.net.list</span></code> und tragen dort folgendes ein.</p>
-<div class="code text highlight-default"><div class="highlight"><pre><span></span><span class="n">deb</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">repo</span><span class="o">.</span><span class="n">universe</span><span class="o">-</span><span class="n">factory</span><span class="o">.</span><span class="n">net</span><span class="o">/</span><span class="n">debian</span><span class="o">/</span> <span class="n">sid</span> <span class="n">main</span>
+<p>Um die Paketquellen von fastd einzubinden erstellen wir eine die Datei <code class="docutils literal notranslate"><span class="pre">/etc/apt/sources.list.d/repo.universe-factory.net.list</span></code> und tragen dort folgendes ein.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>deb https://repo.universe-factory.net/debian/ sid main
 </pre></div>
 </div>
 <p>Nun aktualisieren wir unsere Paketquellen und installieren fastd.</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">key</span> <span class="n">adv</span> <span class="o">--</span><span class="n">keyserver</span> <span class="n">keyserver</span><span class="o">.</span><span class="n">ubuntu</span><span class="o">.</span><span class="n">com</span> <span class="o">--</span><span class="n">recv</span> <span class="mi">16</span><span class="n">EF3F64CB201D9C</span>
-<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
-<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">dist</span><span class="o">-</span><span class="n">upgrade</span>
-<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">fastd</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-key adv --keyserver keyserver.ubuntu.com --recv 16EF3F64CB201D9C
+apt-get update
+apt-get dist-upgrade
+apt-get install fastd
 </pre></div>
 </div>
 </div>
 <div class="section" id="schlussel-generieren">
 <h1>Schlüssel generieren<a class="headerlink" href="#schlussel-generieren" title="Link zu dieser Überschrift">¶</a></h1>
 <div class="admonition hint">
-<p class="first admonition-title">Hinweis</p>
-<p class="last">Der Schlüssel kann auch Lokal generiert werden.</p>
+<p class="admonition-title">Hinweis</p>
+<p>Der Schlüssel kann auch Lokal generiert werden.</p>
 </div>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">haveged</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install haveged
 </pre></div>
 </div>
 <p>Den Schlüssel generieren.</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">fastd</span> <span class="o">--</span><span class="n">generate</span><span class="o">-</span><span class="n">key</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>fastd --generate-key
 </pre></div>
 </div>
-<p>Den privaten Schlüssel (Secret) speichern wir in die Datei <code class="docutils literal"><span class="pre">/etc/fastd/{{</span> <span class="pre">grains['id']</span> <span class="pre">}}/secret.conf</span></code>, dass sollte dann so ausssehen.</p>
-<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x">secret &quot;</span><span class="cp">{{</span> <span class="nv">secret</span> <span class="cp">}}</span><span class="x">&quot;;</span>
+<p>Den privaten Schlüssel (Secret) speichern wir in die Datei <code class="docutils literal notranslate"><span class="pre">/etc/fastd/{{</span> <span class="pre">grains['id']</span> <span class="pre">}}/secret.conf</span></code>, dass sollte dann so ausssehen.</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">secret &quot;</span><span class="cp">{{</span> <span class="nv">secret</span> <span class="cp">}}</span><span class="x">&quot;;</span>
 </pre></div>
 </div>
-<p>Den öffentlichen Schlüssel (Public) speichern wir dann unter <code class="docutils literal"><span class="pre">/etc/fastd/{{</span> <span class="pre">grains['id']</span> <span class="pre">}}/peers/{{</span> <span class="pre">grains['id']</span> <span class="pre">}}</span></code>, dass sollte dann so aussehen.</p>
-<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x">remote </span><span class="cp">{{</span> <span class="nv">protocol</span> <span class="cp">}}</span><span class="x"> &quot;</span><span class="cp">{{</span> <span class="nv">fqdn</span> <span class="cp">}}</span><span class="x">&quot; port </span><span class="cp">{{</span> <span class="nv">port</span> <span class="cp">}}</span><span class="x">;</span>
+<p>Den öffentlichen Schlüssel (Public) speichern wir dann unter <code class="docutils literal notranslate"><span class="pre">/etc/fastd/{{</span> <span class="pre">grains['id']</span> <span class="pre">}}/peers/{{</span> <span class="pre">grains['id']</span> <span class="pre">}}</span></code>, dass sollte dann so aussehen.</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x">remote </span><span class="cp">{{</span> <span class="nv">protocol</span> <span class="cp">}}</span><span class="x"> &quot;</span><span class="cp">{{</span> <span class="nv">fqdn</span> <span class="cp">}}</span><span class="x">&quot; port </span><span class="cp">{{</span> <span class="nv">port</span> <span class="cp">}}</span><span class="x">;</span>
 <span class="x">key &quot;</span><span class="cp">{{</span> <span class="nv">key</span> <span class="cp">}}</span><span class="x">&quot;;</span>
 </pre></div>
 </div>
 <p>Entropie=Wahnsinn=haveged wozu?</p>
 <blockquote>
-<div><p>&#8220;neoraider&#8221; hat mich auf #gluon gebrieft.</p>
+<div><p>„neoraider“ hat mich auf #gluon gebrieft.</p>
 <ol class="arabic simple">
-<li>haveged wird nur fuer den ersten Boot bzw. im Configmode fuer die Generierung der Keys fuer fastd und ssh benoetigt.</li>
-<li>haveged braucht im Betrieb ca. 800kB RAM und es ist im Moment kein RAM-Mangel bekannt, auch beim Meshen nicht.&#8221;</li>
+<li><p>haveged wird nur fuer den ersten Boot bzw. im Configmode fuer die Generierung der Keys fuer fastd und ssh benoetigt.</p></li>
+<li><p>haveged braucht im Betrieb ca. 800kB RAM und es ist im Moment kein RAM-Mangel bekannt, auch beim Meshen nicht.“</p></li>
 </ol>
-<p class="attribution">&mdash;<a class="reference external" href="https://forum.ffrn.de/t/entropie-wahnsinn-haveged-wozu/1069/10">Gmon</a></p>
+<p class="attribution">—<a class="reference external" href="https://forum.ffrn.de/t/entropie-wahnsinn-haveged-wozu/1069/10">Gmon</a></p>
 </div></blockquote>
 </div>
 <div class="section" id="konfiguration">
 <h1>Konfiguration<a class="headerlink" href="#konfiguration" title="Link zu dieser Überschrift">¶</a></h1>
-<p>Inhalt von <code class="docutils literal"><span class="pre">fastd.conf</span></code>.</p>
-<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x"># This file is managed by Salt, do not edit.</span>
+<p>Inhalt von <code class="docutils literal notranslate"><span class="pre">fastd.conf</span></code>.</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x"># This file is managed by Salt, do not edit.</span>
 
-<span class="x">#log level debug;</span>
-<span class="x">log level fatal;</span>
+<span class="x">log level debug;</span>
+<span class="x">#log level fatal;</span>
 <span class="x">hide ip addresses yes;</span>
 <span class="x">hide mac addresses yes;</span>
 <span class="x">interface &quot;</span><span class="cp">{{</span> <span class="nv">interface</span> <span class="cp">}}</span><span class="x">&quot;;</span>
@@ -200,17 +221,18 @@
 <span class="x">on verify &quot;true&quot;;</span>
 <span class="x">status socket &quot;</span><span class="cp">{{</span> <span class="nv">socket</span> <span class="cp">}}</span><span class="x">&quot;;</span>
 <span class="x"># Nicht in syslog loggen</span>
-<span class="x">#log to syslog level debug;</span>
+<span class="x">log to syslog level debug;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="peers">
 <h1>Peers<a class="headerlink" href="#peers" title="Link zu dieser Überschrift">¶</a></h1>
-<p>Die Peers sollten mit den anderen Gateways syncronisiert werden, so dass alle Peers dann in dem Verzeichnis <code class="docutils literal"><span class="pre">/etc/fastd/{{</span> <span class="pre">grains['id']</span> <span class="pre">}}/peers</span></code> verfügbar sind.</p>
+<p>Die Peers sollten mit den anderen Gateways syncronisiert werden, so dass alle Peers dann in dem Verzeichnis <code class="docutils literal notranslate"><span class="pre">/etc/fastd/{{</span> <span class="pre">grains['id']</span> <span class="pre">}}/peers</span></code> verfügbar sind.</p>
 </div>
 
 
            </div>
+           
           </div>
           <footer>
   
@@ -234,36 +256,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/translations.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

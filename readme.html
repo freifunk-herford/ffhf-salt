@@ -1,57 +1,55 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="de" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Readme &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  <title>Readme &mdash; SaltStack Freifunk Herford 0.2 Dokumentation</title>
   
 
   
   
     <link rel="shortcut icon" href="_static/favicon.ico"/>
   
+  
+  
 
   
+  <script type="text/javascript" src="_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+        <script type="text/javascript" src="_static/jquery.js"></script>
+        <script type="text/javascript" src="_static/underscore.js"></script>
+        <script type="text/javascript" src="_static/doctools.js"></script>
+        <script type="text/javascript" src="_static/language_data.js"></script>
+        <script type="text/javascript" src="_static/translations.js"></script>
+    
+    <script type="text/javascript" src="_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Stichwortverzeichnis"
-              href="genindex.html"/>
-        <link rel="search" title="Suche" href="search.html"/>
-    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="index.html"/>
-        <link rel="next" title="Testumgebung" href="testing.html"/>
-        <link rel="prev" title="Netzwerk Plan" href="network.html"/> 
-
-  
-  <script src="_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="genindex.html" />
+    <link rel="search" title="Suche" href="search.html" />
+    <link rel="next" title="Testumgebung" href="testing.html" />
+    <link rel="prev" title="Netzwerk Plan" href="network.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +58,7 @@
 
           
             
-            <img src="_static/freifunk.png" class="logo" />
+            <img src="_static/freifunk.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -68,7 +66,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -89,7 +87,10 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="file_roots/index.html">States</a></li>
 <li class="toctree-l1"><a class="reference internal" href="pillar_roots/index.html">Pillars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="links.html">Links</a></li>
@@ -112,32 +113,52 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="index.html">SaltStack Freifunk Herford</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="index.html">SaltStack Freifunk Herford</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="index.html">Docs</a> &raquo;</li>
-      
-    <li>Readme</li>
+    
+      <li><a href="index.html">Docs</a> &raquo;</li>
+        
+      <li>Readme</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -157,73 +178,48 @@
 <h2>Minion installieren und konfigurieren.<a class="headerlink" href="#minion-installieren-und-konfigurieren" title="Link zu dieser Überschrift">¶</a></h2>
 <p><strong>Auf dem Minion folgendes ausführen.</strong></p>
 <p>Unter Ubuntu 14.04 LTS folgendes zusätzlich ausführen.</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">saltstack</span><span class="o">/</span><span class="n">salt</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
-<span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">dist</span><span class="o">-</span><span class="n">upgrade</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo add-apt-repository ppa:saltstack/salt
+sudo apt-get update
+sudo apt-get dist-upgrade
 </pre></div>
 </div>
 <p>Unter Ubuntu 14.04 und 16.04 nun folgendes ausführen.</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">salt</span><span class="o">-</span><span class="n">minion</span>
-<span class="n">sudo</span> <span class="n">vi</span> <span class="o">/</span><span class="n">etc</span><span class="o">/</span><span class="n">salt</span><span class="o">/</span><span class="n">minion</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo apt-get install salt-minion
+sudo vi /etc/salt/minion
 </pre></div>
 </div>
-<p>Folgende Einträge in <code class="docutils literal"><span class="pre">/etc/salt/minion</span></code> anpassen.</p>
-<div class="code text highlight-default"><div class="highlight"><pre><span></span><span class="n">master</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">master</span><span class="o">&gt;</span>
-<span class="nb">id</span><span class="p">:</span> <span class="o">&lt;</span><span class="n">minion_id</span><span class="o">&gt;</span>
-<span class="n">hash_type</span><span class="p">:</span> <span class="n">sha256</span>
+<p>Folgende Einträge in <code class="docutils literal notranslate"><span class="pre">/etc/salt/minion</span></code> anpassen.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>master: &lt;master&gt;
+id: &lt;minion_id&gt;
+hash_type: sha256
 </pre></div>
 </div>
 <p>Anschließend den Minion neu starten.</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">sudo</span> <span class="n">service</span> <span class="n">salt</span><span class="o">-</span><span class="n">minion</span> <span class="n">restart</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo service salt-minion restart
 </pre></div>
 </div>
 <p><strong>Auf dem Master folgendes ausführen.</strong></p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">salt</span><span class="o">-</span><span class="n">key</span> <span class="o">-</span><span class="n">a</span> <span class="o">&lt;</span><span class="n">minion_id</span><span class="o">&gt;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>salt-key -a &lt;minion_id&gt;
 </pre></div>
 </div>
-<p>So wird der Minion auf dem Master akzeptiert. Nun kann man noch einen Test durchführen, vorausgesetzt der Minion ist schon unter <code class="docutils literal"><span class="pre">base:</span></code> in der <code class="docutils literal"><span class="pre">top.sls</span></code> der <code class="docutils literal"><span class="pre">file_roots</span></code> eingetragen.</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">salt</span> <span class="o">&lt;</span><span class="n">minion_id</span><span class="o">&gt;</span> <span class="n">state</span><span class="o">.</span><span class="n">show_highstate</span>
+<p>So wird der Minion auf dem Master akzeptiert. Nun kann man noch einen Test durchführen, vorausgesetzt der Minion ist schon unter <code class="docutils literal notranslate"><span class="pre">base:</span></code> in der <code class="docutils literal notranslate"><span class="pre">top.sls</span></code> der <code class="docutils literal notranslate"><span class="pre">file_roots</span></code> eingetragen.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>salt &lt;minion_id&gt; state.show_highstate
 </pre></div>
 </div>
-<div class="highlight-text"><div class="highlight"><pre><span></span># Freifunk Herford SaltStack Configuration
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># Freifunk Herford SaltStack Configuration
 
-Anleitung unter https://freifunk-herford.github.io/ffhf-salt/ lesen.
+Anleitung unter &lt;https://freifunk-herford.github.io/ffhf-salt/&gt; lesen.
 
 ## Generate Documentation
 
-	cd contrib
-	virtualenv venv
-	source venv/bin/activate
-	pip install --upgrade pip -r requirements
-	cd docs
-	make html
+    cd contrib
+    virtualenv venv
+    venv/bin/pip install --upgrade pip -r requirements.txt
+    bash generate-docs.sh
 
 ## GPG Encryption
 
-Render [Documentation](http://docs.saltstack.com/en/latest/ref/renderers/all/salt.renderers.gpg.html)
-
-Generate Key:
-
-    gpg --gen-key --homedir /etc/salt/gpgkeys
-
-Export Key:
-
-    gpg --armor --homedir /etc/salt/gpgkeys --armor --export saltstack &gt; saltstack.gpg
-
-Import Key:
-
-    gpg --import saltstack.gpg
-
-Trust Key:
-
-    gpg --edit-key saltstack
-    $ trust
-    $ 5
-    $ quit
-
-Test Encryption:
-
-    echo -n &quot;supersecret&quot; | gpg --homedir ~/.gnupg --armor --encrypt -r saltstack
+[Salt Renderers GPG Documentation](http://docs.saltstack.com/en/latest/ref/renderers/all/salt.renderers.gpg.html)
 </pre></div>
 </div>
 </div>
@@ -231,15 +227,16 @@ Test Encryption:
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="testing.html" class="btn btn-neutral float-right" title="Testumgebung" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="testing.html" class="btn btn-neutral float-right" title="Testumgebung" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="network.html" class="btn btn-neutral" title="Netzwerk Plan" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="network.html" class="btn btn-neutral float-left" title="Netzwerk Plan" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -263,36 +260,15 @@ Test Encryption:
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'./',
-            VERSION:'0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="_static/jquery.js"></script>
-      <script type="text/javascript" src="_static/underscore.js"></script>
-      <script type="text/javascript" src="_static/doctools.js"></script>
-      <script type="text/javascript" src="_static/translations.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

@@ -1,0 +1,482 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="de" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; SaltStack Freifunk Herford 0.2 Dokumentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../../../genindex.html" />
+    <link rel="search" title="Suche" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SaltStack Freifunk Herford
+          
+
+          
+            
+            <img src="../../../_static/freifunk.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">States</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network.html">Netzwerk Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testumgebung</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SaltStack Freifunk Herford</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install isc-dhcp-server
+</pre></div>
+</div>
+<p>Für den IPv4 Betrieb des DHCP Servers in der Datei <code class="docutils literal notranslate"><span class="pre">/etc/default/isc-dhcp-server</span></code> den Eintrag <code class="docutils literal notranslate"><span class="pre">INTERFACESv4=&quot;&quot;</span></code> mit dem Interface der Brückenschnittstelle füllen.</p>
+<p>Für den IPv6 Betrieb des DHCP Servers in der Datei <code class="docutils literal notranslate"><span class="pre">/etc/default/isc-dhcp-server</span></code> den Eintrag <code class="docutils literal notranslate"><span class="pre">INTERFACESv6=&quot;&quot;</span></code> mit dem Interface der Brückenschnittstelle füllen.</p>
+</div>
+<div class="section" id="konfiguation">
+<h1>Konfiguation<a class="headerlink" href="#konfiguation" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Inhalt von <code class="docutils literal notranslate"><span class="pre">/etc/dhcp/dhcpd.conf</span></code> für IPv4.</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x"># This file is managed by Salt, do not edit.</span>
+
+<span class="x">#</span>
+<span class="x"># Sample configuration file for ISC dhcpd for Debian</span>
+<span class="x">#</span>
+<span class="x"># Attention: If /etc/ltsp/dhcpd.conf exists, that will be used as</span>
+<span class="x"># configuration file instead of this file.</span>
+<span class="x">#</span>
+<span class="x">#</span>
+
+<span class="x"># The ddns-updates-style parameter controls whether or not the server will</span>
+<span class="x"># attempt to do a DNS update when a lease is confirmed. We default to the</span>
+<span class="x"># behavior of the version 2 packages (&#39;none&#39;, since DHCP v2 didn&#39;t</span>
+<span class="x"># have support for DDNS.)</span>
+<span class="x">#ddns-update-style none;</span>
+
+<span class="x"># option definitions common to all supported networks...</span>
+<span class="x">#option domain-name &quot;example.org&quot;;</span>
+<span class="x">#option domain-name-servers ns1.example.org, ns2.example.org;</span>
+
+<span class="x">#default-lease-time 600;</span>
+<span class="x">#max-lease-time 7200;</span>
+
+<span class="x"># If this DHCP server is the official DHCP server for the local</span>
+<span class="x"># network, the authoritative directive should be uncommented.</span>
+<span class="x">#authoritative;</span>
+
+<span class="x"># Use this to send dhcp log messages to a different log file (you also</span>
+<span class="x"># have to hack syslog.conf to complete the redirection).</span>
+<span class="x">#log-facility local7;</span>
+
+<span class="x"># No service will be given on this subnet, but declaring it helps the</span>
+<span class="x"># DHCP server to understand the network topology.</span>
+
+<span class="x">#subnet 10.152.187.0 netmask 255.255.255.0 {</span>
+<span class="x">#}</span>
+
+<span class="x"># This is a very basic subnet declaration.</span>
+
+<span class="x">#subnet 10.254.239.0 netmask 255.255.255.224 {</span>
+<span class="x">#  range 10.254.239.10 10.254.239.20;</span>
+<span class="x">#  option routers rtr-239-0-1.example.org, rtr-239-0-2.example.org;</span>
+<span class="x">#}</span>
+
+<span class="x"># This declaration allows BOOTP clients to get dynamic addresses,</span>
+<span class="x"># which we don&#39;t really recommend.</span>
+
+<span class="x">#subnet 10.254.239.32 netmask 255.255.255.224 {</span>
+<span class="x">#  range dynamic-bootp 10.254.239.40 10.254.239.60;</span>
+<span class="x">#  option broadcast-address 10.254.239.31;</span>
+<span class="x">#  option routers rtr-239-32-1.example.org;</span>
+<span class="x">#}</span>
+
+<span class="x"># A slightly different configuration for an internal subnet.</span>
+<span class="x">#subnet 10.5.5.0 netmask 255.255.255.224 {</span>
+<span class="x">#  range 10.5.5.26 10.5.5.30;</span>
+<span class="x">#  option domain-name-servers ns1.internal.example.org;</span>
+<span class="x">#  option domain-name &quot;internal.example.org&quot;;</span>
+<span class="x">#  option subnet-mask 255.255.255.224;</span>
+<span class="x">#  option routers 10.5.5.1;</span>
+<span class="x">#  option broadcast-address 10.5.5.31;</span>
+<span class="x">#  default-lease-time 600;</span>
+<span class="x">#  max-lease-time 7200;</span>
+<span class="x">#}</span>
+
+<span class="x"># Hosts which require special configuration options can be listed in</span>
+<span class="x"># host statements.   If no address is specified, the address will be</span>
+<span class="x"># allocated dynamically (if possible), but the host-specific information</span>
+<span class="x"># will still come from the host declaration.</span>
+
+<span class="x">#host passacaglia {</span>
+<span class="x">#  hardware ethernet 0:0:c0:5d:bd:95;</span>
+<span class="x">#  filename &quot;vmunix.passacaglia&quot;;</span>
+<span class="x">#  server-name &quot;toccata.fugue.com&quot;;</span>
+<span class="x">#}</span>
+
+<span class="x"># Fixed IP addresses can also be specified for hosts.   These addresses</span>
+<span class="x"># should not also be listed as being available for dynamic assignment.</span>
+<span class="x"># Hosts for which fixed IP addresses have been specified can boot using</span>
+<span class="x"># BOOTP or DHCP.   Hosts for which no fixed address is specified can only</span>
+<span class="x"># be booted with DHCP, unless there is an address range on the subnet</span>
+<span class="x"># to which a BOOTP client is connected which has the dynamic-bootp flag</span>
+<span class="x"># set.</span>
+<span class="x">#host fantasia {</span>
+<span class="x">#  hardware ethernet 08:00:07:26:c0:a5;</span>
+<span class="x">#  fixed-address fantasia.fugue.com;</span>
+<span class="x">#}</span>
+
+<span class="x"># You can declare a class of clients and then do address allocation</span>
+<span class="x"># based on that.   The example below shows a case where all clients</span>
+<span class="x"># in a certain class get addresses on the 10.17.224/24 subnet, and all</span>
+<span class="x"># other clients get addresses on the 10.0.29/24 subnet.</span>
+
+<span class="x">#class &quot;foo&quot; {</span>
+<span class="x">#  match if substring (option vendor-class-identifier, 0, 4) = &quot;SUNW&quot;;</span>
+<span class="x">#}</span>
+
+<span class="x">#shared-network 224-29 {</span>
+<span class="x">#  subnet 10.17.224.0 netmask 255.255.255.0 {</span>
+<span class="x">#    option routers rtr-224.example.org;</span>
+<span class="x">#  }</span>
+<span class="x">#  subnet 10.0.29.0 netmask 255.255.255.0 {</span>
+<span class="x">#    option routers rtr-29.example.org;</span>
+<span class="x">#  }</span>
+<span class="x">#  pool {</span>
+<span class="x">#    allow members of &quot;foo&quot;;</span>
+<span class="x">#    range 10.17.224.10 10.17.224.250;</span>
+<span class="x">#  }</span>
+<span class="x">#  pool {</span>
+<span class="x">#    deny members of &quot;foo&quot;;</span>
+<span class="x">#    range 10.0.29.10 10.0.29.230;</span>
+<span class="x">#  }</span>
+<span class="x">#}</span>
+
+<span class="x">ddns-update-style none;</span>
+
+<span class="x">authoritative;</span>
+
+<span class="x">server-name &quot;</span><span class="cp">{{</span> <span class="nv">server_name</span> <span class="cp">}}</span><span class="x">&quot;;</span>
+
+<span class="x">default-lease-time </span><span class="cp">{{</span> <span class="nv">default_lease_time</span> <span class="cp">}}</span><span class="x">;</span>
+<span class="x">max-lease-time </span><span class="cp">{{</span> <span class="nv">max_lease_time</span> <span class="cp">}}</span><span class="x">;</span>
+<span class="x">min-lease-time </span><span class="cp">{{</span> <span class="nv">min_lease_time</span> <span class="cp">}}</span><span class="x">;</span>
+
+<span class="x">log-facility </span><span class="cp">{{</span> <span class="nv">log_facility</span> <span class="cp">}}</span><span class="x">;</span>
+
+<span class="x">subnet </span><span class="cp">{{</span> <span class="nv">subnet</span> <span class="cp">}}</span><span class="x"> netmask </span><span class="cp">{{</span> <span class="nv">netmask</span> <span class="cp">}}</span><span class="x"> {</span>
+<span class="x">    range </span><span class="cp">{{</span> <span class="nv">range_start</span> <span class="cp">}}</span><span class="x"> </span><span class="cp">{{</span> <span class="nv">range_end</span> <span class="cp">}}</span><span class="x">;</span>
+<span class="x">    option routers </span><span class="cp">{{</span> <span class="nv">routers</span> <span class="cp">}}</span><span class="x">;</span>
+<span class="x">    option domain-name-servers </span><span class="cp">{{</span> <span class="nv">domain_name_servers</span> <span class="cp">}}</span><span class="x">;</span>
+<span class="x">    option domain-search &quot;</span><span class="cp">{{</span> <span class="nv">domain_search</span> <span class="cp">}}</span><span class="x">&quot;;</span>
+<span class="x">    option ntp-servers </span><span class="cp">{{</span> <span class="nv">ntp_servers</span> <span class="cp">}}</span><span class="x">;</span>
+<span class="x">    option interface-mtu </span><span class="cp">{{</span> <span class="nv">interface_mtu</span> <span class="cp">}}</span><span class="x">;</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>Inhalt von <code class="docutils literal notranslate"><span class="pre">/etc/dhcp/dhcpd6.conf</span></code> für IPv6.</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x"># This file is managed by Salt, do not edit.</span>
+
+<span class="x">#</span>
+<span class="x"># Sample configuration file for ISC dhcpd for Debian</span>
+<span class="x">#</span>
+<span class="x"># Attention: If /etc/ltsp/dhcpd.conf exists, that will be used as</span>
+<span class="x"># configuration file instead of this file.</span>
+<span class="x">#</span>
+<span class="x">#</span>
+
+<span class="x"># The ddns-updates-style parameter controls whether or not the server will</span>
+<span class="x"># attempt to do a DNS update when a lease is confirmed. We default to the</span>
+<span class="x"># behavior of the version 2 packages (&#39;none&#39;, since DHCP v2 didn&#39;t</span>
+<span class="x"># have support for DDNS.)</span>
+<span class="x">#ddns-update-style none;</span>
+
+<span class="x"># option definitions common to all supported networks...</span>
+<span class="x">#option domain-name &quot;example.org&quot;;</span>
+<span class="x">#option domain-name-servers ns1.example.org, ns2.example.org;</span>
+
+<span class="x">#default-lease-time 600;</span>
+<span class="x">#max-lease-time 7200;</span>
+
+<span class="x"># If this DHCP server is the official DHCP server for the local</span>
+<span class="x"># network, the authoritative directive should be uncommented.</span>
+<span class="x">#authoritative;</span>
+
+<span class="x"># Use this to send dhcp log messages to a different log file (you also</span>
+<span class="x"># have to hack syslog.conf to complete the redirection).</span>
+<span class="x">#log-facility local7;</span>
+
+<span class="x"># No service will be given on this subnet, but declaring it helps the</span>
+<span class="x"># DHCP server to understand the network topology.</span>
+
+<span class="x">#subnet 10.152.187.0 netmask 255.255.255.0 {</span>
+<span class="x">#}</span>
+
+<span class="x"># This is a very basic subnet declaration.</span>
+
+<span class="x">#subnet 10.254.239.0 netmask 255.255.255.224 {</span>
+<span class="x">#  range 10.254.239.10 10.254.239.20;</span>
+<span class="x">#  option routers rtr-239-0-1.example.org, rtr-239-0-2.example.org;</span>
+<span class="x">#}</span>
+
+<span class="x"># This declaration allows BOOTP clients to get dynamic addresses,</span>
+<span class="x"># which we don&#39;t really recommend.</span>
+
+<span class="x">#subnet 10.254.239.32 netmask 255.255.255.224 {</span>
+<span class="x">#  range dynamic-bootp 10.254.239.40 10.254.239.60;</span>
+<span class="x">#  option broadcast-address 10.254.239.31;</span>
+<span class="x">#  option routers rtr-239-32-1.example.org;</span>
+<span class="x">#}</span>
+
+<span class="x"># A slightly different configuration for an internal subnet.</span>
+<span class="x">#subnet 10.5.5.0 netmask 255.255.255.224 {</span>
+<span class="x">#  range 10.5.5.26 10.5.5.30;</span>
+<span class="x">#  option domain-name-servers ns1.internal.example.org;</span>
+<span class="x">#  option domain-name &quot;internal.example.org&quot;;</span>
+<span class="x">#  option subnet-mask 255.255.255.224;</span>
+<span class="x">#  option routers 10.5.5.1;</span>
+<span class="x">#  option broadcast-address 10.5.5.31;</span>
+<span class="x">#  default-lease-time 600;</span>
+<span class="x">#  max-lease-time 7200;</span>
+<span class="x">#}</span>
+
+<span class="x"># Hosts which require special configuration options can be listed in</span>
+<span class="x"># host statements.   If no address is specified, the address will be</span>
+<span class="x"># allocated dynamically (if possible), but the host-specific information</span>
+<span class="x"># will still come from the host declaration.</span>
+
+<span class="x">#host passacaglia {</span>
+<span class="x">#  hardware ethernet 0:0:c0:5d:bd:95;</span>
+<span class="x">#  filename &quot;vmunix.passacaglia&quot;;</span>
+<span class="x">#  server-name &quot;toccata.fugue.com&quot;;</span>
+<span class="x">#}</span>
+
+<span class="x"># Fixed IP addresses can also be specified for hosts.   These addresses</span>
+<span class="x"># should not also be listed as being available for dynamic assignment.</span>
+<span class="x"># Hosts for which fixed IP addresses have been specified can boot using</span>
+<span class="x"># BOOTP or DHCP.   Hosts for which no fixed address is specified can only</span>
+<span class="x"># be booted with DHCP, unless there is an address range on the subnet</span>
+<span class="x"># to which a BOOTP client is connected which has the dynamic-bootp flag</span>
+<span class="x"># set.</span>
+<span class="x">#host fantasia {</span>
+<span class="x">#  hardware ethernet 08:00:07:26:c0:a5;</span>
+<span class="x">#  fixed-address fantasia.fugue.com;</span>
+<span class="x">#}</span>
+
+<span class="x"># You can declare a class of clients and then do address allocation</span>
+<span class="x"># based on that.   The example below shows a case where all clients</span>
+<span class="x"># in a certain class get addresses on the 10.17.224/24 subnet, and all</span>
+<span class="x"># other clients get addresses on the 10.0.29/24 subnet.</span>
+
+<span class="x">#class &quot;foo&quot; {</span>
+<span class="x">#  match if substring (option vendor-class-identifier, 0, 4) = &quot;SUNW&quot;;</span>
+<span class="x">#}</span>
+
+<span class="x">#shared-network 224-29 {</span>
+<span class="x">#  subnet 10.17.224.0 netmask 255.255.255.0 {</span>
+<span class="x">#    option routers rtr-224.example.org;</span>
+<span class="x">#  }</span>
+<span class="x">#  subnet 10.0.29.0 netmask 255.255.255.0 {</span>
+<span class="x">#    option routers rtr-29.example.org;</span>
+<span class="x">#  }</span>
+<span class="x">#  pool {</span>
+<span class="x">#    allow members of &quot;foo&quot;;</span>
+<span class="x">#    range 10.17.224.10 10.17.224.250;</span>
+<span class="x">#  }</span>
+<span class="x">#  pool {</span>
+<span class="x">#    deny members of &quot;foo&quot;;</span>
+<span class="x">#    range 10.0.29.10 10.0.29.230;</span>
+<span class="x">#  }</span>
+<span class="x">#}</span>
+
+<span class="x">ddns-update-style none;</span>
+
+<span class="x">authoritative;</span>
+
+<span class="x">server-name &quot;</span><span class="cp">{{</span> <span class="nv">server_name</span> <span class="cp">}}</span><span class="x">&quot;;</span>
+
+<span class="x">default-lease-time </span><span class="cp">{{</span> <span class="nv">default_lease_time</span> <span class="cp">}}</span><span class="x">;</span>
+<span class="x">max-lease-time </span><span class="cp">{{</span> <span class="nv">max_lease_time</span> <span class="cp">}}</span><span class="x">;</span>
+<span class="x">min-lease-time </span><span class="cp">{{</span> <span class="nv">min_lease_time</span> <span class="cp">}}</span><span class="x">;</span>
+
+<span class="x">log-facility </span><span class="cp">{{</span> <span class="nv">log_facility</span> <span class="cp">}}</span><span class="x">;</span>
+
+<span class="x"># Global definitions for name server address(es)</span>
+<span class="x">option dhcp6.name-servers </span><span class="cp">{{</span> <span class="nv">name_servers</span> <span class="cp">}}</span><span class="x">;</span>
+
+<span class="x">subnet6 </span><span class="cp">{{</span> <span class="nv">subnet</span> <span class="cp">}}</span><span class="x"> {</span>
+<span class="x">}</span>
+</pre></div>
+</div>
+<p>TODO: IP Ranges anpassen, IPv6 Krams nachschauen und die Konfigurationsdateien anpassen.</p>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

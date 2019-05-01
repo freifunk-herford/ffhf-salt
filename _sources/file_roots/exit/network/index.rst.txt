@@ -1,0 +1,12 @@
+/etc/sysctl.d/99-salt.conf
+==========================
+
+.. include:: network.rst
+
+Salt State File
+---------------
+
+network.sls
+
+.. literalinclude:: ../../../../../../file_roots/exit/network.sls
+   :language: salt

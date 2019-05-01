@@ -1,0 +1,11 @@
+None
+
+.. include:: iptables.rst
+
+Salt State File
+---------------
+
+iptables.sls
+
+.. literalinclude:: ../../../../../../file_roots/exit/iptables.sls
+   :language: salt

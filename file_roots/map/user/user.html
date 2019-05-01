@@ -1,55 +1,53 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="de" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Konfiguration &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  <title>Konfiguration &mdash; SaltStack Freifunk Herford 0.2 Dokumentation</title>
   
 
   
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
   
+  
+  
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Stichwortverzeichnis"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Suche" href="../../../search.html"/>
-    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../../../genindex.html" />
+    <link rel="search" title="Suche" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -58,7 +56,7 @@
 
           
             
-            <img src="../../../_static/freifunk.png" class="logo" />
+            <img src="../../../_static/freifunk.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -66,7 +64,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -87,7 +85,10 @@
           
             
             
-                <ul>
+              
+            
+            
+              <ul>
 <li class="toctree-l1"><a class="reference internal" href="../../index.html">States</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
@@ -105,32 +106,52 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SaltStack Freifunk Herford</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
-    <li>Konfiguration</li>
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Konfiguration</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -138,20 +159,21 @@
             
   <div class="section" id="konfiguration">
 <h1>Konfiguration<a class="headerlink" href="#konfiguration" title="Link zu dieser Überschrift">¶</a></h1>
-<p>Den Benutzer <code class="docutils literal"><span class="pre">map</span></code> mit folgendem Befehl anlegen:</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">useradd</span> <span class="o">--</span><span class="n">create</span><span class="o">-</span><span class="n">home</span> <span class="o">--</span><span class="n">home</span><span class="o">-</span><span class="nb">dir</span> <span class="o">/</span><span class="n">home</span><span class="o">/</span><span class="nb">map</span> <span class="o">--</span><span class="n">usergroup</span> <span class="o">--</span><span class="n">groups</span> <span class="n">alfred</span> <span class="o">--</span><span class="n">gid</span> <span class="nb">map</span> <span class="nb">map</span>
+<p>Den Benutzer <code class="docutils literal notranslate"><span class="pre">map</span></code> mit folgendem Befehl anlegen:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>useradd --create-home --home-dir /home/map --usergroup --groups alfred --gid map map
 </pre></div>
 </div>
-<p>Damit der Benutzer <code class="docutils literal"><span class="pre">map</span></code> den Befehl <code class="docutils literal"><span class="pre">/usr/sbin/batctl</span></code> auführen darf folgende Schritte durchführen.</p>
-<p>In die Datei <code class="docutils literal"><span class="pre">/etc/sudoers.d/map</span></code> folgenden Inhalt einfügen:</p>
-<div class="code text highlight-default"><div class="highlight"><pre><span></span><span class="nb">map</span> <span class="n">ALL</span> <span class="o">=</span> <span class="n">NOPASSWD</span><span class="p">:</span> <span class="o">/</span><span class="n">usr</span><span class="o">/</span><span class="n">sbin</span><span class="o">/</span><span class="n">batctl</span>
+<p>Damit der Benutzer <code class="docutils literal notranslate"><span class="pre">map</span></code> den Befehl <code class="docutils literal notranslate"><span class="pre">/usr/sbin/batctl</span></code> auführen darf folgende Schritte durchführen.</p>
+<p>In die Datei <code class="docutils literal notranslate"><span class="pre">/etc/sudoers.d/map</span></code> folgenden Inhalt einfügen:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>map ALL = NOPASSWD: /usr/sbin/batctl
 </pre></div>
 </div>
-<p>Die rechte der Datei mit <code class="docutils literal"><span class="pre">chmod</span> <span class="pre">0440</span> <span class="pre">/etc/sudoers.d/map</span></code> anpassen.</p>
+<p>Die rechte der Datei mit <code class="docutils literal notranslate"><span class="pre">chmod</span> <span class="pre">0440</span> <span class="pre">/etc/sudoers.d/map</span></code> anpassen.</p>
 </div>
 
 
            </div>
+           
           </div>
           <footer>
   
@@ -175,36 +197,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/translations.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

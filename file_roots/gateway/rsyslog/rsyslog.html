@@ -1,0 +1,294 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="de" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Installation &mdash; SaltStack Freifunk Herford 0.2 Dokumentation</title>
+  
+
+  
+  
+    <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../../../genindex.html" />
+    <link rel="search" title="Suche" href="../../../search.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../../index.html" class="icon icon-home"> SaltStack Freifunk Herford
+          
+
+          
+            
+            <img src="../../../_static/freifunk.png" class="logo" alt="Logo"/>
+          
+          </a>
+
+          
+            
+            
+              <div class="version">
+                0.2
+              </div>
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">States</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../network.html">Netzwerk Plan</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../readme.html">Readme</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../../testing.html">Testumgebung</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SaltStack Freifunk Herford</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>Installation</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="installation">
+<h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install rsyslog
+</pre></div>
+</div>
+</div>
+<div class="section" id="konfiguation">
+<h1>Konfiguation<a class="headerlink" href="#konfiguation" title="Link zu dieser Überschrift">¶</a></h1>
+<p>Inhalt von <code class="docutils literal notranslate"><span class="pre">50-default.conf</span></code> in dem Verzeichnis <code class="docutils literal notranslate"><span class="pre">/etc/rsyslog.d/</span></code>.</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># This file is managed by Salt, do not edit.</span>
+
+<span class="c1">#  Default rules for rsyslog.</span>
+<span class="c1">#</span>
+<span class="c1">#          For more information see rsyslog.conf(5) and /etc/rsyslog.conf</span>
+
+<span class="c1">#</span>
+<span class="c1"># First some standard log files.  Log by facility.</span>
+<span class="c1">#</span>
+<span class="n">auth</span><span class="p">,</span><span class="n">authpriv</span><span class="o">.*</span>            <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">auth</span><span class="o">.</span><span class="n">log</span>
+<span class="o">*.*</span><span class="p">;</span><span class="n">auth</span><span class="p">,</span><span class="n">authpriv</span><span class="p">,</span><span class="n">daemon</span><span class="p">,</span><span class="n">local5</span><span class="p">,</span><span class="n">local6</span><span class="o">.</span><span class="n">none</span>     <span class="o">-/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">syslog</span> <span class="c1"># Added ;local6.none (Blackhole)</span>
+<span class="c1">#cron.*                /var/log/cron.log</span>
+<span class="n">daemon</span><span class="o">.*</span>          <span class="o">-/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">daemon</span><span class="o">.</span><span class="n">log</span>
+<span class="n">kern</span><span class="o">.*</span>             <span class="o">-/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">kern</span><span class="o">.</span><span class="n">log</span>
+<span class="c1">#lpr.*             -/var/log/lpr.log</span>
+<span class="n">mail</span><span class="o">.*</span>             <span class="o">-/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">mail</span><span class="o">.</span><span class="n">log</span>
+<span class="c1">#user.*                -/var/log/user.log</span>
+
+<span class="c1">#</span>
+<span class="c1"># Logging for the mail system.  Split it up so that</span>
+<span class="c1"># it is easy to write scripts to parse these files.</span>
+<span class="c1">#</span>
+<span class="c1">#mail.info         -/var/log/mail.info</span>
+<span class="c1">#mail.warn         -/var/log/mail.warn</span>
+<span class="n">mail</span><span class="o">.</span><span class="n">err</span>           <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">mail</span><span class="o">.</span><span class="n">err</span>
+
+<span class="c1">#</span>
+<span class="c1"># Logging for INN news system.</span>
+<span class="c1">#</span>
+<span class="n">news</span><span class="o">.</span><span class="n">crit</span>          <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">news</span><span class="o">/</span><span class="n">news</span><span class="o">.</span><span class="n">crit</span>
+<span class="n">news</span><span class="o">.</span><span class="n">err</span>           <span class="o">/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">news</span><span class="o">/</span><span class="n">news</span><span class="o">.</span><span class="n">err</span>
+<span class="n">news</span><span class="o">.</span><span class="n">notice</span>            <span class="o">-/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">news</span><span class="o">/</span><span class="n">news</span><span class="o">.</span><span class="n">notice</span>
+
+<span class="c1">#</span>
+<span class="c1"># Some &quot;catch-all&quot; log files.</span>
+<span class="c1">#</span>
+<span class="c1">#*.=debug;\</span>
+<span class="c1">#  auth,authpriv.none;\</span>
+<span class="c1">#  news.none;mail.none -/var/log/debug</span>
+<span class="c1">#*.=info;*.=notice;*.=warn;\</span>
+<span class="c1">#  auth,authpriv.none;\</span>
+<span class="c1">#  cron,daemon.none;\</span>
+<span class="c1">#  mail,news.none      -/var/log/messages</span>
+
+<span class="c1">#</span>
+<span class="c1"># Emergencies are sent to everybody logged in.</span>
+<span class="c1">#</span>
+<span class="o">*.</span><span class="n">emerg</span>                                <span class="p">:</span><span class="n">omusrmsg</span><span class="p">:</span><span class="o">*</span>
+
+<span class="c1">#</span>
+<span class="c1"># I like to have messages displayed on the console, but only on a virtual</span>
+<span class="c1"># console I usually leave idle.</span>
+<span class="c1">#</span>
+<span class="c1">#daemon,mail.*;\</span>
+<span class="c1">#  news.=crit;news.=err;news.=notice;\</span>
+<span class="c1">#  *.=debug;*.=info;\</span>
+<span class="c1">#  *.=notice;*.=warn   /dev/tty8</span>
+
+<span class="c1"># The named pipe /dev/xconsole is for the `xconsole&#39; utility.  To use it,</span>
+<span class="c1"># you must invoke `xconsole&#39; with the `-file&#39; option:</span>
+<span class="c1">#</span>
+<span class="c1">#    $ xconsole -file /dev/xconsole [...]</span>
+<span class="c1">#</span>
+<span class="c1"># NOTE: adjust the list below, or you&#39;ll go crazy if you have a reasonably</span>
+<span class="c1">#      busy site..</span>
+<span class="c1">#</span>
+<span class="n">daemon</span><span class="o">.*</span><span class="p">;</span><span class="n">mail</span><span class="o">.*</span><span class="p">;</span>\
+   <span class="n">news</span><span class="o">.</span><span class="n">err</span><span class="p">;</span>\
+   <span class="o">*.=</span><span class="n">debug</span><span class="p">;</span><span class="o">*.=</span><span class="n">info</span><span class="p">;</span>\
+   <span class="o">*.=</span><span class="n">notice</span><span class="p">;</span><span class="o">*.=</span><span class="n">warn</span>   <span class="o">|/</span><span class="n">dev</span><span class="o">/</span><span class="n">xconsole</span>
+</pre></div>
+</div>
+<p>Wir legen uns auf eine Log Facility fest, deren Ziel ein schwarzes Loch ist.</p>
+<p>Folgende Zeile:</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>*.*;auth,authpriv.none  -/var/log/syslog
+</pre></div>
+</div>
+<p>wird zu:</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">*.*</span><span class="p">;</span><span class="n">auth</span><span class="p">,</span><span class="n">authpriv</span><span class="o">.</span><span class="n">none</span><span class="p">;</span><span class="n">local6</span><span class="o">.</span><span class="n">none</span>      <span class="o">-/</span><span class="n">var</span><span class="o">/</span><span class="n">log</span><span class="o">/</span><span class="n">syslog</span>
+</pre></div>
+</div>
+<p>Anlegen der „Blackhole Logging Facility“: <code class="docutils literal notranslate"><span class="pre">local6</span></code> in dem Ordner <code class="docutils literal notranslate"><span class="pre">/etc/rsyslog.d/</span></code> in der Datei <code class="docutils literal notranslate"><span class="pre">99-blackhole.conf</span></code>.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>local6.*        /dev/null
+</pre></div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+
+    </p>
+  </div> 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

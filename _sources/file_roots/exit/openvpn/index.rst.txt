@@ -1,0 +1,12 @@
+OpenVPN (Virtual Private Network)
+=================================
+
+.. include:: openvpn.rst
+
+Salt State File
+---------------
+
+openvpn.sls
+
+.. literalinclude:: ../../../../../../file_roots/exit/openvpn.sls
+   :language: salt

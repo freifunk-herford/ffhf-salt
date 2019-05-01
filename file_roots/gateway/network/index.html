@@ -1,58 +1,55 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="de" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Network Interfaces &amp; Brige Utilities &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  <title>Network Interfaces &amp; Brige Utilities &mdash; SaltStack Freifunk Herford 0.2 Dokumentation</title>
   
 
   
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
   
+  
+  
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Stichwortverzeichnis"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Suche" href="../../../search.html"/>
-    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/>
-        <link rel="up" title="Gateway" href="../index.html"/>
-        <link rel="next" title="IP Route" href="../iproute/index.html"/>
-        <link rel="prev" title="NTP (Network Time Protocol)" href="../ntp/index.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../../../genindex.html" />
+    <link rel="search" title="Suche" href="../../../search.html" />
+    <link rel="next" title="IP Route" href="../iproute2/index.html" />
+    <link rel="prev" title="NTP (Network Time Protocol)" href="../ntp/index.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,7 +58,7 @@
 
           
             
-            <img src="../../../_static/freifunk.png" class="logo" />
+            <img src="../../../_static/freifunk.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -69,7 +66,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -90,17 +87,21 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">States</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Gateway</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../index.html">Gateway</a></li>
+<li class="toctree-l2 current"><a class="reference internal" href="../../map/index.html">Map</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../bash/index.html">Bash - Bourne Again Shell</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../git/index.html">git Version Control System</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../etckeeper/index.html">etc Keeper</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tmp/index.html">/tmp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mosh/index.html">Mosh (Mobile shell)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../molly-guard/index.html">Molly-Guard</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../openssh-server/index.html">OpenSSH - OpenBSD Secure Shell server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../haveged/index.html">haveged - Entropy daemon using the HAVEGE algorithm</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ntp/index.html">NTP (Network Time Protocol)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../openssh-server/index.html">OpenSSH - OpenBSD Secure Shell server</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Network Interfaces &amp; Brige Utilities</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a></li>
 <li class="toctree-l4"><a class="reference internal" href="#kernel-parameter">Kernel Parameter</a></li>
@@ -109,25 +110,21 @@
 <li class="toctree-l4"><a class="reference internal" href="#salt-state-file">Salt State File</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../iproute/index.html">IP Route</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../iptables/index.html">Net Filter/IP Tables Persistent</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../fail2ban/index.html">Fail2Ban Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../batman/index.html">B.A.T.M.A.N. - Better Approach To Mobile Adhoc Networking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../fastd/index.html">Fastd - Fast and Secure Tunneling Daemon</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../bird/index.html">BIRD - Internet Routing Daemon</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../radvd/index.html">RAdvD - Router Advertising Daemon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../alfred/index.html">A.L.F.R.E.D. - Almighty Lightweight Fact Remote Exchange Daemon</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../sysfsutils/index.html">sysfsutils: System Utilities Based on Sysfs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dhcp-server/index.html">DHCP Server (Dynamic Host Configuration Protocol)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../name-server/index.html">DNS Server (Domain Name System)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tinc/index.html">tinc VPN (Virtual Private Network)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../openvpn/index.html">OpenVPN - Virtual Private Network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../apache/index.html">Apache Web Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vnstat/index.html">vnStat &amp; vnStati</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../syslog/index.html">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bind9/index.html">DNS Server (Domain Name System)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../fail2ban/index.html">Fail2Ban Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apache2/index.html">Apache Web Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rsyslog/index.html">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../map/rrd/index.html">RRD Tools</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../map/user/index.html">Map User Account</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../map/meshviewer/index.html">Mesh Viewer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../map/ffflash/index.html">Freifunk API</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../map/ffmap-backend/index.html">Freifunk Map Backend</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../figlet/index.html">figlet - display large characters made up of ordinary screen characters</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../map/index.html">Map Server</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
@@ -146,36 +143,56 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SaltStack Freifunk Herford</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../index.html">States</a> &raquo;</li>
-      
+        
           <li><a href="../index.html">Gateway</a> &raquo;</li>
-      
-    <li>Network Interfaces &amp; Brige Utilities</li>
+        
+      <li>Network Interfaces &amp; Brige Utilities</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -185,35 +202,38 @@
 <h1>Network Interfaces &amp; Brige Utilities<a class="headerlink" href="#network-interfaces-brige-utilities" title="Link zu dieser Überschrift">¶</a></h1>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h2>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">bridge</span><span class="o">-</span><span class="n">utils</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install bridge-utils
 </pre></div>
 </div>
 </div>
 <div class="section" id="kernel-parameter">
 <h2>Kernel Parameter<a class="headerlink" href="#kernel-parameter" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Folgende Kernel Parameter einstellen und speichern.</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">sysctl</span> <span class="o">-</span><span class="n">w</span> <span class="n">net</span><span class="o">.</span><span class="n">ipv4</span><span class="o">.</span><span class="n">ip_forward</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-<span class="n">sysctl</span> <span class="o">-</span><span class="n">w</span> <span class="n">net</span><span class="o">.</span><span class="n">ipv4</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">default</span><span class="o">.</span><span class="n">rp_filter</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>
-<span class="n">sysctl</span> <span class="o">-</span><span class="n">w</span> <span class="n">net</span><span class="o">.</span><span class="n">ipv4</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">rp_filter</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>
-<span class="n">sysctl</span> <span class="o">-</span><span class="n">w</span> <span class="n">net</span><span class="o">.</span><span class="n">ipv6</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">forwarding</span><span class="o">=</span><span class="s2">&quot;1&quot;</span>
-<span class="n">sysctl</span> <span class="o">-</span><span class="n">w</span> <span class="n">net</span><span class="o">.</span><span class="n">ipv6</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">autoconf</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>
-<span class="n">sysctl</span> <span class="o">-</span><span class="n">w</span> <span class="n">net</span><span class="o">.</span><span class="n">ipv6</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">default</span><span class="o">.</span><span class="n">autoconf</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>
-<span class="n">sysctl</span> <span class="o">-</span><span class="n">w</span> <span class="n">net</span><span class="o">.</span><span class="n">ipv6</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">all</span><span class="o">.</span><span class="n">accept_ra</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>
-<span class="n">sysctl</span> <span class="o">-</span><span class="n">w</span> <span class="n">net</span><span class="o">.</span><span class="n">ipv6</span><span class="o">.</span><span class="n">conf</span><span class="o">.</span><span class="n">default</span><span class="o">.</span><span class="n">accept_ra</span><span class="o">=</span><span class="s2">&quot;0&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>sysctl -w net.ipv4.ip_forward<span class="o">=</span><span class="s2">&quot;1&quot;</span>
+sysctl -w net.ipv4.conf.default.rp_filter<span class="o">=</span><span class="s2">&quot;0&quot;</span>
+sysctl -w net.ipv4.conf.all.rp_filter<span class="o">=</span><span class="s2">&quot;0&quot;</span>
+sysctl -w net.ipv6.conf.all.forwarding<span class="o">=</span><span class="s2">&quot;1&quot;</span>
+sysctl -w net.ipv6.conf.all.autoconf<span class="o">=</span><span class="s2">&quot;0&quot;</span>
+sysctl -w net.ipv6.conf.default.autoconf<span class="o">=</span><span class="s2">&quot;0&quot;</span>
+sysctl -w net.ipv6.conf.all.accept_ra<span class="o">=</span><span class="s2">&quot;0&quot;</span>
+sysctl -w net.ipv6.conf.default.accept_ra<span class="o">=</span><span class="s2">&quot;0&quot;</span>
 </pre></div>
 </div>
 </div>
 <div class="section" id="schnittstellen">
 <h2>Schnittstellen<a class="headerlink" href="#schnittstellen" title="Link zu dieser Überschrift">¶</a></h2>
 <div class="admonition caution">
-<p class="first admonition-title">Vorsicht</p>
-<p class="last">In der Datei <code class="docutils literal"><span class="pre">/etc/network/interfaces</span></code> sollte der Eintrag <code class="docutils literal"><span class="pre">source</span> <span class="pre">/etc/network/interfaces.d/*</span></code> stehen!</p>
+<p class="admonition-title">Vorsicht</p>
+<p>In der Datei <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces</span></code> sollte der Eintrag <code class="docutils literal notranslate"><span class="pre">source</span> <span class="pre">/etc/network/interfaces.d/*</span></code> stehen!</p>
 </div>
-<p>Netzwerk Brücke <code class="docutils literal"><span class="pre">/etc/network/interfaces.d/bridge</span></code>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># This file is managed by Salt, do not edit.</span>
+<p>Netzwerk Brücke <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces.d/bridge</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This file is managed by Salt, do not edit.</span>
 
 auto <span class="o">{{</span> bridge <span class="o">}}</span>
 iface <span class="o">{{</span> bridge <span class="o">}}</span> inet static
+    <span class="o">{</span>%- <span class="k">if</span> pillar<span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;bridge_ports&#39;</span><span class="o">]</span> is defined %<span class="o">}</span>
+    bridge_ports <span class="o">{{</span> pillar<span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;primary&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="o">}}</span>
+    <span class="o">{</span>%- endif %<span class="o">}</span>
     hwaddress <span class="o">{{</span> hwaddress <span class="o">}}</span>
     address <span class="o">{{</span> address <span class="o">}}</span>
     netmask <span class="o">{{</span> netmask <span class="o">}}</span>
@@ -222,21 +242,21 @@ iface <span class="o">{{</span> bridge <span class="o">}}</span> inet static
     post-down brctl delbr <span class="nv">$IFACE</span>
 </pre></div>
 </div>
-<p>B.A.T.M.A.N. Schnittstelle <code class="docutils literal"><span class="pre">/etc/network/interfaces.d/batman</span></code>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># This file is managed by Salt, do not edit.</span>
+<p>B.A.T.M.A.N. Schnittstelle <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces.d/batman</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This file is managed by Salt, do not edit.</span>
 
 allow-hotplug <span class="o">{{</span> batman <span class="o">}}</span>
 iface <span class="o">{{</span> batman <span class="o">}}</span> inet6 manual
     pre-up modprobe batman-adv
     post-up brctl addif <span class="o">{{</span> bridge <span class="o">}}</span> <span class="nv">$IFACE</span>
-    post-up batctl -m <span class="nv">$IFACE</span> it 10000
-    post-up batctl -m <span class="nv">$IFACE</span> vm server
+    post-up batctl -m <span class="nv">$IFACE</span> it <span class="m">10000</span>
+    <span class="c1"># post-up batctl -m $IFACE vm server # Error - The installed batctl version and kernel module don&#39;t have vis support. The vis functionality</span>
     post-up batctl -m <span class="nv">$IFACE</span> gw server 96mbit/96mbit
     pre-down brctl delif <span class="o">{{</span> bridge <span class="o">}}</span> <span class="nv">$IFACE</span> <span class="o">||</span> <span class="nb">true</span>
 </pre></div>
 </div>
-<p>Mesh Schnittstelle (fastd) <code class="docutils literal"><span class="pre">/etc/network/interfaces.d/mesh</span></code>.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="c1"># This file is managed by Salt, do not edit.</span>
+<p>Mesh Schnittstelle (fastd) <code class="docutils literal notranslate"><span class="pre">/etc/network/interfaces.d/mesh</span></code>.</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1"># This file is managed by Salt, do not edit.</span>
 
 allow-hotplug <span class="o">{{</span> mesh <span class="o">}}</span>
 iface <span class="o">{{</span> mesh <span class="o">}}</span> inet6 manual
@@ -249,28 +269,49 @@ iface <span class="o">{{</span> mesh <span class="o">}}</span> inet6 manual
 </div>
 <div class="section" id="netzwerk-brucke">
 <h2>Netzwerk Brücke<a class="headerlink" href="#netzwerk-brucke" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Mit dem Befehl <code class="docutils literal"><span class="pre">ifup</span> <span class="pre">{{</span> <span class="pre">bridge</span> <span class="pre">}}</span></code> die Netzwerk Brücke starten, falls diese nicht vorhanden ist.</p>
+<p>Mit dem Befehl <code class="docutils literal notranslate"><span class="pre">ifup</span> <span class="pre">{{</span> <span class="pre">bridge</span> <span class="pre">}}</span></code> die Netzwerk Brücke starten, falls diese nicht vorhanden ist.</p>
 </div>
 <div class="section" id="salt-state-file">
 <h2>Salt State File<a class="headerlink" href="#salt-state-file" title="Link zu dieser Überschrift">¶</a></h2>
 <p>network.sls</p>
-<div class="highlight-salt"><div class="highlight"><pre><span></span><span class="c1"># Network Interfaces &amp; Brige Utilities</span>
+<div class="highlight-salt notranslate"><div class="highlight"><pre><span></span><span class="c1"># Network Interfaces &amp; Brige Utilities</span>
 
 <span class="cp">{%</span> <span class="k">set</span> <span class="nv">bridgeutils</span> <span class="o">=</span> <span class="nv">salt</span><span class="o">[</span><span class="s1">&#39;grains.filter_by&#39;</span><span class="o">]({</span>
   <span class="s1">&#39;Debian&#39;</span><span class="o">:</span> <span class="o">{</span><span class="s1">&#39;pkg&#39;</span><span class="o">:</span> <span class="s1">&#39;bridge-utils&#39;</span><span class="o">},</span>
 <span class="o">},</span> <span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Debian&#39;</span><span class="o">)</span> <span class="cp">%}</span>
 
 <span class="cp">{{</span> <span class="nv">bridgeutils.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">pkg.installed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bridgeutils.pkg</span> <span class="cp">}}</span>
+  <span class="nt">pkg.installed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">bridgeutils.pkg</span> <span class="cp">}}</span>
+
+<span class="c1"># </span><span class="c">{#% if grains[&#39;os&#39;] == &#39;Ubuntu&#39; and grains[&#39;osrelease&#39;] == &#39;18.04&#39; %#}</span>
+
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">ifupdown</span> <span class="o">=</span> <span class="nv">salt</span><span class="o">[</span><span class="s1">&#39;grains.filter_by&#39;</span><span class="o">]({</span>
+  <span class="s1">&#39;Debian&#39;</span><span class="o">:</span> <span class="o">{</span><span class="s1">&#39;pkg&#39;</span><span class="o">:</span> <span class="s1">&#39;ifupdown&#39;</span><span class="o">},</span>
+<span class="o">},</span> <span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Debian&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+
+<span class="cp">{{</span> <span class="nv">ifupdown.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
+  <span class="nt">pkg.installed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">ifupdown.pkg</span> <span class="cp">}}</span>
+
+<span class="cp">{%</span> <span class="k">set</span> <span class="nv">resolvconf</span> <span class="o">=</span> <span class="nv">salt</span><span class="o">[</span><span class="s1">&#39;grains.filter_by&#39;</span><span class="o">]({</span>
+  <span class="s1">&#39;Debian&#39;</span><span class="o">:</span> <span class="o">{</span><span class="s1">&#39;pkg&#39;</span><span class="o">:</span> <span class="s1">&#39;resolvconf&#39;</span><span class="o">},</span>
+<span class="o">},</span> <span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Debian&#39;</span><span class="o">)</span> <span class="cp">%}</span>
+
+<span class="cp">{{</span> <span class="nv">resolvconf.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
+  <span class="nt">pkg.installed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">resolvconf.pkg</span> <span class="cp">}}</span>
+
+<span class="c1"># </span><span class="c">{#% endif %#}</span>
 
 <span class="c1"># Interfaces</span>
 
 <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os_family&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Debian&#39;</span> <span class="cp">%}</span>
+
 <span class="c1"># /etc/network/interfaces:</span>
 <span class="c1">#   file.managed:</span>
 <span class="c1">#     - name: /etc/network/interfaces</span>
-<span class="c1">#     - srouce: salt://etc/network/interfaces-</span><span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;nodename&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+<span class="c1">#     - srouce: salt://etc/network/interfaces-</span><span class="c">{#{ grains[&#39;nodename&#39;] }#}</span>
 
 <span class="c1"># /etc/network/interfaces.d/br0:</span>
 <span class="c1">#   file.managed:</span>
@@ -278,10 +319,10 @@ iface <span class="o">{{</span> mesh <span class="o">}}</span> inet6 manual
 <span class="c1">#     - source: salt://gateway/etc/network/interfaces.d/br0</span>
 <span class="c1">#     - template: jinja</span>
 <span class="c1">#     - defaults:</span>
-<span class="c1">#         address: pillar[&#39;network&#39;][&#39;bridge&#39;][&#39;ipv4&#39;][&#39;address&#39;] }}</span>
-<span class="c1">#         netmask: pillar[&#39;network&#39;][&#39;bridge&#39;][&#39;ipv4&#39;][&#39;netmask&#39;] }}</span>
-<span class="c1">#         address6: pillar[&#39;network&#39;][&#39;bridge&#39;][&#39;ipv6&#39;][&#39;address&#39;] }}</span>
-<span class="c1">#         netmask6: pillar[&#39;network&#39;][&#39;bridge&#39;][&#39;ipv6&#39;][&#39;netmask&#39;] }}</span>
+<span class="c1">#         address: </span><span class="c">{#{ pillar[&#39;network&#39;][&#39;bridge&#39;][&#39;ipv4&#39;][&#39;address&#39;] }#}</span>
+<span class="c1">#         netmask: </span><span class="c">{#{ pillar[&#39;network&#39;][&#39;bridge&#39;][&#39;ipv4&#39;][&#39;netmask&#39;] }#}</span>
+<span class="c1">#         address6: </span><span class="c">{#{ pillar[&#39;network&#39;][&#39;bridge&#39;][&#39;ipv6&#39;][&#39;address&#39;] }#}</span>
+<span class="c1">#         netmask6: </span><span class="c">{#{ pillar[&#39;network&#39;][&#39;bridge&#39;][&#39;ipv6&#39;][&#39;netmask&#39;] }#}</span>
 <span class="c1">#     - user: root</span>
 <span class="c1">#     - group: root</span>
 <span class="c1">#     - mode: 644</span>
@@ -295,121 +336,137 @@ iface <span class="o">{{</span> mesh <span class="o">}}</span> inet6 manual
 <span class="c1">#     - mode: 64</span>
 
 <span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;testing&#39;</span><span class="o">]</span> <span class="k">is</span> <span class="nf">defined</span> <span class="cp">%}</span>
-<span class="l l-Scalar l-Scalar-Plain">/etc/resolvconf/resolv.conf.d/head</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/resolvconf/resolv.conf.d/head</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/resolvconf/resolv.conf.d/head</span>
+<span class="nt">/etc/resolvconf/resolv.conf.d/head</span><span class="p">:</span>
+  <span class="nt">file.managed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/resolvconf/resolv.conf.d/head</span>
+    <span class="p p-Indicator">-</span> <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/resolvconf/resolv.conf.d/head</span>
 <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 
-<span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.append</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">text</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+<span class="nt">/etc/network/interfaces</span><span class="p">:</span>
+  <span class="nt">file.append</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces</span>
+    <span class="p p-Indicator">-</span> <span class="nt">text</span><span class="p">:</span> <span class="p p-Indicator">|</span>
 
         <span class="no">source /etc/network/interfaces.d/*</span>
 
-<span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/bridge</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/bridge</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/network/interfaces.d/bridge</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">template</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">primary</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;primary&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">bridge</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">hwaddress</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;hwaddress&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">address</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;address&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">netmask</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;netmask&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">address6mask</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;address6mask&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-  <span class="l l-Scalar l-Scalar-Plain">cmd.run</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">ifup</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unless</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test -n &quot;$(ifconfig | grep </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="l l-Scalar l-Scalar-Plain">)&quot;</span>
+<span class="nt">/etc/network/interfaces.d</span><span class="p">:</span>
+  <span class="nt">file.directory</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d</span>
+    <span class="p p-Indicator">-</span> <span class="nt">makedirs</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
 
-<span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/batman</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/batman</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/network/interfaces.d/batman</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">template</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">primary</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;primary&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">bridge</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">batman</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;batman&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+<span class="nt">/etc/network/interfaces.d/bridge</span><span class="p">:</span>
+  <span class="nt">file.managed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/bridge</span>
+    <span class="p p-Indicator">-</span> <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/network/interfaces.d/bridge</span>
+    <span class="p p-Indicator">-</span> <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
+    <span class="p p-Indicator">-</span> <span class="nt">template</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
+    <span class="p p-Indicator">-</span> <span class="nt">defaults</span><span class="p">:</span>
+        <span class="nt">primary</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;primary&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+        <span class="nt">bridge</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+        <span class="nt">hwaddress</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;hwaddress&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+        <span class="nt">address</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;address&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+        <span class="nt">netmask</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;netmask&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+        <span class="nt">address6mask</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;address6mask&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+  <span class="nt">cmd.run</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">ifup</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+    <span class="p p-Indicator">-</span> <span class="nt">unless</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">test -n &quot;$(ifconfig | grep </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="l l-Scalar l-Scalar-Plain">)&quot;</span>
 
-<span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/mesh</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/mesh</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/network/interfaces.d/mesh</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">template</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">primary</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;primary&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">batman</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;batman&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">mesh</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;mesh&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">hwaddress</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;mesh&#39;</span><span class="o">][</span><span class="s1">&#39;hwaddress&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;fastd&#39;</span><span class="o">][</span><span class="s1">&#39;secret&#39;</span><span class="o">]</span> <span class="k">is</span> <span class="nf">defined</span> <span class="cp">%}</span>
+
+<span class="nt">/etc/network/interfaces.d/batman</span><span class="p">:</span>
+  <span class="nt">file.managed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/batman</span>
+    <span class="p p-Indicator">-</span> <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/network/interfaces.d/batman</span>
+    <span class="p p-Indicator">-</span> <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
+    <span class="p p-Indicator">-</span> <span class="nt">template</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
+    <span class="p p-Indicator">-</span> <span class="nt">defaults</span><span class="p">:</span>
+        <span class="nt">primary</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;primary&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+        <span class="nt">bridge</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+        <span class="nt">batman</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;batman&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
+<span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;mesh&#39;</span><span class="o">][</span><span class="s1">&#39;hwaddress&#39;</span><span class="o">]</span> <span class="k">is</span> <span class="nf">defined</span> <span class="cp">%}</span>
+
+<span class="nt">/etc/network/interfaces.d/mesh</span><span class="p">:</span>
+  <span class="nt">file.managed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/mesh</span>
+    <span class="p p-Indicator">-</span> <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/network/interfaces.d/mesh</span>
+    <span class="p p-Indicator">-</span> <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
+    <span class="p p-Indicator">-</span> <span class="nt">template</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
+    <span class="p p-Indicator">-</span> <span class="nt">defaults</span><span class="p">:</span>
+        <span class="nt">primary</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;primary&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+        <span class="nt">batman</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;batman&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+        <span class="nt">mesh</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;mesh&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+        <span class="nt">hwaddress</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;mesh&#39;</span><span class="o">][</span><span class="s1">&#39;hwaddress&#39;</span><span class="o">]</span> <span class="cp">}}</span>
+
+<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 
 <span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">]</span> <span class="k">is</span> <span class="nf">defined</span> <span class="k">and</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;provider&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;ffrl&#39;</span> <span class="cp">%}</span>
-<span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/ffrl</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/ffrl</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/network/interfaces.d/ffrl</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">template</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
+
+<span class="nt">/etc/network/interfaces.d/ffrl</span><span class="p">:</span>
+  <span class="nt">file.managed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/network/interfaces.d/ffrl</span>
+    <span class="p p-Indicator">-</span> <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/network/interfaces.d/ffrl</span>
+    <span class="p p-Indicator">-</span> <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
+    <span class="p p-Indicator">-</span> <span class="nt">template</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
+
 <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
+
 <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 
 <span class="c1"># Forwarding</span>
 <span class="c1"># IPv4</span>
 <span class="c1"># Affects:  /etc/sysctl.d/99-salt.conf</span>
 <span class="c1"># Validate: sysctl net.ipv4.ip_forward</span>
-<span class="l l-Scalar l-Scalar-Plain">net.ipv4.ip_forward</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">sysctl.present</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">net.ipv4.ip_forward</span><span class="p">:</span>
+  <span class="nt">sysctl.present</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
 
 <span class="c1"># Sven</span>
-<span class="l l-Scalar l-Scalar-Plain">net.ipv4.conf.default.rp_filter</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">sysctl.present</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">net.ipv4.conf.default.rp_filter</span><span class="p">:</span>
+  <span class="nt">sysctl.present</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
 
-<span class="l l-Scalar l-Scalar-Plain">net.ipv4.conf.all.rp_filter</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">sysctl.present</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">net.ipv4.conf.all.rp_filter</span><span class="p">:</span>
+  <span class="nt">sysctl.present</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
 
 <span class="c1"># IPv6</span>
 <span class="c1"># Affects:  /etc/sysctl.d/99-salt.conf</span>
 <span class="c1"># Validate: sysctl net.ipv6.conf.all.forwarding</span>
-<span class="l l-Scalar l-Scalar-Plain">net.ipv6.conf.all.forwarding</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">sysctl.present</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
+<span class="nt">net.ipv6.conf.all.forwarding</span><span class="p">:</span>
+  <span class="nt">sysctl.present</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">1</span>
 
 <span class="c1"># Sven</span>
-<span class="l l-Scalar l-Scalar-Plain">net.ipv6.conf.all.autoconf</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">sysctl.present</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">net.ipv6.conf.all.autoconf</span><span class="p">:</span>
+  <span class="nt">sysctl.present</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
 
-<span class="l l-Scalar l-Scalar-Plain">net.ipv6.conf.default.autoconf</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">sysctl.present</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">net.ipv6.conf.default.autoconf</span><span class="p">:</span>
+  <span class="nt">sysctl.present</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
 
 <span class="c1"># net.ipv6.conf.eth0.autoconf:</span>
 <span class="c1">#   sysctl.present:</span>
 <span class="c1">#     - value: 0</span>
 
-<span class="l l-Scalar l-Scalar-Plain">net.ipv6.conf.all.accept_ra</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">sysctl.present</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">net.ipv6.conf.all.accept_ra</span><span class="p">:</span>
+  <span class="nt">sysctl.present</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
 
-<span class="l l-Scalar l-Scalar-Plain">net.ipv6.conf.default.accept_ra</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">sysctl.present</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">value</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
+<span class="nt">net.ipv6.conf.default.accept_ra</span><span class="p">:</span>
+  <span class="nt">sysctl.present</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">value</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">0</span>
 
 <span class="c1"># net.ipv6.conf.eth0.accept_ra:</span>
 <span class="c1">#   sysctl.present:</span>
@@ -425,15 +482,16 @@ iface <span class="o">{{</span> mesh <span class="o">}}</span> inet6 manual
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../iproute/index.html" class="btn btn-neutral float-right" title="IP Route" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../iproute2/index.html" class="btn btn-neutral float-right" title="IP Route" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../ntp/index.html" class="btn btn-neutral" title="NTP (Network Time Protocol)" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../ntp/index.html" class="btn btn-neutral float-left" title="NTP (Network Time Protocol)" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -457,36 +515,15 @@ iface <span class="o">{{</span> mesh <span class="o">}}</span> inet6 manual
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/translations.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

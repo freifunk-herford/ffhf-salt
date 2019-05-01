@@ -1,0 +1,11 @@
+None
+
+.. include:: iproute.rst
+
+Salt State File
+---------------
+
+iproute.sls
+
+.. literalinclude:: ../../../../../../file_roots/exit/iproute.sls
+   :language: salt

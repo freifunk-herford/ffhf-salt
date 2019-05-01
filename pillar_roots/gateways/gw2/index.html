@@ -1,58 +1,55 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="de" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Gateway 2 &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  <title>Gateway 2 &mdash; SaltStack Freifunk Herford 0.2 Dokumentation</title>
   
 
   
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
   
+  
+  
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Stichwortverzeichnis"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Suche" href="../../../search.html"/>
-    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/>
-        <link rel="up" title="Gateways" href="../index.html"/>
-        <link rel="next" title="Gateway 3" href="../gw3/index.html"/>
-        <link rel="prev" title="Gateway 1" href="../gw1/index.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../../../genindex.html" />
+    <link rel="search" title="Suche" href="../../../search.html" />
+    <link rel="next" title="Gateway 3" href="../gw3/index.html" />
+    <link rel="prev" title="Gateway 1" href="../gw1/index.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,7 +58,7 @@
 
           
             
-            <img src="../../../_static/freifunk.png" class="logo" />
+            <img src="../../../_static/freifunk.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -69,7 +66,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -90,10 +87,15 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../../../file_roots/index.html">States</a></li>
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Pillars</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Gateways</a><ul class="current">
+<li class="toctree-l3"><a class="reference internal" href="../shared/index.html">Gemeinsame Daten</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../peers/index.html">Peers</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../gw1/index.html">Gateway 1</a></li>
 <li class="toctree-l3 current"><a class="current reference internal" href="#">Gateway 2</a><ul>
 <li class="toctree-l4"><a class="reference internal" href="#salt-state-file">Salt State File</a></li>
@@ -101,11 +103,15 @@
 </li>
 <li class="toctree-l3"><a class="reference internal" href="../gw3/index.html">Gateway 3</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../gw4/index.html">Gateway 4</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../peers/index.html">Peers</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../shared/index.html">Gemeinsame Daten</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw5/index.html">Gateway 5</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw6/index.html">Gateway 6</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw7/index.html">Gateway 7</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw8/index.html">Gateway 8</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw9/index.html">Gateway 9</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../gw-hf/index.html">Gateway Herford</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../map/index.html">Map Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../map/index.html">Map</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
@@ -123,36 +129,56 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SaltStack Freifunk Herford</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../index.html">Pillars</a> &raquo;</li>
-      
+        
           <li><a href="../index.html">Gateways</a> &raquo;</li>
-      
-    <li>Gateway 2</li>
+        
+      <li>Gateway 2</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -163,177 +189,110 @@
 <div class="section" id="salt-state-file">
 <h2>Salt State File<a class="headerlink" href="#salt-state-file" title="Link zu dieser Überschrift">¶</a></h2>
 <p>gw2.sls</p>
-<div class="highlight-salt"><div class="highlight"><pre><span></span><span class="c1"># Gateway 2</span>
+<div class="highlight-salt notranslate"><div class="highlight"><pre><span></span><span class="c1"># Gateway 2</span>
 
-<span class="l l-Scalar l-Scalar-Plain">dhcp</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">routers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.0.2</span>
-    <span class="l l-Scalar l-Scalar-Plain">domain_name_servers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.0.2</span>
-    <span class="l l-Scalar l-Scalar-Plain">ntp_servers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.0.2</span>
-  <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span> <span class="c1"># Not used yet</span>
-    <span class="l l-Scalar l-Scalar-Plain">subnet</span><span class="p p-Indicator">:</span> <span class="s">&#39;fe80::/64&#39;</span>
-    <span class="l l-Scalar l-Scalar-Plain">name_servers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fe80::a00:27ff:fe4c:84e7</span>
-    <span class="l l-Scalar l-Scalar-Plain">routers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fe80::a00:27ff:fe4c:84e7</span>
-    <span class="l l-Scalar l-Scalar-Plain">domain_name_servers</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fe80::a00:27ff:fe4c:84e7</span>
+<span class="nt">dhcp</span><span class="p">:</span>
+  <span class="nt">ipv4</span><span class="p">:</span>
+    <span class="nt">routers</span><span class="p">:</span> <span class="s">&#39;10.34.0.2&#39;</span>
+    <span class="nt">domain_name_servers</span><span class="p">:</span> <span class="s">&#39;10.34.0.2&#39;</span>
+    <span class="nt">ntp_servers</span><span class="p">:</span> <span class="s">&#39;10.34.0.2&#39;</span>
+  <span class="nt">ipv6</span><span class="p">:</span> <span class="c1"># Not used yet</span>
+    <span class="nt">subnet</span><span class="p">:</span> <span class="s">&#39;fe80::/64&#39;</span>
+    <span class="nt">name_servers</span><span class="p">:</span> <span class="s">&#39;fe80::a00:27ff:fe4c:84e7&#39;</span>
+    <span class="nt">routers</span><span class="p">:</span> <span class="s">&#39;fe80::a00:27ff:fe4c:84e7&#39;</span>
+    <span class="nt">domain_name_servers</span><span class="p">:</span> <span class="s">&#39;fe80::a00:27ff:fe4c:84e7&#39;</span>
 
-<span class="l l-Scalar l-Scalar-Plain">bind</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">master</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-  <span class="l l-Scalar l-Scalar-Plain">ipv6</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">listen_on</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">::1; fdf3:2049:5152::a22:2;</span> <span class="c1"># localhost; freifunk</span>
-  <span class="l l-Scalar l-Scalar-Plain">ipv4</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">listen_on</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">127.0.0.1; 10.34.0.2;</span> <span class="c1"># localhost; freifunk</span>
+<span class="nt">bind</span><span class="p">:</span>
+  <span class="nt">master</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
+  <span class="nt">ipv6</span><span class="p">:</span>
+    <span class="nt">listen_on</span><span class="p">:</span> <span class="s">&#39;::1;</span><span class="nv"> </span><span class="s">fdf3:2049:5152::a22:2;&#39;</span> <span class="c1"># localhost; freifunk</span>
+  <span class="nt">ipv4</span><span class="p">:</span>
+    <span class="nt">listen_on</span><span class="p">:</span> <span class="s">&#39;127.0.0.1;</span><span class="nv"> </span><span class="s">10.34.0.2;&#39;</span> <span class="c1"># localhost; freifunk</span>
 
-<span class="l l-Scalar l-Scalar-Plain">network</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">bridge</span><span class="p p-Indicator">:</span> <span class="c1"># 02 local 42 ist &quot;Wayne&quot; der Rest 10.34.0.2 in hex!</span>
-    <span class="l l-Scalar l-Scalar-Plain">hwaddress</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">02:42:0a:22:00:02</span> <span class="c1"># Die HW-Adresse ist Freifunk-spezifisch</span>
-    <span class="l l-Scalar l-Scalar-Plain">address</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">10.34.0.2</span> <span class="c1"># User Freifunk-Netzwerk IPv4</span>
-    <span class="l l-Scalar l-Scalar-Plain">netmask</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">255.255.0.0</span>
-    <span class="l l-Scalar l-Scalar-Plain">address6</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fdf3:2049:5152::a22:2</span> <span class="c1"># User Freifunk-Netzwerk IPv6</span>
-    <span class="l l-Scalar l-Scalar-Plain">address6mask</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">fdf3:2049:5152::a22:2/64</span>
-    <span class="l l-Scalar l-Scalar-Plain">netmask6</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">48</span>
-  <span class="l l-Scalar l-Scalar-Plain">mesh</span><span class="p p-Indicator">:</span> <span class="c1"># 02 local 00 ist &quot;Wayne&quot; der Rest:10.34.0.2 in hex!</span>
-    <span class="l l-Scalar l-Scalar-Plain">hwaddress</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">02:00:0a:22:00:02</span>
-  <span class="l l-Scalar l-Scalar-Plain">primary</span><span class="p p-Indicator">:</span>
-    <span class="l l-Scalar l-Scalar-Plain">interface</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">eno1</span> <span class="c1"># inet addr:89.163.225.133  Bcast:255.255.255.255  Mask:255.255.255.255</span>
-    <span class="l l-Scalar l-Scalar-Plain">address</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">89.163.225.133</span>
-    <span class="c1"># address6: # Der Server hat keine IPv6 Adresse</span>
+<span class="nt">network</span><span class="p">:</span>
+  <span class="nt">bridge</span><span class="p">:</span> <span class="c1"># 02 local 42 ist &quot;Wayne&quot; der Rest 10.34.0.2 in hex!</span>
+    <span class="nt">hwaddress</span><span class="p">:</span> <span class="s">&#39;02:42:0a:22:00:02&#39;</span> <span class="c1"># Die HW-Adresse ist Freifunk-spezifisch</span>
+    <span class="nt">address</span><span class="p">:</span> <span class="s">&#39;10.34.0.2&#39;</span> <span class="c1"># User Freifunk-Netzwerk IPv4</span>
+    <span class="nt">netmask</span><span class="p">:</span> <span class="s">&#39;255.255.0.0&#39;</span>
+    <span class="nt">address6</span><span class="p">:</span> <span class="s">&#39;fdf3:2049:5152::a22:2&#39;</span> <span class="c1"># User Freifunk-Netzwerk IPv6</span>
+    <span class="nt">address6mask</span><span class="p">:</span> <span class="s">&#39;fdf3:2049:5152::a22:2/64&#39;</span>
+    <span class="nt">netmask6</span><span class="p">:</span> <span class="s">&#39;48&#39;</span>
+    <span class="c1"># bridge_ports: &#39;&#39;</span>
+  <span class="nt">mesh</span><span class="p">:</span> <span class="c1"># 02 local 00 ist &quot;Wayne&quot; der Rest:10.34.0.2 in hex!</span>
+    <span class="nt">hwaddress</span><span class="p">:</span> <span class="s">&#39;02:00:0a:22:00:02&#39;</span>
+  <span class="nt">primary</span><span class="p">:</span>
+    <span class="nt">interface</span><span class="p">:</span> <span class="s">&#39;ens3&#39;</span>
+    <span class="nt">address</span><span class="p">:</span> <span class="s">&#39;37.120.186.226&#39;</span>
+    <span class="c1"># address6: &#39;2a03:4000:f:621::/64&#39;</span>
 
-<span class="l l-Scalar l-Scalar-Plain">exit</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">type</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">openvpn</span> <span class="c1"># Verschiedene Arten sind möglich &quot;gre&quot; oder &quot;openvpn&quot;</span>
-  <span class="l l-Scalar l-Scalar-Plain">provider</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">mullvad_linux</span> <span class="c1"># Verschiedene Provider sind moeglich</span>
-  <span class="l l-Scalar l-Scalar-Plain">mullvad_linux</span><span class="p p-Indicator">:</span> <span class="c1"># Freifunk Herford</span>
-    <span class="l l-Scalar l-Scalar-Plain">mullvad.crt</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+<span class="nt">netfilter</span><span class="p">:</span>
+  <span class="nt">tables</span><span class="p">:</span>
+    <span class="nt">nat</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="s">&#39;-A</span><span class="nv"> </span><span class="s">POSTROUTING</span><span class="nv"> </span><span class="s">-s</span><span class="nv"> </span><span class="s">10.34.0.0/16</span><span class="nv"> </span><span class="s">-o</span><span class="nv"> </span><span class="s">exitVPN</span><span class="nv"> </span><span class="s">-j</span><span class="nv"> </span><span class="s">MASQUERADE&#39;</span>
+
+<span class="nt">exit</span><span class="p">:</span>
+  <span class="nt">type</span><span class="p">:</span> <span class="s">&#39;openvpn&#39;</span> <span class="c1"># Verschiedene Arten sind moeglich &quot;gre&quot; oder &quot;openvpn&quot;</span>
+  <span class="nt">provider</span><span class="p">:</span> <span class="s">&#39;mullvad_linux&#39;</span> <span class="c1"># Verschiedene Provider sind moeglich</span>
+  <span class="nt">pia_linux</span><span class="p">:</span> <span class="c1"># Private Internet Access Luca</span>
+    <span class="nt">pia_userpass.txt</span><span class="p">:</span> <span class="p p-Indicator">|</span>
       <span class="no">-----BEGIN PGP MESSAGE-----</span>
-      <span class="no">Version: GnuPG v1</span>
 
-      <span class="no">hQEMA9c3Y0Thoe2fAQgAmtmV1Q7fpHGorz6nnBrXj2b+l/1P/z+Bx+il7Wt2Zt73</span>
-      <span class="no">JCDit0cjuMxEsbFRmBE+XEuzfCV5OzTWT20NdFx8lC/A8KfkBFBsbtz/aG6o3oV7</span>
-      <span class="no">uFmJRy2aqrHvcPhc4yy9qHX3Nsxu2Tt0p8lgoTYSNCFrYbqxDN7kvCWUh/0xN6oA</span>
-      <span class="no">q2x8fMNooGWe5QLYGNl/+UBz4gEPIkTZJqCAc8Ocwfuobnk7j8IIvmOfK6BszdX0</span>
-      <span class="no">WyaP1GS6SyfmkTtRu5fM2oWsaiDmAqN2i5ouo/FDRgfZMFMMS7i1fNQ1HhRzIbAT</span>
-      <span class="no">wI7Eg3mFv7IusXkzYeHB91bbaTS0OZQR44d4FM4yytLrAbmcCbGdt+IOZul9N3QP</span>
-      <span class="no">YCPpU5fRk9JTrXGLmVzbcSZk7y+U6dAV0ZzNZcSVagrxLSe3uTySJGg2M1Lc1vVQ</span>
-      <span class="no">P5RXv4A4gsmZ4bufw3aKB0QoDcgjxkgNrB3oE2s+Wa/WQ2/36wm2cGE0vrBNefvY</span>
-      <span class="no">oT4pflPMEKCrATCM0Wtq8QmZedVVyGtndlw0WA4oiLcho+5OiZNdyAJ/7xUfjv2U</span>
-      <span class="no">2YJ2AIrexd0O7qcpDQYmeqOHE/Lf57n+SvPTM5R6ZoWWF7bv51fQPGtFsnYglZuV</span>
-      <span class="no">HGyHGGYVNVLITVQIVoWZP90p72d3X4Vdmja49e7Y4sB9kTvLBavUKKqHshiM0HEr</span>
-      <span class="no">PcpB17vxeBphIDUdkn2/oxBF5xYiqH2FeSh51TQYOyOCKq1L9BZUqnzlR2RoZlr/</span>
-      <span class="no">9CAe7g5ipbf7jEd41pMQmnUT1uzpCRtqAtKl93EMHi2JZfgsp5iWeGmmFXyNdazp</span>
-      <span class="no">P9N2Jn9XO3s9m0yAAM0xvf4dTcidMRFp0mdO89Fqy8JKS4y1KrlvtptTztHaiUjW</span>
-      <span class="no">nhT+VVogIT9jF6yw51gEHk0L0GMDlAX9cBqAV62kRGeSgPT9Z9vG916R/vuTXVwT</span>
-      <span class="no">MaDZem63Px7f+g08K8HmQbCDG1Z6b4RvCxyObqxWJvMGdz3kFI0GpU6w2p8RZB7A</span>
-      <span class="no">OdaT0i5Lu6sWSrdQ6NSnorvpSB7TYU75W5eb9zf2LMHiumP1t6VD35ehwM36dC0Q</span>
-      <span class="no">XfYXSbRP5isFu+rarc0pmVDURNbWr9B5DXTROqbe1Z+XwTN+5JaVEdZumBaVrl5x</span>
-      <span class="no">sojcnE0ckKh2t1YlpbGdOsOw3eEpyKl72J/3mJI7RtVmOuTrf4ay3/tsiiiuRWH7</span>
-      <span class="no">VjySzGI5PKBmP4wkHQfnOaXfyzpb6V4Zu3AXHfgofzDQ7uqM1fEXANCH3DBV6U37</span>
-      <span class="no">mUSGQ3qur2p5WiTPyyPRzy4ERAha1GbPSHBO9WHbf5TcukMc7m42QzrgBc3IYBix</span>
-      <span class="no">6JitSFW1ec2iOYVmVRHC8I63w9bm/QCB1Ov2TCYXd3FFIypURi42WZiZlA3Ig5rT</span>
-      <span class="no">Q2GeizeQKjN3mxAl6QbP5vdbRGWcUHAq0W/MFCd3wxBu8IRnZJ+vdg4uWW/Dcgq9</span>
-      <span class="no">b7mOPbE/P6F8bUuqktLwbg23fMPptvlM4Da0wN/ctFgAROumdqaEnz7cekjqbSf7</span>
-      <span class="no">zR81DcWkerwB//e4XbfcLQrpqEaZn2OnLikm4M4IEcIUB4KT+yJTwGLV8O0gnCpt</span>
-      <span class="no">snfv30+XTyoFEfWooNpHTjjJ/c2o9xpgcTLlLkXCHt+9alH+Fz5cVW1vfYkP16BF</span>
-      <span class="no">Ymf25+CGWs/EfbhpY8vTvXoghJdS8ox/exfmaKqIy9ajsDMCUtPg0v10wNEBzots</span>
-      <span class="no">KlbGVqKKBsO0TRRer0QUzNirz7j7ijuSdKlOZOVISmwyLv3GoViT4ErsZvjvn14k</span>
-      <span class="no">Zz9S37prE92BNM1Wd4HzCoZnUQl2hvNp3ozcetcO/+9Zf6c5w3LwlBIJCL2dkGoR</span>
-      <span class="no">pyHX8hNa7gOqmApu4cKUuQ4/Sgu7oouJqmN7VFmTehw+uT8j3ilKKlJwhsIhoi5A</span>
-      <span class="no">aYpTg+9bYgN3w9jn/MO95T9hz9RZvAyCUtTEgkbn7sJ0RuIlai5W6Ktn4rAeeyod</span>
-      <span class="no">dGxGNISuMTpRuhEAytCvPuvI89/o+IIv7cxpw+msaIOk/aX9ZVlTn5S6dFg9bVM8</span>
-      <span class="no">arj7N085Uq/jDyuERWukmt910w9N7SQYYQYP3GXXNY6M067gLt2seUIAwcfw8R/3</span>
-      <span class="no">2ockeJ7Bic+ZprtvzslRYbOIBJyGs4oc+OAIOj551rDea9fVVWYsAEh6K0pEYy1/</span>
-      <span class="no">5EiFwraCzY5xrJe43IiVye7eZAY256WZFHV+meOIwGPFM/1g8z9NPaz2Tf6qVLx0</span>
-      <span class="no">TS+WMB6lB+u85xMIurfdKnKcD2BV/w4DrZcTyIATGloRD5TgbYjEtbcgDHG0OtTz</span>
-      <span class="no">WhfHAJS/gTbzevSK2TDRDGvruNRAaswOFsz10YvQ6HMz/R+R03yO7R89SF92Fy4j</span>
-      <span class="no">kJzpwDZ7xwvmy6yn0j5hScwij8n6FkpOylhkrTMLcDLKzLBf3lhN/a1DBfpafB9F</span>
-      <span class="no">mtD9wDop+JNzOQkyJk9PnPkxU0rHj5zTQgwaAsVNt+um65S3QD301ipxRHVc4PA8</span>
-      <span class="no">0a+JeMYdF9UY8HLKPprXDvnOqtzRTtyNfmoj79aofHlKZclJBVl24FWCRiwsOeX1</span>
-      <span class="no">MceuhlWprHmtkGWpEOEaGU2osyWEQcA2fxBctbN+aTK6GuNz8gCrrPUoGe2nk1zD</span>
-      <span class="no">Fbr/cB1HB3Pj9tj1ggps9ZEz2Gmjdf1zHNOWU6ypuNJbCSAVUQ4fPdCLepI/EAkt</span>
-      <span class="no">D7agqxoeEzomTs5K2Y11ENiWBzAP5wqdyKS2JY4RLTQY6pywFpznwZPl5EwV2gv/</span>
-      <span class="no">30sL5x1gflAHiurfsfXIYDG5hdEzayrYcTo8j7sDrJ01qwnNSfpB9m51gONuj8ZY</span>
-      <span class="no">7cd8AvzXhVJ2lwuxxUrKmnAOORsCZNf/d8+prtQsseYN9RiF6DLNS8xLhgXEHHs8</span>
-      <span class="no">B52tK1/A5ZRnUokbjtm1KGmHiLL1Jw2fSn9Exr+gSOUQaSLmEVtTXfoA5xrnzRno</span>
-      <span class="no">5G2gi0CTQgcEK6bkjeMTn8ezqFOIP+7fBrwgqdcKcKCb85blGcKP7DKqMITNK/dA</span>
-      <span class="no">VO8lTSrqug3EXu3LhxvNuu1HNG052PBGWP5f+vdMV6nFrsYoF4INMN+5RrQmY2nl</span>
-      <span class="no">V/lWt4AFXdWNTeDSKzqwvULpeXJmRBJeweFK44XaQi94pcNpg2cNt2eYN+z8rOtt</span>
-      <span class="no">s6k0S83puUO9cBaQV6hZZTREIEvNqqRSIN7BrI8ckCw3u8l1KKPCJnjPECl2rOJg</span>
-      <span class="no">xKExTjH7G2wu9g3eCjFbHiSvOzBjdlClK2kKHDyx8mYK36gKp3hwDIzHNJKbV2jL</span>
-      <span class="no">UFx0dip0W0bgSO8m+37M73b4inEAx8eXfY9H2Bhsb0xORKgfs2Pw1CdThZHQo6qU</span>
-      <span class="no">WeGqKDVGew4Ioxro9g9zBJgU5d26PF6PaUg/9UaL6Je8NmEXKCm2K57LzEhRFR9d</span>
-      <span class="no">Xb0gLZXDkrwwvFhYFiMD/9Gutk1Hf+jABoVzXQkw94sPoRIfY0JFm1pnLbn/W6k4</span>
-      <span class="no">0+fP5Y9MhYml5pgSodkYiVxkPmEVzDb/qhPgKzCYcvgMEE8lf2mPjOxb6l1DjIlz</span>
-      <span class="no">1EWjenqUMUPUnPJXnRhMbpbjwELALKr0Kg4mWyVRQvEv/cMxnkS48QM+fg1b0s9L</span>
-      <span class="no">GAFa6SwCMHydByFpXuBsW5RfYgliOmAyg2DwLsOiTWCOMo6W00jCbBixoYX7Vjh3</span>
-      <span class="no">9rb5GbEC33kxNkkhbnSuAIdDiPinF9HIwabvZcUC+2lNbva2P3S8wptdaWBKC6um</span>
-      <span class="no">cZu8ISWGR7Sl1agBKUFyQJjIg/uM/hYls+ckSp3wEfzhjvKmy+ZpzbO5dHTA+MYp</span>
-      <span class="no">6fbAXsy5cP74m10Tpf1wzIvjhuWV9hi+pQAniVpTdagPf0gtB8T+BYtrE3JVC+jK</span>
-      <span class="no">n8j2PPkpLhnK0jJj5pskfZietN0iBOXt5WfrfqvcbulknA98+ZDZw+kBp8WMOAW3</span>
-      <span class="no">lUq0+9LVeACaSB6wrfoLjGInBkDjQKZe2apBo7G+SrqWeV8wOXmG5tPyGi3IFTaH</span>
-      <span class="no">m9BjvmQoM9Z7/54lypbflDunsKIiOqtzL3SIsy5SBdTRGQwN878AKcrGDaobqsCC</span>
-      <span class="no">TC78bHTM16ToqX2+he5CTc25mutPjQxE46teo7k9i6TWjEnvjdeJ1tAseWjj3fA7</span>
-      <span class="no">kG+fqYlS+n+yqfTZ1At8eJfEH/EaV7M+cBHUZJ9KNviXRVMgAzcWkuew2zHxUSa6</span>
-      <span class="no">rBg=</span>
-      <span class="no">=nn6L</span>
+      <span class="no">hQGMAy+gZA9xYWKnAQv/fDwi5gGKP+lhiubBS4c80oVEn5Ap2acHhTuSOrABs5ar</span>
+      <span class="no">0bYDoiw2wvvf2IGzNurgtVBP3yLkiUYnaDg2r2fEbMArU/2uGVCMuwcBt8R4TWsb</span>
+      <span class="no">JjrhLQqxbgilh6jrdlJwCi26rfWL5dVF3Trr8UwT5ciOsXs4naAJ8NFFPV9BmtPz</span>
+      <span class="no">dlnX2E5cE8HmN0QafZZbgod9w/oVVKZ3sF2feR4lgeFQZ0RNiq6btoGJ1KXZH8oJ</span>
+      <span class="no">Nf5z/mCIPJ4+2c7g/l/SFGFjpB3z0yA3a+RjHzpcVTLwl3gfvOFCFcXkfSLGE5wQ</span>
+      <span class="no">yoSqHpn4Flno8tQSyqz2w97YP8SBNso5BfxsLYsGa07NRP+DVQkW8r1NnjxvJIAg</span>
+      <span class="no">0W0dbmxxuIAwTg8sdMSoJIZv5/xh+3OpR81unujrgbUguK+BSPvMHF5muT6qaP1c</span>
+      <span class="no">BMjSNJCtAfj7ORrp6l8Nu4gzuEQGamBZ5amEtOic1PpTWcVQKdOyTSltZFfODZrV</span>
+      <span class="no">HDM88WCFZAp0w1JMzfr10k8B0EWsSJ8tSfl4MCnVj2MiDGMEx4EojQHID6VBXnX/</span>
+      <span class="no">+YVbXinEzd5V55e+xQROu5vIqx8VsmXDIxprAwnID6W8n1ihNg2qxAq+TMsVR6UG</span>
+      <span class="no">=l8yR</span>
       <span class="no">-----END PGP MESSAGE-----</span>
-    <span class="l l-Scalar l-Scalar-Plain">mullvad.key</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+  <span class="nt">mullvad_linux</span><span class="p">:</span> <span class="c1"># Mullvad Freifunk Herford</span>
+    <span class="nt">mullvad_userpass.txt</span><span class="p">:</span> <span class="p p-Indicator">|</span>
       <span class="no">-----BEGIN PGP MESSAGE-----</span>
-      <span class="no">Version: GnuPG v1</span>
 
-      <span class="no">hQEMA9c3Y0Thoe2fAQf5AZEh5htsuhZF5xPjNMC/nksprxaVxXWMPt5gyV6wag7v</span>
-      <span class="no">QcIpB4QvCOtAXUaPcaPG495ASQE+qwvDj7XyOX0Py733i9gIWRqQHmGlFalssS9y</span>
-      <span class="no">YxdM0MVwFHJRXuFR90DermqJNrlNLjNkxc9liW4W0KOhKufbMQr+dyHGZuTDO04R</span>
-      <span class="no">a4f7+hiHgdoRenA65fgxDN035dlht1C85iTSsnJyVMmjxQzicmx8X5S/g3bAr6LN</span>
-      <span class="no">L4Q9r41KszNaa2Mtr1g69kRowN9KX7+34scxPj42AgvY7TK/TWPhDfn4b46JAc6N</span>
-      <span class="no">yYwkFONtdv5pPkyzDqCwnIX1jAeJN8nwSFTud9ol/9LqAahISMZDZJ939L2/3/ZS</span>
-      <span class="no">G0ueusxMgykwkOUmq35GTBqDhBU3EtD6jC05sU9C0BECIFjzN0kusCxjAUj6xLLd</span>
-      <span class="no">UIA6qn1jtfHYHy1wgm8ms6Q22bYciteBdGtqwU/LU89+JRnBocxgzAySaH4zpaY/</span>
-      <span class="no">orgb1hy90K1d4s/70Ujxqm+KgLu2y3sDPVUKoT//6k+/vLBZM3YBzbifWl+ZEO6J</span>
-      <span class="no">vcmsiLjpQRKyLFB2mjVeHk9nBzduYstdXC0KXFzwW4KWX0TwD8OnGNCmy2/Zv1Ph</span>
-      <span class="no">SGDv/VnipdQbHwtiHT7SyTyNYzngTzCbdTySlsprgtW0Rte5wLqWBbYqWXLCGN1F</span>
-      <span class="no">y6kli9PS9diha6xNLzUyRLIIgew5YqeFbU4GD+L4wjXaZacVqZFIL+esHvoq2L1e</span>
-      <span class="no">qMtZ9zZaX09SYPb1bTDAyD7jxJm9GCPHad7i2RTDiiFwW07nnu4lzK9cwB+nd3j/</span>
-      <span class="no">cMvt4RtbjPPq9+Jfzz2g1Fnyk3+zXYrFDAEy0zyWQZGfbaN8VbdM4YTpI0I1qYPP</span>
-      <span class="no">YBcBsPjkPvEUAlgaezr66Rdcww6RajUb9PnKVKnoZVlFNTahjH4dPR2VNwfSPRY3</span>
-      <span class="no">mlL9HPM2rXTqP8nFwRKXFedS0lQKUrEjrt7O0yNUBvpaMcrCuNmfJDrudcW/QHMe</span>
-      <span class="no">w5gBqRIsmn5quaql5BDQrXw6YtP+AfYRxaEBFsOk7lxqkzZ84/ZIzoOQ8YvYT1gd</span>
-      <span class="no">yjAm5TciQ1CM0lSbmbixR/geS7KdWSU2zCY2GSpx9iJi8hjtW6JPE5WjN8fbLywZ</span>
-      <span class="no">961hSTfMErOEGhuqUi0w4x9eMJQHn6frcruidBQiCOxFgLQF0zk9FFRrWtt/qNZi</span>
-      <span class="no">zZal/VfKQZv9TBqgMWI9BVev4uyjYhedRgCo/t8Xr1yfC6j1hndbSUN19QWG6RvI</span>
-      <span class="no">1gD14ger/WnzfmSw7Vf37HewTbUbaYZxVqDunKiDWZIaRu10g+k6p/NLXA0yeo5G</span>
-      <span class="no">gXEwwJskaTGX5rXfGRRpWkzSpOlkmTBgtSnLaRsg4/fYV3n62N0Iw94e4w+3rEhc</span>
-      <span class="no">nVXZi00zzfiWKDwfglZ/cm6laRej6hqZH8cWxmGNVIYbyCezBjgScaFL56etiMvT</span>
-      <span class="no">sa7kgBDQCKaoSAdTZURDP/WQ7bTR6ZMdv9L3AADsSiW8rbuT2JwADvryS2zg+kb3</span>
-      <span class="no">Ee7jKrUgri9xO/Hkf2JtLCu1lzshksfBQiprDatRITZbnkOaQvMzpo3Z+MHY5TAe</span>
-      <span class="no">ktr7tl/41g7DfndFTS0TJEiKmNToXfN8xxp4Y02bAWHwjSLBwI/ovPoPwYtz+RO7</span>
-      <span class="no">51trN8HXqlYFjBdh9D57wrpAFlUbfDBXxs5+UK1tPvBLRuV7Kjmy/sXm+fgsSQGS</span>
-      <span class="no">nMCtBZVKKMVRBPzvpM/dHTKORVPRqcjnYM5Zyy2iGHczlm+k6xGXO3PrOA7leCuj</span>
-      <span class="no">KY/5sb60KSa5jHy7uo3c/V4t7LpfbBjvoG/HcWuROyDNyue2434/o5CvRz5z5zfJ</span>
-      <span class="no">WexNw/H6YP0G2RgBuQPjyxOK+1HI15GtAj6HE8qIQsf21gRsqatFXdQ+++6W2lbd</span>
-      <span class="no">EJ9OqPESwfNgpKyz9vxPEh1rd0PTShpTnjP0Fs52RynQNF1Vhw4OtIGSU8pk/CIM</span>
-      <span class="no">GZ4pz8E0moZF5nkbj5ZD9DOpXuB/uj9WSMop8Vw8aEaw3J6caSDjMtEQi+EtrZHP</span>
-      <span class="no">9e5U1lXKJPKOgySd9Yp3Fwkc8GXycz0HBWJ8LTOeQ7NqtbveN5PLMz0QkiIQmQDd</span>
-      <span class="no">sRUWvAtYKIhSPDnOraP6z4O9UOP0j2DkBTFGncQ1siq4Vrkhwz75VuZS7Yaxi2az</span>
-      <span class="no">13Gp+aYXbMrggN9WjwQC+hJvx62KWSsxXhDYtM13Qyg=</span>
-      <span class="no">=727/</span>
+      <span class="no">hQGMAy+gZA9xYWKnAQwAiKgEOYnMwgBxnDqOSFJnRAtA5IKT6V3YDFKYGHsS+mUD</span>
+      <span class="no">wlKDIgCgzBufXzCv1QAmTgT52brx8IuRPd8/lxqM3cWimkqy3acbLTv3eFdM+p+c</span>
+      <span class="no">fjBj17nHjMbrIlthgHDqs/xPaMD3Q3OIk1Lkka1eLOE6YDVcX3mFWPmVc0DUuDpd</span>
+      <span class="no">8czlHoMoBOXcBaFSjiOkQkUXgitLiAmaQKNeERirWnDxU6kzT7euCbSGjRydlPkY</span>
+      <span class="no">mtf0UM+v4juCUXBl6Ft6Dth5okJ6q/mbhH878pjiQj3jzzS3v9KgaZOWK5E6nLV6</span>
+      <span class="no">kR3eeVAnTVu2i4iSvG8YzZrackGSVBZQfWEovaR5JpDpSldbPvijuiquGHujjC/j</span>
+      <span class="no">jqdDvvEtyYspNtNJJzuSmroCF1D7TzfZFGBf48ofBUab0rg29ajk69N3CalDDrKj</span>
+      <span class="no">dXjgRdN0tlxWKszzsqXSnYXFtWw9T7mI0ItMCrS/bHTstSe5P474PCq38WuyYnN2</span>
+      <span class="no">NuzULNesqSwTEtTzCyFU0ksBC4+Xx8CAFnH0QpAWiSI+O/igZAC+Cx4eY8GODE8C</span>
+      <span class="no">+gDOv/i/boSUF3yHBEhVlv6BGOQAHu5CDkhjXFNqeVUdbFS/Ru1FVL+wj3Q=</span>
+      <span class="no">=HKyn</span>
       <span class="no">-----END PGP MESSAGE-----</span>
 
-<span class="l l-Scalar l-Scalar-Plain">fastd</span><span class="p p-Indicator">:</span> <span class="c1"># Secret key von gw2 - nur den string!!!</span>
-  <span class="l l-Scalar l-Scalar-Plain">secret</span><span class="p p-Indicator">:</span> <span class="p p-Indicator">|</span>
+<span class="nt">openssh</span><span class="p">:</span>
+  <span class="nt">ssh_auth</span><span class="p">:</span>
+    <span class="nt">user</span><span class="p">:</span>
+      <span class="nt">root</span><span class="p">:</span>
+        <span class="nt">lmb@lmb-nb</span><span class="p">:</span> <span class="c1"># Luca</span>
+          <span class="nt">key</span><span class="p">:</span> <span class="s">&#39;AAAAB3NzaC1yc2EAAAADAQABAAABAQC1RXq+yTsKtt8brNQLRH51TAdC2CxiSi2JsJJtw47b9hFdWhDlEOoMqQI0XqCBKHevhmtt7nc3k6vOX9yiC078Tz5hauQBTcMWbo+xSH1AxFlVo2pmPjL/N/9EritIe/4tJD3cIWSuGzjR69cyAQcCWshpivTV85xbpsiZS5ljKC4+TgAGC3jbSBGGMfoeb1MqWaMcuttcKXO2GFOOLxFYv2QVdOpQNf6S0Y992WLsBQ3BS0E6HTBCj/AXdt/x7eK25BpdAzrahCJw7Ytklmus6Fsi1LbJlaYBnKoRxwwpizbK7SHQ16Zca6NzsrI3H8c6SvPAj7p3lW88WntasoK9&#39;</span>
+          <span class="nt">enc</span><span class="p">:</span> <span class="s">&#39;ssh-rsa&#39;</span>
+
+<span class="nt">fastd</span><span class="p">:</span> <span class="c1"># Secret key von gw2 - nur den string!!!</span>
+  <span class="nt">secret</span><span class="p">:</span> <span class="p p-Indicator">|</span>
     <span class="no">-----BEGIN PGP MESSAGE-----</span>
-    <span class="no">Version: GnuPG v1</span>
 
-    <span class="no">hQEMA9c3Y0Thoe2fAQf8C4Yej9/A2nY+CKiG7vKsqANe8sKVDrxOxEoDxqDBChgz</span>
-    <span class="no">pbXx4MM6aKjMAJWmGpxEBJEcoC0MfR/RG88vjKGz52Os1/wye0MMElRK5BZbY4zO</span>
-    <span class="no">N9QOWCIT/3SSYfgzuBO2I9aVZMewTXntcl4/kqb7czhL+wstS+EbLpdwa7ABtqS+</span>
-    <span class="no">29pdhF02puQTjcT+Hg6Gu472Kt9ropWJ0SgtLhiefBBxILKgOxkbHxbKD2kOypAd</span>
-    <span class="no">LxOJ6dsDCm0Nb0UJNu304FdDMiIg6tvjJ1cn1Tpmx2Bp+0Zsop7Z16iv/eAx2yTZ</span>
-    <span class="no">MRHMRsGfhILpIeConz8e5cW/unq7W+qz7r8SMNS77tJzARUlW3wu3wETlNT51At1</span>
-    <span class="no">+wwt4vPSn3R6FaoftMhZnbgG+4FwwVVJUu0oDW1f5RQfJEvWocfDb6rbsgF2wv0k</span>
-    <span class="no">qKVZsjqqcy78WkygUaGNglj4yI+HADWkcU29EAcaaJoUIadchhupcpLIugIJuWgh</span>
-    <span class="no">/jzbMg==</span>
-    <span class="no">=1JEr</span>
+    <span class="no">hQGMAy+gZA9xYWKnAQv/cHtn/CWovD5MTfDtymjY3giDZasxgK2Ak0VrqfZz49JZ</span>
+    <span class="no">wrSNePf0HReyaZVvBxpmOZcqwEUbyEJOQPomH4Y4HDtoWDyyUU/7JRG5GHwlXRD7</span>
+    <span class="no">NRbtpAmGJ23Kb/ALtyOW6Y6poKb6Vy9OTcqVAASEjoeICXQeMbfTx1z+lQ8Lnt7U</span>
+    <span class="no">kv7xTaHc6183EZlMpeEscTBfkvFzR4lrnNBpmNcoJIr22b6yJYcjmJc5sBfGLY0p</span>
+    <span class="no">gcBquFJhopeI3qRnaVYhDpGF/1ZFDB0Au91EN1GuHHy5v2UvmseGXJmJmWXyI+Gk</span>
+    <span class="no">HruCvmN7PmJDGDImHLSboe+XzSk+TA1uGHFx6OM+363SWmq23ZjF/mU5GGQox/yu</span>
+    <span class="no">s71tz8sdiXXt+mkLNRAGUYfVUOdl88WXH+xMXiv7RDkfkEqxCox7Gk0hubugacfF</span>
+    <span class="no">RzEmKQkDTMf3KloczbxZ9/RlpsVx9mvkJgXYgEWJbAOC+ovl8htpjL6gfEEtZU0E</span>
+    <span class="no">E27darfbBshRpgZbGTcq0nMBc2lcLCrkql0acKhgiKVWWTCKQgccQA3xHYoSVbU5</span>
+    <span class="no">96du65oZA+Rb0FJmdPRUhSO19IfMsoHgWGcbXy7vpnO90MHncTjIIh83hu6bq9+H</span>
+    <span class="no">KFk7OIJ+CGEa3nfinaxPmRkF9ZWXT+T/VGVUy/wr8/G9se0V</span>
+    <span class="no">=Acwb</span>
     <span class="no">-----END PGP MESSAGE-----</span>
-  <span class="l l-Scalar l-Scalar-Plain">public</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">4033298711b9a5a9862405486e603db0984812e4abb2d85d74b89ab06626ce99</span>
-  <span class="l l-Scalar l-Scalar-Plain">fqdn</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">gw2.herford.freifunk.net</span>
+  <span class="nt">public</span><span class="p">:</span> <span class="s">&#39;4033298711b9a5a9862405486e603db0984812e4abb2d85d74b89ab06626ce99&#39;</span>
+  <span class="nt">fqdn</span><span class="p">:</span> <span class="s">&#39;gw2.herford.freifunk.net&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -341,15 +300,16 @@
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../gw3/index.html" class="btn btn-neutral float-right" title="Gateway 3" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../gw3/index.html" class="btn btn-neutral float-right" title="Gateway 3" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../gw1/index.html" class="btn btn-neutral" title="Gateway 1" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../gw1/index.html" class="btn btn-neutral float-left" title="Gateway 1" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -373,36 +333,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/translations.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

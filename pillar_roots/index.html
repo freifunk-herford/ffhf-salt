@@ -1,57 +1,55 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="de" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Pillars &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  <title>Pillars &mdash; SaltStack Freifunk Herford 0.2 Dokumentation</title>
   
 
   
   
     <link rel="shortcut icon" href="../_static/favicon.ico"/>
   
+  
+  
 
   
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script type="text/javascript" src="../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Stichwortverzeichnis"
-              href="../genindex.html"/>
-        <link rel="search" title="Suche" href="../search.html"/>
-    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../index.html"/>
-        <link rel="next" title="Gateways" href="gateways/index.html"/>
-        <link rel="prev" title="Freifunk Map Backend" href="../file_roots/map/ffmap-backend/index.html"/> 
-
-  
-  <script src="../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../genindex.html" />
+    <link rel="search" title="Suche" href="../search.html" />
+    <link rel="next" title="Gateways" href="gateways/index.html" />
+    <link rel="prev" title="Freifunk Map Backend" href="../file_roots/map/ffmap-backend/index.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -60,7 +58,7 @@
 
           
             
-            <img src="../_static/freifunk.png" class="logo" />
+            <img src="../_static/freifunk.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -68,7 +66,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -89,11 +87,14 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1"><a class="reference internal" href="../file_roots/index.html">States</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Pillars</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="gateways/index.html">Gateways</a></li>
-<li class="toctree-l2"><a class="reference internal" href="map/index.html">Map Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="map/index.html">Map</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../links.html">Links</a></li>
@@ -111,32 +112,52 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../index.html">SaltStack Freifunk Herford</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">SaltStack Freifunk Herford</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../index.html">Docs</a> &raquo;</li>
-      
-    <li>Pillars</li>
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+      <li>Pillars</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -148,6 +169,14 @@
 <div class="toctree-wrapper compound">
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="gateways/index.html">Gateways</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="gateways/shared/index.html">Gemeinsame Daten</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gateways/shared/index.html#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gateways/peers/index.html">Peers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gateways/peers/index.html#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="gateways/gw1/index.html">Gateway 1</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="gateways/gw1/index.html#salt-state-file">Salt State File</a></li>
 </ul>
@@ -164,17 +193,49 @@
 <li class="toctree-l3"><a class="reference internal" href="gateways/gw4/index.html#salt-state-file">Salt State File</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="gateways/peers/index.html">Peers</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="gateways/peers/index.html#salt-state-file">Salt State File</a></li>
+<li class="toctree-l2"><a class="reference internal" href="gateways/gw5/index.html">Gateway 5</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gateways/gw5/index.html#salt-state-file">Salt State File</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="gateways/gw6/index.html">Gateway 6</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gateways/gw6/index.html#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gateways/gw7/index.html">Gateway 7</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gateways/gw7/index.html#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gateways/gw8/index.html">Gateway 8</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gateways/gw8/index.html#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gateways/gw9/index.html">Gateway 9</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gateways/gw9/index.html#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="gateways/gw-hf/index.html">Gateway Herford</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gateways/gw-hf/index.html#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="map/index.html">Map</a><ul>
 <li class="toctree-l2"><a class="reference internal" href="gateways/shared/index.html">Gemeinsame Daten</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="gateways/shared/index.html#salt-state-file">Salt State File</a></li>
 </ul>
 </li>
+<li class="toctree-l2"><a class="reference internal" href="gateways/peers/index.html">Peers</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="gateways/peers/index.html#salt-state-file">Salt State File</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="map/index.html">Map Server</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="map/network/index.html">Netzwerk Konfiguration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="map/network/index.html#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="map/fastd/index.html">Fastd Konfiguration</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="map/fastd/index.html#salt-state-file">Salt State File</a></li>
+</ul>
+</li>
 <li class="toctree-l2"><a class="reference internal" href="map/alfred/index.html">A.L.F.R.E.D. Konfiguration</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="map/alfred/index.html#salt-state-file">Salt State File</a></li>
 </ul>
@@ -183,16 +244,8 @@
 <li class="toctree-l3"><a class="reference internal" href="map/apache/index.html#salt-state-file">Salt State File</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="map/fastd/index.html">Fastd Konfiguration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="map/fastd/index.html#salt-state-file">Salt State File</a></li>
-</ul>
-</li>
 <li class="toctree-l2"><a class="reference internal" href="map/meshviewer/index.html">Mesh Viewer</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="map/meshviewer/index.html#salt-state-file">Salt State File</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="map/network/index.html">Netzwerk Konfiguration</a><ul>
-<li class="toctree-l3"><a class="reference internal" href="map/network/index.html#salt-state-file">Salt State File</a></li>
 </ul>
 </li>
 </ul>
@@ -203,15 +256,16 @@
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="gateways/index.html" class="btn btn-neutral float-right" title="Gateways" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="gateways/index.html" class="btn btn-neutral float-right" title="Gateways" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../file_roots/map/ffmap-backend/index.html" class="btn btn-neutral" title="Freifunk Map Backend" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../file_roots/map/ffmap-backend/index.html" class="btn btn-neutral float-left" title="Freifunk Map Backend" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -235,36 +289,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../',
-            VERSION:'0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../_static/jquery.js"></script>
-      <script type="text/javascript" src="../_static/underscore.js"></script>
-      <script type="text/javascript" src="../_static/doctools.js"></script>
-      <script type="text/javascript" src="../_static/translations.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

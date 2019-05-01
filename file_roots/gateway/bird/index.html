@@ -1,58 +1,55 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="de" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>BIRD - Internet Routing Daemon &mdash; SaltStack Freifunk Herford 0.1 Dokumentation</title>
+  <title>BIRD - Internet Routing Daemon &mdash; SaltStack Freifunk Herford 0.2 Dokumentation</title>
   
 
   
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
   
+  
+  
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Stichwortverzeichnis"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Suche" href="../../../search.html"/>
-    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/>
-        <link rel="up" title="Gateway" href="../index.html"/>
-        <link rel="next" title="RAdvD - Router Advertising Daemon" href="../radvd/index.html"/>
-        <link rel="prev" title="Fastd - Fast and Secure Tunneling Daemon" href="../fastd/index.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../../../genindex.html" />
+    <link rel="search" title="Suche" href="../../../search.html" />
+    <link rel="next" title="A.L.F.R.E.D. - Almighty Lightweight Fact Remote Exchange Daemon" href="../alfred/index.html" />
+    <link rel="prev" title="Fastd - Fast and Secure Tunneling Daemon" href="../fastd/index.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,7 +58,7 @@
 
           
             
-            <img src="../../../_static/freifunk.png" class="logo" />
+            <img src="../../../_static/freifunk.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -69,7 +66,7 @@
             
             
               <div class="version">
-                0.1
+                0.2
               </div>
             
           
@@ -90,20 +87,23 @@
           
             
             
-                <ul class="current">
+              
+            
+            
+              <ul class="current">
 <li class="toctree-l1 current"><a class="reference internal" href="../../index.html">States</a><ul class="current">
 <li class="toctree-l2 current"><a class="reference internal" href="../index.html">Gateway</a><ul class="current">
 <li class="toctree-l3"><a class="reference internal" href="../bash/index.html">Bash - Bourne Again Shell</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../git/index.html">git Version Control System</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../etckeeper/index.html">etc Keeper</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tmp/index.html">/tmp</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../mosh/index.html">Mosh (Mobile shell)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../molly-guard/index.html">Molly-Guard</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../haveged/index.html">haveged - Entropy daemon using the HAVEGE algorithm</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../openssh-server/index.html">OpenSSH - OpenBSD Secure Shell server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../ntp/index.html">NTP (Network Time Protocol)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../network/index.html">Network Interfaces &amp; Brige Utilities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../iproute/index.html">IP Route</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../iptables/index.html">Net Filter/IP Tables Persistent</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../iproute2/index.html">IP Route</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../netfilter/index.html">NetFilter Persistent</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../fail2ban/index.html">Fail2Ban Service</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../batman/index.html">B.A.T.M.A.N. - Better Approach To Mobile Adhoc Networking</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../fastd/index.html">Fastd - Fast and Secure Tunneling Daemon</a></li>
@@ -113,19 +113,18 @@
 <li class="toctree-l4"><a class="reference internal" href="#salt-state-file">Salt State File</a></li>
 </ul>
 </li>
-<li class="toctree-l3"><a class="reference internal" href="../radvd/index.html">RAdvD - Router Advertising Daemon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../alfred/index.html">A.L.F.R.E.D. - Almighty Lightweight Fact Remote Exchange Daemon</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../sysfsutils/index.html">sysfsutils: System Utilities Based on Sysfs</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../dhcp-server/index.html">DHCP Server (Dynamic Host Configuration Protocol)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../name-server/index.html">DNS Server (Domain Name System)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tinc/index.html">tinc VPN (Virtual Private Network)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../isc-dhcp-server/index.html">DHCP Server (Dynamic Host Configuration Protocol)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../bind9/index.html">DNS Server (Domain Name System)</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../openvpn/index.html">OpenVPN - Virtual Private Network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../apache/index.html">Apache Web Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../apache2/index.html">Apache Web Server</a></li>
 <li class="toctree-l3"><a class="reference internal" href="../vnstat/index.html">vnStat &amp; vnStati</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../syslog/index.html">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../rsyslog/index.html">Logging</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../figlet/index.html">figlet - display large characters made up of ordinary screen characters</a></li>
 </ul>
 </li>
-<li class="toctree-l2"><a class="reference internal" href="../../map/index.html">Map Server</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../../map/index.html">Map</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
@@ -144,36 +143,56 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SaltStack Freifunk Herford</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
           <li><a href="../../index.html">States</a> &raquo;</li>
-      
+        
           <li><a href="../index.html">Gateway</a> &raquo;</li>
-      
-    <li>BIRD - Internet Routing Daemon</li>
+        
+      <li>BIRD - Internet Routing Daemon</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -184,121 +203,81 @@
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h2>
 <p>Paketquelle für bird einbinden.</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">add</span><span class="o">-</span><span class="n">apt</span><span class="o">-</span><span class="n">repository</span> <span class="n">ppa</span><span class="p">:</span><span class="n">cz</span><span class="o">.</span><span class="n">nic</span><span class="o">-</span><span class="n">labs</span><span class="o">/</span><span class="n">bird</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>add-apt-repository ppa:cz.nic-labs/bird
 </pre></div>
 </div>
 <p>Paketquellen aktualsieren und bird installieren.</p>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">update</span>
-<span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">bird</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get update
+apt-get install bird
 </pre></div>
 </div>
 </div>
 <div class="section" id="konfiguation">
 <h2>Konfiguation<a class="headerlink" href="#konfiguation" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Inhalt von <code class="docutils literal"><span class="pre">/etc/bird/bird.conf</span></code>.</p>
-<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x"># This file is managed by Salt, do not edit.</span>
-<span class="x">#router id &lt;internal ipv4 address server (ffhf)&gt;</span>
+<p>Inhalt von <code class="docutils literal notranslate"><span class="pre">/etc/bird/bird.conf</span></code>.</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x"># This file is managed by Salt, do not edit.</span>
 
-<span class="x">protocol direct {</span>
-<span class="x">	interface &quot;*&quot;; # Restrict network interfaces it works with</span>
-<span class="x">};</span>
+<span class="x"># Change this into your BIRD router ID. It&#39;s a world-wide unique identification</span>
+<span class="x"># of your router, usually one of router&#39;s IPv4 addresses.</span>
+<span class="x"># Unsere externe feste IPv4-Adresse: </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;primary&#39;</span><span class="o">][</span><span class="s1">&#39;address&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x"></span>
+<span class="x">router id </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;primary&#39;</span><span class="o">][</span><span class="s1">&#39;address&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x">;</span>
 
-<span class="x">protocol kernel {</span>
-<span class="x">	device routes;</span>
-<span class="x">	import all;</span>
-<span class="x">	export all; # Default is export none</span>
-<span class="x">	kernel table 42; # Kernel table to synchronize with (default: main)</span>
-<span class="x">};</span>
+<span class="x"># Our Autonomous System Number from Freifunk Rheinland</span>
+<span class="x">define myas = </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;bird&#39;</span><span class="o">][</span><span class="s1">&#39;myas&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x">;</span>
 
+<span class="x"># Functions</span>
+<span class="x">function net_icannv4() {</span>
+<span class="x">    return net ~ [ 185.66.193.96/31+ ];</span>
+<span class="x">}</span>
+
+<span class="x">function net_default() {</span>
+<span class="x">    return net ~ [ 0.0.0.0/0 ];</span>
+<span class="x">}</span>
+
+<span class="x"># The Device protocol is not a real routing protocol. It doesn&#39;t generate any</span>
+<span class="x"># routes and it only serves as a module for getting information about network</span>
+<span class="x"># interfaces from the kernel.</span>
 <span class="x">protocol device {</span>
-<span class="x">	scan time 8; # Scan interfaces every 10 seconds</span>
-<span class="x">};</span>
-
-<span class="x">function is_default() {</span>
-<span class="x">	return (net ~ [0.0.0.0/0]);</span>
-<span class="x">};</span>
-
-
-
-<span class="x"># interne BIRD Routing-Tabelle</span>
-<span class="x">table ffrl;</span>
-
-<span class="x">define ffrl_nat_address = 185.66.195.36; #ffrlnat</span>
-
-<span class="x"># Funktionen, die später aufgerufen werden</span>
-<span class="x">function is_ffrl_nat() {</span>
-<span class="x">    return net ~ [</span>
-<span class="x">        185.66.195.36/32</span>
-<span class="x">    ];</span>
+<span class="x">    scan time 10;</span>
 <span class="x">}</span>
 
-<span class="x">function is_ffrl_tunnel_nets() {</span>
-<span class="x">    return net ~ [</span>
-<span class="x">    	</span><span class="cp">{%</span> <span class="k">for</span> <span class="nv">backbone</span> <span class="k">in</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;ffrl&#39;</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">        </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;ffrl&#39;</span><span class="o">][</span><span class="nv">backbone</span><span class="o">][</span><span class="s1">&#39;tunnel&#39;</span><span class="o">][</span><span class="s1">&#39;ipv4&#39;</span><span class="o">][</span><span class="s1">&#39;address&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x">/31</span><span class="cp">{%</span> <span class="k">if</span> <span class="k">not</span> <span class="nb">loop</span><span class="nv">.last</span> <span class="cp">%}</span><span class="x">,</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">        </span><span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">    ];</span>
-<span class="x">}</span>
-
-<span class="x"># BGP Import Filter für Rheinland</span>
-<span class="x">filter ebgp_ffrl_import_filter {</span>
-<span class="x">    if is_default() then accept;</span>
-<span class="x">    reject;</span>
-<span class="x">}</span>
-
-<span class="x"># BGP Export Filter für Rheinland</span>
-<span class="x">filter ebgp_ffrl_export_filter {</span>
-<span class="x">    if is_ffrl_nat() then accept;</span>
-<span class="x">    reject;</span>
-<span class="x">}</span>
-
-<span class="x"># IP-NAT-Adresse legen wir in die interne BIRD Routing Table</span>
-<span class="x">protocol static ffrl_uplink_hostroute {</span>
-<span class="x">    table ffrl;</span>
-<span class="x">    route </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;ffrl&#39;</span><span class="o">][</span><span class="s1">&#39;address&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x">/32 reject;</span>
-<span class="x">#    route 185.66.195.36/32 reject;</span>
-<span class="x">}</span>
-
-<span class="x"># Wir legen die Transfernetze in die interne BIRD Routing Table</span>
-<span class="x">protocol direct {</span>
-<span class="x">    table ffrl;</span>
-<span class="x">    interface &quot;ffrl-*&quot;;</span>
-<span class="x">    import where is_ffrl_tunnel_nets();</span>
-<span class="x">}</span>
-
-<span class="x"># Wir exportieren über Rheinland gelernte Routen in die Kernel Table 61 (ffinetexit)</span>
-<span class="x">protocol kernel kernel_ffrl {</span>
-<span class="x">    scan time 30;</span>
+<span class="x"># The Kernel protocol is not a real routing protocol. Instead of communicating</span>
+<span class="x"># with other routers in the network, it performs synchronization of BIRD&#39;s</span>
+<span class="x"># routing tables with the OS kernel.</span>
+<span class="x">protocol kernel {</span>
+<span class="x">    kernel table 61;</span>
+<span class="x">    scan time 10;</span>
 <span class="x">    import none;</span>
 <span class="x">    export filter {</span>
-<span class="x">        krt_prefsrc = ffrl_nat_address;</span>
-<span class="x">        accept;</span>
+<span class="x">        if net_default() then accept;</span>
+<span class="x">        reject;</span>
 <span class="x">    };</span>
-<span class="x">    table ffrl;</span>
-<span class="x">    kernel table 61;</span>
 <span class="x">};</span>
 
-<span class="x"># BGP Template für Rheinland Peerings</span>
-<span class="x">template bgp ffrl_uplink {</span>
-<span class="x">    table ffrl;</span>
-<span class="x">    local as 65037; # AS Number ?? Private ASN 64,512 to 65,534 Autonomous system Number</span>
-<span class="x">    import keep filtered;</span>
-<span class="x">    import filter ebgp_ffrl_import_filter;</span>
-<span class="x">    export filter ebgp_ffrl_export_filter;</span>
-<span class="x">    next hop self;</span>
-<span class="x">    direct;</span>
+<span class="x"># Static Routes for bgp Public IPv4 from Freifunk Rheinland</span>
+<span class="x">protocol static {</span>
+<span class="x">    route 185.66.193.96/32 reject;</span>
+<span class="x">}</span>
+
+<span class="x"># Templates for bgp</span>
+<span class="x">template bgp upstream {</span>
+<span class="x">    local as myas;</span>
+<span class="x">    import filter {</span>
+<span class="x">        if net_default() then accept;</span>
+<span class="x">        reject;</span>
+<span class="x">    };</span>
+<span class="x">    export filter {</span>
+<span class="x">        if net_icannv4() then accept;</span>
+<span class="x">        reject;</span>
+<span class="x">    };</span>
 <span class="x">};</span>
 
-<span class="x"># P E E R I N G S</span>
+<span class="x"># Logging</span>
+<span class="x">log &quot;/var/log/bird.log&quot; all;</span>
+<span class="x">log syslog all;</span>
 
-<span class="cp">{%</span> <span class="k">for</span> <span class="nv">backbone</span> <span class="k">in</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;ffrl&#39;</span><span class="o">]</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x"># </span><span class="cp">{{</span> <span class="nv">backbone</span> <span class="cp">}}</span><span class="x"></span>
-<span class="x">protocol bgp ffrl_</span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;ffrl&#39;</span><span class="o">][</span><span class="nv">backbone</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x"> from ffrl_uplink {</span>
-<span class="x">    source address </span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;ffrl&#39;</span><span class="o">][</span><span class="nv">backbone</span><span class="o">][</span><span class="s1">&#39;tunnel&#39;</span><span class="o">][</span><span class="s1">&#39;ipv4&#39;</span><span class="o">][</span><span class="s1">&#39;address&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x">;</span>
-<span class="x">    neighbor ??? 100.64.1.190 as 201701;</span>
-<span class="x">	</span><span class="cp">{%</span> <span class="k">if</span> <span class="nb">loop</span><span class="nv">.first</span> <span class="cp">%}</span><span class="x">default bgp_local_pref 200;</span><span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span><span class="x"></span>
-<span class="x">};</span>
-<span class="cp">{%</span> <span class="k">endfor</span> <span class="cp">%}</span><span class="x"></span>
+<span class="x"># Include Freifunk Rheinland Upstream</span>
+<span class="x">include &quot;/etc/bird/ffrl_</span><span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="x">_upstream.conf&quot;;</span>
 </pre></div>
 </div>
 <p>Todo: Keine Ahnung was in die Konfigurationsdatei kommt. Gibt es noch bird6.conf dazu?</p>
@@ -306,103 +285,85 @@
 <div class="section" id="salt-state-file">
 <h2>Salt State File<a class="headerlink" href="#salt-state-file" title="Link zu dieser Überschrift">¶</a></h2>
 <p>bird.sls</p>
-<div class="highlight-salt"><div class="highlight"><pre><span></span><span class="c1"># BIRD - Internet Routing Daemon</span>
+<div class="highlight-salt notranslate"><div class="highlight"><pre><span></span><span class="c1"># BIRD - Internet Routing Daemon</span>
 
 <span class="cp">{%</span> <span class="k">set</span> <span class="nv">bird</span> <span class="o">=</span> <span class="nv">salt</span><span class="o">[</span><span class="s1">&#39;grains.filter_by&#39;</span><span class="o">]({</span>
   <span class="s1">&#39;Debian&#39;</span><span class="o">:</span> <span class="o">{</span><span class="s1">&#39;pkg&#39;</span><span class="o">:</span> <span class="s1">&#39;bird&#39;</span><span class="o">,</span> <span class="s1">&#39;srv&#39;</span><span class="o">:</span> <span class="s1">&#39;bird&#39;</span><span class="o">},</span>
 <span class="o">},</span> <span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Debian&#39;</span><span class="o">)</span> <span class="cp">%}</span>
 
 <span class="cp">{%</span> <span class="k">set</span> <span class="nv">bird6</span> <span class="o">=</span> <span class="nv">salt</span><span class="o">[</span><span class="s1">&#39;grains.filter_by&#39;</span><span class="o">]({</span>
-  <span class="s1">&#39;Debian&#39;</span><span class="o">:</span> <span class="o">{</span><span class="s1">&#39;pkg&#39;</span><span class="o">:</span> <span class="s1">&#39;bird6&#39;</span><span class="o">,</span> <span class="s1">&#39;srv&#39;</span><span class="o">:</span> <span class="s1">&#39;bird6&#39;</span><span class="o">},</span>
+  <span class="s1">&#39;Debian&#39;</span><span class="o">:</span> <span class="o">{</span><span class="s1">&#39;srv&#39;</span><span class="o">:</span> <span class="s1">&#39;bird6&#39;</span><span class="o">},</span>
 <span class="o">},</span> <span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Debian&#39;</span><span class="o">)</span> <span class="cp">%}</span>
 
 <span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;exit&#39;</span><span class="o">][</span><span class="s1">&#39;type&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;gre&#39;</span> <span class="cp">%}</span>
 
 <span class="cp">{{</span> <span class="nv">bird.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
-  <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Ubuntu&#39;</span> <span class="k">and</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;osrelease&#39;</span><span class="o">]</span> <span class="p">!</span><span class="o">=</span> <span class="s1">&#39;16.04&#39;</span> <span class="cp">%}</span>
-  <span class="l l-Scalar l-Scalar-Plain">pkgrepo.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ppa</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cz.nic-labs/bird</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">keyid_ppa</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require_in</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird.pkg</span> <span class="cp">}}</span>
-  <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-  <span class="l l-Scalar l-Scalar-Plain">pkg.installed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird.pkg</span> <span class="cp">}}</span>
-    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Ubuntu&#39;</span> <span class="k">and</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;osrelease&#39;</span><span class="o">]</span> <span class="p">!</span><span class="o">=</span> <span class="s1">&#39;16.04&#39;</span> <span class="cp">%}</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">fromrepo</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">trusty</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">skip_verify</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">skip_suggestions</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">install_recommends</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">refresh</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unless</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test -f /usr/sbin/bird</span>
-  <span class="l l-Scalar l-Scalar-Plain">service.running</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird.srv</span> <span class="cp">}}</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">enable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">watch</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird.conf</span>
+  <span class="nt">pkg.installed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">bird.pkg</span> <span class="cp">}}</span>
+  <span class="nt">service.running</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">bird.srv</span> <span class="cp">}}</span>
+    <span class="p p-Indicator">-</span> <span class="nt">enable</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
 
-<span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird.conf</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird.conf</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/bird/bird.conf</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
+<span class="nt">/etc/bird/bird.conf</span><span class="p">:</span>
+  <span class="nt">file.managed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird.conf</span>
+    <span class="p p-Indicator">-</span> <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/bird/bird.conf</span>
+    <span class="p p-Indicator">-</span> <span class="nt">template</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
+    <span class="p p-Indicator">-</span> <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
+    <span class="p p-Indicator">-</span> <span class="nt">listen_in</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">service</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">bird.srv</span> <span class="cp">}}</span>
 
-<span class="cp">{{</span> <span class="nv">bird6.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
-  <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Ubuntu&#39;</span> <span class="k">and</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;osrelease&#39;</span><span class="o">]</span> <span class="p">!</span><span class="o">=</span> <span class="s1">&#39;16.04&#39;</span> <span class="cp">%}</span>
-  <span class="l l-Scalar l-Scalar-Plain">pkgrepo.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">ppa</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">cz.nic-labs/bird</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">keyid_ppa</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require_in</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird6.pkg</span> <span class="cp">}}</span>
-  <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-  <span class="l l-Scalar l-Scalar-Plain">pkg.installed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird6.pkg</span> <span class="cp">}}</span>
-    <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Ubuntu&#39;</span> <span class="k">and</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;osrelease&#39;</span><span class="o">]</span> <span class="p">!</span><span class="o">=</span> <span class="s1">&#39;16.04&#39;</span> <span class="cp">%}</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">fromrepo</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">trusty</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">skip_verify</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">skip_suggestions</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">install_recommends</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">False</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">refresh</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">unless</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">test -f /usr/sbin/bird6</span>
-  <span class="l l-Scalar l-Scalar-Plain">service.running</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird6.srv</span> <span class="cp">}}</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">enable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">watch</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird6.conf</span>
+<span class="nt">/etc/bird/ffrl_</span><span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="nt">_upstream.conf</span><span class="p">:</span>
+  <span class="nt">file.managed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird/ffrl_</span><span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="l l-Scalar l-Scalar-Plain">_upstream.conf</span>
+    <span class="p p-Indicator">-</span> <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/bird/ffrl_</span><span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="l l-Scalar l-Scalar-Plain">_upstream.conf</span>
+    <span class="p p-Indicator">-</span> <span class="nt">template</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
+    <span class="p p-Indicator">-</span> <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
+    <span class="p p-Indicator">-</span> <span class="nt">listen_in</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">service</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">bird.srv</span> <span class="cp">}}</span>
 
-<span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird6.conf</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird6.conf</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/bird/bird6.conf</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
+<span class="cp">{{</span> <span class="nv">bird6.srv</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
+  <span class="nt">service.running</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">bird6.srv</span> <span class="cp">}}</span>
+    <span class="p p-Indicator">-</span> <span class="nt">enable</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
+    <span class="p p-Indicator">-</span> <span class="nt">require</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">pkg</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">bird.pkg</span> <span class="cp">}}</span>
+
+<span class="nt">/etc/bird/bird6.conf</span><span class="p">:</span>
+  <span class="nt">file.managed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird/bird6.conf</span>
+    <span class="p p-Indicator">-</span> <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/bird/bird6.conf</span>
+    <span class="p p-Indicator">-</span> <span class="nt">template</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
+    <span class="p p-Indicator">-</span> <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
+    <span class="p p-Indicator">-</span> <span class="nt">listen_in</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">service</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">bird6.srv</span> <span class="cp">}}</span>
+
+<span class="nt">/etc/bird/ffrl_</span><span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="nt">_upstream6.conf</span><span class="p">:</span>
+  <span class="nt">file.managed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird/ffrl_</span><span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="l l-Scalar l-Scalar-Plain">_upstream6.conf</span>
+    <span class="p p-Indicator">-</span> <span class="nt">source</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/bird/ffrl_</span><span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;host&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="l l-Scalar l-Scalar-Plain">_upstream6.conf</span>
+    <span class="p p-Indicator">-</span> <span class="nt">template</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
+    <span class="p p-Indicator">-</span> <span class="nt">user</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">group</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
+    <span class="p p-Indicator">-</span> <span class="nt">mode</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
+    <span class="p p-Indicator">-</span> <span class="nt">listen_in</span><span class="p">:</span>
+      <span class="p p-Indicator">-</span> <span class="nt">service</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">bird.srv</span> <span class="cp">}}</span>
 
 <span class="cp">{%</span> <span class="k">else</span> <span class="cp">%}</span>
 
 <span class="cp">{{</span> <span class="nv">bird.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">pkg.removed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird.pkg</span> <span class="cp">}}</span>
+  <span class="nt">pkg.removed</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">pkg</span><span class="p">:</span> <span class="cp">{{</span> <span class="nv">bird.pkg</span> <span class="cp">}}</span>
 
-<span class="cp">{{</span> <span class="nv">bird6.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">pkg.removed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">bird6.pkg</span> <span class="cp">}}</span>
-
-<span class="l l-Scalar l-Scalar-Plain">/etc/bird</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.absent</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird</span>
-
-<span class="l l-Scalar l-Scalar-Plain">/etc/bird.conf</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.absent</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird.conf</span>
-
-<span class="l l-Scalar l-Scalar-Plain">/etc/bird6.conf</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.absent</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird6.conf</span>
+<span class="nt">/etc/bird</span><span class="p">:</span>
+  <span class="nt">file.absent</span><span class="p">:</span>
+    <span class="p p-Indicator">-</span> <span class="nt">name</span><span class="p">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/bird</span>
 
 <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
 </pre></div>
@@ -412,15 +373,16 @@
 
 
            </div>
+           
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../radvd/index.html" class="btn btn-neutral float-right" title="RAdvD - Router Advertising Daemon" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="../alfred/index.html" class="btn btn-neutral float-right" title="A.L.F.R.E.D. - Almighty Lightweight Fact Remote Exchange Daemon" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../fastd/index.html" class="btn btn-neutral" title="Fastd - Fast and Secure Tunneling Daemon" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../fastd/index.html" class="btn btn-neutral float-left" title="Fastd - Fast and Secure Tunneling Daemon" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
@@ -444,36 +406,15 @@
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/translations.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>

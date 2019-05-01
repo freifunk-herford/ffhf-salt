@@ -1,8 +1,8 @@
 
 
 <!DOCTYPE html>
-<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
-<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<!--[if IE 8]><html class="no-js lt-ie9" lang="de" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="de" > <!--<![endif]-->
 <head>
   <meta charset="utf-8">
   
@@ -15,44 +15,39 @@
   
     <link rel="shortcut icon" href="../../../_static/favicon.ico"/>
   
+  
+  
 
   
+  <script type="text/javascript" src="../../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../../" src="../../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../../_static/language_data.js"></script>
+        <script type="text/javascript" src="../../../_static/translations.js"></script>
+    
+    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
 
-  
-  
     
 
   
-
-  
-  
-    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
-  
-
-  
-
-  
-        <link rel="index" title="Stichwortverzeichnis"
-              href="../../../genindex.html"/>
-        <link rel="search" title="Suche" href="../../../search.html"/>
-    <link rel="top" title="SaltStack Freifunk Herford 0.1 Dokumentation" href="../../../index.html"/>
-        <link rel="up" title="Gateway" href="../index.html"/>
-        <link rel="next" title="DNS Server (Domain Name System)" href="../name-server/index.html"/>
-        <link rel="prev" title="sysfsutils: System Utilities Based on Sysfs" href="../sysfsutils/index.html"/> 
-
-  
-  <script src="../../../_static/js/modernizr.min.js"></script>
-
+  <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Stichwortverzeichnis" href="../../../genindex.html" />
+    <link rel="search" title="Suche" href="../../../search.html" /> 
 </head>
 
-<body class="wy-body-for-nav" role="document">
+<body class="wy-body-for-nav">
 
+   
   <div class="wy-grid-for-nav">
-
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
       <div class="wy-side-scroll">
-        <div class="wy-side-nav-search">
+        <div class="wy-side-nav-search" >
           
 
           
@@ -61,7 +56,7 @@
 
           
             
-            <img src="../../../_static/freifunk.png" class="logo" />
+            <img src="../../../_static/freifunk.png" class="logo" alt="Logo"/>
           
           </a>
 
@@ -90,44 +85,11 @@
           
             
             
-                <ul class="current">
-<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">States</a><ul class="current">
-<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Gateway</a><ul class="current">
-<li class="toctree-l3"><a class="reference internal" href="../bash/index.html">Bash - Bourne Again Shell</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../git/index.html">git Version Control System</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../etckeeper/index.html">etc Keeper</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tmp/index.html">/tmp</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../mosh/index.html">Mosh (Mobile shell)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../molly-guard/index.html">Molly-Guard</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../openssh-server/index.html">OpenSSH - OpenBSD Secure Shell server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../ntp/index.html">NTP (Network Time Protocol)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../network/index.html">Network Interfaces &amp; Brige Utilities</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../iproute/index.html">IP Route</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../iptables/index.html">Net Filter/IP Tables Persistent</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../fail2ban/index.html">Fail2Ban Service</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../batman/index.html">B.A.T.M.A.N. - Better Approach To Mobile Adhoc Networking</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../fastd/index.html">Fastd - Fast and Secure Tunneling Daemon</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../bird/index.html">BIRD - Internet Routing Daemon</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../radvd/index.html">RAdvD - Router Advertising Daemon</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../alfred/index.html">A.L.F.R.E.D. - Almighty Lightweight Fact Remote Exchange Daemon</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../sysfsutils/index.html">sysfsutils: System Utilities Based on Sysfs</a></li>
-<li class="toctree-l3 current"><a class="current reference internal" href="#">DHCP Server (Dynamic Host Configuration Protocol)</a><ul>
-<li class="toctree-l4"><a class="reference internal" href="#installation">Installation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#konfiguation">Konfiguation</a></li>
-<li class="toctree-l4"><a class="reference internal" href="#salt-state-file">Salt State File</a></li>
-</ul>
-</li>
-<li class="toctree-l3"><a class="reference internal" href="../name-server/index.html">DNS Server (Domain Name System)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../tinc/index.html">tinc VPN (Virtual Private Network)</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../openvpn/index.html">OpenVPN - Virtual Private Network</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../apache/index.html">Apache Web Server</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../vnstat/index.html">vnStat &amp; vnStati</a></li>
-<li class="toctree-l3"><a class="reference internal" href="../syslog/index.html">Logging</a></li>
-</ul>
-</li>
-<li class="toctree-l2"><a class="reference internal" href="../../map/index.html">Map Server</a></li>
-</ul>
-</li>
+              
+            
+            
+              <ul>
+<li class="toctree-l1"><a class="reference internal" href="../../index.html">States</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../pillar_roots/index.html">Pillars</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../links.html">Links</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../../../network.html">Netzwerk Plan</a></li>
@@ -144,36 +106,52 @@
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
-        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-        <a href="../../../index.html">SaltStack Freifunk Herford</a>
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../../index.html">SaltStack Freifunk Herford</a>
+        
       </nav>
 
 
-      
       <div class="wy-nav-content">
+        
         <div class="rst-content">
+        
           
 
- 
+
+
+
+
+
+
+
+
+
+
+
 
 
 
 <div role="navigation" aria-label="breadcrumbs navigation">
+
   <ul class="wy-breadcrumbs">
-    <li><a href="../../../index.html">Docs</a> &raquo;</li>
-      
-          <li><a href="../../index.html">States</a> &raquo;</li>
-      
-          <li><a href="../index.html">Gateway</a> &raquo;</li>
-      
-    <li>DHCP Server (Dynamic Host Configuration Protocol)</li>
+    
+      <li><a href="../../../index.html">Docs</a> &raquo;</li>
+        
+      <li>DHCP Server (Dynamic Host Configuration Protocol)</li>
+    
+    
       <li class="wy-breadcrumbs-aside">
         
-          
+            
         
       </li>
+    
   </ul>
+
+  
   <hr/>
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
@@ -183,193 +161,16 @@
 <h1>DHCP Server (Dynamic Host Configuration Protocol)<a class="headerlink" href="#dhcp-server-dynamic-host-configuration-protocol" title="Link zu dieser Überschrift">¶</a></h1>
 <div class="section" id="installation">
 <h2>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h2>
-<div class="code bash highlight-default"><div class="highlight"><pre><span></span><span class="n">apt</span><span class="o">-</span><span class="n">get</span> <span class="n">install</span> <span class="n">isc</span><span class="o">-</span><span class="n">dhcp</span><span class="o">-</span><span class="n">server</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt-get install isc-dhcp-server
 </pre></div>
 </div>
-<p>Für den IPv4 Betrieb des DHCP Servers in der Datei <code class="docutils literal"><span class="pre">/etc/default/isc-dhcp-server</span></code> den Eintrag <code class="docutils literal"><span class="pre">INTERFACES=&quot;&quot;</span></code> mit dem Interface der Brückenschnittstelle füllen.</p>
-<p>Für den IPv6 Betrieb des DHCP Servers bei der Verwendung vom Init System <code class="docutils literal"><span class="pre">upstart</span></code> die Datei <code class="docutils literal"><span class="pre">/etc/init.d/isc-dhcp6-server</span></code> mit folgendem Inhalt anlegen.</p>
-<div class="highlight-bash"><div class="highlight"><pre><span></span><span class="ch">#!/bin/sh</span>
-<span class="c1"># This file is managed by Salt, do not edit.</span>
-<span class="c1">#</span>
-<span class="c1">#</span>
-
-<span class="c1">### BEGIN INIT INFO</span>
-<span class="c1"># Provides:          isc-dhcp6-server</span>
-<span class="c1"># Required-Start:    $remote_fs $network $syslog</span>
-<span class="c1"># Required-Stop:     $remote_fs $network $syslog</span>
-<span class="c1"># Should-Start:      $local_fs slapd $named</span>
-<span class="c1"># Should-Stop:       $local_fs slapd</span>
-<span class="c1"># Default-Start:     2 3 4 5</span>
-<span class="c1"># Default-Stop:      0 1 6</span>
-<span class="c1"># Short-Description: DHCP server</span>
-<span class="c1"># Description:       Dynamic Host Configuration Protocol Server</span>
-<span class="c1">### END INIT INFO</span>
-
-<span class="nv">PATH</span><span class="o">=</span>/sbin:/bin:/usr/sbin:/usr/bin
-
-<span class="nb">test</span> -f /usr/sbin/dhcpd <span class="o">||</span> <span class="nb">exit</span> 0
-
-<span class="nv">DHCPD_DEFAULT</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DHCPD_DEFAULT</span><span class="k">:-</span><span class="p">/etc/default/isc-dhcp6-server</span><span class="si">}</span><span class="s2">&quot;</span>
-
-<span class="c1"># It is not safe to start if we don&#39;t have a default configuration...</span>
-<span class="k">if</span> <span class="o">[</span> ! -f <span class="s2">&quot;</span><span class="nv">$DHCPD_DEFAULT</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-        <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$DHCPD_DEFAULT</span><span class="s2"> does not exist! - Aborting...&quot;</span>
-        <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$DHCPD_DEFAULT</span><span class="s2">&quot;</span> <span class="o">=</span> <span class="s2">&quot;/etc/default/isc-dhcp6-server&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-                <span class="nb">echo</span> <span class="s2">&quot;Run &#39;dpkg-reconfigure isc-dhcp-server&#39; to fix the problem.&quot;</span>
-        <span class="k">fi</span>
-        <span class="nb">exit</span> 0
-<span class="k">fi</span>
-
-. /lib/lsb/init-functions
-
-<span class="c1"># Read init script configuration</span>
-<span class="o">[</span> -f <span class="s2">&quot;</span><span class="nv">$DHCPD_DEFAULT</span><span class="s2">&quot;</span> <span class="o">]</span> <span class="o">&amp;&amp;</span> . <span class="s2">&quot;</span><span class="nv">$DHCPD_DEFAULT</span><span class="s2">&quot;</span>
-
-<span class="nv">NAME</span><span class="o">=</span>dhcpd
-<span class="nv">DESC</span><span class="o">=</span><span class="s2">&quot;ISC DHCP server&quot;</span>
-<span class="c1"># fallback to default config file</span>
-<span class="nv">DHCPD_CONF</span><span class="o">=</span><span class="si">${</span><span class="nv">DHCPD_CONF</span><span class="k">:-</span><span class="p">/etc/dhcp/dhcpd6.conf</span><span class="si">}</span>
-<span class="c1"># try to read pid file name from config file, with fallback to /var/run/dhcpd6.pid</span>
-<span class="k">if</span> <span class="o">[</span> -z <span class="s2">&quot;</span><span class="nv">$DHCPD_PID</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-        <span class="nv">DHCPD_PID</span><span class="o">=</span><span class="k">$(</span>sed -n -e <span class="s1">&#39;s/^[ \t]*pid-file-name[ \t]*&quot;\(.*\)&quot;[ \t]*;.*$/\1/p&#39;</span> &lt; <span class="s2">&quot;</span><span class="nv">$DHCPD_CONF</span><span class="s2">&quot;</span> 2&gt;/dev/null <span class="p">|</span> head -n 1<span class="k">)</span>
-<span class="k">fi</span>
-<span class="nv">DHCPD_PID</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">DHCPD_PID</span><span class="k">:-</span><span class="p">/var/run/dhcpd6.pid</span><span class="si">}</span><span class="s2">&quot;</span>
-
-test_config<span class="o">()</span>
-<span class="o">{</span>
-        <span class="k">if</span> ! /usr/sbin/dhcpd -6 -t <span class="nv">$OPTIONS</span> -q -cf <span class="s2">&quot;</span><span class="nv">$DHCPD_CONF</span><span class="s2">&quot;</span> &gt; /dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
-                <span class="nb">echo</span> <span class="s2">&quot;dhcpd self-test failed. Please fix </span><span class="nv">$DHCPD_CONF</span><span class="s2">.&quot;</span>
-                <span class="nb">echo</span> <span class="s2">&quot;The error was: &quot;</span>
-                /usr/sbin/dhcpd -6 -t <span class="nv">$OPTIONS</span> -cf <span class="s2">&quot;</span><span class="nv">$DHCPD_CONF</span><span class="s2">&quot;</span>
-                <span class="nb">exit</span> 1
-        <span class="k">fi</span>
-        touch /var/lib/dhcp/dhcpd6.leases
-<span class="o">}</span>
-
-<span class="c1"># single arg is -v for messages, -q for none</span>
-check_status<span class="o">()</span>
-<span class="o">{</span>
-    <span class="k">if</span> <span class="o">[</span> ! -r <span class="s2">&quot;</span><span class="nv">$DHCPD_PID</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-        <span class="nb">test</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> !<span class="o">=</span> -v <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$NAME</span><span class="s2"> is not running.&quot;</span>
-        <span class="k">return</span> 3
-    <span class="k">fi</span>
-    <span class="k">if</span> <span class="nb">read</span> pid &lt; <span class="s2">&quot;</span><span class="nv">$DHCPD_PID</span><span class="s2">&quot;</span> <span class="o">&amp;&amp;</span> ps -p <span class="s2">&quot;</span><span class="nv">$pid</span><span class="s2">&quot;</span> &gt; /dev/null 2&gt;<span class="p">&amp;</span>1<span class="p">;</span> <span class="k">then</span>
-        <span class="nb">test</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> !<span class="o">=</span> -v <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$NAME</span><span class="s2"> is running.&quot;</span>
-        <span class="k">return</span> 0
-    <span class="k">else</span>
-        <span class="nb">test</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> !<span class="o">=</span> -v <span class="o">||</span> <span class="nb">echo</span> <span class="s2">&quot;</span><span class="nv">$NAME</span><span class="s2"> is not running but </span><span class="nv">$DHCPD_PID</span><span class="s2"> exists.&quot;</span>
-        <span class="k">return</span> 1
-    <span class="k">fi</span>
-<span class="o">}</span>
-
-<span class="k">case</span> <span class="s2">&quot;</span><span class="nv">$1</span><span class="s2">&quot;</span> in
-        start<span class="o">)</span>
-                test_config
-                <span class="k">if</span> <span class="o">[</span> -e <span class="s2">&quot;</span><span class="nv">$DHCPD_PID</span><span class="s2">&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-                        log_failure_msg <span class="s2">&quot;dhcpd service already running (pid file </span><span class="nv">$DHCPD_PID</span><span class="s2"> currenty exists)&quot;</span>
-                        <span class="nb">exit</span> 1
-                <span class="k">fi</span>
-                log_daemon_msg <span class="s2">&quot;Starting </span><span class="nv">$DESC</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="nv">$NAME</span><span class="s2">&quot;</span>
-                start-stop-daemon --start --quiet --pidfile <span class="s2">&quot;</span><span class="nv">$DHCPD_PID</span><span class="s2">&quot;</span> <span class="se">\</span>
-                        --exec /usr/sbin/dhcpd -- <span class="se">\</span>
-                        -6 -q <span class="nv">$OPTIONS</span> -cf <span class="s2">&quot;</span><span class="nv">$DHCPD_CONF</span><span class="s2">&quot;</span> -pf <span class="s2">&quot;</span><span class="nv">$DHCPD_PID</span><span class="s2">&quot;</span> <span class="nv">$INTERFACES</span>
-                sleep 2
-
-                <span class="k">if</span> check_status -q<span class="p">;</span> <span class="k">then</span>
-                        log_end_msg 0
-                <span class="k">else</span>
-                        log_failure_msg <span class="s2">&quot;check syslog for diagnostics.&quot;</span>
-                        log_end_msg 1
-                        <span class="nb">exit</span> 1
-                <span class="k">fi</span>
-                <span class="p">;;</span>
-        stop<span class="o">)</span>
-                log_daemon_msg <span class="s2">&quot;Stopping </span><span class="nv">$DESC</span><span class="s2">&quot;</span> <span class="s2">&quot;</span><span class="nv">$NAME</span><span class="s2">&quot;</span>
-                start-stop-daemon --stop --quiet --pidfile <span class="s2">&quot;</span><span class="nv">$DHCPD_PID</span><span class="s2">&quot;</span>
-                log_end_msg <span class="nv">$?</span>
-                rm -f <span class="s2">&quot;</span><span class="nv">$DHCPD_PID</span><span class="s2">&quot;</span>
-                <span class="p">;;</span>
-        restart <span class="p">|</span> force-reload<span class="o">)</span>
-                test_config
-                <span class="nv">$0</span> stop
-                sleep 2
-                <span class="nv">$0</span> start
-                <span class="k">if</span> <span class="o">[</span> <span class="s2">&quot;</span><span class="nv">$?</span><span class="s2">&quot;</span> !<span class="o">=</span> <span class="s2">&quot;0&quot;</span> <span class="o">]</span><span class="p">;</span> <span class="k">then</span>
-                        <span class="nb">exit</span> 1
-                <span class="k">fi</span>
-                <span class="p">;;</span>
-        status<span class="o">)</span>
-                <span class="nb">echo</span> -n <span class="s2">&quot;Status of </span><span class="nv">$DESC</span><span class="s2">: &quot;</span>
-                check_status -v
-                <span class="nb">exit</span> <span class="s2">&quot;</span><span class="nv">$?</span><span class="s2">&quot;</span>
-                <span class="p">;;</span>
-        *<span class="o">)</span>
-                <span class="nb">echo</span> <span class="s2">&quot;Usage: </span><span class="nv">$0</span><span class="s2"> {start|stop|restart|force-reload|status}&quot;</span>
-                <span class="nb">exit</span> 1
-<span class="k">esac</span>
-
-<span class="nb">exit</span> 0
-</pre></div>
-</div>
-<p>Bei der Verwendung vom Init System <code class="docutils literal"><span class="pre">systemd</span></code> die Datei <code class="docutils literal"><span class="pre">/lib/systemd/system/isc-dhcp6-server.service</span></code> mit folgendem Inhalt anlegen.</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span>[Unit]
-Description=ISC DHCP IPv6 server
-Documentation=man:dhcpd(8)
-Wants=network-online.target
-After=network-online.target
-After=time-sync.target
-ConditionPathExists=/etc/default/isc-dhcp6-server
-ConditionPathExists=|/etc/ltsp/dhcpd6.conf
-ConditionPathExists=|/etc/dhcp/dhcpd6.conf
-
-[Service]
-EnvironmentFile=/etc/default/isc-dhcp6-server
-RuntimeDirectory=dhcp-server
-# The leases files need to be root:dhcpd even when dropping privileges
-ExecStart=/bin/sh -ec &#39;\
-    CONFIG_FILE=/etc/dhcp/dhcpd6.conf; \
-    if [ -f /etc/ltsp/dhcpd6.conf ]; then CONFIG_FILE=/etc/ltsp/dhcpd6.conf; fi; \
-    [ -e /var/lib/dhcp/dhcpd6.leases ] || touch /var/lib/dhcp/dhcpd6.leases; \
-    chown root:dhcpd /var/lib/dhcp /var/lib/dhcp/dhcpd6.leases; \
-    chmod 775 /var/lib/dhcp ; chmod 664 /var/lib/dhcp/dhcpd6.leases; \
-    exec dhcpd -user dhcpd -group dhcpd -f -6 -pf /run/dhcp-server/dhcpd6.pid -cf $CONFIG_FILE $INTERFACES&#39;
-
-[Install]
-WantedBy=multi-user.target
-</pre></div>
-</div>
-<p>Die Datei <code class="docutils literal"><span class="pre">/etc/default/isc-dhcp6-server</span></code> mit folgendem Inhalt anlegen.</p>
-<div class="highlight-text"><div class="highlight"><pre><span></span># This file is managed by Salt, do not edit.
-
-# Defaults for isc-dhcp6-server initscript
-# sourced by /etc/init.d/isc-dhcp6-server
-# installed at /etc/default/isc-dhcp6-server by the maintainer scripts
-
-#
-# This is a POSIX shell fragment
-#
-
-# Path to dhcpd&#39;s config file (default: /etc/dhcp/dhcpd6.conf).
-#DHCPD_CONF=/etc/dhcp/dhcpd6.conf
-
-# Path to dhcpd&#39;s PID file (default: /var/run/dhcpd6.pid).
-#DHCPD_PID=/var/run/dhcpd6.pid
-
-# Additional options to start dhcpd with.
-#  Don&#39;t use options -cf or -pf here; use DHCPD_CONF/ DHCPD_PID instead
-#OPTIONS=&quot;&quot;
-
-# On what interfaces should the DHCP server (dhcpd) serve DHCP requests?
-#  Separate multiple interfaces with spaces, e.g. &quot;eth0 eth1&quot;.
-INTERFACES=&quot;&quot;
-</pre></div>
-</div>
-<p>Den Eintrag <code class="docutils literal"><span class="pre">INTERFACES=&quot;&quot;</span></code> mit dem Interface der Brückenschnittstelle füllen.</p>
+<p>Für den IPv4 Betrieb des DHCP Servers in der Datei <code class="docutils literal notranslate"><span class="pre">/etc/default/isc-dhcp-server</span></code> den Eintrag <code class="docutils literal notranslate"><span class="pre">INTERFACESv4=&quot;&quot;</span></code> mit dem Interface der Brückenschnittstelle füllen.</p>
+<p>Für den IPv6 Betrieb des DHCP Servers in der Datei <code class="docutils literal notranslate"><span class="pre">/etc/default/isc-dhcp-server</span></code> den Eintrag <code class="docutils literal notranslate"><span class="pre">INTERFACESv6=&quot;&quot;</span></code> mit dem Interface der Brückenschnittstelle füllen.</p>
 </div>
 <div class="section" id="konfiguation">
 <h2>Konfiguation<a class="headerlink" href="#konfiguation" title="Link zu dieser Überschrift">¶</a></h2>
-<p>Inhalt von <code class="docutils literal"><span class="pre">/etc/dhcp/dhcpd.conf</span></code> für IPv4.</p>
-<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x"># This file is managed by Salt, do not edit.</span>
+<p>Inhalt von <code class="docutils literal notranslate"><span class="pre">/etc/dhcp/dhcpd.conf</span></code> für IPv4.</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x"># This file is managed by Salt, do not edit.</span>
 
 <span class="x">#</span>
 <span class="x"># Sample configuration file for ISC dhcpd for Debian</span>
@@ -505,8 +306,8 @@ INTERFACES=&quot;&quot;
 <span class="x">}</span>
 </pre></div>
 </div>
-<p>Inhalt von <code class="docutils literal"><span class="pre">/etc/dhcp/dhcpd6.conf</span></code> für IPv6.</p>
-<div class="highlight-jinja"><div class="highlight"><pre><span></span><span class="x"># This file is managed by Salt, do not edit.</span>
+<p>Inhalt von <code class="docutils literal notranslate"><span class="pre">/etc/dhcp/dhcpd6.conf</span></code> für IPv6.</p>
+<div class="highlight-jinja notranslate"><div class="highlight"><pre><span></span><span class="x"># This file is managed by Salt, do not edit.</span>
 
 <span class="x">#</span>
 <span class="x"># Sample configuration file for ISC dhcpd for Debian</span>
@@ -639,170 +440,19 @@ INTERFACES=&quot;&quot;
 <span class="x">}</span>
 </pre></div>
 </div>
-<p>Todo: IP Ranges anpassen, IPv6 Krams nachschauen und die Konfigurationsdateien anpassen.</p>
+<p>TODO: IP Ranges anpassen, IPv6 Krams nachschauen und die Konfigurationsdateien anpassen.</p>
 </div>
 <div class="section" id="salt-state-file">
 <h2>Salt State File<a class="headerlink" href="#salt-state-file" title="Link zu dieser Überschrift">¶</a></h2>
 <p>dhcp-server.sls</p>
-<div class="highlight-salt"><div class="highlight"><pre><span></span><span class="c1"># DHCP Server (Dynamic Host Configuration Protocol)</span>
-
-<span class="cp">{%</span> <span class="k">set</span> <span class="nv">dhcp</span> <span class="o">=</span> <span class="nv">salt</span><span class="o">[</span><span class="s1">&#39;grains.filter_by&#39;</span><span class="o">]({</span>
-  <span class="s1">&#39;Debian&#39;</span><span class="o">:</span> <span class="o">{</span>
-    <span class="s1">&#39;pkg&#39;</span><span class="o">:</span> <span class="s1">&#39;isc-dhcp-server&#39;</span><span class="o">,</span>
-    <span class="s1">&#39;srv&#39;</span><span class="o">:</span> <span class="s1">&#39;isc-dhcp-server&#39;</span><span class="o">,</span>
-    <span class="s1">&#39;srv6&#39;</span><span class="o">:</span> <span class="s1">&#39;isc-dhcp6-server&#39;</span>
-  <span class="o">},</span>
-<span class="o">},</span> <span class="nv">default</span><span class="o">=</span><span class="s1">&#39;Debian&#39;</span><span class="o">)</span> <span class="cp">%}</span>
-
-<span class="c1"># IPv4</span>
-<span class="cp">{{</span> <span class="nv">dhcp.pkg</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">pkg.installed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">dhcp.pkg</span> <span class="cp">}}</span>
-  <span class="l l-Scalar l-Scalar-Plain">service.running</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">dhcp.srv</span> <span class="cp">}}</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">enable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">watch</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/dhcp/dhcpd.conf</span>
-      <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os_family&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Debian&#39;</span> <span class="cp">%}</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/default/isc-dhcp-server</span>
-      <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-    <span class="c1"># - require:</span>
-    <span class="c1">#   - sls: gateway.network</span>
-
-<span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os_family&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Debian&#39;</span> <span class="cp">%}</span>
-<span class="l l-Scalar l-Scalar-Plain">/etc/default/isc-dhcp-server</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.replace</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/default/isc-dhcp-server</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pattern</span><span class="p p-Indicator">:</span> <span class="s">&#39;^INTERFACES=&quot;(.*)&quot;$&#39;</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">repl</span><span class="p p-Indicator">:</span> <span class="s">&#39;INTERFACES=&quot;</span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="s">&quot;&#39;</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not_found_content</span><span class="p p-Indicator">:</span> <span class="s">&#39;INTERFACES=&quot;</span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="s">&quot;&#39;</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">append_if_not_found</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
-       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">dhcp.pkg</span> <span class="cp">}}</span>
-<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-
-<span class="l l-Scalar l-Scalar-Plain">/etc/dhcp/dhcpd.conf</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/dhcp/dhcpd.conf</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/dhcp/dhcpd.conf</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">template</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">subnet</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;ipv4&#39;</span><span class="o">][</span><span class="s1">&#39;subnet&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">netmask</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;ipv4&#39;</span><span class="o">][</span><span class="s1">&#39;netmask&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">range_start</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">salt</span><span class="o">[</span><span class="s1">&#39;pillar.get&#39;</span><span class="o">](</span><span class="s1">&#39;dhcp:ipv4:&#39;</span> <span class="o">+</span> <span class="nv">salt</span><span class="o">[</span><span class="s1">&#39;grains.get&#39;</span><span class="o">](</span><span class="s1">&#39;id&#39;</span><span class="o">,</span> <span class="s2">&quot;&quot;</span><span class="o">)</span> <span class="o">+</span> <span class="s1">&#39;:range_start&#39;</span><span class="o">,</span> <span class="s2">&quot;&quot;</span><span class="o">)</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">range_end</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;ipv4&#39;</span><span class="o">][</span><span class="nv">grains.id</span><span class="o">][</span><span class="s1">&#39;range_end&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">routers</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;ipv4&#39;</span><span class="o">][</span><span class="s1">&#39;routers&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">domain_name_servers</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;ipv4&#39;</span><span class="o">][</span><span class="s1">&#39;domain_name_servers&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">interface_mtu</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;interface_mtu&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">default_lease_time</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;default_lease_time&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">max_lease_time</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;max_lease_time&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">min_lease_time</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;min_lease_time&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">log_facility</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;log_facility&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">server_name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;id&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">ntp_servers</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;ipv4&#39;</span><span class="o">][</span><span class="s1">&#39;ntp_servers&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">domain_search</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;domain_search&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
-       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">dhcp.pkg</span> <span class="cp">}}</span>
-
- <span class="c1"># IPv6</span>
-<span class="cp">{%</span> <span class="k">if</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;ipv6&#39;</span><span class="o">][</span><span class="s1">&#39;enable&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="kp">True</span> <span class="cp">%}</span>
-<span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os_family&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Debian&#39;</span> <span class="cp">%}</span>
-<span class="l l-Scalar l-Scalar-Plain">deploy-isc-dhcp6-server-default</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/default/isc-dhcp6-server</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/default/isc-dhcp6-server</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
-
-<span class="l l-Scalar l-Scalar-Plain">deploy-isc-dhcp6-server-init</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/init.d/isc-dhcp6-server</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/init.d/isc-dhcp6-server</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">755</span>
-<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-
-<span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os_family&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Debian&#39;</span> <span class="k">and</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;init&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;systemd&#39;</span> <span class="cp">%}</span>
-<span class="l l-Scalar l-Scalar-Plain">/lib/systemd/system/isc-dhcp6-server.service</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/lib/systemd/system/isc-dhcp6-server.service</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/lib/systemd/system/isc-dhcp6-server.service</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
-<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-
-<span class="cp">{{</span> <span class="nv">dhcp.srv6</span> <span class="cp">}}</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">service.running</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">dhcp.srv6</span> <span class="cp">}}</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">enable</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">watch</span><span class="p p-Indicator">:</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/dhcp/dhcpd6.conf</span>
-      <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os_family&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Debian&#39;</span> <span class="cp">%}</span>
-      <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/default/isc-dhcp6-server</span>
-      <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
-       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">dhcp.pkg</span> <span class="cp">}}</span>
-       <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os_family&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Debian&#39;</span> <span class="cp">%}</span>
-       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy-isc-dhcp6-server-init</span>
-       <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-       <span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os_family&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Debian&#39;</span> <span class="k">and</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;init&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;systemd&#39;</span> <span class="cp">%}</span>
-       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/lib/systemd/system/isc-dhcp6-server.service</span>
-       <span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-
-<span class="cp">{%</span> <span class="k">if</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;os_family&#39;</span><span class="o">]</span> <span class="o">==</span> <span class="s1">&#39;Debian&#39;</span> <span class="cp">%}</span>
-<span class="l l-Scalar l-Scalar-Plain">/etc/default/isc-dhcp6-server</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.replace</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/default/isc-dhcp-server</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pattern</span><span class="p p-Indicator">:</span> <span class="s">&#39;^INTERFACES=&quot;(.*)&quot;$&#39;</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">repl</span><span class="p p-Indicator">:</span> <span class="s">&#39;INTERFACES=&quot;</span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="s">&quot;&#39;</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">not_found_content</span><span class="p p-Indicator">:</span> <span class="s">&#39;INTERFACES=&quot;</span><span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;network&#39;</span><span class="o">][</span><span class="s1">&#39;bridge&#39;</span><span class="o">][</span><span class="s1">&#39;interface&#39;</span><span class="o">]</span> <span class="cp">}}</span><span class="s">&quot;&#39;</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">append_if_not_found</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">True</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
-       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">dhcp.pkg</span> <span class="cp">}}</span>
-       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">file</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">deploy-isc-dhcp6-server-default</span>
-<span class="cp">{%</span> <span class="k">endif</span> <span class="cp">%}</span>
-
-<span class="l l-Scalar l-Scalar-Plain">/etc/dhcp/dhcpd6.conf</span><span class="p p-Indicator">:</span>
-  <span class="l l-Scalar l-Scalar-Plain">file.managed</span><span class="p p-Indicator">:</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">name</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">/etc/dhcp/dhcpd6.conf</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">source</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">salt://gateway/etc/dhcp/dhcpd6.conf</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">user</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">group</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">root</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">mode</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">644</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">template</span><span class="p p-Indicator">:</span> <span class="l l-Scalar l-Scalar-Plain">jinja</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">defaults</span><span class="p p-Indicator">:</span>
-        <span class="l l-Scalar l-Scalar-Plain">subnet</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;ipv6&#39;</span><span class="o">][</span><span class="s1">&#39;subnet&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">server_name</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">grains</span><span class="o">[</span><span class="s1">&#39;id&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">ntp_servers</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;ipv4&#39;</span><span class="o">][</span><span class="s1">&#39;ntp_servers&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">name_servers</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;ipv6&#39;</span><span class="o">][</span><span class="s1">&#39;domain_name_servers&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-        <span class="l l-Scalar l-Scalar-Plain">domain_search</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">pillar</span><span class="o">[</span><span class="s1">&#39;dhcp&#39;</span><span class="o">][</span><span class="s1">&#39;domain_search&#39;</span><span class="o">]</span> <span class="cp">}}</span>
-    <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">require</span><span class="p p-Indicator">:</span>
-       <span class="p p-Indicator">-</span> <span class="l l-Scalar l-Scalar-Plain">pkg</span><span class="p p-Indicator">:</span> <span class="cp">{{</span> <span class="nv">dhcp.pkg</span> <span class="cp">}}</span>
-<span class="cp">{%</span> <span class="k">endif</span><span class="cp">%}</span>
-</pre></div>
-</div>
 </div>
 </div>
 
 
            </div>
+           
           </div>
           <footer>
-  
-    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
-      
-        <a href="../name-server/index.html" class="btn btn-neutral float-right" title="DNS Server (Domain Name System)" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
-      
-      
-        <a href="../sysfsutils/index.html" class="btn btn-neutral" title="sysfsutils: System Utilities Based on Sysfs" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
-      
-    </div>
   
 
   <hr/>
@@ -824,36 +474,15 @@ INTERFACES=&quot;&quot;
   
 
 
-  
-
-    <script type="text/javascript">
-        var DOCUMENTATION_OPTIONS = {
-            URL_ROOT:'../../../',
-            VERSION:'0.1',
-            COLLAPSE_INDEX:false,
-            FILE_SUFFIX:'.html',
-            HAS_SOURCE:  true
-        };
-    </script>
-      <script type="text/javascript" src="../../../_static/jquery.js"></script>
-      <script type="text/javascript" src="../../../_static/underscore.js"></script>
-      <script type="text/javascript" src="../../../_static/doctools.js"></script>
-      <script type="text/javascript" src="../../../_static/translations.js"></script>
-
-  
-
-  
-  
-    <script type="text/javascript" src="../../../_static/js/theme.js"></script>
-  
-
-  
-  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.StickyNav.enable();
+          SphinxRtdTheme.Navigation.enable(true);
       });
   </script>
+
+  
+  
+    
    
 
 </body>
