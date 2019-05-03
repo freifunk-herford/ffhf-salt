@@ -1,7 +1,7 @@
 Testumgebung
 ============
 
-.. figure:: testing-network.svg
+.. figure:: _images/testing-network.svg
    :alt: Netzwerkdiagramm Testumgebung
 
    Netzwerkdiagramm Testumgebung
@@ -19,12 +19,12 @@ Beispielausgabe von ``batctl o`` auf einem gluon Node.
 
 Meshviewer auf dem Map Server in der Testumgebung.
 
-.. figure:: meshviewer-diagramm.png
+.. figure:: _images/meshviewer-diagramm.png
    :alt: Meshviewer Diagramm
 
    Meshviewer Diagramm
 
-.. figure:: meshviewer-openstreetmap.png
+.. figure:: _images/meshviewer-openstreetmap.png
    :alt: Meshviewer OpenStreetMap
 
    Meshviewer OpenStreetMap
