@@ -14,7 +14,7 @@ include:
   - gateway.batman
   - gateway.fastd
   - gateway.bird
-  # - gateway.radvd
+  - gateway.radvd
   - gateway.alfred
   - gateway.sysfsutils
   - gateway.isc-dhcp-server
