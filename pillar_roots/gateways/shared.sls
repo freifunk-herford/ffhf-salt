@@ -48,6 +48,8 @@ bind:
     - 'ffhf'
     - '34.10.in-addr.arpa'
     - '2.5.1.5.9.4.0.2.3.f.d.f.ip6.arpa'
+    - 'local-marta-herford.de'
+    - 'audioguide.marta'
   trusted:
     - '127.0.0.1'
     - '10.34.0.0/16'
