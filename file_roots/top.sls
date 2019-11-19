@@ -1,4 +1,4 @@
-# Diese Datei wird nicht genutzt und dient als Beispiel
+# Diese Datei ist die States Top Datei auf dem Freifunk Herford Salt Master 
 
 base:
   '^gw\d$':
