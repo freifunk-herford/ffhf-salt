@@ -4,7 +4,8 @@
   'Debian': {'pkg': 'radvd', 'srv': 'radvd'}
 }, default='Debian') %}
 
-{% if pillar['exit']['type'] == 'gre' %}
+{#% if pillar['exit']['type'] == 'gre' %#}
+{% if grains['host'] == 'gw5' %}
 
 {{ radvd.pkg }}:
   pkg.installed:
