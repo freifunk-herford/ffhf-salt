@@ -157,21 +157,34 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="installation">
+  <p>Der Router Advertisement Daemon ist ein Open-Source-Softwareprodukt, das verbindungslokale Ankündigungen von IPv6-Routeradressen und IPv6-Routingpräfixen unter Verwendung des in RFC 2461 angegebenen Neighbor Discovery-Protokolls implementiert.</p>
+<p>IPv6 beherrscht ein Feature namens Stateless Address Autoconfiguration, dieses dient dazu Clients zustandlos dynamische IPv6-Adressen zuzuweisen. Dies geschieht unter Linux mittels des Daemons radvd, welcher auf dem für das Netz zuständigen Router betrieben wird und Router Advertisments versendet.</p>
+<div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
-<p>B.A.T.M.A.N. Kontrollkommando und Kernelmodul installieren.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt install batctl
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt install radvd
 </pre></div>
 </div>
-</div>
-<div class="section" id="kernelmodul">
-<h1>Kernelmodul<a class="headerlink" href="#kernelmodul" title="Link zu dieser Überschrift">¶</a></h1>
-<p>Das Kernelmodul laden.</p>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>modprobe -v batman_adv
-</pre></div>
-</div>
-<p>Um das Kernelmodul beim nächsten Systemstart automatisch laden, legen wir die Datei <code class="docutils literal notranslate"><span class="pre">/etc/modules-load.d/batman_adv.conf</span></code> mit folgendem Inhalt an.</p>
-<div class="highlight-text notranslate"><div class="highlight"><pre><span></span>batman_adv
+<p>Zur Konfiguration die Datei <code class="docutils literal notranslate"><span class="pre">/etc/radvd.conf</span></code> mit folgendem Inhalt anlegen.</p>
+<div class="highlight-text notranslate"><div class="highlight"><pre><span></span># This file is managed by Salt, do not edit.
+
+interface {{ interface }}
+{
+    AdvSendAdvert on;
+    IgnoreIfMissing on;
+    MaxRtrAdvInterval 900;
+    AdvLinkMTU 1350;
+
+    prefix {{ prefix }}
+    {
+        AdvValidLifetime 864000;
+        AdvPreferredLifetime 172800;
+    };
+
+    RDNSS {{ address }}
+    {
+        FlushRDNSS off;
+    };
+};
 </pre></div>
 </div>
 </div>

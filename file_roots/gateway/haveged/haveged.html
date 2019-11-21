@@ -8,7 +8,7 @@
   
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   
-  <title>Installation &mdash; SaltStack Freifunk Herford 0.2 Dokumentation</title>
+  <title>Installation &mdash; SaltStack Freifunk Herford 0.3 Dokumentation</title>
   
 
   
@@ -64,7 +64,7 @@
             
             
               <div class="version">
-                0.2
+                0.3
               </div>
             
           
@@ -157,7 +157,9 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody">
             
-  <div class="section" id="installation">
+  <p>haveged ist ein Userspace-Daemon zur Bereitstellung von Entropie. Er hängt nicht von den Standardmechanismen zur »Ernte« von Zufälligkeit zur Füllung des System-Entropiepools ab. Das ist wichtig für Systeme mit hohen Entropieanforderungen oder beschränkter Benutzerinteraktion (z.B. Server ohne Anzeigegeräte [headless]).</p>
+<p>haveged verwendet HAVEGE (Hardware Volatile Entropy Gathering und Expansion) zur Wartung eines 1M großen Pools von zufälligen Bytes, um /dev/random zu füllen, wenn die Versorgung mit zufälligen Bits in /dev/random unter die untere Schranke des Geräts fällt.</p>
+<div class="section" id="installation">
 <h1>Installation<a class="headerlink" href="#installation" title="Link zu dieser Überschrift">¶</a></h1>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>apt install haveged
 </pre></div>

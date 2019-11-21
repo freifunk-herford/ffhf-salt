@@ -21,6 +21,7 @@ Inhalt:
    ../gateway/batman/index
    ../gateway/fastd/index
    ../gateway/bird/index
+   ../gateway/radvd/index
    ../gateway/alfred/index
    ../gateway/sysfsutils/index
    ../gateway/isc-dhcp-server/index

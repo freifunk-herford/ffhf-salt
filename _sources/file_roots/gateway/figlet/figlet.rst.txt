@@ -1,6 +1,13 @@
+Ein FIGlet-Font ist eine schmückende Schriftart, die zur Darstellung von Buchstaben und Zahlen aus ASCII-Zeichen zusammengesetzt wird. FIGlet-Fonts sind Teil der ASCII-Art. Die Bezeichnung kommt ursprünglich von einem Computerprogramm namens FIGlet, das diese Schriftarten zur Erstellung von ASCII-Art verwendet.
+
 Installation
 ------------
 
 .. code:: bash
 
    apt install figlet
+
+Im Ordner ``/etc/update-motd.d/`` die Datei ``00-ffhf-header`` anlegen.
+
+.. literalinclude:: ../../../../../../file_roots/gateway/etc/update-motd.d/00-ffhf-header
+   :language: text
