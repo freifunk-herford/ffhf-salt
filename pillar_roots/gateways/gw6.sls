@@ -19,6 +19,7 @@ bind:
     listen_on: '127.0.0.1; 10.34.0.6;'
 
 network:
+  hostname: 'gw6.herford.freifunk.net'
   bridge:
     hwaddress: '02:42:0a:22:00:06'
     address: '10.34.0.6'

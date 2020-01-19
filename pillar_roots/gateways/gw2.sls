@@ -19,6 +19,7 @@ bind:
     listen_on: '127.0.0.1; 10.34.0.2;' # localhost; freifunk
 
 network:
+  hostname: 'gw2.herford.freifunk.net'
   bridge: # 02 local 42 ist "Wayne" der Rest 10.34.0.2 in hex!
     hwaddress: '02:42:0a:22:00:02' # Die HW-Adresse ist Freifunk-spezifisch
     address: '10.34.0.2' # User Freifunk-Netzwerk IPv4
