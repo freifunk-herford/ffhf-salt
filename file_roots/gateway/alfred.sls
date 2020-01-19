@@ -219,6 +219,7 @@ alfred-announce-cron:
     - mode: 755
     - template: jinja
     - defaults:
+        hostname: {{ pillar['network']['hostname'] }}
         bridge: {{ pillar['network']['bridge']['interface'] }}
         batman: {{ pillar['network']['batman']['interface'] }}
         mesh: {{ pillar['network']['mesh']['interface'] }}
