@@ -30,9 +30,11 @@ network:
   mesh: # 02 local 00 ist "Wayne" der Rest:10.34.0.2 in hex!
     hwaddress: '02:00:0a:22:00:02'
   primary:
-    interface: 'ens3'
-    address: '37.120.186.226'
+    # interface: 'ens3'
+    # address: '37.120.186.226'
     # address6: '2a03:4000:f:621::/64'
+    interface: 'ens4'
+    address: '10.128.0.2'
 
 netfilter:
   tables:

@@ -79,8 +79,11 @@ openssh:
   ssh_auth:
     user:
       root:
-        lmb@lmb-nb: # Luca
-          key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC1RXq+yTsKtt8brNQLRH51TAdC2CxiSi2JsJJtw47b9hFdWhDlEOoMqQI0XqCBKHevhmtt7nc3k6vOX9yiC078Tz5hauQBTcMWbo+xSH1AxFlVo2pmPjL/N/9EritIe/4tJD3cIWSuGzjR69cyAQcCWshpivTV85xbpsiZS5ljKC4+TgAGC3jbSBGGMfoeb1MqWaMcuttcKXO2GFOOLxFYv2QVdOpQNf6S0Y992WLsBQ3BS0E6HTBCj/AXdt/x7eK25BpdAzrahCJw7Ytklmus6Fsi1LbJlaYBnKoRxwwpizbK7SHQ16Zca6NzsrI3H8c6SvPAj7p3lW88WntasoK9'
+        #lmb@lmb-nb: # Luca / Delete!!
+        #  key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC1RXq+yTsKtt8brNQLRH51TAdC2CxiSi2JsJJtw47b9hFdWhDlEOoMqQI0XqCBKHevhmtt7nc3k6vOX9yiC078Tz5hauQBTcMWbo+xSH1AxFlVo2pmPjL/N/9EritIe/4tJD3cIWSuGzjR69cyAQcCWshpivTV85xbpsiZS5ljKC4+TgAGC3jbSBGGMfoeb1MqWaMcuttcKXO2GFOOLxFYv2QVdOpQNf6S0Y992WLsBQ3BS0E6HTBCj/AXdt/x7eK25BpdAzrahCJw7Ytklmus6Fsi1LbJlaYBnKoRxwwpizbK7SHQ16Zca6NzsrI3H8c6SvPAj7p3lW88WntasoK9'
+        #  enc: 'ssh-rsa'
+        root@lmb: # Luca
+          key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDUp+UFLlr3+pOJzCMb5yRGcK8if0Q8AkZSDHYi3+bC2SKmeb8gDC8e2vauSCiUViJ2hfxRelEXbVn3JmWpii3nREAA7xM2P3k2HzV9jfVzvBeGd/K42tUi4DjHb2mj514tZSFbL1Ans8Yu9CxABdgyRPKX1vWcWEcJFSV3E9g+Un79w/v6CcHI8kwpzDTFnZpAm2nvkw5bMB6OiKrBVTRjqwbqiSHFyaVUZwD+g91mOtxBOs46oDiiuqdCIb6T0HjPFs+bEL71ZXWcLZxHV+sLKMwmaqmpRB1NqtaH8EKsIHafIaxwA7dMuonbdexJ/olXHUmx+zayXHXHvTVtMDHZ'
           enc: 'ssh-rsa'
 
 fastd: # Secret key von gw5 - nur den string!!!
