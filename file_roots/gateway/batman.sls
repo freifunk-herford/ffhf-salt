@@ -6,6 +6,16 @@
 
 {% if pillar['network']['mesh']['hwaddress'] is defined %}
 
+{% if grains['os'] == 'Debian' %}
+batmand:
+  pkg.installed:
+    - pkg: batmand
+
+batctl:
+  pkg.installed:
+    - pkg: batctl
+{% endif %}
+
 {% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '14.04' %}
 batman:
   pkgrepo.managed:
@@ -28,7 +38,10 @@ batman:
       # - batctl: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batctl/batctl_2017.0-0ffmwu0~trusty_amd64.deb
       # - batman-adv-dkms: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batman-adv-kernelland/batman-adv-dkms_2017.0.1-0ffmwu0~trusty_all.deb
       - batctl: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batctl/batctl_2017.1-0ffmwu0~trusty_amd64.deb
-      - batman-adv-dkms: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batman-adv-kernelland/batman-adv-dkms_2017.1-0ffmwu0~trusty_all.deb
+      #- batman-adv-dkms: http://ppa.launchpad.net/freifunk-mwu/freifunk-ppa/ubuntu/pool/main/b/batman-adv-kernelland/batman-adv-dkms_2017.1-0ffmwu0~trusty_all.deb
+batmand:
+  pkg.installed:
+    - name: batmand
 batctl:
   pkg.installed:
     - name: batctl
