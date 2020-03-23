@@ -3,6 +3,7 @@ include:
   - gateway.git
   - gateway.etckeeper
   - gateway.mosh
+  - gateway.nagios-plugins
   - gateway.molly-guard
   - gateway.haveged
   - gateway.ntp
