@@ -139,6 +139,6 @@ openssh:
           key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDUp+UFLlr3+pOJzCMb5yRGcK8if0Q8AkZSDHYi3+bC2SKmeb8gDC8e2vauSCiUViJ2hfxRelEXbVn3JmWpii3nREAA7xM2P3k2HzV9j$
           enc: 'ssh-rsa'
       nagiosssh:
-        nagios@status
+        nagios@status:
           key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDkHL4how15p4rZsGSPuCxSoXxReYhclFCAV2n1nbJ1KzrfNQU9rZW/E7nrT6S1NprHxV2zqzKzD/2uWIvqT1FMktVsPuRTgFoz0J+AienrWGBhG7/nsuL5DK/KHj3zOTvZjEItH6xqNbb09UW5n+VS7fli4+qBxjdKVTuT0isTkYKjHfQswiEwU9Qj20m033IdlP1zjgKsT0G85pGyD4Vzp4j3XDZ3lUrJUATkn5NVwJ1weEmD4/WQ8gfxucYgsiomsErvOuaI0y2Nj34yjSgo6JRKndny80Kx7J2s84Am2FbvIJ/36u+9P8EDbhN0j3rqk6lyQVpZL2G02I6OartP'
           enc: 'ssh-rsa'
