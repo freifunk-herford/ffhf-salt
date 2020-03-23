@@ -135,3 +135,10 @@ openssh:
         root@yuumura: # Tobias
           key: 'AAAAB3NzaC1yc2EAAAADAQABAAACAQC1FQzlRXikqH0+EQYw0nz62nujHFocwScRup5EM17iqGtxZbJnHkrh+4dqxYz9z5x/tpRbmHmiImpp2kYjJe0hHH+hHX54G5v8YzlC5JDdR5Ps/kHG67h9upJO2Nr3IDEqV3iD9qdniJ4N1N5PjRf9Em8c2cehKuBrGrw0ra2o3a1O5ZU1cNn/jgyIcp6t0VfVx3k692ZeJWH13P4oRxD3qE3NsWVZ6uGRqXfrntmyFzsWnCI88ytH4T5auw+ACcD3oVnp9MJUYnmNpjdXnMKxDvZ0VfIkXGIJVctpksff9FGRyl720lzBYPsRDiRQLQ2udjgGf23/rUXTHWguKxhGbrEP82jlMyuRQKGZtgyl281OLRK/axJuVIKvylONI358kksOCFnFnBA3PzNrwUIwgj+sQNP8c1AMIqloEz3ryYBTHUU+/34bAJgBBoL/n13POMbqeMvYm5c2rtC1tlY42CcjwA29Bc6EltQCErDpnoMIjePN5yjJOUt6BA/WJw6rkGLGFucw55libfMdQIMs0gt2Chazgf+MLX2OCv601mctmPsmZX6rDRsAOhbN74WFE115o0zZLLM7NNliRuYPY/YFdDRvGwpIsSFfYJrwfwxRu16/Px3U7QoXF7npT/yx6wonLeGW9Rg8E+jJz4KhEmGhMKTg9W5pa/t8V0KFpQ=='
           enc: 'ssh-rsa'
+        root@lmb: # Luca
+          key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDUp+UFLlr3+pOJzCMb5yRGcK8if0Q8AkZSDHYi3+bC2SKmeb8gDC8e2vauSCiUViJ2hfxRelEXbVn3JmWpii3nREAA7xM2P3k2HzV9j$
+          enc: 'ssh-rsa'
+      nagiosssh:
+        nagios@status
+          key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDkHL4how15p4rZsGSPuCxSoXxReYhclFCAV2n1nbJ1KzrfNQU9rZW/E7nrT6S1NprHxV2zqzKzD/2uWIvqT1FMktVsPuRTgFoz0J+AienrWGBhG7/nsuL5DK/KHj3zOTvZjEItH6xqNbb09UW5n+VS7fli4+qBxjdKVTuT0isTkYKjHfQswiEwU9Qj20m033IdlP1zjgKsT0G85pGyD4Vzp4j3XDZ3lUrJUATkn5NVwJ1weEmD4/WQ8gfxucYgsiomsErvOuaI0y2Nj34yjSgo6JRKndny80Kx7J2s84Am2FbvIJ/36u+9P8EDbhN0j3rqk6lyQVpZL2G02I6OartP'
+          enc: 'ssh-rsa'
