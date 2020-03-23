@@ -8,6 +8,12 @@
 
 {% if pillar['network']['mesh']['hwaddress'] is defined %}
 
+{% if grains['os'] == 'Debian' %}
+alfred:
+  pkg.installed:
+    - pkg: alfred
+{% endif %}
+
 {% if grains['os'] == 'Ubuntu' and grains['osrelease'] == '14.04' %}
 alfred:
   pkg.installed:
