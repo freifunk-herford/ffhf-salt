@@ -142,4 +142,8 @@ openssh:
         nagios@status:
           key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQDkHL4how15p4rZsGSPuCxSoXxReYhclFCAV2n1nbJ1KzrfNQU9rZW/E7nrT6S1NprHxV2zqzKzD/2uWIvqT1FMktVsPuRTgFoz0J+AienrWGBhG7/nsuL5DK/KHj3zOTvZjEItH6xqNbb09UW5n+VS7fli4+qBxjdKVTuT0isTkYKjHfQswiEwU9Qj20m033IdlP1zjgKsT0G85pGyD4Vzp4j3XDZ3lUrJUATkn5NVwJ1weEmD4/WQ8gfxucYgsiomsErvOuaI0y2Nj34yjSgo6JRKndny80Kx7J2s84Am2FbvIJ/36u+9P8EDbhN0j3rqk6lyQVpZL2G02I6OartP'
           enc: 'ssh-rsa'
+        nagios@mimasu:
+          key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC3VOahcWQZkO+0mGEUE6BAg21GSCoJ8b5Qh6PSaHMBJ892HVl3Oy5uyxm/lIlef6OcgLN3By+Bz6t9nECF3RyG3OC4iUhc/iU6Zpy7BOE+4WdlcJpycHaiiFiDomSOr6eq9a8wSbNSwcDdsZsJXgGElRfxc+QuoIEAFc7AtLismeaWbSKxQ5XwiJegW6UNQx0kVUFMjhV51EUiiF/MGvGPuUgvjuvIoCz6/9n3xa3U1g1TMyUH+GQ6zSlMInGFWxiAvEdWcUI2Od8kw1bP2Uq5wszWocdj9bbFM6NQ3Vejw8wpFh25BsDVxNtM1PSWIPQ8wgXTgcckNth1CQs32/mD'
+          enc: 'ssh-rsa'
+
 
