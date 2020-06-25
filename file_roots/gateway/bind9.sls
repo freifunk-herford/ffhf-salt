@@ -55,10 +55,13 @@
 
 {% if pillar['bind'].get('master', None) %}
 {% for zone in pillar['bind']['zones'] %}
-/etc/bind/db.{{ zone }}:
+#/etc/bind/db.{{ zone }}:
+/var/lib/bind/db.{{ zone }}:
   file.managed:
-    - name: /etc/bind/db.{{ zone }}
-    - source: salt://gateway/etc/bind/db.{{ zone }}
+#    - name: /etc/bind/db.{{ zone }}
+    - name: /var/lib/bind/db.{{ zone }}
+#    - source: salt://gateway/etc/bind/db.{{ zone }}
+    - source: salt://gateway/var/lib/bind/db.{{ zone }}
     # - unless: test -f /etc/bind/db.{{ zone }}
     # - watch_in:
     #   - service: {{ bind.srv }}
