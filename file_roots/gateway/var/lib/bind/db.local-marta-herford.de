@@ -1,0 +1,23 @@
+; This file is managed by Salt, do not edit.
+
+$ORIGIN .
+$TTL 600       ; 10 minutes
+local-marta-herford.de.   IN SOA  ns1.ffhf. admin.ns1.ffhf. (
+                                2019112001 ; serial
+                                3600       ; refresh (1 hour)
+                                300        ; retry (5 minutes)
+                                604800     ; expire (1 week)
+                                7200       ; minimum (2 hours)
+                                )
+                        NS      ns1.ffhf.
+                        A       10.34.0.32
+;                        AAAA    fdf3:2049:5152::a22:20
+
+$ORIGIN local-marta-herford.de.
+$TTL 300       ; 5 minutes
+wsmarta	                A       10.34.2.1
+;wsmarta                 AAAA    fdf3:2049:5152::a24:1
+audioguide              A       10.34.0.32
+start                   CNAME   audioguide.local-marta-herford.de.
+www                     CNAME   audioguide.local-marta-herford.de.
+www.start               CNAME   audioguide.local-marta-herford.de.

@@ -1,0 +1,41 @@
+; This file is managed by Salt, do not edit.
+
+$ORIGIN .
+$TTL 10800     ; 3 hours
+34.10.in-addr.arpa  IN SOA  gw2.ffhf. hostmaster.ffhf. (
+                        2019112001 ; serial
+                        10800      ; refresh (3 hours)
+                        3600       ; retry (1 hour)
+                        604800     ; expire (1 week)
+                        3600       ; minimum (1 hour)
+                    )
+                    NS      gw2.ffhf.
+                    NS      ns1.ffhf.
+$ORIGIN 34.10.in-addr.arpa.
+0.0                 PTR     mynode.ffhf.
+1.0                 PTR     gw1.ffhf.
+2.0                 PTR     gw2.ffhf.
+3.0                 PTR     gw3.ffhf.
+4.0                 PTR     gw4.ffhf.
+5.0                 PTR     gw5.ffhf.
+6.0                 PTR     gw6.ffhf.
+7.0                 PTR     gw7.ffhf.
+32.0                PTR     map.ffhf.
+; Dynamic Range
+0.64                PTR     node1.ffhf.
+1.64                PTR     node2.ffhf.
+2.64                PTR     node3.ffhf.
+3.64                PTR     node4.ffhf.
+4.64                PTR     node5.ffhf.
+5.64                PTR     node6.ffhf.
+6.64                PTR     node7.ffhf.
+7.64                PTR     node8.ffhf.
+8.64                PTR     node9.ffhf.
+9.64                PTR     node10.ffhf.
+10.64               PTR     node11.ffhf.
+11.64               PTR     node12.ffhf.
+12.64               PTR     node13.ffhf.
+13.64               PTR     node14.ffhf.
+14.64               PTR     node15.ffhf.
+15.64               PTR     node16.ffhf.
+16.64               PTR     node17.ffhf.
