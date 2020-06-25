@@ -61,7 +61,7 @@
 #    - name: /etc/bind/db.{{ zone }}
     - name: /var/lib/bind/db.{{ zone }}
 #    - source: salt://gateway/etc/bind/db.{{ zone }}
-    - source: salt://gateway/var/lib/bind/db.{{ zone }}
+    - source: salt://map/var/lib/bind/db.{{ zone }}
     # - unless: test -f /etc/bind/db.{{ zone }}
     # - watch_in:
     #   - service: {{ bind.srv }}
