@@ -32,7 +32,9 @@ network:
     hwaddress: '02:00:0a:22:00:01'
   primary:
     interface: 'ens3'
-    address: '185.162.249.190'
+    address: '217.79.178.12'
+    # address6: '2001:4ba0:cafe:6dc::1/128'
+    # address: '185.162.249.190'
     # address6: '2a03:4000:1a:6e0::/64'
 
 netfilter:
