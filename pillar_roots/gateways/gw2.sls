@@ -34,8 +34,10 @@ network:
     # interface: 'ens3'
     # address: '37.120.186.226'
     # address6: '2a03:4000:f:621::/64'
-    interface: 'ens4'
-    address: '10.128.0.2'
+    # interface: 'ens4'
+    # address: '10.128.0.2'
+    interface: 'ens192'
+    address: '217.160.212.37'
 
 netfilter:
   tables:
