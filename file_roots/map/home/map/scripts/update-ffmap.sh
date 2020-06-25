@@ -9,9 +9,10 @@ SHELL=/bin/bash
 
 base="/home/map/scripts"
 
-python ${base}/update-node.py \
---url http://gw-hf.herford.freifunk.net/node.json \
---node ${base}/map/gw-hf.json
+# Problem Stadt Herford
+#python ${base}/update-node.py \
+#--url http://gw-hf.herford.freifunk.net/node.json \
+#--node ${base}/map/gw-hf.json
 
 ${base}/map/venv3/bin/python ${base}/map/ffmap-backend/backend.py \
 --mesh {{ batman }}:{{ socket }} --dest-dir {{ data }} \
