@@ -31,8 +31,8 @@ network:
   mesh:
     hwaddress: '02:00:0a:22:00:04'
   primary:
-    interface: 'eno1'
-    address: '89.163.225.133'
+    interface: 'ens3'
+    address: '188.68.32.81'
     # address6: # Der Server hat keine IPv6 Adresse
 
 netfilter:
@@ -52,8 +52,8 @@ netfilter:
       - '-A FORWARD -i bb+ -o hfBR -p tcp -m tcp --tcp-flags SYN,RST SYN -j TCPMSS --clamp-mss-to-pmtu'
 
 exit:
-  type: 'gre' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
-  provider: 'ffrl' # Verschiedene Provider sind moeglich
+  type: 'openvpn' # Verschiedene Arten sind moeglich "gre" oder "openvpn"
+  provider: 'pia_linux' # Verschiedene Provider sind moeglich
   pia_linux: # Private Internet Access Luca
     pia_userpass.txt: |
       -----BEGIN PGP MESSAGE-----
