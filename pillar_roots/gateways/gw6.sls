@@ -31,8 +31,10 @@ network:
   mesh:
     hwaddress: '02:00:0a:22:00:06'
   primary:
-    interface: 'ens3'
-    address: '185.170.115.147'
+    interface: 'enp1s0'
+    address: '192.168.178.31'
+    #interface: 'ens3'
+    #address: '185.170.115.147'
     # address6: '2a03:4000:15:7fc::/64'
 
 netfilter:
