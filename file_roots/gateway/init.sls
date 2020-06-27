@@ -11,7 +11,7 @@ include:
   - gateway.monitoring-plugins
   - gateway.haveged
   - gateway.openssh-server
-  - gateway.ntp
+  # - gateway.ntp # systemd manages ntp now
   - gateway.network
   - gateway.iproute2
   - gateway.netfilter
