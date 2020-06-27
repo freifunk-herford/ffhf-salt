@@ -12,8 +12,17 @@
   'Debian': {'pkg': 'speedtest'}
 }, default='Debian') %}
 
+pkgrepo-{{ speedtest.pkg }}:
+  pkgrepo.managed:
+    - name: deb https://ookla.bintray.com/debian {{ grains['oscodename'] }} main
+    - distro: {{ grains['oscodename'] }}
+    - file: /etc/apt/sources.list.d/speedtest.list
+    - keyid: 379CE192D401AB61
+    - keyserver: keyserver.ubuntu.com
+    - refresh_db: True
+    - require_in:
+      - pkg: {{ speedtest.pkg }}
+
 {{ speedtest.pkg }}:
   pkg.installed:
-    - fromrepo: 'deb https://ookla.bintray.com/debian {{ grains('os:distro') }} main'
-    - file: '/etc/apt/sources.list.d/speedtest.list'
     - name: {{ speedtest.pkg }}

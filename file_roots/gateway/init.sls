@@ -1,7 +1,11 @@
 include:
   - gateway.bash
+  - gateway.psmisc
+  - gateway.gnupg
+  - gateway.wget
   - gateway.git
   - gateway.etckeeper
+  - gateway.build-essential
   - gateway.mosh
   - gateway.molly-guard
   - gateway.monitoring-plugins
@@ -26,3 +30,4 @@ include:
   - gateway.vnstat
   - gateway.rsyslog
   - gateway.figlet
+  - gateway.speedtest
