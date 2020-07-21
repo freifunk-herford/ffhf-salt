@@ -199,3 +199,48 @@ net.ipv6.conf.default.accept_ra:
 # % if grains['kernelrelease'] < '3.18' %}
 
 # /etc/resolv.conf
+
+# Check the Bridge Interface for B.A.T.M.A.N.
+
+/root/scripts/check-bridge.sh:
+  file.managed:
+    - name: /root/scripts/check-bridge.sh
+    - source: salt://gateway/root/scripts/check-bridge.sh
+    - makedirs: True
+    - user: root
+    - group: root
+    - mode: 755
+    - template: jinja
+
+check-bridge-cron:
+  cron.present:
+    - name: /root/scripts/check-bridge.sh
+    - identifier: check-bridge
+    - user: root
+    - minute: '*/5'
+    - comment: 'Check if B.A.T.M.A.N. is on the Bridge Interface every 5 Minutes'
+    - require:
+      - file: /root/scripts/check-bridge.sh
+
+# Check the Hostname
+
+/root/scripts/check-hostname.sh:
+  file.managed:
+    - name: /root/scripts/check-hostname.sh
+    - source: salt://gateway/root/scripts/check-hostname.sh
+    - makedirs: True
+    - user: root
+    - group: root
+    - mode: 755
+    - template: jinja
+
+check-hostname-cron:
+  cron.present:
+    - name: /root/scripts/check-hostname.sh
+    - identifier: check-hostname
+    - user: root
+    - minute: '*/5'
+    - comment: 'Check the Hostname every 5 Minutes'
+    - require:
+      - file: /root/scripts/check-hostname.sh
+
