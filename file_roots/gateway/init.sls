@@ -21,6 +21,7 @@ include:
   - gateway.bird
   - gateway.radvd
   - gateway.alfred
+  - gateway.respondd
   - gateway.sysfsutils
   - gateway.isc-dhcp-server
   - gateway.bind9

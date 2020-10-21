@@ -1,0 +1,11 @@
+[Unit]
+Description=Respondd
+After=network.target
+
+[Service]
+ExecStart=/root/scripts/mesh-announce/respondd.py -d /root/scripts/mesh-announce/providers -i {{ pillar['network']['bridge']['interface'] }} -i {{ pillar['network']['mesh']['interface'] }} -b {{ pillar['network']['batman']['interface'] }} -m {{ pillar['network']['bridge']['address'] }}
+Restart=always
+Environment=PATH=/usr/local/sbin:/usr/local/bin:/usr/sbin:/usr/bin:/sbin:/bin
+
+[Install]
+WantedBy=multi-user.target

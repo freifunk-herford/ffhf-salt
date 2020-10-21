@@ -10,6 +10,6 @@ SHELL=/bin/bash
 batmanif="{{ pillar['network']['bridge']['interface'] }}"
 bridgeif="{{ pillar['network']['batman']['interface'] }}"
 
-if [[ ! $(brtctl show | grep ${batmanif}) ]]; then
+if [[ ! $(brctl show | grep ${batmanif}) ]]; then
 	brctl addif ${batmanif} ${bridgeif}
 fi

@@ -45,6 +45,10 @@ batmand:
 batctl:
   pkg.installed:
     - name: batctl
+{% elif grains['os'] == 'Debian' and grains['osrelease'] == '18.04' %}
+# Hello
+# https://freifuck.de/debian/pool/main/b/batctl/batctl_2020.0-1+deb10_amd64.deb
+# https://freifuck.de/debian/pool/main/b/batman-adv/batman-adv_2020.0-1+deb10_amd64.deb
 {% elif grains['os'] == 'Ubuntu' and grains['osrelease'] == '18.04' %}
 # batman:
 #   pkg.installed:
