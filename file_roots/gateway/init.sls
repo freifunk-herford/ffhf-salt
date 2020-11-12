@@ -32,3 +32,4 @@ include:
   - gateway.rsyslog
   - gateway.figlet
   - gateway.speedtest
+  - gateway.fping
