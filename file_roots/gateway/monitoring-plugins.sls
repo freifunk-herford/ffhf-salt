@@ -23,3 +23,11 @@ usr-nagiosssh:
     - mode: 755
     - user: nagiosssh
     - group: nagiosssh
+
+/home/nagiosssh/check_fping.sh:
+  file.managed:
+    - name: /home/nagiosssh/check_fping.sh
+    - source: salt://gateway/home/nagiosssh/check_fping.sh
+    - mode: 755
+    - user: nagiosssh
+    - group: nagiosssh
