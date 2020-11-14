@@ -145,5 +145,3 @@ openssh:
         nagios@mimasu:
           key: 'AAAAB3NzaC1yc2EAAAADAQABAAABAQC3VOahcWQZkO+0mGEUE6BAg21GSCoJ8b5Qh6PSaHMBJ892HVl3Oy5uyxm/lIlef6OcgLN3By+Bz6t9nECF3RyG3OC4iUhc/iU6Zpy7BOE+4WdlcJpycHaiiFiDomSOr6eq9a8wSbNSwcDdsZsJXgGElRfxc+QuoIEAFc7AtLismeaWbSKxQ5XwiJegW6UNQx0kVUFMjhV51EUiiF/MGvGPuUgvjuvIoCz6/9n3xa3U1g1TMyUH+GQ6zSlMInGFWxiAvEdWcUI2Od8kw1bP2Uq5wszWocdj9bbFM6NQ3Vejw8wpFh25BsDVxNtM1PSWIPQ8wgXTgcckNth1CQs32/mD'
           enc: 'ssh-rsa'
-
-
